@@ -1,6 +1,7 @@
 package com.tnex.chat.tnexchat
 
 import androidx.annotation.NonNull
+import com.tnex.matrix.AppTestInfo
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
@@ -23,7 +24,7 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler {
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
+      result.success("Android ${AppTestInfo.getAndroidVersion()}")
     } else {
       result.notImplemented()
     }
