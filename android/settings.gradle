@@ -1,0 +1,2 @@
+include ':matrix-sdk-android'
+rootProject.name = 'tnexchat'
