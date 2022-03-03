@@ -1,6 +1,6 @@
 # tnexchat_example
 
-Demonstrates how to use the tnexchat plugin.
+Demonstrates how to use the tnexchat plugin
 
 ## Getting Started
 
