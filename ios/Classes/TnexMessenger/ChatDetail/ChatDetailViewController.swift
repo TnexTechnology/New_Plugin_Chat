@@ -40,22 +40,35 @@ class ChatDetailViewController: BaseChatViewController {
         DispatchQueue.main.async {[weak self] in
             self?.addHeaderView()
         }
-        
         self.cellPanGestureHandlerConfig.allowReplyRevealing = true
         self.messagesSelector.delegate = self
         self.chatItemsDecorator = TnexChatItemsDecorator(messagesSelector: self.messagesSelector)
         self.replyActionHandler = TnexReplyActionHandler(presentingViewController: self)
         self.collectionView?.backgroundColor = UIColor(red: 0.008, green: 0.0, blue: 0.212, alpha: 1)
 //        self.changeCollectionViewTopMarginTo(-ChatHeaderView.headerBarHeight, duration: 0.3)
-        self.collectionView?.layoutIfNeeded()
+        addBackgroundInputBar()
+        
+        
+    }
+    
+    private func addBackgroundInputBar() {
+        let backgroundInputView = InputBarBackgroundView()
+        backgroundInputView.backgroundColor = .clear
+        backgroundInputView.clipsToBounds = true
+        self.view.insertSubview(backgroundInputView, belowSubview: inputBarContainer)
+        backgroundInputView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundInputView.leftAnchor.constraint(equalTo: inputBarContainer.leftAnchor, constant: 0).isActive = true
+        backgroundInputView.rightAnchor.constraint(equalTo: inputBarContainer.rightAnchor, constant: 0).isActive = true
+        backgroundInputView.bottomAnchor.constraint(equalTo: inputBarContainer.bottomAnchor, constant: 0).isActive = true
+        backgroundInputView.topAnchor.constraint(equalTo: inputBarContainer.topAnchor, constant: -5).isActive = true
         inputContentContainer.backgroundColor = .clear
         inputBarContainer.backgroundColor = .clear
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//    }
     
     private func addHeaderView() {
         view.addSubview(headerBar)
@@ -63,13 +76,14 @@ class ChatDetailViewController: BaseChatViewController {
         headerBar.autoPinEdge(toSuperviewSafeArea: .left)
         headerBar.autoPinEdge(toSuperviewSafeArea: .right)
         let topPadding: CGFloat = self.view.safeAreaInsets.top
+
+//        let topPadding: CGFloat = UIApplication.key?.safeAreaInsets.top ?? 20
         self.headerBar.autoSetDimension(.height, toSize: ChatHeaderView.headerBarHeight + topPadding)
         self.headerBar.infoView.displayNameLabel.text = self.dataSource.getDisplayName()
         self.headerBar.avatarView.imageView.sd_setImage(with: self.dataSource.getAvatarURL())
         dataSource.room?.room.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
                 if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}), let mxUser = self.dataSource.room.room.mxSession.user(withUserId: partnerUser.userId) {
-                    
                     self.headerBar.updateUser(user: mxUser)
                 }
             }
@@ -80,16 +94,6 @@ class ChatDetailViewController: BaseChatViewController {
     override func createChatInputView() -> UIView {
         let chatInputView = TnexContainerInputBar.loadNib()
         chatInputView.backgroundColor = .clear
-        let backgroundInputView = UIImageView()
-        backgroundInputView.image = UIImage(named: "chat_inputbar_background", in: Bundle.resources, compatibleWith: nil)
-        backgroundInputView.contentMode = .scaleToFill
-        backgroundInputView.clipsToBounds = true
-        chatInputView.addSubview(backgroundInputView)
-        backgroundInputView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundInputView.leftAnchor.constraint(equalTo: chatInputView.leftAnchor, constant: 0).isActive = true
-        backgroundInputView.rightAnchor.constraint(equalTo: chatInputView.rightAnchor, constant: 0).isActive = true
-        backgroundInputView.bottomAnchor.constraint(equalTo: chatInputView.bottomAnchor, constant: 0).isActive = true
-        backgroundInputView.heightAnchor.constraint(equalToConstant: 65).isActive = true
         let inputbar = TnexInputBar()
         chatInputView.addSubview(inputbar)
         inputbar.fillSuperview()
@@ -97,7 +101,6 @@ class ChatDetailViewController: BaseChatViewController {
         inputbar.onClickSendButton = {[weak self] text in
             self?.dataSource.addTextMessage(text)
         }
-        
         return chatInputView
     }
     
