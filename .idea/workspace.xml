@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1037281e-6691-4a06-a2eb-68fc5669c096" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Test2.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/ChatDetailViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/ChatDetailViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatDataSource.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatDataSource.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Model/TnexRoom.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Model/TnexRoom.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/RecentConversation/ConversationViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/RecentConversation/ConversationViewController.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

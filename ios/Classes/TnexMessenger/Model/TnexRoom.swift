@@ -68,7 +68,7 @@ public class TnexRoom {
         self.summary = TnexRoomSummary(room.summary)
 
         let enumerator = room.enumeratorForStoredMessages//WithType(in: Self.displayedMessageTypes)
-        let currentBatch = enumerator?.nextEventsBatch(200) ?? []
+        let currentBatch = enumerator?.nextEventsBatch(200, threadId: nil) ?? []
         print("Got \(currentBatch.count) events.")
 
         self.eventCache.append(contentsOf: currentBatch)

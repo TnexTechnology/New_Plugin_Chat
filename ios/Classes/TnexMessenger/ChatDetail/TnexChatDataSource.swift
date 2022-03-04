@@ -60,7 +60,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     func getInfoRoom() {
         self.room.room.liveTimeline {[weak self] eventTimeline in
             guard let self = self else { return }
-            if let members = eventTimeline?.state.members.members {
+            if let members = eventTimeline?.state?.members.members {
                 for member in members {
                     self.memberDic[member.userId] = member
                 }
