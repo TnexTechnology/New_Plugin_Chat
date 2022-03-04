@@ -25,27 +25,9 @@
 import UIKit
 
 open class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionViewCellStyleProtocol {
+    
+        
     typealias Class = PhotoMessageCollectionViewCellDefaultStyle
-
-    public struct BubbleMasks {
-        public let incomingTail: () -> UIImage
-        public let incomingNoTail: () -> UIImage
-        public let outgoingTail: () -> UIImage
-        public let outgoingNoTail: () -> UIImage
-        public let tailWidth: CGFloat
-        public init(
-            incomingTail: @autoclosure @escaping () -> UIImage,
-            incomingNoTail: @autoclosure @escaping () -> UIImage,
-            outgoingTail: @autoclosure @escaping () -> UIImage,
-            outgoingNoTail: @autoclosure @escaping () -> UIImage,
-            tailWidth: CGFloat) {
-                self.incomingTail = incomingTail
-                self.incomingNoTail = incomingNoTail
-                self.outgoingTail = outgoingTail
-                self.outgoingNoTail = outgoingNoTail
-                self.tailWidth = tailWidth
-        }
-    }
 
     public struct Sizes {
         public let aspectRatioIntervalForSquaredSize: ClosedRange<CGFloat>
@@ -84,25 +66,18 @@ open class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionVie
         }
     }
 
-    let bubbleMasks: BubbleMasks
     let sizes: Sizes
     let colors: Colors
     let baseStyle: BaseMessageCollectionViewCellDefaultStyle
     public init(
-        bubbleMasks: BubbleMasks = PhotoMessageCollectionViewCellDefaultStyle.createDefaultBubbleMasks(),
         sizes: Sizes = PhotoMessageCollectionViewCellDefaultStyle.createDefaultSizes(),
         colors: Colors = PhotoMessageCollectionViewCellDefaultStyle.createDefaultColors(),
         baseStyle: BaseMessageCollectionViewCellDefaultStyle = BaseMessageCollectionViewCellDefaultStyle()) {
-            self.bubbleMasks = bubbleMasks
             self.sizes = sizes
             self.colors = colors
             self.baseStyle = baseStyle
     }
 
-    lazy private var maskImageIncomingTail: UIImage = self.bubbleMasks.incomingTail()
-    lazy private var maskImageIncomingNoTail: UIImage = self.bubbleMasks.incomingNoTail()
-    lazy private var maskImageOutgoingTail: UIImage = self.bubbleMasks.outgoingTail()
-    lazy private var maskImageOutgoingNoTail: UIImage = self.bubbleMasks.outgoingNoTail()
 
     lazy private var placeholderBackgroundIncoming: UIImage = {
         return UIImage.bma_imageWithColor(self.baseStyle.baseColorIncoming, size: CGSize(width: 1, height: 1))
@@ -116,39 +91,6 @@ open class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionVie
         return UIImage(named: "chat-photo-placeholder.png", in: Bundle.resources, compatibleWith: nil)
     }()
 
-    open func maskingImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage {
-        switch (viewModel.isIncoming, viewModel.decorationAttributes.isShowingTail) {
-        case (true, true):
-            return self.maskImageIncomingTail
-        case (true, false):
-            return self.maskImageIncomingNoTail
-        case (false, true):
-            return self.maskImageOutgoingTail
-        case (false, false):
-            return self.maskImageOutgoingNoTail
-        }
-    }
-
-    open func borderImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage? {
-        return self.baseStyle.borderImage(viewModel: viewModel)
-    }
-
-    open func placeholderBackgroundImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage {
-        return viewModel.isIncoming ? self.placeholderBackgroundIncoming : self.placeholderBackgroundOutgoing
-    }
-
-    open func placeholderIconImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage {
-        return self.placeholderIcon ?? UIImage()
-    }
-
-    open func placeholderIconTintColor(viewModel: PhotoMessageViewModelProtocol) -> UIColor {
-        return viewModel.isIncoming ? self.colors.placeholderIconTintIncoming : self.colors.placeholderIconTintOutgoing
-    }
-
-    open func tailWidth(viewModel: PhotoMessageViewModelProtocol) -> CGFloat {
-        return self.bubbleMasks.tailWidth
-    }
-
     open func bubbleSize(viewModel: PhotoMessageViewModelProtocol) -> CGSize {
         let aspectRatio = viewModel.mediaItem.imageSize.height > 0 ? viewModel.mediaItem.imageSize.width / viewModel.mediaItem.imageSize.height : 0
 
@@ -160,11 +102,37 @@ open class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionVie
             return self.sizes.photoSizeLandscape
         }
     }
-
-    open func progressIndicatorColor(viewModel: PhotoMessageViewModelProtocol) -> UIColor {
-        return viewModel.isIncoming ? self.colors.progressIndicatorColorIncoming : self.colors.progressIndicatorColorOutgoing
+    
+    open func placeholderBackgroundImage(viewModel: PhotoMessageViewModelProtocol) -> UIImage? {
+        return nil
     }
+    
+    open func bubbleMaskLayer(viewModel: MessageViewModelProtocol, isSelected: Bool, frame: CGRect) -> CAShapeLayer? {
+        guard frame.size != CGSize.zero else { return nil }
+        let roundRect = CGRect(origin: CGPoint.zero, size: frame.size)
+        let path = UIBezierPath(
+            shouldRoundRect: roundRect,
+            topLeftRadius: 8,
+            topRightRadius: 8,
+            bottomLeftRadius: 8,
+            bottomRightRadius: 8
+        )
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        return mask
+    }
+    
+    open func bubbleBackgroundColor(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIColor? {
+        let color = viewModel.isIncoming ? self.baseStyle.baseColorIncoming : self.baseStyle.baseColorOutgoing
+        switch viewModel.status {
+        case .success:
+            return color
+        case .failed, .sending:
+            return color.bma_blendWithColor(UIColor.white.withAlphaComponent(0.70))
+        }
 
+    }
+    
     open func overlayColor(viewModel: PhotoMessageViewModelProtocol) -> UIColor? {
         let showsOverlay = viewModel.image.value != nil && (viewModel.transferStatus.value == .transfering || viewModel.status != MessageViewModelStatus.success)
         return showsOverlay ? self.colors.overlayColor : nil
@@ -173,16 +141,6 @@ open class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionVie
 }
 
 public extension PhotoMessageCollectionViewCellDefaultStyle { // Default values
-
-    static func createDefaultBubbleMasks() -> BubbleMasks {
-        return BubbleMasks(
-            incomingTail: UIImage(named: "bubble-incoming-tail", in: Bundle.resources, compatibleWith: nil) ?? UIImage(),
-            incomingNoTail: UIImage(named: "bubble-incoming", in: Bundle.resources, compatibleWith: nil) ?? UIImage(),
-            outgoingTail: UIImage(named: "bubble-outgoing-tail", in: Bundle.resources, compatibleWith: nil) ?? UIImage(),
-            outgoingNoTail: UIImage(named: "bubble-outgoing", in: Bundle.resources, compatibleWith: nil) ?? UIImage(),
-            tailWidth: 6
-        )
-    }
 
     static func createDefaultSizes() -> Sizes {
         return Sizes(
@@ -201,5 +159,60 @@ public extension PhotoMessageCollectionViewCellDefaultStyle { // Default values
             progressIndicatorColorOutgoing: UIColor.white,
             overlayColor: UIColor.black.withAlphaComponent(0.70)
         )
+    }
+}
+
+public extension UIBezierPath {
+
+    convenience init(
+        shouldRoundRect rect: CGRect,
+        topLeftRadius: CGFloat,
+        topRightRadius: CGFloat,
+        bottomLeftRadius: CGFloat,
+        bottomRightRadius: CGFloat
+    ){
+        self.init()
+        let path = CGMutablePath()
+        let topLeft = rect.origin
+        let topRight = CGPoint(x: rect.maxX, y: rect.minY)
+        let bottomRight = CGPoint(x: rect.maxX, y: rect.maxY)
+        let bottomLeft = CGPoint(x: rect.minX, y: rect.maxY)
+
+        if topLeftRadius != 0 {
+            path.move(to: CGPoint(x: topLeft.x + topLeftRadius, y: topLeft.y))
+        } else {
+            path.move(to: topLeft)
+        }
+
+        if topRightRadius != 0 {
+            path.addLine(to: CGPoint(x: topRight.x - topRightRadius, y: topRight.y))
+            path.addArc(tangent1End: topRight, tangent2End: CGPoint(x: topRight.x, y: topRight.y + topRightRadius), radius: topRightRadius)
+        } else {
+            path.addLine(to: topRight)
+        }
+
+        if bottomRightRadius != 0 {
+            path.addLine(to: CGPoint(x: bottomRight.x, y: bottomRight.y - bottomRightRadius))
+            path.addArc(tangent1End: bottomRight, tangent2End: CGPoint(x: bottomRight.x - bottomRightRadius, y: bottomRight.y), radius: bottomRightRadius)
+        } else {
+            path.addLine(to: bottomRight)
+        }
+
+        if bottomLeftRadius != 0 {
+            path.addLine(to: CGPoint(x: bottomLeft.x + bottomLeftRadius, y: bottomLeft.y))
+            path.addArc(tangent1End: bottomLeft, tangent2End: CGPoint(x: bottomLeft.x, y: bottomLeft.y - bottomLeftRadius), radius: bottomLeftRadius)
+        } else {
+            path.addLine(to: bottomLeft)
+        }
+
+        if topLeftRadius != 0 {
+            path.addLine(to: CGPoint(x: topLeft.x, y: topLeft.y + topLeftRadius))
+            path.addArc(tangent1End: topLeft, tangent2End: CGPoint(x: topLeft.x + topLeftRadius, y: topLeft.y), radius: topLeftRadius)
+        } else {
+            path.addLine(to: topLeft)
+        }
+
+        path.closeSubpath()
+        cgPath = path
     }
 }

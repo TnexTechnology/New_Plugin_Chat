@@ -25,24 +25,8 @@
 import UIKit
 
 open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewCellStyleProtocol {
+    
     typealias Class = TextMessageCollectionViewCellDefaultStyle
-
-    public struct BubbleImages {
-        let incomingTail: () -> UIImage
-        let incomingNoTail: () -> UIImage
-        let outgoingTail: () -> UIImage
-        let outgoingNoTail: () -> UIImage
-        public init(
-            incomingTail: @autoclosure @escaping () -> UIImage,
-            incomingNoTail: @autoclosure @escaping () -> UIImage,
-            outgoingTail: @autoclosure @escaping () -> UIImage,
-            outgoingNoTail: @autoclosure @escaping () -> UIImage) {
-                self.incomingTail = incomingTail
-                self.incomingNoTail = incomingNoTail
-                self.outgoingTail = outgoingTail
-                self.outgoingNoTail = outgoingNoTail
-        }
-    }
 
     public struct TextStyle {
         public let font: () -> UIFont
@@ -64,26 +48,14 @@ open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewC
         }
     }
 
-    public let bubbleImages: BubbleImages
     public let textStyle: TextStyle
     public let baseStyle: BaseMessageCollectionViewCellDefaultStyle
     public init (
-        bubbleImages: BubbleImages = TextMessageCollectionViewCellDefaultStyle.createDefaultBubbleImages(),
         textStyle: TextStyle = TextMessageCollectionViewCellDefaultStyle.createDefaultTextStyle(),
         baseStyle: BaseMessageCollectionViewCellDefaultStyle = BaseMessageCollectionViewCellDefaultStyle()) {
-            self.bubbleImages = bubbleImages
             self.textStyle = textStyle
             self.baseStyle = baseStyle
     }
-
-    lazy private var images: [ImageKey: UIImage] = {
-        return [
-            .template(isIncoming: true, showsTail: true): self.bubbleImages.incomingTail(),
-            .template(isIncoming: true, showsTail: false): self.bubbleImages.incomingNoTail(),
-            .template(isIncoming: false, showsTail: true): self.bubbleImages.outgoingTail(),
-            .template(isIncoming: false, showsTail: false): self.bubbleImages.outgoingNoTail()
-        ]
-    }()
 
     lazy var font: UIFont = self.textStyle.font()
     lazy var incomingColor: UIColor = self.textStyle.incomingColor()
@@ -101,61 +73,33 @@ open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewC
         return viewModel.isIncoming ? self.textStyle.incomingInsets : self.textStyle.outgoingInsets
     }
 
-    open func bubbleImageBorder(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIImage? {
-        return self.baseStyle.borderImage(viewModel: viewModel)
+    open func bubbleMaskLayer(viewModel: MessageViewModelProtocol, isSelected: Bool, frame: CGRect) -> CAShapeLayer? {
+        guard frame.size != CGSize.zero else { return nil }
+        let roundRect = CGRect(origin: CGPoint.zero, size: frame.size)
+        let path = UIBezierPath(
+            shouldRoundRect: roundRect,
+            topLeftRadius: 8,
+            topRightRadius: 8,
+            bottomLeftRadius: 8,
+            bottomRightRadius: 8
+        )
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        return mask
     }
-
-    open func bubbleImage(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIImage {
-        let key = ImageKey.normal(isIncoming: viewModel.isIncoming, status: viewModel.status, showsTail: viewModel.decorationAttributes.isShowingTail, isSelected: isSelected)
-
-        if let image = self.images[key] {
-            return image
-        } else {
-            let templateKey = ImageKey.template(isIncoming: viewModel.isIncoming, showsTail: viewModel.decorationAttributes.isShowingTail)
-            if let image = self.images[templateKey] {
-                let image = self.createImage(templateImage: image, isIncoming: viewModel.isIncoming, status: viewModel.status, isSelected: isSelected)
-                self.images[key] = image
-                return image
-            }
-        }
-
-        assert(false, "coulnd't find image for this status. ImageKey: \(key)")
-        return UIImage()
-    }
-
-    open func createImage(templateImage image: UIImage, isIncoming: Bool, status: MessageViewModelStatus, isSelected: Bool) -> UIImage {
-        var color = isIncoming ? self.baseStyle.baseColorIncoming : self.baseStyle.baseColorOutgoing
-
-        switch status {
+    
+    open func bubbleBackgroundColor(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIColor? {
+        let color = viewModel.isIncoming ? self.baseStyle.baseColorIncoming : self.baseStyle.baseColorOutgoing
+        switch viewModel.status {
         case .success:
-            break
+            return color
         case .failed, .sending:
-            color = color.bma_blendWithColor(UIColor.white.withAlphaComponent(0.70))
+            return color.bma_blendWithColor(UIColor.white.withAlphaComponent(0.70))
         }
-
-        if isSelected {
-            color = color.bma_blendWithColor(UIColor.black.withAlphaComponent(0.10))
-        }
-
-        return image.bma_tintWithColor(color)
-    }
-
-    private enum ImageKey: Hashable {
-        case template(isIncoming: Bool, showsTail: Bool)
-        case normal(isIncoming: Bool, status: MessageViewModelStatus, showsTail: Bool, isSelected: Bool)
     }
 }
 
 public extension TextMessageCollectionViewCellDefaultStyle { // Default values
-
-    static func createDefaultBubbleImages() -> BubbleImages {
-        return BubbleImages(
-            incomingTail: UIImage(named: "bubble-incoming-tail", in: Bundle.resources, compatibleWith: nil) ?? UIImage(),
-            incomingNoTail: UIImage(named: "bubble-incoming", in: Bundle.resources, compatibleWith: nil) ?? UIImage(),
-            outgoingTail: UIImage(named: "bubble-outgoing-tail", in: Bundle.resources, compatibleWith: nil) ?? UIImage(),
-            outgoingNoTail: UIImage(named: "bubble-outgoing", in: Bundle.resources, compatibleWith: nil) ?? UIImage()
-        )
-    }
 
     static func createDefaultTextStyle() -> TextStyle {
         return TextStyle(

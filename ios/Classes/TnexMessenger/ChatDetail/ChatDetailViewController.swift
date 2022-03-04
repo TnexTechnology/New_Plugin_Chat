@@ -37,9 +37,9 @@ class ChatDetailViewController: BaseChatViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        DispatchQueue.main.async {[weak self] in
-//            self?.addHeaderView()
-//        }
+        DispatchQueue.main.async {[weak self] in
+            self?.addHeaderView()
+        }
         
         self.cellPanGestureHandlerConfig.allowReplyRevealing = true
         self.messagesSelector.delegate = self

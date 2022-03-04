@@ -24,9 +24,12 @@
 
 import UIKit
 
-public protocol TextBubbleViewStyleProtocol {
-    func bubbleImage(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIImage
-    func bubbleImageBorder(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIImage?
+public protocol BubbleViewStyleProtocol {
+    func bubbleMaskLayer(viewModel: MessageViewModelProtocol, isSelected: Bool, frame: CGRect) -> CAShapeLayer?
+    func bubbleBackgroundColor(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIColor?
+}
+
+public protocol TextBubbleViewStyleProtocol: BubbleViewStyleProtocol {
     func textFont(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIFont
     func textColor(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIColor
     func textInsets(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIEdgeInsets
@@ -68,6 +71,8 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
             }
         }
     }
+    
+    private var maskLayer: CAShapeLayer?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -80,18 +85,9 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
     }
 
     private func commonInit() {
-        self.addSubview(self.bubbleImageView)
         self.addSubview(self.textView)
     }
 
-    private lazy var bubbleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.addSubview(self.borderImageView)
-        imageView.accessibilityIdentifier = "chatto.message.text.image.bubble"
-        return imageView
-    }()
-
-    private var borderImageView: UIImageView = UIImageView()
     private var textView: UITextView = {
         let textView = ChatMessageTextView()
         UIView.performWithoutAnimation({ () -> Void in // fixes iOS 8 blinking when cell appears
@@ -137,12 +133,9 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         if self.viewContext == .sizing { return }
         if isUpdating { return }
         guard let style = self.style else { return }
-
         self.updateTextView()
-        let bubbleImage = style.bubbleImage(viewModel: self.textMessageViewModel, isSelected: self.selected)
-        let borderImage = style.bubbleImageBorder(viewModel: self.textMessageViewModel, isSelected: self.selected)
-        if self.bubbleImageView.image != bubbleImage { self.bubbleImageView.image = bubbleImage }
-        if self.borderImageView.image != borderImage { self.borderImageView.image = borderImage }
+        self.backgroundColor = style.bubbleBackgroundColor(viewModel: self.textMessageViewModel, isSelected: false)
+
     }
 
     private func updateTextView() {
@@ -175,10 +168,6 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         if self.textView.textContainerInset != textInsets { self.textView.textContainerInset = textInsets }
     }
 
-    private func bubbleImage() -> UIImage {
-        return self.style.bubbleImage(viewModel: self.textMessageViewModel, isSelected: self.selected)
-    }
-
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
         return self.calculateTextBubbleLayout(preferredMaxLayoutWidth: size.width).size
     }
@@ -188,10 +177,18 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         super.layoutSubviews()
         let layout = self.calculateTextBubbleLayout(preferredMaxLayoutWidth: self.preferredMaxLayoutWidth)
         self.textView.bma_rect = layout.textFrame
-        self.bubbleImageView.bma_rect = layout.bubbleFrame
-        self.borderImageView.bma_rect = self.bubbleImageView.bounds
+        self.maskLayerBubble()
     }
 
+    func maskLayerBubble() {
+        self.maskLayer?.removeFromSuperlayer()
+        if let layer = style.bubbleMaskLayer(viewModel: self.textMessageViewModel, isSelected: self.selected, frame: self.bounds) {
+            self.layer.mask = layer
+            self.maskLayer = layer
+        }
+        
+    }
+    
     public var layoutCache: NSCache<AnyObject, AnyObject>!
     private func calculateTextBubbleLayout(preferredMaxLayoutWidth: CGFloat) -> TextBubbleLayoutModel {
         let layoutContext = TextBubbleLayoutModel.LayoutContext(
