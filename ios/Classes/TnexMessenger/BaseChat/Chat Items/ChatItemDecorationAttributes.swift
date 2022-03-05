@@ -26,21 +26,28 @@ import UIKit
 
 public struct BaseMessageDecorationAttributes {
     public var canShowFailedIcon: Bool
-    public let isShowingTail: Bool
+    public let isTheBeginBlockChat: Bool
+    public let isTheEndBlockChat: Bool
     public let isShowingAvatar: Bool
     public let isShowingSelectionIndicator: Bool
+    public let isExpandCell: Bool
     public let isSelected: Bool
+    public let isShowingTail = false
 
     public init(canShowFailedIcon: Bool = true,
-                isShowingTail: Bool = false,
+                isTheBeginBlockChat: Bool = false,
+                isTheEndBlockChat: Bool = false,
                 isShowingAvatar: Bool = false,
                 isShowingSelectionIndicator: Bool = false,
-                isSelected: Bool = false) {
+                isSelected: Bool = false,
+                isExpandCell: Bool = false) {
         self.canShowFailedIcon = canShowFailedIcon
-        self.isShowingTail = isShowingTail
+        self.isTheBeginBlockChat = isTheBeginBlockChat
+        self.isTheEndBlockChat = isTheEndBlockChat
         self.isShowingAvatar = isShowingAvatar
         self.isShowingSelectionIndicator = isShowingSelectionIndicator
         self.isSelected = isSelected
+        self.isExpandCell = isExpandCell
     }
 }
 
@@ -63,7 +70,7 @@ public struct ChatItemDecorationAttributes: ChatItemDecorationAttributesProtocol
                 isSelected: Bool = false) {
         let messageDecorationAttributes = BaseMessageDecorationAttributes(
             canShowFailedIcon: canShowFailedIcon,
-            isShowingTail: canShowTail,
+            isTheEndBlockChat: canShowTail,
             isShowingAvatar: canShowAvatar,
             isShowingSelectionIndicator: isShowingSelectionIndicator,
             isSelected: isSelected

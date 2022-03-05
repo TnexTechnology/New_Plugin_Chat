@@ -25,33 +25,36 @@
 import Foundation
 import UIKit
 
-public class TimeSeparatorPresenterBuilder: ChatItemPresenterBuilderProtocol {
+public class SenderInfoPresenterBuilder: ChatItemPresenterBuilderProtocol {
 
     public func canHandleChatItem(_ chatItem: ChatItemProtocol) -> Bool {
-        return chatItem is TimeSeparatorModel
+        return chatItem is SenderInfoModel
     }
 
     public func createPresenterWithChatItem(_ chatItem: ChatItemProtocol) -> ChatItemPresenterProtocol {
         assert(self.canHandleChatItem(chatItem))
-        return TimeSeparatorPresenter(timeSeparatorModel: chatItem as! TimeSeparatorModel)
+        return SenderInfoPresenter(senderInfoModel: chatItem as! SenderInfoModel)
     }
 
     public var presenterType: ChatItemPresenterProtocol.Type {
-        return TimeSeparatorPresenter.self
+        return SenderInfoPresenter.self
     }
 }
 
-class TimeSeparatorPresenter: ChatItemPresenterProtocol {
+class SenderInfoPresenter: ChatItemPresenterProtocol {
 
-    let timeSeparatorModel: TimeSeparatorModel
-    init (timeSeparatorModel: TimeSeparatorModel) {
-        self.timeSeparatorModel = timeSeparatorModel
+    let senderInfoModel: SenderInfoModel
+    
+    init (senderInfoModel: SenderInfoModel) {
+        self.senderInfoModel = senderInfoModel
     }
 
-    private static let cellReuseIdentifier = TimeSeparatorCollectionViewCell.self.description()
-
+    private var cellIdentifier: String {
+        return "SenderInfoCollectionViewCell-message"
+    }
+    
     static func registerCells(_ collectionView: UICollectionView) {
-        collectionView.register(TimeSeparatorCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        collectionView.register(SenderInfoCollectionViewCell.self, forCellWithReuseIdentifier: "SenderInfoCollectionViewCell-message")
     }
 
     let isItemUpdateSupported = false
@@ -59,15 +62,15 @@ class TimeSeparatorPresenter: ChatItemPresenterProtocol {
     func update(with chatItem: ChatItemProtocol) {}
 
     func dequeueCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: TimeSeparatorPresenter.cellReuseIdentifier, for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
     }
 
     func configureCell(_ cell: UICollectionViewCell, decorationAttributes: ChatItemDecorationAttributesProtocol?) {
-        guard let timeSeparatorCell = cell as? TimeSeparatorCollectionViewCell else {
+        guard let senderInfoCell = cell as? SenderInfoCollectionViewCell else {
             assert(false, "expecting status cell")
             return
         }
-        timeSeparatorCell.timeSeparatorModel = self.timeSeparatorModel
+        senderInfoCell.senderInfoModel = senderInfoModel
     }
 
     var canCalculateHeightInBackground: Bool {
@@ -75,6 +78,6 @@ class TimeSeparatorPresenter: ChatItemPresenterProtocol {
     }
 
     func heightForCell(maximumWidth width: CGFloat, decorationAttributes: ChatItemDecorationAttributesProtocol?) -> CGFloat {
-        return 20
+        return 18
     }
 }

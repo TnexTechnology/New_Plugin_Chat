@@ -51,15 +51,20 @@ public protocol BaseMessageCollectionViewCellStyleProtocol {
 }
 
 public struct BaseMessageCollectionViewCellLayoutConstants {
+    public let leftMargin: CGFloat
+    public let rightMargin: CGFloat
     public let horizontalMargin: CGFloat
     public let horizontalInterspacing: CGFloat
     public let horizontalTimestampMargin: CGFloat
     public let maxContainerWidthPercentageForBubbleView: CGFloat
 
     public init(horizontalMargin: CGFloat,
+                rightMargin: CGFloat = 26,
                 horizontalInterspacing: CGFloat,
                 horizontalTimestampMargin: CGFloat,
                 maxContainerWidthPercentageForBubbleView: CGFloat) {
+        self.leftMargin = horizontalMargin
+        self.rightMargin = rightMargin
         self.horizontalMargin = horizontalMargin
         self.horizontalInterspacing = horizontalInterspacing
         self.horizontalTimestampMargin = horizontalTimestampMargin

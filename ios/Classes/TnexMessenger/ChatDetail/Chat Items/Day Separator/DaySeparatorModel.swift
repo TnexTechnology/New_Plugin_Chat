@@ -25,24 +25,22 @@
 import Foundation
 import UIKit
 
-class TimeSeparatorModel: ChatItemProtocol {
+class DaySeparatorModel: ChatItemProtocol {
         
     let sentDate: Date
     let uid: String
-    let isIncoming: Bool
-    let type: ChatItemType = TimeSeparatorModel.chatItemType
+    let type: ChatItemType = DaySeparatorModel.chatItemType
 
     static var chatItemType: ChatItemType {
-        return "time-sperator"
+        return "day-sperator"
     }
     
     func hasSameContent(as anotherItem: ChatItemProtocol) -> Bool {
         return self.uid == anotherItem.uid
     }
     
-    init(uid: String, date: Date, isIncoming: Bool) {
+    init(uid: String, date: Date) {
         self.uid = uid
         self.sentDate = date
-        self.isIncoming = isIncoming
     }
 }

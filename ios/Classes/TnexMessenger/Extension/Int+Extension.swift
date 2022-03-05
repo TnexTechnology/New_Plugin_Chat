@@ -73,10 +73,27 @@ public extension Int {
         if self < 60 {
             return "\(self) giây trước"
         }
-        if self < 60*60 {
+        let startHour: Int = 60*60
+        if self < startHour {
             return  "\(self/60) phút trước"
         }
-        return "\(self/3600) giờ trước"
+        let startDay: Int = startHour*24
+        if self < startDay {
+            return  "\(self/startHour) giờ trước"
+        }
+        let startWeek: Int = startDay*7
+        if self < startWeek {
+            return  "\(self/startDay) ngày trước"
+        }
+        let startMonth: Int = startDay*30
+        if self < startMonth {
+            return  "\(self/startWeek) tuần trước"
+        }
+        let startYear: Int = startMonth*12
+        if self < startYear {
+            return  "\(self/startMonth) tháng trước"
+        }
+        return "\(self/startYear) năm trước"
     }
     
     func timeString() -> String {

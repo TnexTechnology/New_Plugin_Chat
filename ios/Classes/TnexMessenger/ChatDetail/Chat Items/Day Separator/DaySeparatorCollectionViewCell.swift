@@ -25,7 +25,7 @@
 import Foundation
 import UIKit
 
-class TimeSeparatorCollectionViewCell: UICollectionViewCell {
+class DaySeparatorCollectionViewCell: UICollectionViewCell {
 
     private let label: UILabel = UILabel()
 
@@ -46,11 +46,11 @@ class TimeSeparatorCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(label)
     }
 
-    var timeSeparatorModel: TimeSeparatorModel? {
+    var daySeparatorModel: DaySeparatorModel? {
         didSet {
-            if let timeSeparatorModel = self.timeSeparatorModel {
-                if oldValue?.sentDate != timeSeparatorModel.sentDate {
-                    self.setTextOnLabel(timeSeparatorModel.sentDate)
+            if let daySeparatorModel = self.daySeparatorModel {
+                if oldValue?.sentDate != daySeparatorModel.sentDate {
+                    self.setTextOnLabel(daySeparatorModel.sentDate)
                 }
             }
             
@@ -64,30 +64,16 @@ class TimeSeparatorCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        calculateLayout()
-    }
-    
-    private func calculateLayout() {
-        guard let model = self.timeSeparatorModel else { return }
-        let messageAttributedText = genMessageTimestampLabelAttributedText(sentDate: model.sentDate)
-        let labelSize = SenderInfoCollectionViewCell.labelSize(for: messageAttributedText, considering: self.contentView.bounds.size.width)
-        let layoutConstant = BaseMessageCollectionViewCellDefaultStyle.createDefaultLayoutConstants()
-        self.label.frame.size = labelSize
-        self.label.center.y = self.contentView.center.y
-        if model.isIncoming == true {
-            let leftMargin = layoutConstant.leftMargin + layoutConstant.horizontalInterspacing + 30
-            self.label.frame.origin.x = leftMargin
-        } else {
-            self.label.frame.origin.x = self.contentView.bounds.size.width - labelSize.width - layoutConstant.rightMargin
-        }
-        if  self.label.attributedText != messageAttributedText {
-            self.label.attributedText = messageAttributedText
-        }
+        self.label.bounds.size = self.label.sizeThatFits(self.contentView.bounds.size)
+        self.label.center.x = self.contentView.center.x
+        self.label.frame.origin.y = 0
     }
     
     private func genMessageTimestampLabelAttributedText(sentDate: Date) -> NSAttributedString {
-        let time: Int = Int(Date().timeIntervalSince1970 - sentDate.timeIntervalSince1970)
-        let dateString: String = time.toTimeActive()
+        var dateString: String = sentDate.convertDateToDayString()
+        if Calendar.current.isDateInToday(sentDate) {
+            dateString = "Hôm nay"
+        }
         let style = NSMutableParagraphStyle()
         style.alignment = NSTextAlignment.center
         return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.fromHex("#808080"), NSAttributedString.Key.paragraphStyle: style])
@@ -95,5 +81,14 @@ class TimeSeparatorCollectionViewCell: UICollectionViewCell {
 
     deinit {
         print("TimeSeparatorCollectionViewCell deinit")
+    }
+}
+
+extension Date {
+    func convertDateToDayString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "vi_VN") as Locale
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        return dateFormatter.string(from: self)
     }
 }

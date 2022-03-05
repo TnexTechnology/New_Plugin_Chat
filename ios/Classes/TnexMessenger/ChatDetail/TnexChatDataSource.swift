@@ -33,7 +33,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
             indexMessage += 1
             return message
         }
-//        getInfoRoom()
+        getInfoRoom()
         
 //        APIManager.shared.handleEvent = {[weak self] event, direction, roomState in
 //            guard let sSelf = self else { return }
@@ -63,11 +63,13 @@ class TnexChatDataSource: ChatDataSourceProtocol {
             if let members = eventTimeline?.state?.members.members {
                 for member in members {
                     self.memberDic[member.userId] = member
+                    APIManager.shared.memberDic[member.userId] = member
                 }
             }
             self.loadData()
         }
     }
+    
     
     func loadData() {
         var indexMessage: Int = 0
@@ -85,7 +87,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     
     private func makeTnexMessage(event: MXEvent) -> DemoMessageModelProtocol {
         let isMe = event.sender == APIManager.shared.userId
-        let messageModel = self.makeMessageModel(uid: event.eventId, senderId: event.sender, isIncoming: !isMe, type: TextMessageModel<MessageModel>.chatItemType, status: event.status)
+        let messageModel = self.makeMessageModel(uid: event.eventId, senderId: event.sender, isIncoming: !isMe, type: TextMessageModel<MessageModel>.chatItemType, status: event.status, date: event.timestamp)
         let textMessageModel = DemoTextMessageModel(messageModel: messageModel, text: getText(event: event))
         textMessageModel.clientId = event.clientId
         if let client = event.clientId {
@@ -112,13 +114,13 @@ class TnexChatDataSource: ChatDataSourceProtocol {
         }
     }
     
-    private func makeMessageModel(uid: String, senderId: String, isIncoming: Bool, type: String, status: MessageStatus) -> MessageModel {
+    private func makeMessageModel(uid: String, senderId: String, isIncoming: Bool, type: String, status: MessageStatus, date: Date) -> MessageModel {
         return MessageModel(
             uid: uid,
             senderId: senderId,
             type: type,
             isIncoming: isIncoming,
-            date: Date(),
+            date: date,
             status: status,
             canReply: true
         )
@@ -133,7 +135,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
                 imageSize = CGSize(width: width, height: height)
             }
         }
-        let messageModel = self.makeMessageModel(uid: event.eventId, senderId: event.sender, isIncoming: !isMe, type: PhotoMessageModel<MessageModel>.chatItemType, status: event.status)
+        let messageModel = self.makeMessageModel(uid: event.eventId, senderId: event.sender, isIncoming: !isMe, type: PhotoMessageModel<MessageModel>.chatItemType, status: event.status, date: event.timestamp)
         let mediaURLs = event.getMediaURLs().compactMap(MXURL.init)
         let urls: [URL] = mediaURLs.compactMap { mediaURL in
             mediaURL.contentURL(on: URL(string: "https://chat-matrix.tnex.com.vn")!)

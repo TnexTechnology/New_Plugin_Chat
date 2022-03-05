@@ -72,6 +72,7 @@ class APIManager: NSObject {
     var fileStore: MXFileStore?
     
     var handleEvent: MXOnSessionEvent?
+    var memberDic: [String: MXRoomMember] = [:]
     
     var userId: String?
     
@@ -165,6 +166,27 @@ class APIManager: NSObject {
                 }
             @unknown default:
                 fatalError("Unexpected Matrix response: \(response)")
+            }
+        }
+    }
+    
+    func getSenderInfo(senderId: String, at room: MXRoom?, completion: @escaping (_ displayName: String?) -> Void) {
+        
+        if let user = self.memberDic[senderId] {
+            completion(user.displayname)
+        } else {
+            room?.liveTimeline {[weak self] eventTimeline in
+                guard let self = self else { return }
+                if let members = eventTimeline?.state?.members.members {
+                    for member in members {
+                        if let userId = member.userId, !userId.isEmpty {
+                            self.memberDic[userId] = member
+                            if senderId == userId {
+                                completion(member.displayname)
+                            }
+                        }
+                    }
+                }
             }
         }
     }

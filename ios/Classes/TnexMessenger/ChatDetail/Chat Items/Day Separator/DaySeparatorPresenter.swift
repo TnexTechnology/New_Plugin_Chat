@@ -25,33 +25,33 @@
 import Foundation
 import UIKit
 
-public class TimeSeparatorPresenterBuilder: ChatItemPresenterBuilderProtocol {
+public class DaySeparatorPresenterBuilder: ChatItemPresenterBuilderProtocol {
 
     public func canHandleChatItem(_ chatItem: ChatItemProtocol) -> Bool {
-        return chatItem is TimeSeparatorModel
+        return chatItem is DaySeparatorModel
     }
 
     public func createPresenterWithChatItem(_ chatItem: ChatItemProtocol) -> ChatItemPresenterProtocol {
         assert(self.canHandleChatItem(chatItem))
-        return TimeSeparatorPresenter(timeSeparatorModel: chatItem as! TimeSeparatorModel)
+        return DaySeparatorPresenter(daySeparatorModel: chatItem as! DaySeparatorModel)
     }
 
     public var presenterType: ChatItemPresenterProtocol.Type {
-        return TimeSeparatorPresenter.self
+        return DaySeparatorPresenter.self
     }
 }
 
-class TimeSeparatorPresenter: ChatItemPresenterProtocol {
+class DaySeparatorPresenter: ChatItemPresenterProtocol {
 
-    let timeSeparatorModel: TimeSeparatorModel
-    init (timeSeparatorModel: TimeSeparatorModel) {
-        self.timeSeparatorModel = timeSeparatorModel
+    let daySeparatorModel: DaySeparatorModel
+    init (daySeparatorModel: DaySeparatorModel) {
+        self.daySeparatorModel = daySeparatorModel
     }
 
-    private static let cellReuseIdentifier = TimeSeparatorCollectionViewCell.self.description()
+    private static let cellReuseIdentifier = DaySeparatorCollectionViewCell.self.description()
 
     static func registerCells(_ collectionView: UICollectionView) {
-        collectionView.register(TimeSeparatorCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        collectionView.register(DaySeparatorCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
     }
 
     let isItemUpdateSupported = false
@@ -59,15 +59,15 @@ class TimeSeparatorPresenter: ChatItemPresenterProtocol {
     func update(with chatItem: ChatItemProtocol) {}
 
     func dequeueCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: TimeSeparatorPresenter.cellReuseIdentifier, for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: DaySeparatorPresenter.cellReuseIdentifier, for: indexPath)
     }
 
     func configureCell(_ cell: UICollectionViewCell, decorationAttributes: ChatItemDecorationAttributesProtocol?) {
-        guard let timeSeparatorCell = cell as? TimeSeparatorCollectionViewCell else {
+        guard let daySeparatorCell = cell as? DaySeparatorCollectionViewCell else {
             assert(false, "expecting status cell")
             return
         }
-        timeSeparatorCell.timeSeparatorModel = self.timeSeparatorModel
+        daySeparatorCell.daySeparatorModel = self.daySeparatorModel
     }
 
     var canCalculateHeightInBackground: Bool {
@@ -75,6 +75,6 @@ class TimeSeparatorPresenter: ChatItemPresenterProtocol {
     }
 
     func heightForCell(maximumWidth width: CGFloat, decorationAttributes: ChatItemDecorationAttributesProtocol?) -> CGFloat {
-        return 20
+        return 27
     }
 }

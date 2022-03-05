@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1037281e-6691-4a06-a2eb-68fc5669c096" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoCellViewModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoCollectionViewCell.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoIncomingCell.xib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoOutcomingCell.xib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoPollVoteCell.xib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoPresenter.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/BaseChat/ChatController/BaseChatViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/BaseChat/ChatController/BaseChatViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/ChatDetailViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/ChatDetailViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatItemsDecorator.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatItemsDecorator.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
