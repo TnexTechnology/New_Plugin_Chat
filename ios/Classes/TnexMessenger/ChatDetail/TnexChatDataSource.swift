@@ -14,6 +14,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     let preferredMaxWindowSize = 500
     
     var eventDic: [String: String] = [:]
+    private var events: [MXEvent] = []
 
     var onDidUpdate: (() -> Void)?
     var slidingWindow: SlidingDataSource<ChatItemProtocol>!
@@ -22,31 +23,22 @@ class TnexChatDataSource: ChatDataSourceProtocol {
 
     init(room: TnexRoom) {
         self.room = room
-        var indexMessage: Int = 0
-        let messageCount: Int = room.events().wrapped.count
-        let mes = self.makePhotoMessage(event: room.events().wrapped[0])
-        self.slidingWindow = SlidingDataSource(count: messageCount, pageSize: 20) { [weak self] () -> ChatItemProtocol in
-            guard let sSelf = self else { return mes }
-            let index = messageCount - 1 - indexMessage
-            let event = room.events().wrapped[index]
-            let message = event.isMediaAttachment() ? sSelf.makePhotoMessage(event: event) : sSelf.makeTnexMessage(event: event)
-            indexMessage += 1
-            return message
-        }
+        self.events = room.events().wrapped
+        loadData()
         getInfoRoom()
+        handleEvent()
         
-//        APIManager.shared.handleEvent = {[weak self] event, direction, roomState in
-//            guard let sSelf = self else { return }
-//            if room.room.roomId == event.roomId, event.eventId != nil {
-//                let message = event.isMediaAttachment() ? sSelf.makePhotoMessage(event: event) : sSelf.makeTnexMessage(event: event)
-//                sSelf.slidingWindow.insertItem(message, position: .bottom)
-//                sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
-//            }
-//        }
     }
-
-    init(messages: [ChatItemProtocol], pageSize: Int) {
-        self.slidingWindow = SlidingDataSource(items: messages, pageSize: pageSize)
+    
+    func handleEvent() {
+        APIManager.shared.handleEvent = {[weak self] event, direction, roomState in
+            guard let sSelf = self else { return }
+            if self?.room.room.roomId == event.roomId, event.eventId != nil {
+                let message = event.isMediaAttachment() ? sSelf.makePhotoMessage(event: event) : sSelf.makeTnexMessage(event: event)
+                sSelf.slidingWindow.insertItem(message, position: .bottom)
+                sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
+            }
+        }
     }
     
     func getDisplayName() -> String {
@@ -73,9 +65,9 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     
     func loadData() {
         var indexMessage: Int = 0
-        let messageCount: Int = room.events().wrapped.count
-        let mes = self.makePhotoMessage(event: room.events().wrapped[0])
-        self.slidingWindow = SlidingDataSource(count: messageCount, pageSize: 20) { [weak self] () -> ChatItemProtocol in
+        let messageCount: Int = events.count
+        let mes = self.makePhotoMessage(event: events[0])
+        self.slidingWindow = SlidingDataSource(count: messageCount, pageSize: messageCount) { [weak self] () -> ChatItemProtocol in
             guard let sSelf = self else { return mes }
             let index = messageCount - 1 - indexMessage
             let event = sSelf.room.events().wrapped[index]
@@ -104,7 +96,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
             }
             return (event.content["body"] as? String).map {
                 $0.trimmingCharacters(in: .whitespacesAndNewlines)
-            } ?? "Tin nhan khong ho tro"
+            } ?? "content: \(event.content)"
         } else {
             let newContent = event.content["m.new_content"]! as? NSDictionary
             return (newContent?["body"] as? String).map {
@@ -164,7 +156,8 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     }
 
     var hasMorePrevious: Bool {
-        return self.slidingWindow.hasPrevious()
+        return canLoadMore
+//        return self.slidingWindow.hasPrevious()
     }
 
     var chatItems: [ChatItemProtocol] {
@@ -179,10 +172,26 @@ class TnexChatDataSource: ChatDataSourceProtocol {
         self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
     }
 
+    var canLoadMore: Bool = true
     func loadPrevious() {
-        self.slidingWindow.loadPrevious()
-        self.slidingWindow.adjustWindow(focusPosition: 0, maxWindowSize: self.preferredMaxWindowSize)
-        self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
+//        self.slidingWindow.loadPrevious()
+//        self.slidingWindow.adjustWindow(focusPosition: 0, maxWindowSize: self.preferredMaxWindowSize)
+//        self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
+        guard let topEvent = self.events.first else { return }
+        self.canLoadMore = false
+        APIManager.shared.paginate(room: self.room, event: topEvent) {[weak self] in
+            guard let self = self else { return }
+            let newEvents = self.room.events().wrapped
+            if self.events.count < newEvents.count {
+                self.canLoadMore = true
+                self.events = newEvents
+                self.loadData()
+                self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
+            } else {
+                self.canLoadMore = false
+            }
+            
+        }
     }
 
     func addTextMessage(_ text: String) {

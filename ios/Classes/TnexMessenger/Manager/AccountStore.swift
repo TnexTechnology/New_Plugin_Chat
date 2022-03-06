@@ -229,7 +229,18 @@ class APIManager: NSObject {
             print(response.value)
         })
     }
-    
+    var listenReferenceRoom: Any?
+    func paginate(room: TnexRoom, event: MXEvent, completion: @escaping(() -> Void)) {
+        let timeline = room.room.timeline(onEvent: event.eventId)
+        listenReferenceRoom = timeline?.listenToEvents { event, direction, roomState in
+            if direction == .backwards {
+                room.add(event: event, direction: direction, roomState: roomState)
+            }
+        }
+        timeline?.resetPaginationAroundInitialEvent(withLimit: 40) { _ in
+            completion()
+        }
+    }
     
     deinit {
         self.mxSession?.removeListener(self.listenReference)
