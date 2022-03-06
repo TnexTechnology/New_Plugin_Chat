@@ -25,10 +25,17 @@
 import Foundation
 import UIKit
 
-public class DemoTextMessageModel: TextMessageModel<MessageModel>, DemoMessageModelProtocol {
-    public var clientId: String?
+public class DemoTextMessageModel: TextMessageModel<TnexMessageModel>, TnexMessageModelProtocol {
+   
+    public var clientId: String? {
+        return _messageModel.event.clientId
+    }
     
-    public override init(messageModel: MessageModel, text: String) {
+    public var senderName: String? {
+        return _messageModel.event.content(valueFor: "displayname")
+    }
+    
+    public override init(messageModel: TnexMessageModel, text: String) {
         super.init(messageModel: messageModel, text: text)
     }
 

@@ -27,7 +27,7 @@ import UIKit
 
 class SenderInfoModel: ChatItemProtocol {
 
-    let displayName: String
+    let displayName: String?
     let uid: String
     let userId: String
     let isIncoming: Bool
@@ -41,7 +41,7 @@ class SenderInfoModel: ChatItemProtocol {
         return "Sender-Info"
     }
 
-    init(displayName: String, userId: String, uid: String, isIncoming: Bool) {
+    init(displayName: String?, userId: String, uid: String, isIncoming: Bool) {
         self.displayName = displayName
         self.uid = uid
         self.userId = userId

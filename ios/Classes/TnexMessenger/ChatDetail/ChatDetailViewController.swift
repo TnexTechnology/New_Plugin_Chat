@@ -125,7 +125,8 @@ class ChatDetailViewController: BaseChatViewController {
             SendingStatusModel.chatItemType: [SendingStatusPresenterBuilder()],
             DaySeparatorModel.chatItemType: [DaySeparatorPresenterBuilder()],
             TimeSeparatorModel.chatItemType: [TimeSeparatorPresenterBuilder()],
-            SenderInfoModel.chatItemType: [SenderInfoPresenterBuilder()]
+            SenderInfoModel.chatItemType: [SenderInfoPresenterBuilder()],
+            ActionMessageModel.chatItemType: [ActionMessagePresenterBuilder()]
         ]
     }
 

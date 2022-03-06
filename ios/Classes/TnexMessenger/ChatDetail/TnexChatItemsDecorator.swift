@@ -35,7 +35,7 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
             var isShowSenderInfo: Bool = false
             var isExpandCell = false
 
-            if let currentMessage = chatItem as? MessageModelProtocol {
+            if let currentMessage = chatItem as? TnexMessageModelProtocol {
                 isTheBeginBlockChat = self.checkIsTheBeginBlockChat(currentMessage, prevMessage: prev as? MessageModelProtocol)
                 isTheEndBlockChat = self.checkIsTheEndBlockChat(currentMessage, nextMessage: next as? MessageModelProtocol)
                 
@@ -144,8 +144,8 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
         return currentComponents.day != otherComponents.day || currentComponents.month != otherComponents.month || currentComponents.year != otherComponents.year
     }
     
-    func showSenderInfoIfNeed(_ decoratedChatItems: inout [DecoratedChatItem], at messageModelProtocol: MessageModelProtocol) {
-        let senderInfoModel = SenderInfoModel(displayName: messageModelProtocol.senderId, userId: messageModelProtocol.senderId, uid: "\(messageModelProtocol.senderId)-\(messageModelProtocol.uid)", isIncoming: messageModelProtocol.isIncoming)
+    func showSenderInfoIfNeed(_ decoratedChatItems: inout [DecoratedChatItem], at messageModelProtocol: TnexMessageModelProtocol) {
+        let senderInfoModel = SenderInfoModel(displayName: messageModelProtocol.senderName, userId: messageModelProtocol.senderId, uid: "\(messageModelProtocol.senderId)-\(messageModelProtocol.uid)", isIncoming: messageModelProtocol.isIncoming)
         let senderInfo = DecoratedChatItem(chatItem: senderInfoModel, decorationAttributes: nil)
         decoratedChatItems.append(senderInfo)
     }

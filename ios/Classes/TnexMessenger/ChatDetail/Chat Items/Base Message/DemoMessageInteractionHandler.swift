@@ -23,7 +23,7 @@
 
 import UIKit
 
-final class DemoMessageInteractionHandler<Model: DemoMessageModelProtocol, ViewModel: MessageViewModelProtocol>: BaseMessageInteractionHandlerProtocol {
+final class DemoMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: MessageViewModelProtocol>: BaseMessageInteractionHandlerProtocol {
 
     init(messageSender: DemoChatMessageSender, messagesSelector: MessagesSelectorProtocol) {
         self.messageSender = messageSender

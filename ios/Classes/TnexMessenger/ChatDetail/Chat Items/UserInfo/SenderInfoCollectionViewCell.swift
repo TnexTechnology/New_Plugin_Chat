@@ -61,22 +61,32 @@ class SenderInfoCollectionViewCell: UICollectionViewCell {
     
     private func calculateLayout() {
         guard let model = self.senderInfoModel else { return }
-        APIManager.shared.getSenderInfo(senderId: model.userId, at: nil) {[weak self] displayName in
-            guard let self = self else { return }
-            let messageAttributedText = NSAttributedString(string: displayName ?? "")
-            let labelSize = SenderInfoCollectionViewCell.labelSize(for: messageAttributedText, considering: self.contentView.bounds.size.width)
-            let layoutConstant = BaseMessageCollectionViewCellDefaultStyle.createDefaultLayoutConstants()
-            self.label.frame.size = labelSize
-            self.label.center.y = self.contentView.center.y
-            if model.isIncoming == true {
-                let leftMargin = layoutConstant.leftMargin + layoutConstant.horizontalInterspacing + 30
-                self.label.frame.origin.x = leftMargin
-            } else {
-                self.label.frame.origin.x = self.contentView.bounds.size.width - labelSize.width - layoutConstant.rightMargin
+        if let displayName = model.displayName {
+            self.updateUI(displayName: displayName, isIncoming: model.isIncoming)
+        } else {
+            APIManager.shared.getSenderInfo(senderId: model.userId, at: nil) {[weak self] _displayName in
+                guard let self = self, let name = _displayName else { return }
+                self.updateUI(displayName: name, isIncoming: model.isIncoming)
             }
-            self.label.attributedText = messageAttributedText
         }
+        
     }
+    
+    func updateUI(displayName: String, isIncoming: Bool) {
+        let messageAttributedText = NSAttributedString(string: displayName)
+        let labelSize = SenderInfoCollectionViewCell.labelSize(for: messageAttributedText, considering: self.contentView.bounds.size.width)
+        let layoutConstant = BaseMessageCollectionViewCellDefaultStyle.createDefaultLayoutConstants()
+        self.label.frame.size = labelSize
+        self.label.center.y = self.contentView.center.y
+        if isIncoming == true {
+            let leftMargin = layoutConstant.leftMargin + layoutConstant.horizontalInterspacing + 30
+            self.label.frame.origin.x = leftMargin
+        } else {
+            self.label.frame.origin.x = self.contentView.bounds.size.width - labelSize.width - layoutConstant.rightMargin
+        }
+        self.label.attributedText = messageAttributedText
+    }
+    
     
     class func labelSize(for attributedText: NSAttributedString?, considering maxWidth: CGFloat) -> CGSize {
         guard let attributed = attributedText else { return CGSize.zero }

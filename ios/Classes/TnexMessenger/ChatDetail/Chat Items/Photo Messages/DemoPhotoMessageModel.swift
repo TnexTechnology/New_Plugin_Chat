@@ -25,11 +25,17 @@
 import Foundation
 import UIKit
 
-public class DemoPhotoMessageModel: PhotoMessageModel<MessageModel>, DemoMessageModelProtocol {
+public class DemoPhotoMessageModel: PhotoMessageModel<TnexMessageModel>, TnexMessageModelProtocol {
     
-    public var clientId: String?
+    public var clientId: String? {
+        return _messageModel.event.clientId
+    }
     
-    public override init(messageModel: MessageModel, mediaItem: MediaItem) {
+    public var senderName: String? {
+        return _messageModel.event.content(valueFor: "displayname")
+    }
+    
+    public override init(messageModel: TnexMessageModel, mediaItem: MediaItem) {
         super.init(messageModel: messageModel, mediaItem: mediaItem)
     }
 

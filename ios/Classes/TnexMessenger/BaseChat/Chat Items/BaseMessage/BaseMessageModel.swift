@@ -72,28 +72,20 @@ public extension DecoratedMessageModelProtocol {
     }
 }
 
-open class MessageModel: MessageModelProtocol {
-    open var uid: String
-    open var senderId: String
-    open var type: String
-    open var isIncoming: Bool
-    open var date: Date
-    open var status: MessageStatus
-    open var canReply: Bool
-
-    public init(uid: String,
-                senderId: String,
-                type: String,
-                isIncoming: Bool,
-                date: Date,
-                status: MessageStatus,
-                canReply: Bool = false) {
-        self.uid = uid
-        self.senderId = senderId
-        self.type = type
-        self.isIncoming = isIncoming
-        self.date = date
-        self.status = status
-        self.canReply = canReply
+open class BaseMessageModel<MessageModelT: MessageModelProtocol>: DecoratedMessageModelProtocol, ContentEquatableChatItemProtocol {
+    
+    public var messageModel: MessageModelProtocol {
+        return self._messageModel
+    }
+    public let _messageModel: MessageModelT // Can't make messageModel: MessageModelT: https://gist.github.com/diegosanchezr/5a66c7af862e1117b556
+    public var canReply: Bool { self.messageModel.canReply }
+    
+    public init(messageModel: MessageModelT) {
+        self._messageModel = messageModel
+    }
+    public func hasSameContent(as anotherItem: ChatItemProtocol) -> Bool {
+        guard let item = anotherItem as? MessageModelProtocol else { return false }
+        return self.uid == anotherItem.uid
+            && self.status == item.status
     }
 }

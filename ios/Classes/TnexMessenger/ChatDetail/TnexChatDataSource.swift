@@ -32,11 +32,11 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     
     func handleEvent() {
         APIManager.shared.handleEvent = {[weak self] event, direction, roomState in
-            guard let sSelf = self else { return }
-            if self?.room.room.roomId == event.roomId, event.eventId != nil {
-                let message = event.isMediaAttachment() ? sSelf.makePhotoMessage(event: event) : sSelf.makeTnexMessage(event: event)
-                sSelf.slidingWindow.insertItem(message, position: .bottom)
-                sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
+            guard let self = self else { return }
+            if self.room.room.roomId == event.roomId, event.eventId != nil {
+                let message = self.builderMessage(from: event)
+                self.slidingWindow.insertItem(message, position: .bottom)
+                self.delegate?.chatDataSourceDidUpdate(self)
             }
         }
     }
@@ -66,80 +66,17 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     func loadData() {
         var indexMessage: Int = 0
         let messageCount: Int = events.count
-        let mes = self.makePhotoMessage(event: events[0])
+        let mes = self.builderMessage(from: events[0])
         self.slidingWindow = SlidingDataSource(count: messageCount, pageSize: messageCount) { [weak self] () -> ChatItemProtocol in
-            guard let sSelf = self else { return mes }
+            guard let self = self else { return mes }
             let index = messageCount - 1 - indexMessage
-            let event = sSelf.room.events().wrapped[index]
-            let message = event.isMediaAttachment() ? sSelf.makePhotoMessage(event: event) : sSelf.makeTnexMessage(event: event)
+            let event = self.events[index]
+            let message = self.builderMessage(from: event)
             indexMessage += 1
             return message
         }
     }
     
-    private func makeTnexMessage(event: MXEvent) -> DemoMessageModelProtocol {
-        let isMe = event.sender == APIManager.shared.userId
-        let messageModel = self.makeMessageModel(uid: event.eventId, senderId: event.sender, isIncoming: !isMe, type: TextMessageModel<MessageModel>.chatItemType, status: event.status, date: event.timestamp)
-        let textMessageModel = DemoTextMessageModel(messageModel: messageModel, text: getText(event: event))
-        textMessageModel.clientId = event.clientId
-        if let client = event.clientId {
-            eventDic[client] = event.eventId
-        }
-        
-        return textMessageModel
-    }
-    
-    private func getText(event: MXEvent) -> String {
-        if !event.isEdit() {
-            if let newContent = event.content["text"] as? String {
-                return newContent.trimmingCharacters(in: .whitespacesAndNewlines)
-            }
-            return (event.content["body"] as? String).map {
-                $0.trimmingCharacters(in: .whitespacesAndNewlines)
-            } ?? "content: \(event.content)"
-        } else {
-            let newContent = event.content["m.new_content"]! as? NSDictionary
-            return (newContent?["body"] as? String).map {
-                    $0.trimmingCharacters(in: .whitespacesAndNewlines)
-                } ?? event.type
-            
-        }
-    }
-    
-    private func makeMessageModel(uid: String, senderId: String, isIncoming: Bool, type: String, status: MessageStatus, date: Date) -> MessageModel {
-        return MessageModel(
-            uid: uid,
-            senderId: senderId,
-            type: type,
-            isIncoming: isIncoming,
-            date: date,
-            status: status,
-            canReply: true
-        )
-    }
-    
-    func makePhotoMessage(event: MXEvent) -> DemoPhotoMessageModel {
-        let isMe = event.sender == APIManager.shared.userId
-        var imageSize: CGSize = CGSize(width: 200, height: 200)
-        if let info: [String: Any] = event.content(valueFor: "info") {
-            if let width = info["w"] as? Double,
-                let height = info["h"] as? Double {
-                imageSize = CGSize(width: width, height: height)
-            }
-        }
-        let messageModel = self.makeMessageModel(uid: event.eventId, senderId: event.sender, isIncoming: !isMe, type: PhotoMessageModel<MessageModel>.chatItemType, status: event.status, date: event.timestamp)
-        let mediaURLs = event.getMediaURLs().compactMap(MXURL.init)
-        let urls: [URL] = mediaURLs.compactMap { mediaURL in
-            mediaURL.contentURL(on: URL(string: "https://chat-matrix.tnex.com.vn")!)
-            }
-        let photoItem = TnexMediaItem(imageSize: imageSize, image: nil, urlString: urls.first?.absoluteString)
-        let photoMessageModel = DemoPhotoMessageModel(messageModel: messageModel, mediaItem: photoItem)
-        photoMessageModel.clientId = event.clientId
-        if let client = event.clientId {
-            eventDic[client] = event.eventId
-        }
-        return photoMessageModel
-    }
     
     
     lazy var messageSender: DemoChatMessageSender = {
@@ -199,12 +136,12 @@ class TnexChatDataSource: ChatDataSourceProtocol {
             if let self = self, let event = _event {
                 
                 if event.sentState == MXEventSentStateSending {
-                    let message = self.makeTnexMessage(event: event)
+                    let message = self.builderMessage(from: event)
                     self.slidingWindow.insertItem(message, position: .bottom)
                     self.delegate?.chatDataSourceDidUpdate(self)
                 } else {
                     if let client = event.clientId, let uuid = self.eventDic[client] {
-                        let message = self.makeTnexMessage(event: event)
+                        let message = self.builderMessage(from: event)
                         self.replaceMessage(withUID: uuid, withNewMessage: message)
                     }
                     
