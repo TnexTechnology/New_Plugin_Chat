@@ -31,6 +31,7 @@ class TimeSeparatorModel: ChatItemProtocol {
     let uid: String
     let isIncoming: Bool
     let type: ChatItemType = TimeSeparatorModel.chatItemType
+    var status: MessageStatus = .success
 
     static var chatItemType: ChatItemType {
         return "time-sperator"
@@ -40,9 +41,10 @@ class TimeSeparatorModel: ChatItemProtocol {
         return self.uid == anotherItem.uid
     }
     
-    init(uid: String, date: Date, isIncoming: Bool) {
+    init(uid: String, date: Date, isIncoming: Bool, status: MessageStatus) {
         self.uid = uid
         self.sentDate = date
         self.isIncoming = isIncoming
+        self.status = status
     }
 }

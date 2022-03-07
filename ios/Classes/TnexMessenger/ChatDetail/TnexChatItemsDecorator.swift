@@ -49,7 +49,7 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
                     decoratedChatItems.append(dayStamp)
                 }
                 if self.checkIsShowTime(currentMessage, prevMessage: prev as? MessageModelProtocol) {
-                    dateTimeStamp = TimeSeparatorModel(uid: "\(currentMessage.uid)-time-separator", date: currentMessage.date, isIncoming: currentMessage.isIncoming)
+                    dateTimeStamp = TimeSeparatorModel(uid: "\(currentMessage.uid)-time-separator", date: currentMessage.date, isIncoming: currentMessage.isIncoming, status: currentMessage.status)
                 }
                 if isShowSenderInfo {
                     self.showSenderInfoIfNeed(&decoratedChatItems, at: currentMessage)

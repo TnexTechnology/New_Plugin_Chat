@@ -20,7 +20,7 @@ public class TnexMessageModel: MessageModelProtocol {
     
     public init(event: MXEvent) {
         self.event = event
-        self.senderId = event.sender
+        self.senderId = event.sender ?? ""
         let isMe = event.sender == APIManager.shared.userId
         self.isIncoming = !isMe
         self.date = event.timestamp

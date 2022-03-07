@@ -25,4 +25,5 @@ A new flutter plugin project.
   s.dependency 'SDWebImage', '~> 5.0'
   s.dependency 'PureLayout'
   s.dependency 'InputBarAccessoryView'
+  s.dependency 'DropDown'
 end

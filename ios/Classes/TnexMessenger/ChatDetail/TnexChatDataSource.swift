@@ -23,10 +23,10 @@ class TnexChatDataSource: ChatDataSourceProtocol {
 
     init(room: TnexRoom) {
         self.room = room
-        self.events = room.events().wrapped
+        self.events = room.events().wrapped.filter({$0.isShowMessage})
         loadData()
         getInfoRoom()
-        handleEvent()
+//        handleEvent()
         
     }
     
@@ -118,7 +118,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
         self.canLoadMore = false
         APIManager.shared.paginate(room: self.room, event: topEvent) {[weak self] in
             guard let self = self else { return }
-            let newEvents = self.room.events().wrapped
+            let newEvents = self.room.events().wrapped.filter({$0.isShowMessage})
             if self.events.count < newEvents.count {
                 self.canLoadMore = true
                 self.events = newEvents
@@ -198,5 +198,15 @@ extension MXEvent {
     
     var clientId: String? {
         return content["clientId"] as? String
+    }
+    
+    var isShowMessage: Bool {
+        if eventId == nil {
+            return false
+        }
+        return self.type != kMXEventTypeStringRoomPowerLevels
+        && self.type != kMXEventTypeStringRoomGuestAccess
+        && self.type != kMXEventTypeStringRoomHistoryVisibility
+        && self.type != kMXEventTypeStringRoomJoinRules
     }
 }

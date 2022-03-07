@@ -21,6 +21,7 @@ class TnexInputBar: InputBarAccessoryView {
             $0.contentMode = .scaleAspectFill
             $0.image = UIImage(named: "chat_inpputbar_transfer", in: Bundle.resources, compatibleWith: nil)
             $0.setSize(CGSize(width: 40, height: 40), animated: false)
+            $0.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         }
         .onTouchUpInside { [weak self] _ in
             print("Go to bank")
@@ -43,6 +44,7 @@ class TnexInputBar: InputBarAccessoryView {
         self.contentView.backgroundColor = .clear
         backgroundView.backgroundColor = .clear
         let galleryButton = InputBarButtonItem()
+        galleryButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         galleryButton.onKeyboardSwipeGesture { item, gesture in
             if gesture.direction == .left {
                 item.inputBarAccessoryView?.setLeftStackViewWidthConstant(to: 0, animated: true)
@@ -57,6 +59,7 @@ class TnexInputBar: InputBarAccessoryView {
             print("Go to bank")
         }
         let emojiButton = InputBarButtonItem()
+        emojiButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         emojiButton.onKeyboardSwipeGesture { item, gesture in
             if gesture.direction == .left {
                 item.inputBarAccessoryView?.setLeftStackViewWidthConstant(to: 0, animated: true)
@@ -76,8 +79,8 @@ class TnexInputBar: InputBarAccessoryView {
         inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
         inputTextView.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
-        inputTextView.layer.borderWidth = 0.5
-        inputTextView.layer.cornerRadius = 16.0
+        inputTextView.layer.borderWidth = 1.0
+        inputTextView.layer.cornerRadius = 15.0
         inputTextView.layer.masksToBounds = true
         inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         setLeftStackViewWidthConstant(to: 94, animated: false)
@@ -86,6 +89,7 @@ class TnexInputBar: InputBarAccessoryView {
         sendButton.configure {
             $0.setSize(CGSize(width: 52, height: 36), animated: false)
             $0.setImage(UIImage(named: "chat_avatar_default", in: Bundle.resources, compatibleWith: nil), for: .normal)
+            $0.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
             $0.setTitle(nil, for: .normal)
         }.onEnabled { [weak self] (_) in
             self?.switchSend(show: false, animated: true)

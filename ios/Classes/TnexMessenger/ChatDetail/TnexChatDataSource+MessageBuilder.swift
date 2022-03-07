@@ -38,10 +38,12 @@ extension TnexChatDataSource {
     }
     
     private func buildTextMessage(event: MXEvent) -> TnexMessageModelProtocol {
-        let isMe = event.sender == APIManager.shared.userId
         let messageModel = TnexMessageModel(event: event)
         messageModel.type = TextMessageModel<TnexMessageModel>.chatItemType
         let textMessageModel = DemoTextMessageModel(messageModel: messageModel, text: getText(event: event))
+        if let client = event.clientId {
+            eventDic[client] = event.eventId
+        }
         return textMessageModel
     }
     
@@ -52,18 +54,16 @@ extension TnexChatDataSource {
             }
             return (event.content["body"] as? String).map {
                 $0.trimmingCharacters(in: .whitespacesAndNewlines)
-            } ?? "content: \(event.content)"
+            } ?? "event type: \(event.type) content: \(event.content)"
         } else {
             let newContent = event.content["m.new_content"]! as? NSDictionary
             return (newContent?["body"] as? String).map {
                     $0.trimmingCharacters(in: .whitespacesAndNewlines)
                 } ?? event.type
-            
         }
     }
     
     func buildPhotoMessage(event: MXEvent) -> TnexMessageModelProtocol {
-        let isMe = event.sender == APIManager.shared.userId
         var imageSize: CGSize = CGSize(width: 200, height: 200)
         if let info: [String: Any] = event.content(valueFor: "info") {
             if let width = info["w"] as? Double,
@@ -76,7 +76,7 @@ extension TnexChatDataSource {
         let mediaURLs = event.getMediaURLs().compactMap(MXURL.init)
         let urls: [URL] = mediaURLs.compactMap { mediaURL in
             mediaURL.contentURL(on: URL(string: "https://chat-matrix.tnex.com.vn")!)
-            }
+        }
         let photoItem = TnexMediaItem(imageSize: imageSize, image: nil, urlString: urls.first?.absoluteString)
         let photoMessageModel = DemoPhotoMessageModel(messageModel: messageModel, mediaItem: photoItem)
         if let client = event.clientId {
@@ -86,7 +86,6 @@ extension TnexChatDataSource {
     }
     
     private func buildActionMessage(event: MXEvent) -> TnexMessageModelProtocol {
-        let isMe = event.sender == APIManager.shared.userId
         let messageModel = TnexMessageModel(event: event)
         messageModel.type = TextMessageModel<TnexMessageModel>.chatItemType
         let textMessageModel = DemoTextMessageModel(messageModel: messageModel, text: getText(event: event))
