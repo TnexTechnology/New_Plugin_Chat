@@ -75,8 +75,6 @@ public class TnexRoom {
     }
 
     public func add(event: MXEvent, direction: MXTimelineDirection, roomState: MXRoomState?) {
-        print("New event of type: \(event.type!)")
-
         switch direction {
         case .backwards:
             self.eventCache.insert(event, at: 0)

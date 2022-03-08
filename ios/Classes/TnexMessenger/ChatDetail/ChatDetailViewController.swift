@@ -34,7 +34,6 @@ class ChatDetailViewController: BaseChatViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {[weak self] in
@@ -47,8 +46,6 @@ class ChatDetailViewController: BaseChatViewController {
         self.collectionView?.backgroundColor = UIColor(red: 0.008, green: 0.0, blue: 0.212, alpha: 1)
 //        self.changeCollectionViewTopMarginTo(-ChatHeaderView.headerBarHeight, duration: 0.3)
         addBackgroundInputBar()
-        
-        
     }
     
     private func addBackgroundInputBar() {
@@ -65,10 +62,10 @@ class ChatDetailViewController: BaseChatViewController {
         inputBarContainer.backgroundColor = .clear
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: false)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
     private func addHeaderView() {
         view.addSubview(headerBar)

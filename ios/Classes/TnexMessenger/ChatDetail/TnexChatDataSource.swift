@@ -17,28 +17,37 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     private var events: [MXEvent] = []
 
     var onDidUpdate: (() -> Void)?
-    var slidingWindow: SlidingDataSource<ChatItemProtocol>!
+    var slidingWindow: SlidingDataSource<ChatItemProtocol>?
     var room: TnexRoom!
     private var memberDic: [String: MXRoomMember] = [:]
 
     init(room: TnexRoom) {
         self.room = room
         self.events = room.events().wrapped.filter({$0.isShowMessage})
-        loadData()
+        self.loadData()
         getInfoRoom()
-//        handleEvent()
+        handleEvent()
         
     }
     
     func handleEvent() {
         APIManager.shared.handleEvent = {[weak self] event, direction, roomState in
             guard let self = self else { return }
-            if self.room.room.roomId == event.roomId, event.eventId != nil {
+            if self.room.room.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(eventId: event.eventId) {
                 let message = self.builderMessage(from: event)
-                self.slidingWindow.insertItem(message, position: .bottom)
+                self.slidingWindow?.insertItem(message, position: .bottom)
                 self.delegate?.chatDataSourceDidUpdate(self)
             }
         }
+    }
+    
+    func checkExistEvent(eventId: String) -> Bool {
+        for (_, value) in self.eventDic {
+            if value == eventId {
+                return true
+            }
+        }
+        return false
     }
     
     func getDisplayName() -> String {
@@ -62,7 +71,6 @@ class TnexChatDataSource: ChatDataSourceProtocol {
         }
     }
     
-    
     func loadData() {
         var indexMessage: Int = 0
         let messageCount: Int = events.count
@@ -76,9 +84,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
             return message
         }
     }
-    
-    
-    
+        
     lazy var messageSender: DemoChatMessageSender = {
         let sender = DemoChatMessageSender()
         sender.onMessageChanged = { [weak self] (message) in
@@ -89,7 +95,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     }()
 
     var hasMoreNext: Bool {
-        return self.slidingWindow.hasMore()
+        return self.slidingWindow?.hasMore() ?? false
     }
 
     var hasMorePrevious: Bool {
@@ -98,22 +104,19 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     }
 
     var chatItems: [ChatItemProtocol] {
-        return self.slidingWindow.itemsInWindow
+        return self.slidingWindow?.itemsInWindow ?? []
     }
 
     weak var delegate: ChatDataSourceDelegateProtocol?
 
     func loadNext() {
-        self.slidingWindow.loadNext()
-        self.slidingWindow.adjustWindow(focusPosition: 1, maxWindowSize: self.preferredMaxWindowSize)
+        self.slidingWindow?.loadNext()
+        self.slidingWindow?.adjustWindow(focusPosition: 1, maxWindowSize: self.preferredMaxWindowSize)
         self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
     }
 
     var canLoadMore: Bool = true
     func loadPrevious() {
-//        self.slidingWindow.loadPrevious()
-//        self.slidingWindow.adjustWindow(focusPosition: 0, maxWindowSize: self.preferredMaxWindowSize)
-//        self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
         guard let topEvent = self.events.first else { return }
         self.canLoadMore = false
         APIManager.shared.paginate(room: self.room, event: topEvent) {[weak self] in
@@ -127,7 +130,6 @@ class TnexChatDataSource: ChatDataSourceProtocol {
             } else {
                 self.canLoadMore = false
             }
-            
         }
     }
 
@@ -137,21 +139,16 @@ class TnexChatDataSource: ChatDataSourceProtocol {
                 
                 if event.sentState == MXEventSentStateSending {
                     let message = self.builderMessage(from: event)
-                    self.slidingWindow.insertItem(message, position: .bottom)
+                    self.slidingWindow?.insertItem(message, position: .bottom)
                     self.delegate?.chatDataSourceDidUpdate(self)
                 } else {
                     if let client = event.clientId, let uuid = self.eventDic[client] {
                         let message = self.builderMessage(from: event)
                         self.replaceMessage(withUID: uuid, withNewMessage: message)
                     }
-                    
                 }
-                
-                
             }
         }
-//        let message = DemoChatMessageFactory.makeTextMessage(uid, text: text, isIncoming: false)
-        
         
     }
 
@@ -165,18 +162,15 @@ class TnexChatDataSource: ChatDataSourceProtocol {
 //        self.delegate?.chatDataSourceDidUpdate(self)
     }
 
-    func removeRandomMessage() {
-        self.slidingWindow.removeRandomItem()
-        self.delegate?.chatDataSourceDidUpdate(self)
-    }
-
     func adjustNumberOfMessages(preferredMaxCount: Int?, focusPosition: Double, completion:(_ didAdjust: Bool) -> Void) {
-        let didAdjust = self.slidingWindow.adjustWindow(focusPosition: focusPosition, maxWindowSize: preferredMaxCount ?? self.preferredMaxWindowSize)
+        guard let slidingWindow = self.slidingWindow else { return }
+        let didAdjust = slidingWindow.adjustWindow(focusPosition: focusPosition, maxWindowSize: preferredMaxCount ?? self.preferredMaxWindowSize)
         completion(didAdjust)
     }
 
     func replaceMessage(withUID uid: String, withNewMessage newMessage: ChatItemProtocol) {
-        let didUpdate = self.slidingWindow.replaceItem(withNewItem: newMessage) { $0.uid == uid }
+        guard let slidingWindow = self.slidingWindow else { return }
+        let didUpdate = slidingWindow.replaceItem(withNewItem: newMessage) { $0.uid == uid }
         guard didUpdate else { return }
         self.delegate?.chatDataSourceDidUpdate(self)
     }

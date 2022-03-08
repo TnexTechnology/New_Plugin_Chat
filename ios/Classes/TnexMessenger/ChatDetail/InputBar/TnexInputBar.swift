@@ -83,7 +83,7 @@ class TnexInputBar: InputBarAccessoryView {
         inputTextView.layer.cornerRadius = 15.0
         inputTextView.layer.masksToBounds = true
         inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        setLeftStackViewWidthConstant(to: 94, animated: false)
+        setLeftStackViewWidthConstant(to: 90, animated: false)
         setStackViewItems([emojiButton, galleryButton], forStack: .left, animated: false)
         
         sendButton.configure {
