@@ -13,7 +13,8 @@ import DropDown
 
 class ChatHeaderView: UIView {
     
-    let menuDropDown = DropDown()
+    private let menuDropDown = DropDown()
+    private var menuItems: [RightMenuItem] = [.profile, .mute, .remove]
     
     static let headerBarHeight: CGFloat = 81
     
@@ -123,41 +124,36 @@ class ChatHeaderView: UIView {
     private func setupDropDown() {
         let appearance = DropDown.appearance()
         
-        appearance.cellHeight = 60
-        appearance.backgroundColor = UIColor.clear
+        appearance.cellHeight = 35
+        appearance.backgroundColor = UIColor.fromHex("#020036")
         appearance.selectionBackgroundColor = UIColor.clear
 //        appearance.separatorColor = UIColor(white: 0.7, alpha: 0.8)
         appearance.cornerRadius = 10
-        appearance.shadowColor = UIColor.fromHex("#020036")
+        appearance.shadowColor = UIColor(red: 0.325, green: 0.853, blue: 1, alpha: 1)
         appearance.shadowOpacity = 0.9
-        appearance.shadowRadius = 15
+        appearance.shadowRadius = 5
         appearance.animationduration = 0.25
-        appearance.textColor = .darkGray
-//        appearance.textFont = UIFont(name: "Georgia", size: 14)
+        appearance.textColor = UIColor.fromHex("#14C8FA")
+        appearance.textFont = UIFont(name: "Quicksand-Medium", size: 14) ?? UIFont.systemFont(ofSize: 14)
 
-        if #available(iOS 11.0, *) {
-            appearance.setupMaskedCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
-        }
-        let listImageName: [String] = ["chat_menu_header_profile", "chat_menu_header_silent", "chat_menu_header_trash"]
+//        if #available(iOS 11.0, *) {
+//            appearance.setupMaskedCorners([.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
+//        }
         menuDropDown.cellNib = UINib(nibName: "RightMenuTableViewCell", bundle: Bundle.resources)
         menuDropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? RightMenuTableViewCell else { return }
             // Setup your custom UI components
-            cell.logoImageView.image = UIImage(named: listImageName[index], in: Bundle.resources, compatibleWith: nil)
+            cell.logoImageView.image = self.menuItems[index].image
         }
         menuDropDown.anchorView = menuRightButton
         
         // By default, the dropdown will have its origin on the top left corner of its anchor view
         // So it will come over the anchor view and hide it completely
         // If you want to have the dropdown underneath your anchor view, you can do this:
-        menuDropDown.bottomOffset = CGPoint(x: 0, y: 60)
+        menuDropDown.bottomOffset = CGPoint(x: -150, y: 30)
         
         // You can also use localizationKeysDataSource instead. Check the docs.
-        menuDropDown.dataSource = [
-            "Hồ sơ cá nhân",
-            "Im lặng",
-            "Xoá cuộc hội thoại"
-        ]
+        menuDropDown.dataSource = menuItems.map({$0.title})
         
         // Action triggered on selection
             menuDropDown.selectionAction = { [weak self] (index, item) in

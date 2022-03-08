@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ipw-er-Qk8">
-                        <rect key="frame" x="16" y="9.5" width="25" height="25"/>
+                        <rect key="frame" x="16" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Ipw-er-Qk8" secondAttribute="height" id="4Go-fX-9ei"/>
-                            <constraint firstAttribute="height" constant="25" id="sGa-Vm-kau"/>
+                            <constraint firstAttribute="height" constant="20" id="sGa-Vm-kau"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-st-hpE">
@@ -34,9 +34,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Acj-zd-62K">
-                        <rect key="frame" x="30" y="43" width="260" height="1"/>
+                        <rect key="frame" x="60" y="43" width="200" height="1"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="dv0-4a-nPH"/>
+                            <constraint firstAttribute="width" constant="200" id="vMY-gv-NKG"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -45,11 +46,18 @@
                     <constraint firstItem="Ipw-er-Qk8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9da-Hx-S54"/>
                     <constraint firstItem="SZu-st-hpE" firstAttribute="leading" secondItem="Ipw-er-Qk8" secondAttribute="trailing" constant="8" id="Z2Q-uq-0Tt"/>
                     <constraint firstAttribute="trailing" secondItem="SZu-st-hpE" secondAttribute="trailing" constant="12" id="ded-Tn-nWW"/>
+                    <constraint firstItem="Acj-zd-62K" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="fe2-8s-UG8"/>
                     <constraint firstAttribute="trailing" secondItem="Acj-zd-62K" secondAttribute="trailing" constant="30" id="fmE-QY-Gkq"/>
                     <constraint firstItem="Acj-zd-62K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="q6O-yD-1T5"/>
                     <constraint firstAttribute="bottom" secondItem="Acj-zd-62K" secondAttribute="bottom" id="rUb-xZ-jRX"/>
                     <constraint firstItem="Ipw-er-Qk8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yw0-Uo-S65"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="fmE-QY-Gkq"/>
+                        <exclude reference="q6O-yD-1T5"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
