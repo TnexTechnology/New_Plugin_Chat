@@ -1,0 +1,4 @@
+#Thu Feb 10 14:46:42 ICT 2022
+base.0=/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
