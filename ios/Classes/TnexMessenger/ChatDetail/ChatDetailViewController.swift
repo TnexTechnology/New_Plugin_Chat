@@ -56,7 +56,7 @@ class ChatDetailViewController: BaseChatViewController {
         backgroundInputView.translatesAutoresizingMaskIntoConstraints = false
         backgroundInputView.leftAnchor.constraint(equalTo: inputBarContainer.leftAnchor, constant: 0).isActive = true
         backgroundInputView.rightAnchor.constraint(equalTo: inputBarContainer.rightAnchor, constant: 0).isActive = true
-        backgroundInputView.bottomAnchor.constraint(equalTo: inputBarContainer.bottomAnchor, constant: 0).isActive = true
+        backgroundInputView.bottomAnchor.constraint(equalTo: inputContentContainer.bottomAnchor, constant: 0).isActive = true
         backgroundInputView.topAnchor.constraint(equalTo: inputBarContainer.topAnchor, constant: -5).isActive = true
         inputContentContainer.backgroundColor = .clear
         inputBarContainer.backgroundColor = .clear
