@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1037281e-6691-4a06-a2eb-68fc5669c096" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoCellViewModel.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoCollectionViewCell.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoIncomingCell.xib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoModel.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoOutcomingCell.xib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoPollVoteCell.xib" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/UserInfo/SenderInfoPresenter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatItemsDecorator.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatItemsDecorator.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/example/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/example/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/example/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/tnexchat_example.iml" beforeDir="false" afterPath="$PROJECT_DIR$/example/tnexchat_example.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/SwiftTnexchatPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/SwiftTnexchatPlugin.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/AccountStore.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/AccountStore.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tnexchat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tnexchat.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tnexchat/lib/tnexchat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/tnexchat/lib/tnexchat.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

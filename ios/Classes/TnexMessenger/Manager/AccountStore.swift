@@ -64,9 +64,9 @@ public enum LoginState {
 //}
 
 
-class APIManager: NSObject {
+final public class APIManager: NSObject {
         
-    static let shared = APIManager()
+    public static let shared = APIManager()
     var mxRestClient: MXRestClient!
     var mxSession: MXSession?
     var fileStore: MXFileStore?
@@ -144,7 +144,7 @@ class APIManager: NSObject {
         }
     }
     
-    private func sync(credentials: MXCredentials, completion: @escaping () -> Void) {
+    public func sync(credentials: MXCredentials, completion: @escaping () -> Void) {
         self.mxRestClient = MXRestClient(credentials: credentials, unrecognizedCertificateHandler: nil)
         self.mxSession = MXSession(matrixRestClient: self.mxRestClient!)
         self.fileStore = MXFileStore()
@@ -203,14 +203,14 @@ class APIManager: NSObject {
         }
     }
     
-    func getRooms() -> [TnexRoom]? {
+    public func getRooms() -> [TnexRoom]? {
         let rooms = self.mxSession?.rooms
             .map { roomCache[$0.roomId] ?? makeRoom(from: $0) }
             .sorted { $0.summary.lastMessageDate > $1.summary.lastMessageDate }
         return rooms
     }
     
-    func getPublicList() {
+    public func getPublicList() {
         mxRestClient.publicRooms(onServer: nil, limit: nil) { response in
             switch response {
             case .success(let rooms):

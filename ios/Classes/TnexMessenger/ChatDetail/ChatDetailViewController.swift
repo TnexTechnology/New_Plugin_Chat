@@ -9,13 +9,13 @@ import UIKit
 import PureLayout
 import MatrixSDK
 
-class ChatDetailViewController: BaseChatViewController {
+open class ChatDetailViewController: BaseChatViewController {
     var shouldUseAlternativePresenter: Bool = false
 
     var messageSender: DemoChatMessageSender!
     let messagesSelector = BaseMessagesSelector()
 
-    var dataSource: TnexChatDataSource! {
+    public var dataSource: TnexChatDataSource! {
         didSet {
             self.chatDataSource = self.dataSource
             self.messageSender = self.dataSource.messageSender
@@ -30,11 +30,11 @@ class ChatDetailViewController: BaseChatViewController {
         return view
     }()
     
-    @objc private func actionBack() {
+    @objc open func actionBack() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {[weak self] in
             self?.addHeaderView()
@@ -62,7 +62,7 @@ class ChatDetailViewController: BaseChatViewController {
         inputBarContainer.backgroundColor = .clear
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -88,7 +88,7 @@ class ChatDetailViewController: BaseChatViewController {
     }
 
     var chatInputPresenter: AnyObject!
-    override func createChatInputView() -> UIView {
+    open override func createChatInputView() -> UIView {
         let chatInputView = TnexContainerInputBar.loadNib()
         chatInputView.backgroundColor = .clear
         let inputbar = TnexInputBar()
@@ -102,7 +102,7 @@ class ChatDetailViewController: BaseChatViewController {
     }
     
 
-    override func createPresenterBuilders() -> [ChatItemType: [ChatItemPresenterBuilderProtocol]] {
+    open override func createPresenterBuilders() -> [ChatItemType: [ChatItemPresenterBuilderProtocol]] {
 
         let textMessagePresenter = TextMessagePresenterBuilder(
             viewModelBuilder: self.createTextMessageViewModelBuilder(),
@@ -157,11 +157,11 @@ class ChatDetailViewController: BaseChatViewController {
 }
 
 extension ChatDetailViewController: MessagesSelectorDelegate {
-    func messagesSelector(_ messagesSelector: MessagesSelectorProtocol, didSelectMessage: MessageModelProtocol) {
+    public func messagesSelector(_ messagesSelector: MessagesSelectorProtocol, didSelectMessage: MessageModelProtocol) {
         self.enqueueModelUpdate(updateType: .normal)
     }
 
-    func messagesSelector(_ messagesSelector: MessagesSelectorProtocol, didDeselectMessage: MessageModelProtocol) {
+    public func messagesSelector(_ messagesSelector: MessagesSelectorProtocol, didDeselectMessage: MessageModelProtocol) {
         self.enqueueModelUpdate(updateType: .normal)
     }
 }

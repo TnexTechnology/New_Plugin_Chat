@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import MatrixSDK
 
-class TnexChatDataSource: ChatDataSourceProtocol {
+open class TnexChatDataSource: ChatDataSourceProtocol {
 
     let preferredMaxWindowSize = 500
     
@@ -21,7 +21,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
     var room: TnexRoom!
     private var memberDic: [String: MXRoomMember] = [:]
 
-    init(room: TnexRoom) {
+    public init(room: TnexRoom) {
         self.room = room
         self.events = room.events().wrapped.filter({$0.isShowMessage})
         self.loadData()
@@ -94,29 +94,29 @@ class TnexChatDataSource: ChatDataSourceProtocol {
         return sender
     }()
 
-    var hasMoreNext: Bool {
+    public var hasMoreNext: Bool {
         return self.slidingWindow?.hasMore() ?? false
     }
 
-    var hasMorePrevious: Bool {
+    public var hasMorePrevious: Bool {
         return canLoadMore
 //        return self.slidingWindow.hasPrevious()
     }
 
-    var chatItems: [ChatItemProtocol] {
+    public var chatItems: [ChatItemProtocol] {
         return self.slidingWindow?.itemsInWindow ?? []
     }
 
-    weak var delegate: ChatDataSourceDelegateProtocol?
+    weak public var delegate: ChatDataSourceDelegateProtocol?
 
-    func loadNext() {
+    public func loadNext() {
         self.slidingWindow?.loadNext()
         self.slidingWindow?.adjustWindow(focusPosition: 1, maxWindowSize: self.preferredMaxWindowSize)
         self.delegate?.chatDataSourceDidUpdate(self, updateType: .pagination)
     }
 
     var canLoadMore: Bool = true
-    func loadPrevious() {
+    public func loadPrevious() {
         guard let topEvent = self.events.first else { return }
         self.canLoadMore = false
         APIManager.shared.paginate(room: self.room, event: topEvent) {[weak self] in
@@ -162,7 +162,7 @@ class TnexChatDataSource: ChatDataSourceProtocol {
 //        self.delegate?.chatDataSourceDidUpdate(self)
     }
 
-    func adjustNumberOfMessages(preferredMaxCount: Int?, focusPosition: Double, completion:(_ didAdjust: Bool) -> Void) {
+    public func adjustNumberOfMessages(preferredMaxCount: Int?, focusPosition: Double, completion:(_ didAdjust: Bool) -> Void) {
         guard let slidingWindow = self.slidingWindow else { return }
         let didAdjust = slidingWindow.adjustWindow(focusPosition: focusPosition, maxWindowSize: preferredMaxCount ?? self.preferredMaxWindowSize)
         completion(didAdjust)
