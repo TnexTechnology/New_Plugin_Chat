@@ -12,10 +12,10 @@ class UserAvatarView: UIView {
     
     lazy var imageView: UIImageView = {
         let imgView = UIImageView.newAutoLayout()
-        imgView.image = UIImage(named: "chat_avatar_default")
+        imgView.image = UIImage(named: "chat_avatar_default", in: Bundle.resources, compatibleWith: nil)
         imgView.layer.cornerRadius = 22
         imgView.clipsToBounds = true
-        imgView.isHidden = true
+        imgView.isHidden = false
         return imgView
     }()
     

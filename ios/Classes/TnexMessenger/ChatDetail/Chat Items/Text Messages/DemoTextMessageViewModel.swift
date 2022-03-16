@@ -44,7 +44,7 @@ public class DemoTextMessageViewModelBuilder: ViewModelBuilderProtocol {
     public func createViewModel(_ textMessage: DemoTextMessageModel) -> DemoTextMessageViewModel {
         let messageViewModel = self.messageViewModelBuilder.createMessageViewModel(textMessage)
         let textMessageViewModel = DemoTextMessageViewModel(textMessage: textMessage, messageViewModel: messageViewModel)
-        textMessageViewModel.avatarImage = self.imageProvider(textMessage)
+        textMessageViewModel.avatarUrl = textMessage.senderAvatarUrl
         return textMessageViewModel
     }
 

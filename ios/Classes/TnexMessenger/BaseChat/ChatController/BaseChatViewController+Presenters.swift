@@ -24,11 +24,12 @@
 
 import UIKit
 
-extension BaseChatViewController: ChatCollectionViewLayoutDelegate {
+extension BaseChatViewController: ChatCollectionViewLayoutDelegate, UICollectionViewDelegateFlowLayout {
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.chatItemCompanionCollection.count
     }
+    
 
     @objc(collectionView:cellForItemAtIndexPath:)
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -72,7 +73,7 @@ extension BaseChatViewController: ChatCollectionViewLayoutDelegate {
             self.visibleCells[indexPath] = cell
         }
 
-        if self.isAdjustingInputContainer {
+        if self.isAdjustingInputContainer || isAdjustingCollectionViewHeader {
             UIView.performWithoutAnimation({
                 // See https://github.com/badoo/Chatto/issues/133
                 presenter.cellWillBeShown(cell)
@@ -91,18 +92,18 @@ extension BaseChatViewController: ChatCollectionViewLayoutDelegate {
         return self.presenterForIndexPath(indexPath).shouldShowMenu()
     }
 
-    @objc(collectionView:canPerformAction:forItemAtIndexPath:withSender:)
-    open func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath?, withSender sender: Any?) -> Bool {
-        // Note: IndexPath set optional due to https://github.com/badoo/Chatto/issues/247. SR-2417 might be related
-        // Might be related: https://bugs.swift.org/browse/SR-2417
-        guard let indexPath = indexPath else { return false }
-        return self.presenterForIndexPath(indexPath).canPerformMenuControllerAction(action)
-    }
-
-    @objc(collectionView:performAction:forItemAtIndexPath:withSender:)
-    open func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        self.presenterForIndexPath(indexPath).performMenuControllerAction(action)
-    }
+//    @objc(collectionView:canPerformAction:forItemAtIndexPath:withSender:)
+//    open func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath?, withSender sender: Any?) -> Bool {
+//        // Note: IndexPath set optional due to https://github.com/badoo/Chatto/issues/247. SR-2417 might be related
+//        // Might be related: https://bugs.swift.org/browse/SR-2417
+//        guard let indexPath = indexPath else { return false }
+//        return self.presenterForIndexPath(indexPath).canPerformMenuControllerAction(action)
+//    }
+//
+//    @objc(collectionView:performAction:forItemAtIndexPath:withSender:)
+//    open func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+//        self.presenterForIndexPath(indexPath).performMenuControllerAction(action)
+//    }
 
     func presenterForIndexPath(_ indexPath: IndexPath) -> ChatItemPresenterProtocol {
         return self.presenterForIndex(indexPath.item, chatItemCompanionCollection: self.chatItemCompanionCollection)
@@ -123,15 +124,12 @@ extension BaseChatViewController: ChatCollectionViewLayoutDelegate {
 
     public func confugureCollectionViewWithPresenters() {
         assert(self.presenterFactory == nil, "Presenter factory is already initialized")
-        guard let collectionView = self.collectionView else {
-            assertionFailure("CollectionView is not initialized")
-            return
-        }
         self.presenterFactory = self.createPresenterFactory()
-        self.presenterFactory.configure(withCollectionView: collectionView )
+        self.presenterFactory.configure(withCollectionView: self.messagesCollectionView )
     }
 
     public func decorationAttributesForIndexPath(_ indexPath: IndexPath) -> ChatItemDecorationAttributesProtocol? {
         return self.chatItemCompanionCollection[indexPath.item].decorationAttributes
     }
+
 }

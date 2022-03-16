@@ -75,9 +75,10 @@ open class BaseChatViewController: UIViewController,
     }
 
     public var updatesConfig =  UpdatesConfig()
+    
     open var customPresentersConfigurationPoint = false // If true then confugureCollectionViewWithPresenters() will not be called in viewDidLoad() method and has to be called manually
 
-    public private(set) var collectionView: UICollectionView?
+    public private(set) var messagesCollectionView: UICollectionView = MsgCollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     public final internal(set) var chatItemCompanionCollection = ChatItemCompanionCollection(items: [])
     private var _chatDataSource: ChatDataSourceProtocol?
     public final var chatDataSource: ChatDataSourceProtocol? {
@@ -111,8 +112,8 @@ open class BaseChatViewController: UIViewController,
     }
 
     deinit {
-        self.collectionView?.delegate = nil
-        self.collectionView?.dataSource = nil
+        self.messagesCollectionView.delegate = nil
+        self.messagesCollectionView.dataSource = nil
     }
 
     open override func loadView() { // swiftlint:disable:this prohibited_super_call
@@ -125,7 +126,7 @@ open class BaseChatViewController: UIViewController,
 
     }
     
-    open func createCollectionViewLayout() -> UICollectionViewLayout {
+    open func createCollectionViewLayout() -> ChatCollectionViewLayout {
         let layout = ChatCollectionViewLayout()
         layout.delegate = self
         return layout
@@ -140,11 +141,11 @@ open class BaseChatViewController: UIViewController,
         self.addInputView()
         self.addInputContentContainer()
         self.setupKeyboardTracker()
-        self.setupTapGestureRecognizer()
+//        self.setupTapGestureRecognizer()
     }
 
     private func setupTapGestureRecognizer() {
-        self.collectionView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BaseChatViewController.userDidTapOnCollectionView)))
+        self.messagesCollectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BaseChatViewController.userDidTapOnCollectionView)))
     }
 
     public var endsEditingWhenTappingOnChatBackground = true
@@ -173,7 +174,7 @@ open class BaseChatViewController: UIViewController,
     
     var collectionViewTopConstraint: NSLayoutConstraint!
     private func addCollectionView() {
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.createCollectionViewLayout())
+        let collectionView = MsgCollectionView(frame: CGRect.zero, collectionViewLayout: self.createCollectionViewLayout())
         collectionView.contentInset = self.layoutConfiguration.contentInsets
         collectionView.scrollIndicatorInsets = self.layoutConfiguration.scrollIndicatorInsets
         collectionView.alwaysBounceVertical = true
@@ -183,14 +184,13 @@ open class BaseChatViewController: UIViewController,
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsSelection = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
         collectionView.autoresizingMask = []
         self.view.addSubview(collectionView)
         collectionViewTopConstraint = self.topLayoutGuide.bottomAnchor.constraint(equalTo: collectionView.topAnchor)
         NSLayoutConstraint.activate([
             self.view.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor)
         ])
-        collectionView.isUserInteractionEnabled = true
+        messagesCollectionView.isUserInteractionEnabled = true
         let leadingAnchor: NSLayoutXAxisAnchor
         let trailingAnchor: NSLayoutXAxisAnchor
         if #available(iOS 11.0, *) {
@@ -216,7 +216,7 @@ open class BaseChatViewController: UIViewController,
         self.cellPanGestureHandler = CellPanGestureHandler(collectionView: collectionView)
         self.cellPanGestureHandler.replyDelegate = self
         self.cellPanGestureHandler.config = self.cellPanGestureHandlerConfig
-        self.collectionView = collectionView
+        self.messagesCollectionView = collectionView
 
         if !self.customPresentersConfigurationPoint {
             self.confugureCollectionViewWithPresenters()
@@ -315,7 +315,7 @@ open class BaseChatViewController: UIViewController,
         self.inputContentContainer = UIView(frame: CGRect.zero)
         self.inputContentContainer.autoresizingMask = UIView.AutoresizingMask()
         self.inputContentContainer.translatesAutoresizingMaskIntoConstraints = false
-        self.inputContentContainer.backgroundColor = .clear
+        self.inputContentContainer.backgroundColor = .white
         self.view.addSubview(self.inputContentContainer)
         NSLayoutConstraint.activate([
             self.view.bottomAnchor.constraint(equalTo: self.inputContentContainer.bottomAnchor),
@@ -399,18 +399,17 @@ open class BaseChatViewController: UIViewController,
     }
     
     public var allContentFits: Bool {
-        guard let collectionView = self.collectionView else { return false }
         let inputHeightWithKeyboard = self.view.bounds.height - self.inputBarContainer.frame.minY
         let insetTop = self.topLayoutGuide.length + self.layoutConfiguration.contentInsets.top
         let insetBottom = self.layoutConfiguration.contentInsets.bottom + inputHeightWithKeyboard
-        let availableHeight = collectionView.bounds.height - (insetTop + insetBottom)
-        let contentSize = collectionView.collectionViewLayout.collectionViewContentSize
+        let availableHeight = self.messagesCollectionView.bounds.height - (insetTop + insetBottom)
+        let contentSize = self.messagesCollectionView.collectionViewLayout.collectionViewContentSize
         return availableHeight >= contentSize.height
     }
 
     private var previousBoundsUsedForInsetsAdjustment: CGRect?
     func adjustCollectionViewInsets(shouldUpdateContentOffset: Bool) {
-        guard let collectionView = self.collectionView else { return }
+        let collectionView = self.messagesCollectionView
         let isInteracting = collectionView.panGestureRecognizer.numberOfTouches > 0
         let isBouncingAtTop = isInteracting && collectionView.contentOffset.y < -collectionView.contentInset.top
         if !self.placeMessagesFromBottom && isBouncingAtTop { return }
@@ -478,9 +477,8 @@ open class BaseChatViewController: UIViewController,
     }
 
     func rectAtIndexPath(_ indexPath: IndexPath?) -> CGRect? {
-        guard let collectionView = self.collectionView else { return nil }
         guard let indexPath = indexPath else { return nil }
-        return collectionView.collectionViewLayout.layoutAttributesForItem(at: indexPath)?.frame
+        return self.messagesCollectionView.collectionViewLayout.layoutAttributesForItem(at: indexPath)?.frame
     }
 
     var autoLoadingEnabled: Bool = false
@@ -653,9 +651,8 @@ extension BaseChatViewController { // Rotation
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         guard isViewLoaded else { return }
-        guard let collectionView = self.collectionView else { return }
         let shouldScrollToBottom = self.isScrolledAtBottom()
-        let referenceIndexPath = collectionView.indexPathsForVisibleItems.first
+        let referenceIndexPath = self.messagesCollectionView.indexPathsForVisibleItems.first
         let oldRect = self.rectAtIndexPath(referenceIndexPath)
         coordinator.animate(alongsideTransition: { (_) -> Void in
             if shouldScrollToBottom {

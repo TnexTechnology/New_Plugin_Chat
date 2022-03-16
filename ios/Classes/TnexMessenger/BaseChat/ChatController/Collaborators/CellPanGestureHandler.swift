@@ -50,12 +50,12 @@ public struct CellPanGestureHandlerConfig {
     public let accessoryViewTranslationMultiplier: CGFloat
     public let replyIndicatorTranslationMultiplier: CGFloat
     public var allowReplyRevealing: Bool = false
-    public var allowTimestampRevealing: Bool = true
+    public var allowRightSideRevealing: Bool = false
 
     public static func defaultConfig() -> CellPanGestureHandlerConfig {
         .init(
             angleThresholdInRads: 0.0872665, // ~5 degrees
-            threshold: 30,
+            threshold: 10,
             accessoryViewTranslationMultiplier: 1/2,
             replyIndicatorTranslationMultiplier: 2/3
         )
@@ -105,17 +105,19 @@ final class CellPanGestureHandler: NSObject, UIGestureRecognizerDelegate {
             break
         case .changed:
             let translation = panRecognizer.translation(in: self.collectionView)
-            if translation.x < 0 {
-                guard self.config.allowTimestampRevealing else { return }
-                self.revealAccessoryView(atOffset: self.config.transformAccessoryViewTranslation(-translation.x))
+            if translation.x > 0 {
+                guard self.config.allowRightSideRevealing else { return }
+                self.revealAccessoryView(atOffset: self.config.transformAccessoryViewTranslation(translation.x))
             } else {
-                guard let indexPath = self.collectionView.indexPathForItem(at: panRecognizer.location(in: self.collectionView)),
-                    let cell = self.collectionView.cellForItem(at: indexPath) as? ReplyIndicatorRevealable,
-                    cell.allowRevealing,
+//                guard let indexPath = self.collectionView.indexPathForItem(at: panRecognizer.location(in: self.collectionView)) else { return }
+                let pointInCollectionView = panRecognizer.location(in: self.collectionView)
+                guard let indexPath = self.collectionView.indexPathForItem(at: CGPoint(x: abs(pointInCollectionView.x), y: pointInCollectionView.y)) else { return }
+                guard let  cell = self.collectionView.cellForItem(at: indexPath) as? ReplyIndicatorRevealable else { return }
+                    guard cell.allowRevealing,
                     self.config.allowReplyRevealing,
                     cell.canShowReply() else { return }
 
-                if self.replyIndexPath == nil, translation.x > self.config.threshold {
+                if self.replyIndexPath == nil, -translation.x > self.config.threshold {
                     self.replyIndexPath = indexPath
                     self.collectionView.isScrollEnabled = false
                 }

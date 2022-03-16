@@ -89,7 +89,7 @@ class DemoPhotoMessageViewModelBuilder: ViewModelBuilderProtocol {
     func createViewModel(_ model: DemoPhotoMessageModel) -> DemoPhotoMessageViewModel {
         let messageViewModel = self.messageViewModelBuilder.createMessageViewModel(model)
         let photoMessageViewModel = DemoPhotoMessageViewModel(photoMessage: model, messageViewModel: messageViewModel)
-        photoMessageViewModel.avatarImage.value = UIImage(named: "userAvatar")
+        photoMessageViewModel.avatarUrl = model.senderAvatarUrl
         return photoMessageViewModel
     }
 

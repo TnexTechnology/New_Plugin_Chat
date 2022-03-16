@@ -14,7 +14,7 @@ open class ChatDetailViewController: BaseChatViewController {
 
     var messageSender: DemoChatMessageSender!
     let messagesSelector = BaseMessagesSelector()
-
+    private let roomId: String
     public var dataSource: TnexChatDataSource! {
         didSet {
             self.chatDataSource = self.dataSource
@@ -34,7 +34,17 @@ open class ChatDetailViewController: BaseChatViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    public init(roomId: String) {
+        self.roomId = roomId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     open override func viewDidLoad() {
+        self.dataSource = TnexChatDataSource(roomId: roomId)
         super.viewDidLoad()
         DispatchQueue.main.async {[weak self] in
             self?.addHeaderView()
@@ -43,8 +53,8 @@ open class ChatDetailViewController: BaseChatViewController {
         self.messagesSelector.delegate = self
         self.chatItemsDecorator = TnexChatItemsDecorator(messagesSelector: self.messagesSelector)
         self.replyActionHandler = TnexReplyActionHandler(presentingViewController: self)
-        self.collectionView?.backgroundColor = UIColor(red: 0.008, green: 0.0, blue: 0.212, alpha: 1)
-//        self.changeCollectionViewTopMarginTo(-ChatHeaderView.headerBarHeight, duration: 0.3)
+        self.messagesCollectionView.backgroundColor = UIColor(red: 0.008, green: 0.0, blue: 0.212, alpha: 1)
+        self.changeCollectionViewTopMarginTo(-ChatHeaderView.headerBarHeight/2, duration: 0.3)
         addBackgroundInputBar()
     }
     
@@ -66,7 +76,7 @@ open class ChatDetailViewController: BaseChatViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
+
     private func addHeaderView() {
         view.addSubview(headerBar)
         headerBar.autoPinEdge(toSuperviewEdge: .top)
@@ -77,11 +87,13 @@ open class ChatDetailViewController: BaseChatViewController {
 //        let topPadding: CGFloat = UIApplication.key?.safeAreaInsets.top ?? 20
         self.headerBar.autoSetDimension(.height, toSize: ChatHeaderView.headerBarHeight + topPadding)
         self.headerBar.infoView.displayNameLabel.text = self.dataSource.getDisplayName()
-        self.headerBar.avatarView.imageView.sd_setImage(with: self.dataSource.getAvatarURL())
+//        self.headerBar.avatarView.imageView.sd_setImage(with: self.dataSource.getAvatarURL())
         dataSource.room?.room.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
-                if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}), let mxUser = self.dataSource.room.room.mxSession.user(withUserId: partnerUser.userId) {
-                    self.headerBar.updateUser(user: mxUser)
+                if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}), let mxUser = self.dataSource.room?.room.mxSession.user(withUserId: partnerUser.userId) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                        self.headerBar.updateUser(user: mxUser)
+                    })
                 }
             }
         })
@@ -96,6 +108,7 @@ open class ChatDetailViewController: BaseChatViewController {
         inputbar.fillSuperview()
         inputbar.backgroundColor = .clear
         inputbar.onClickSendButton = {[weak self] text in
+            inputbar.inputTextView.text = ""
             self?.dataSource.addTextMessage(text)
         }
         return chatInputView

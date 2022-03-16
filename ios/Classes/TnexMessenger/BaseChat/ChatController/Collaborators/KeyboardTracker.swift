@@ -173,7 +173,8 @@ class KeyboardTracker {
     private func adjustTrackingViewSize() {
         let inputContainerHeight = self.inputBarContainer.bounds.height
         if self.keyboardTrackerView.preferredSize.height != inputContainerHeight {
-            self.keyboardTrackerView.preferredSize.height = inputContainerHeight
+            //Disable vi tinh toan khong dung!!!
+//            self.keyboardTrackerView.preferredSize.height = inputContainerHeight
             self.isPerformingForcedLayout = true
 
             // Sometimes, the autolayout system doesn't finish the layout inside of the input bar container at this point.

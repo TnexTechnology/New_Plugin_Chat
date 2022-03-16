@@ -150,7 +150,7 @@ class ChatHeaderView: UIView {
         // By default, the dropdown will have its origin on the top left corner of its anchor view
         // So it will come over the anchor view and hide it completely
         // If you want to have the dropdown underneath your anchor view, you can do this:
-        menuDropDown.bottomOffset = CGPoint(x: -150, y: 30)
+        menuDropDown.bottomOffset = CGPoint(x: -150, y: 50)
         
         // You can also use localizationKeysDataSource instead. Check the docs.
         menuDropDown.dataSource = menuItems.map({$0.title})
@@ -192,9 +192,22 @@ class ChatHeaderView: UIView {
             let second = user.lastActiveAgo / 1000
             self.infoView.statusLabel.text = Int(second).toTimeActive()
         }
-        if let url = URL(string: user.avatarUrl) {
-            self.avatarView.imageView.sd_setImage(with: url)
-        }
+        let urlString = user.getAvatarUrl()
+        print("@@@@\(urlString)")
+//        self.avatarView.imageView.image = UIImage(named: "chat_avatar_default", in: Bundle.resources, compatibleWith: nil)
+        self.avatarView.imageView.loadAvatar(url: urlString)
+//        if let url = URL(string: urlString) {
+////            let newUrl = url.contentURL(on: URL(string: APIManager.shared.homeServer)!)
+//            self.avatarView.imageView.sd_setImage(with: url)
+//        }
         
+    }
+}
+
+
+extension MXUser {
+    func getAvatarUrl() -> String {
+        let id = self.userId.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ":chat-matrix.tnex.com.vn", with: "")
+        return "http://d1cc8adlak9j1y.cloudfront.net/avatar/\(id)"
     }
 }

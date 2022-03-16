@@ -87,7 +87,7 @@ public struct BaseMessageCollectionViewCellLayoutConstants {
         - Have a BubbleViewType that responds properly to sizeThatFits:
 */
 
-open class BaseMessageCollectionViewCell<BubbleViewType>: UICollectionViewCell, BackgroundSizingQueryable, AccessoryViewRevealable, ReplyIndicatorRevealable, UIGestureRecognizerDelegate where
+open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewCell, BackgroundSizingQueryable, AccessoryViewRevealable, ReplyIndicatorRevealable, UIGestureRecognizerDelegate where
     BubbleViewType: UIView,
     BubbleViewType: MaximumLayoutWidthSpecificable,
     BubbleViewType: BackgroundSizingQueryable {
@@ -114,7 +114,6 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: UICollectionViewCell, 
 
     open var messageViewModel: MessageViewModelProtocol! {
         didSet {
-            oldValue?.avatarImage.removeObserver(self)
             self.updateViews()
             self.observeAvatar()
             self.addBubbleViewConstraintsIfNeeded()
@@ -156,6 +155,7 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: UICollectionViewCell, 
     open func createAvatarView() -> UIImageView! {
         let avatarImageView = UIImageView(frame: CGRect.zero)
         avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.clipsToBounds = true
         return avatarImageView
     }
 
@@ -299,12 +299,8 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: UICollectionViewCell, 
         guard self.viewContext != .sizing else { return }
         guard let viewModel = self.messageViewModel else { return }
         self.avatarView.isHidden = !viewModel.decorationAttributes.isShowingAvatar
-        avatarView.backgroundColor = .red
-        self.avatarView.image = viewModel.avatarImage.value
-        viewModel.avatarImage.observe(self) { [weak self] _, new in
-            guard let self = self else { return }
-            self.avatarView.image = new
-        }
+        self.avatarView.layer.cornerRadius = self.baseStyle.avatarSize(viewModel: viewModel).height/2
+        self.avatarView.setThumbMessage(url: viewModel.avatarUrl)
     }
 
     // MARK: layout
@@ -663,3 +659,35 @@ private struct LayoutParameters {
     let selectionIndicatorSize: CGSize
     let selectionIndicatorMargins: UIEdgeInsets
 }
+
+
+open class MessageCollectionViewCell: UICollectionViewCell {
+
+    // MARK: - Initializers
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    /// Handle tap gesture on contentView and its subviews.
+    open func handleTapGesture(_ gesture: UIGestureRecognizer) {
+        // Should be overridden
+    }
+
+    open func handleDoubleTapGesture(_ gesture: UIGestureRecognizer) {
+        // Should be overridden
+    }
+    
+    open func handleLongPressGesture(in touchLocation: CGPoint, touchPointInWindow: CGPoint) {
+        // Should be overridden
+    }
+    
+    open func didEndPressGesture() {
+        // Should be overridden
+    }
+}
+

@@ -36,6 +36,8 @@ public enum UpdateType: CaseIterable {
 public protocol ChatDataSourceDelegateProtocol: class {
     func chatDataSourceDidUpdate(_ chatDataSource: ChatDataSourceProtocol)
     func chatDataSourceDidUpdate(_ chatDataSource: ChatDataSourceProtocol, updateType: UpdateType)
+    func chatDataSourceDidUpdate(_ chatDataSource: ChatDataSourceProtocol, updateType: UpdateType, completion: (() -> Void)?)
+    func chatDataSourceDidUpdate(_ chatDataSource: ChatDataSourceProtocol, at indexPath: IndexPath, updateType: UpdateType)
 }
 
 public protocol ChatDataSourceProtocol: class {

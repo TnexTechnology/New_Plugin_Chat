@@ -50,7 +50,7 @@ public protocol MessageViewModelProtocol: class { // why class? https://gist.git
     var isShowingFailedIcon: Bool { get }
     var date: String { get }
     var status: MessageViewModelStatus { get }
-    var avatarImage: Observable<UIImage?> { get set }
+    var avatarUrl: String? { get set }
     var messageContentTransferStatus: TransferStatus? { get set }
     var canReply: Bool { get }
     func willBeShown() // Optional
@@ -112,12 +112,12 @@ extension DecoratedMessageViewModelProtocol {
         return self.messageViewModel.isShowingFailedIcon
     }
 
-    public var avatarImage: Observable<UIImage?> {
+    public var avatarUrl: String? {
         get {
-            return self.messageViewModel.avatarImage
+            return self.messageViewModel.avatarUrl
         }
         set {
-            self.messageViewModel.avatarImage = newValue
+            self.messageViewModel.avatarUrl = newValue
         }
     }
 }
@@ -153,11 +153,11 @@ open class MessageViewModel: MessageViewModelProtocol {
 
     public init(dateFormatter: DateFormatter,
                 messageModel: MessageModelProtocol,
-                avatarImage: UIImage?,
+                avatarUrl: String?,
                 decorationAttributes: BaseMessageDecorationAttributes) {
         self.dateFormatter = dateFormatter
         self.messageModel = messageModel
-        self.avatarImage = Observable<UIImage?>(avatarImage)
+        self.avatarUrl = avatarUrl
         self.decorationAttributes = decorationAttributes
     }
 
@@ -165,7 +165,7 @@ open class MessageViewModel: MessageViewModelProtocol {
         return self.status == .failed
     }
 
-    public var avatarImage: Observable<UIImage?>
+    public var avatarUrl: String?
 }
 
 public class MessageViewModelDefaultBuilder {
@@ -184,7 +184,7 @@ public class MessageViewModelDefaultBuilder {
         // Override to use default avatarImage
         return MessageViewModel(dateFormatter: MessageViewModelDefaultBuilder.dateFormatter,
                                 messageModel: message,
-                                avatarImage: nil,
+                                avatarUrl: nil,
                                 decorationAttributes: BaseMessageDecorationAttributes())
     }
 }

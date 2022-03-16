@@ -16,54 +16,6 @@ public enum LoginState {
     case loggedIn(userId: String)
 }
 
-//public class AccountStore: NSObject {
-//    public var client: MXRestClient?
-//    public var session: MXSession?
-//
-//    var fileStore: MXFileStore?
-//    var credentials: MXCredentials?
-//
-//    let keychain = Keychain(
-//        service: "chat.nio.credentials",
-//        accessGroup: ((Bundle.main.infoDictionary?["DevelopmentTeam"] as? String) ?? "") + ".nio.keychain")
-//    
-//
-//    public init() {
-//        if CommandLine.arguments.contains("-clear-stored-credentials") {
-//            print("🗑 cleared stored credentials from keychain")
-//            MXCredentials
-//                .from(keychain)?
-//                .clear(from: keychain)
-//        }
-//
-//        Configuration.setupMatrixSDKSettings()
-//
-//        if let credentials = MXCredentials.from(keychain) {
-//            self.loginState = .authenticating
-//            self.credentials = credentials
-//            self.sync { result in
-//                switch result {
-//                case .failure(let error):
-//                    print("Error on starting session with saved credentials: \(error)")
-//                    self.loginState = .failure(error)
-//                case .success(let state):
-//                    self.loginState = state
-//                    self.session?.crypto.warnOnUnknowDevices = false
-//                }
-//            }
-//        }
-//    }
-//
-////    deinit {
-////        self.session?.removeListener(self.listenReference)
-////    }
-//
-//    // MARK: - Login & Sync
-//
-//    
-//}
-
-
 final public class APIManager: NSObject {
         
     public static let shared = APIManager()
@@ -144,10 +96,13 @@ final public class APIManager: NSObject {
         }
     }
     
+    var homeServer: String = ""
     public func sync(credentials: MXCredentials, completion: @escaping () -> Void) {
         self.mxRestClient = MXRestClient(credentials: credentials, unrecognizedCertificateHandler: nil)
         self.mxSession = MXSession(matrixRestClient: self.mxRestClient!)
+        self.homeServer = credentials.homeServer ?? ""
         self.fileStore = MXFileStore()
+        self.userId = credentials.userId
 
         self.mxSession!.setStore(fileStore!) { response in
             switch response {
@@ -159,6 +114,7 @@ final public class APIManager: NSObject {
                     case .failure(let error):
                         break
                     case .success:
+                        APIManager.shared.startListeningForRoomEvents()
                         completion()
                     @unknown default:
                         fatalError("Unexpected Matrix response: \(response)")

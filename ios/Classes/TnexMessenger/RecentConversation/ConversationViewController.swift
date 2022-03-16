@@ -74,9 +74,7 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let room = rooms[indexPath.row]
-        let dataSource = TnexChatDataSource(room: room)
-        let vc = ChatDetailViewController()
-        vc.dataSource = dataSource
+        let vc = ChatDetailViewController(roomId: room.room.roomId ?? "")
 //        let vc = ChatDetailTableViewController()
 //        vc.events = room.events()
         self.navigationController?.pushViewController(vc, animated: true)

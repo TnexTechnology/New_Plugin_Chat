@@ -18,22 +18,24 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
 
     var onDidUpdate: (() -> Void)?
     var slidingWindow: SlidingDataSource<ChatItemProtocol>?
-    var room: TnexRoom!
+    var room: TnexRoom?
     private var memberDic: [String: MXRoomMember] = [:]
 
-    public init(room: TnexRoom) {
-        self.room = room
-        self.events = room.events().wrapped.filter({$0.isShowMessage})
-        self.loadData()
-        getInfoRoom()
-        handleEvent()
-        
+    public init(roomId: String) {
+        if let room = APIManager.shared.getRooms()?.first(where: {$0.room.roomId == roomId}) {
+            self.room = room
+            self.events = room.events().wrapped.filter({$0.isShowMessage})
+            self.loadData()
+            self.delegate?.chatDataSourceDidUpdate(self, updateType: .firstLoad)
+            getInfoRoom()
+            handleEvent()
+        }
     }
     
     func handleEvent() {
         APIManager.shared.handleEvent = {[weak self] event, direction, roomState in
             guard let self = self else { return }
-            if self.room.room.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(eventId: event.eventId) {
+            if self.room?.room.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(eventId: event.eventId) {
                 let message = self.builderMessage(from: event)
                 self.slidingWindow?.insertItem(message, position: .bottom)
                 self.delegate?.chatDataSourceDidUpdate(self)
@@ -51,15 +53,15 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
     
     func getDisplayName() -> String {
-        return self.room.summary.displayname
+        return self.room?.summary.displayname ?? ""
     }
     
     func getAvatarURL() -> URL? {
-        return self.room.roomAvatarURL
+        return self.room?.roomAvatarURL
     }
     
     func getInfoRoom() {
-        self.room.room.liveTimeline {[weak self] eventTimeline in
+        self.room?.room.liveTimeline {[weak self] eventTimeline in
             guard let self = self else { return }
             if let members = eventTimeline?.state?.members.members {
                 for member in members {
@@ -117,11 +119,11 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
 
     var canLoadMore: Bool = true
     public func loadPrevious() {
-        guard let topEvent = self.events.first else { return }
+        guard let topEvent = self.events.first, let _room = self.room else { return }
         self.canLoadMore = false
-        APIManager.shared.paginate(room: self.room, event: topEvent) {[weak self] in
+        APIManager.shared.paginate(room: _room, event: topEvent) {[weak self] in
             guard let self = self else { return }
-            let newEvents = self.room.events().wrapped.filter({$0.isShowMessage})
+            let newEvents = _room.events().wrapped.filter({$0.isShowMessage})
             if self.events.count < newEvents.count {
                 self.canLoadMore = true
                 self.events = newEvents
@@ -134,7 +136,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
 
     func addTextMessage(_ text: String) {
-        self.room.send(text: text) {[weak self] _event in
+        self.room?.send(text: text) {[weak self] _event in
             if let self = self, let event = _event {
                 
                 if event.sentState == MXEventSentStateSending {
@@ -149,17 +151,10 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                 }
             }
         }
-        
     }
 
     func addPhotoMessage(_ image: UIImage) {
-        self.room.sendImage(image: image)
-//        let uid = "\(self.nextMessageId)"
-//        self.nextMessageId += 1
-//        let message = DemoChatMessageFactory.makePhotoMessage(uid, image: image, size: image.size, isIncoming: false)
-//        self.messageSender.sendMessage(message)
-//        self.slidingWindow.insertItem(message, position: .bottom)
-//        self.delegate?.chatDataSourceDidUpdate(self)
+        self.room?.sendImage(image: image)
     }
 
     public func adjustNumberOfMessages(preferredMaxCount: Int?, focusPosition: Double, completion:(_ didAdjust: Bool) -> Void) {

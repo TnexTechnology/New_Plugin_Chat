@@ -12,6 +12,16 @@ public protocol TnexMessageModelProtocol: MessageModelProtocol, ContentEquatable
     var status: MessageStatus { get set }
     var clientId: String? { get }
     var senderName: String? { get }
+    var senderAvatarUrl: String { get }
+}
+
+public extension TnexMessageModelProtocol {
+    var senderAvatarUrl: String {
+        let path = senderId.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ":chat-matrix.tnex.com.vn", with: "")
+        let avatarUrl = "http://d1cc8adlak9j1y.cloudfront.net/avatar/\(path)"
+        return "https://customer-images.tnex.com.vn/null1291688755-d2040ed1-127c-43cc-b575-0bf25fef9817.jpg" //avatarUrl
+    }
+    
 }
 
 //extension TnexMessageModelProtocol where Self: BaseMessageModel<TnexMessageModel> {

@@ -20,17 +20,3 @@ class TnexContainerInputBar: UIView {
         return "TnexContainerInputBar"
     }
 }
-
-extension UIView {
-    
-    func fillSuperview() {
-        guard let superview = self.superview else {
-            return
-        }
-        translatesAutoresizingMaskIntoConstraints = false
-        leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
-        rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
-        topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
-    }
-}

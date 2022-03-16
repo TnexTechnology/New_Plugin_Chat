@@ -75,7 +75,8 @@ extension TnexChatDataSource {
         messageModel.type = PhotoMessageModel<TnexMessageModel>.chatItemType
         let mediaURLs = event.getMediaURLs().compactMap(MXURL.init)
         let urls: [URL] = mediaURLs.compactMap { mediaURL in
-            mediaURL.contentURL(on: URL(string: "https://chat-matrix.tnex.com.vn")!)
+            return URL(string: mediaURL.mxContentURI.absoluteString)
+//            return mediaURL.contentURL(on: URL(string: APIManager.shared.homeServer)!)
         }
         let photoItem = TnexMediaItem(imageSize: imageSize, image: nil, urlString: urls.first?.absoluteString)
         let photoMessageModel = DemoPhotoMessageModel(messageModel: messageModel, mediaItem: photoItem)
