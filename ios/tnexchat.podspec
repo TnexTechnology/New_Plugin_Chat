@@ -26,4 +26,5 @@ A new flutter plugin project.
   s.dependency 'PureLayout'
   s.dependency 'InputBarAccessoryView'
   s.dependency 'DropDown'
+  s.dependency 'ISEmojiView'
 end

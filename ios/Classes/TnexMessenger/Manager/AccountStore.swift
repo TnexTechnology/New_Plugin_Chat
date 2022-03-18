@@ -106,12 +106,12 @@ final public class APIManager: NSObject {
 
         self.mxSession!.setStore(fileStore!) { response in
             switch response {
-            case .failure(let error):
+            case .failure:
                 break
             case .success:
                 self.mxSession?.start { response in
                     switch response {
-                    case .failure(let error):
+                    case .failure:
                         break
                     case .success:
                         APIManager.shared.startListeningForRoomEvents()

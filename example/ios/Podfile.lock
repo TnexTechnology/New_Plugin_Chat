@@ -20,6 +20,7 @@ PODS:
   - InputBarAccessoryView (5.1.0):
     - InputBarAccessoryView/Core (= 5.1.0)
   - InputBarAccessoryView/Core (5.1.0)
+  - ISEmojiView (0.2.6)
   - KeychainAccess (4.2.2)
   - libbase58 (0.1.4)
   - MatrixSDK (0.22.2):
@@ -48,6 +49,7 @@ PODS:
     - DropDown
     - Flutter
     - InputBarAccessoryView
+    - ISEmojiView
     - KeychainAccess
     - MatrixSDK
     - PureLayout
@@ -63,6 +65,7 @@ SPEC REPOS:
     - DropDown
     - GZIP
     - InputBarAccessoryView
+    - ISEmojiView
     - KeychainAccess
     - libbase58
     - MatrixSDK
@@ -84,6 +87,7 @@ SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   GZIP: 416858efbe66b41b206895ac6dfd5493200d95b3
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
+  ISEmojiView: f7cd94a6c93307f429ec5da001293d0b02247f03
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   libbase58: 7c040313537b8c44b6e2d15586af8e21f7354efd
   MatrixSDK: 4e7c8f0cfff3553e8dd60d97eef6b31653408ae7
@@ -92,7 +96,7 @@ SPEC CHECKSUMS:
   Realm: b6027801398f3743fc222f096faa85281b506e6c
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
-  tnexchat: 516ef5fec4189483dbbe3e76b41b3a30537004db
+  tnexchat: dfb3ab9e0958269310fd3f884095a1edb0c1f3ab
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
 

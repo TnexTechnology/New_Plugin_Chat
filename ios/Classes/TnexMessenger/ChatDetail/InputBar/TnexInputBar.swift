@@ -7,12 +7,14 @@
 
 import UIKit
 import InputBarAccessoryView
+import ISEmojiView
 
-class TnexInputBar: InputBarAccessoryView {
+@objc open class TnexInputBar: InputBarAccessoryView {
     
     var onClickSendButton: ((_ text: String) -> Void)?
     var photoInputHandler: ((UIImage, PhotosInputViewPhotoSource) -> Void)?
     var emojInputHandler: (() -> Void)?
+    var emojis: [EmojiCategory]?
     
     lazy var transferButton: InputBarButtonItem = {
         let button = InputBarButtonItem()
@@ -29,6 +31,18 @@ class TnexInputBar: InputBarAccessoryView {
         return button
     }()
     
+    lazy var emojiView: EmojiView = {
+        let keyboardSettings = KeyboardSettings(bottomType: BottomType.categories)
+        keyboardSettings.customEmojis = emojis
+        keyboardSettings.countOfRecentsEmojis = 20
+        keyboardSettings.updateRecentEmojiImmediately = true
+        let emojiView = EmojiView(keyboardSettings: keyboardSettings)
+        emojiView.translatesAutoresizingMaskIntoConstraints = false
+        emojiView.delegate = self
+        return emojiView
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -36,7 +50,7 @@ class TnexInputBar: InputBarAccessoryView {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -56,7 +70,10 @@ class TnexInputBar: InputBarAccessoryView {
         galleryButton.setImage(UIImage(named: "chat_inputbar_gallerry", in: Bundle.resources, compatibleWith: nil), for: .normal)
         galleryButton.imageView?.contentMode = .scaleAspectFit
         galleryButton.onTouchUpInside { [weak self] _ in
-            print("Go to bank")
+            guard let self = self else { return }
+            self.inputTextView.inputView = nil
+            self.inputTextView.reloadInputViews()
+            self.inputTextView.becomeFirstResponder()
         }
         let emojiButton = InputBarButtonItem()
         emojiButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
@@ -72,6 +89,12 @@ class TnexInputBar: InputBarAccessoryView {
         emojiButton.imageView?.contentMode = .scaleAspectFit
         emojiButton.onTouchUpInside { [weak self] _ in
             print("Go to emoji")
+            if let self = self {
+                self.inputTextView.inputView = nil
+                self.inputTextView.inputView = self.emojiView
+                self.inputTextView.reloadInputViews()
+                self.inputTextView.becomeFirstResponder()
+            }
         }
         inputTextView.backgroundColor = .clear
         inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
@@ -129,5 +152,26 @@ class TnexInputBar: InputBarAccessoryView {
         }
         setStackViewItems(listRightItems, forStack: .right, animated: animated)
         setRightStackViewWidthConstant(to: rightStackExpandWidth, animated: animated)
+    }
+    
+}
+
+extension TnexInputBar: EmojiViewDelegate {
+    public func emojiViewDidSelectEmoji(_ emoji: String, emojiView: EmojiView) {
+        inputTextView.insertText(emoji)
+    }
+    
+    public func emojiViewDidPressChangeKeyboardButton(_ emojiView: EmojiView) {
+        inputTextView.inputView = nil
+        inputTextView.keyboardType = .default
+        inputTextView.reloadInputViews()
+    }
+    
+    public func emojiViewDidPressDeleteBackwardButton(_ emojiView: EmojiView) {
+        inputTextView.deleteBackward()
+    }
+    
+    public func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
+        inputTextView.resignFirstResponder()
     }
 }

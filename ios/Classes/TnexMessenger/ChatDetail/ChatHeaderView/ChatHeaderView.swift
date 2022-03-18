@@ -202,12 +202,27 @@ class ChatHeaderView: UIView {
 //        }
         
     }
+    
+    func updateUser(member: MXRoomMember) {
+        self.infoView.displayNameLabel.text = member.displayname
+        self.avatarView.statusView.isHidden = true
+        let urlString = member.userId.getAvatarUrl()
+        self.avatarView.imageView.loadAvatar(url: urlString)
+    }
 }
 
 
 extension MXUser {
     func getAvatarUrl() -> String {
         let id = self.userId.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ":chat-matrix.tnex.com.vn", with: "")
-        return "http://d1cc8adlak9j1y.cloudfront.net/avatar/\(id)"
+        return "https://d1cc8adlak9j1y.cloudfront.net/avatar/\(id)"
+    }
+}
+
+extension String {
+    //Chi dung rieng cho Id
+    func getAvatarUrl() -> String{
+        let id = self.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ":chat-matrix.tnex.com.vn", with: "")
+        return "https://d1cc8adlak9j1y.cloudfront.net/avatar/\(id)"
     }
 }

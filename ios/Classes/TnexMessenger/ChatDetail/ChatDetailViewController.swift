@@ -90,10 +90,12 @@ open class ChatDetailViewController: BaseChatViewController {
 //        self.headerBar.avatarView.imageView.sd_setImage(with: self.dataSource.getAvatarURL())
         dataSource.room?.room.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
-                if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}), let mxUser = self.dataSource.room?.room.mxSession.user(withUserId: partnerUser.userId) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}) {
+                    if let mxUser = self.dataSource.room?.room.mxSession.user(withUserId: partnerUser.userId) {
                         self.headerBar.updateUser(user: mxUser)
-                    })
+                    } else {
+                        self.headerBar.updateUser(member: partnerUser)
+                    }
                 }
             }
         })
