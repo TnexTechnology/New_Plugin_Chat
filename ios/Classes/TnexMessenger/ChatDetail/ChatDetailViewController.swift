@@ -106,12 +106,16 @@ open class ChatDetailViewController: BaseChatViewController {
         let chatInputView = TnexContainerInputBar.loadNib()
         chatInputView.backgroundColor = .clear
         let inputbar = TnexInputBar()
+        inputbar.presentingController = self
         chatInputView.addSubview(inputbar)
         inputbar.fillSuperview()
         inputbar.backgroundColor = .clear
         inputbar.onClickSendButton = {[weak self] text in
             inputbar.inputTextView.text = ""
             self?.dataSource.addTextMessage(text)
+        }
+        inputbar.photoInputHandler = { [weak self] image, _ in
+            self?.dataSource.addPhotoMessage(image)
         }
         return chatInputView
     }

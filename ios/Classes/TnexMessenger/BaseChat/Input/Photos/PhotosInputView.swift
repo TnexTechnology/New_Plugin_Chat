@@ -108,7 +108,6 @@ public final class PhotosInputView: UIView, PhotosInputViewProtocol {
         self.permissionsRequester.delegate = self
         self.collectionViewQueue.start()
         self.requestAccessToPhoto()
-        self.requestAccessToVideo()
     }
 
     private func configureItemSizeCalculator() {
@@ -137,6 +136,7 @@ public final class PhotosInputView: UIView, PhotosInputViewProtocol {
     private func requestAccessToPhoto() {
         guard self.photoLibraryAuthorizationStatus != .authorized else {
             self.replacePlaceholderItemsWithPhotoItems()
+            self.requestAccessToVideo()
             return
         }
         self.permissionsRequester.requestAccessToPhotos()

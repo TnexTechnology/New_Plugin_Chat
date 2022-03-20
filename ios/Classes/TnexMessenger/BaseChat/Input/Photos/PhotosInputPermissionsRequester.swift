@@ -53,7 +53,7 @@ final class PhotosInputPermissionsRequester: PhotosInputPermissionsRequesterProt
     var photoLibraryAuthorizationStatus: PHAuthorizationStatus {
         return PHPhotoLibrary.authorizationStatus()
     }
-
+    
     func requestAccessToCamera() {
         self.needsToRequestVideoPermission = true
         self.requestNeededPermissions()

@@ -15,6 +15,9 @@ import ISEmojiView
     var photoInputHandler: ((UIImage, PhotosInputViewPhotoSource) -> Void)?
     var emojInputHandler: (() -> Void)?
     var emojis: [EmojiCategory]?
+    public var cameraPermissionHandler: (() -> Void)?
+    public var photosPermissionHandler: (() -> Void)?
+    public weak var presentingController: UIViewController?
     
     lazy var transferButton: InputBarButtonItem = {
         let button = InputBarButtonItem()
@@ -42,6 +45,14 @@ import ISEmojiView
         return emojiView
     }()
     
+    lazy var photosInputView: PhotosInputView = {
+        let photosInputView = PhotosInputView(
+            cameraPickerFactory: PhotosInputCameraPickerFactory(presentingViewControllerProvider: { [weak self] in self?.presentingController }),
+            liveCameraCellPresenterFactory: LiveCameraCellPresenterFactory()
+        )
+        photosInputView.delegate = self
+        return photosInputView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,9 +82,8 @@ import ISEmojiView
         galleryButton.imageView?.contentMode = .scaleAspectFit
         galleryButton.onTouchUpInside { [weak self] _ in
             guard let self = self else { return }
-            self.inputTextView.inputView = nil
-            self.inputTextView.reloadInputViews()
-            self.inputTextView.becomeFirstResponder()
+            self.tapAlphabetGesture.isEnabled = true
+            self.onClickGallery()
         }
         let emojiButton = InputBarButtonItem()
         emojiButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
@@ -90,6 +100,7 @@ import ISEmojiView
         emojiButton.onTouchUpInside { [weak self] _ in
             print("Go to emoji")
             if let self = self {
+                self.tapAlphabetGesture.isEnabled = true
                 self.inputTextView.inputView = nil
                 self.inputTextView.inputView = self.emojiView
                 self.inputTextView.reloadInputViews()
@@ -111,7 +122,7 @@ import ISEmojiView
         
         sendButton.configure {
             $0.setSize(CGSize(width: 52, height: 36), animated: false)
-            $0.setImage(UIImage(named: "chat_avatar_default", in: Bundle.resources, compatibleWith: nil), for: .normal)
+            $0.setImage(UIImage(named: "chat_btn_send", in: Bundle.resources, compatibleWith: nil), for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
             $0.setTitle(nil, for: .normal)
         }.onEnabled { [weak self] (_) in
@@ -124,6 +135,7 @@ import ISEmojiView
         inputTextView.placeholder = "Nhập tin nhắn..."
         separatorLine.backgroundColor = .clear
         switchSend(animated: false)
+        textViewActions()
     }
     
     var isCollapsed: Bool = true
@@ -153,7 +165,35 @@ import ISEmojiView
         setStackViewItems(listRightItems, forStack: .right, animated: animated)
         setRightStackViewWidthConstant(to: rightStackExpandWidth, animated: animated)
     }
+    var tapAlphabetGesture: UITapGestureRecognizer!
+    private func textViewActions() {
+        inputTextView.placeholder = "Nhập tin nhắn..."
+        tapAlphabetGesture = UITapGestureRecognizer(target: self, action: #selector(TnexInputBar.textViewTap))
+        inputTextView.addGestureRecognizer(tapAlphabetGesture)
+        tapAlphabetGesture.isEnabled = false
+//        NotificationCenter.default.addObserver(self, selector: #selector(TnexInputBar.inputTextViewDidEndEditing), name: UITextView.textDidEndEditingNotification, object: inputTextView)
+    }
+    @objc func textViewTap() {
+        tapAlphabetGesture.isEnabled = false
+        showKeyboard()
+    }
+
+    func showKeyboard() {
+        inputTextView.inputView = nil
+        inputTextView.reloadInputViews()
+        inputTextView.becomeFirstResponder()
+    }
     
+    private func onClickGallery() {
+        PermissionManager.shared.checkPhotoPermission {[weak self] granted in
+            if let self = self, granted {
+                self.inputTextView.inputView = nil
+                self.inputTextView.inputView = self.photosInputView
+                self.inputTextView.reloadInputViews()
+                self.inputTextView.becomeFirstResponder()
+            }
+        }
+    }
 }
 
 extension TnexInputBar: EmojiViewDelegate {
@@ -173,5 +213,21 @@ extension TnexInputBar: EmojiViewDelegate {
     
     public func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
         inputTextView.resignFirstResponder()
+    }
+}
+
+extension TnexInputBar: PhotosInputViewDelegate {
+    public func inputView(_ inputView: PhotosInputViewProtocol,
+                          didSelectImage image: UIImage,
+                          source: PhotosInputViewPhotoSource) {
+        self.photoInputHandler?(image, source)
+    }
+
+    public func inputViewDidRequestCameraPermission(_ inputView: PhotosInputViewProtocol) {
+        self.cameraPermissionHandler?()
+    }
+
+    public func inputViewDidRequestPhotoLibraryPermission(_ inputView: PhotosInputViewProtocol) {
+        self.photosPermissionHandler?()
     }
 }
