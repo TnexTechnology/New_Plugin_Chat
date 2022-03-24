@@ -8,7 +8,15 @@
 import Foundation
 import MatrixSDK
 
-enum MessageType: String {
-    case text = kMXMessageTypeText
-    case image = kMXMessageTypeImage
+enum MessageType {
+    case text
+    case image
+    
+    var key: String {
+        switch self {
+        case .text: return kMXMessageTypeText
+        case .image: return kMXMessageTypeImage
+        }
+    }
+    
 }

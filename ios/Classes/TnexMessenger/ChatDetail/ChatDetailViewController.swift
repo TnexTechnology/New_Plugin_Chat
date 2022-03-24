@@ -91,10 +91,9 @@ open class ChatDetailViewController: BaseChatViewController {
         dataSource.room?.room.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
                 if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}) {
+                    self.headerBar.updateUser(member: partnerUser)
                     if let mxUser = self.dataSource.room?.room.mxSession.user(withUserId: partnerUser.userId) {
-                        self.headerBar.updateUser(user: mxUser)
-                    } else {
-                        self.headerBar.updateUser(member: partnerUser)
+                        self.headerBar.updateStatusUser(user: mxUser)
                     }
                 }
             }
@@ -114,13 +113,12 @@ open class ChatDetailViewController: BaseChatViewController {
             inputbar.inputTextView.text = ""
             self?.dataSource.addTextMessage(text)
         }
-        inputbar.photoInputHandler = { [weak self] image, _ in
+        inputbar.photoInputHandler = { [weak self] image in
             self?.dataSource.addPhotoMessage(image)
         }
         return chatInputView
     }
     
-
     open override func createPresenterBuilders() -> [ChatItemType: [ChatItemPresenterBuilderProtocol]] {
 
         let textMessagePresenter = TextMessagePresenterBuilder(

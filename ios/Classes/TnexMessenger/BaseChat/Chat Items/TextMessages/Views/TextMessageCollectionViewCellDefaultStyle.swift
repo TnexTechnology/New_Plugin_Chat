@@ -62,6 +62,9 @@ open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewC
     lazy var outgoingColor: UIColor = self.textStyle.outgoingColor()
 
     open func textFont(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIFont {
+        if viewModel.text.containsOnlyEmoji {
+            return UIFont.systemFont(ofSize: 42)
+        }
         return self.font
     }
 
@@ -89,6 +92,9 @@ open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewC
     }
     
     open func bubbleBackgroundColor(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIColor? {
+        if (viewModel as? TextMessageViewModelProtocol)?.text.containsOnlyEmoji == true {
+            return UIColor.clear
+        }
         let color = viewModel.isIncoming ? self.baseStyle.baseColorIncoming : self.baseStyle.baseColorOutgoing
         switch viewModel.status {
         case .success:

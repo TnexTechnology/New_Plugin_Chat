@@ -8,16 +8,19 @@
 import UIKit
 import InputBarAccessoryView
 import ISEmojiView
+import TLPhotoPicker
+import FittedSheets
 
 @objc open class TnexInputBar: InputBarAccessoryView {
     
     var onClickSendButton: ((_ text: String) -> Void)?
-    var photoInputHandler: ((UIImage, PhotosInputViewPhotoSource) -> Void)?
+    var photoInputHandler: ((UIImage) -> Void)?
     var emojInputHandler: (() -> Void)?
     var emojis: [EmojiCategory]?
     public var cameraPermissionHandler: (() -> Void)?
     public var photosPermissionHandler: (() -> Void)?
     public weak var presentingController: UIViewController?
+    var selectedAssets = [TLPHAsset]()
     
     lazy var transferButton: InputBarButtonItem = {
         let button = InputBarButtonItem()
@@ -110,15 +113,18 @@ import ISEmojiView
         inputTextView.backgroundColor = .clear
         inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         inputTextView.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
-        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
-        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
-        inputTextView.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
+        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        inputTextView.layer.borderColor = UIColor(red: 0.078, green: 0.784, blue: 0.98, alpha: 0.4).cgColor
         inputTextView.layer.borderWidth = 1.0
-        inputTextView.layer.cornerRadius = 15.0
+        inputTextView.layer.cornerRadius = 20.0
         inputTextView.layer.masksToBounds = true
+        inputTextView.keyboardAppearance = .dark
         inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         setLeftStackViewWidthConstant(to: 90, animated: false)
-        setStackViewItems([emojiButton, galleryButton], forStack: .left, animated: false)
+        let paddingItem = InputBarButtonItem()
+        paddingItem.setSize(CGSize(width: 10, height: 40), animated: false)
+        setStackViewItems([emojiButton, galleryButton, paddingItem], forStack: .left, animated: false)
         
         sendButton.configure {
             $0.setSize(CGSize(width: 40, height: 40), animated: false)
@@ -141,11 +147,11 @@ import ISEmojiView
     var isCollapsed: Bool = true
     var isQuickSend: Bool = false
     func switchSend(show: Bool = true, animated: Bool = true) {
-        if isQuickSend == show {
-            return
-        }
-        isQuickSend = show
-        self.setupRightStackView(show: show, collapsed: isCollapsed, animated: animated)
+//        if isQuickSend == show {
+//            return
+//        }
+//        isQuickSend = show
+//        self.setupRightStackView(show: show, collapsed: isCollapsed, animated: animated)
     }
     
     private func setupRightStackView(show: Bool = true, collapsed: Bool, animated: Bool = true) {
@@ -185,14 +191,37 @@ import ISEmojiView
     }
     
     private func onClickGallery() {
-        PermissionManager.shared.checkPhotoPermission {[weak self] granted in
-            if let self = self, granted {
-                self.inputTextView.inputView = nil
-                self.inputTextView.inputView = self.photosInputView
-                self.inputTextView.reloadInputViews()
-                self.inputTextView.becomeFirstResponder()
-            }
+        let viewController = CustomPhotoPickerViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.delegate = self
+        viewController.didExceedMaximumNumberOfSelection = { [weak self] (picker) in
+            self?.showExceededMaximumAlert(vc: picker)
         }
+        var configure = TLPhotosPickerConfigure()
+        configure.numberOfColumn = 4
+        configure.maxSelectedAssets = 1
+        configure.singleSelectedMode = true
+        configure.doneTitle = "Gửi"
+        configure.cancelTitle = "Huỷ"
+        configure.tapHereToChange = "Chọn album"
+        configure.allowedVideo = false
+        viewController.configure = configure
+        viewController.selectedAssets = self.selectedAssets
+        let sheetController = SheetViewController(
+            controller: viewController,
+            sizes: [.fixed(500), .fullScreen])
+        sheetController.topCornersRadius = 16
+        sheetController.adjustForBottomSafeArea = true
+        sheetController.blurBottomSafeArea = true
+        sheetController.pullBarView.isHidden = true
+        
+        self.presentingController?.present(sheetController, animated: false, completion: nil)
+    }
+    
+    func showExceededMaximumAlert(vc: UIViewController) {
+        let alert = UIAlertController(title: "", message: "Bạn chỉ được gửi từng ảnh", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.presentingController?.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -220,7 +249,7 @@ extension TnexInputBar: PhotosInputViewDelegate {
     public func inputView(_ inputView: PhotosInputViewProtocol,
                           didSelectImage image: UIImage,
                           source: PhotosInputViewPhotoSource) {
-        self.photoInputHandler?(image, source)
+        self.photoInputHandler?(image)
     }
 
     public func inputViewDidRequestCameraPermission(_ inputView: PhotosInputViewProtocol) {
@@ -230,4 +259,35 @@ extension TnexInputBar: PhotosInputViewDelegate {
     public func inputViewDidRequestPhotoLibraryPermission(_ inputView: PhotosInputViewProtocol) {
         self.photosPermissionHandler?()
     }
+}
+
+extension TnexInputBar: TLPhotosPickerViewControllerDelegate {
+    public func dismissPhotoPicker(withTLPHAssets: [TLPHAsset]) {
+        self.selectedAssets = withTLPHAssets
+        getFirstSelectedImage()
+    }
+    
+    func getFirstSelectedImage() {
+        if let asset = self.selectedAssets.first {
+            if let image = asset.fullResolutionImage {
+                print(image)
+                photoInputHandler?(image)
+            }else {
+                print("Can't get image at local storage, try download image")
+                asset.cloudImageDownload(progressBlock: { (progress) in
+                    DispatchQueue.main.async {
+                        print(progress)
+                    }
+                }, completionBlock: { [weak self] (image) in
+                    if let image = image {
+                        //use image
+                        DispatchQueue.main.async {
+                            self?.photoInputHandler?(image)
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
 }

@@ -28,4 +28,6 @@ A new flutter plugin project.
   s.dependency 'DropDown'
   s.dependency 'ISEmojiView'
   s.dependency 'Alamofire', '~> 5.5'
+  s.dependency 'TLPhotoPicker'
+  s.dependency 'FittedSheets', '~> 1.4.6'
 end

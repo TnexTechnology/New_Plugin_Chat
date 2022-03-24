@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (5.5.0)
   - DropDown (2.3.13)
+  - FittedSheets (1.4.6)
   - Flutter (1.0.0)
   - GZIP (1.3.0)
   - InputBarAccessoryView (5.1.0):
@@ -46,9 +47,11 @@ PODS:
     - SDWebImage/Core (= 5.12.3)
   - SDWebImage/Core (5.12.3)
   - SwiftyBeaver (1.9.5)
+  - TLPhotoPicker (2.1.9)
   - tnexchat (0.0.1):
     - Alamofire (~> 5.5)
     - DropDown
+    - FittedSheets (~> 1.4.6)
     - Flutter
     - InputBarAccessoryView
     - ISEmojiView
@@ -56,6 +59,7 @@ PODS:
     - MatrixSDK
     - PureLayout
     - SDWebImage (~> 5.0)
+    - TLPhotoPicker
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -66,6 +70,7 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - DropDown
+    - FittedSheets
     - GZIP
     - InputBarAccessoryView
     - ISEmojiView
@@ -77,6 +82,7 @@ SPEC REPOS:
     - Realm
     - SDWebImage
     - SwiftyBeaver
+    - TLPhotoPicker
 
 EXTERNAL SOURCES:
   Flutter:
@@ -88,6 +94,7 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  FittedSheets: 7f37fee2567d15dcde391f31eccbffb660ddebf0
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   GZIP: 416858efbe66b41b206895ac6dfd5493200d95b3
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
@@ -100,7 +107,8 @@ SPEC CHECKSUMS:
   Realm: b6027801398f3743fc222f096faa85281b506e6c
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
-  tnexchat: b9873143f38b1a9b21b15eac7d6ac9eb872fc4f7
+  TLPhotoPicker: 939c40eaad130b69f9571e61e021e8120fa76329
+  tnexchat: c49747ec3583845cf40c235d1dc78b8114a8cf29
 
 PODFILE CHECKSUM: 011b9cb04c49a4a047f6557bc0a709e7fb539f84
 

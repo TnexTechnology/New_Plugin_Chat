@@ -183,24 +183,14 @@ class ChatHeaderView: UIView {
         self.rightItems.addArrangedSubview(self.menuRightButton)
     }
     
-    func updateUser(user: MXUser) {
-        self.infoView.displayNameLabel.text = user.displayname
-        self.avatarView.statusView.isHidden = !user.currentlyActive
+    func updateStatusUser(user: MXUser) {
         if user.currentlyActive {
             self.infoView.statusLabel.text = "Đang hoạt động"
         } else {
             let second = user.lastActiveAgo / 1000
             self.infoView.statusLabel.text = Int(second).toTimeActive()
         }
-        let urlString = user.getAvatarUrl()
-        print("@@@@\(urlString)")
-//        self.avatarView.imageView.image = UIImage(named: "chat_avatar_default", in: Bundle.resources, compatibleWith: nil)
-        self.avatarView.imageView.loadAvatar(url: urlString)
-//        if let url = URL(string: urlString) {
-////            let newUrl = url.contentURL(on: URL(string: APIManager.shared.homeServer)!)
-//            self.avatarView.imageView.sd_setImage(with: url)
-//        }
-        
+
     }
     
     func updateUser(member: MXRoomMember) {
