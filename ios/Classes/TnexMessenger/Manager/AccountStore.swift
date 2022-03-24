@@ -114,7 +114,13 @@ final public class APIManager: NSObject {
                     case .failure:
                         break
                     case .success:
-                        APIManager.shared.startListeningForRoomEvents()
+                        self.mxRestClient.maxUploadSize { size in
+                            print(size)
+                        } failure: { _ in
+                            //
+                        }
+
+                        self.startListeningForRoomEvents()
                         completion()
                     @unknown default:
                         fatalError("Unexpected Matrix response: \(response)")

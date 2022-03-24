@@ -93,14 +93,17 @@ public class TnexRoom {
 
     public func send(text: String, completion: @escaping(_ event: MXEvent?) -> Void) {
         guard !text.isEmpty else { return }
+        let messageContent: [String: Any] = [MessageContants.messageBodyKey: text, MessageContants.messageTypeKey: MessageType.text.rawValue, "clientId": UUID().uuidString]
+        self.sendMessage(content: messageContent, completion: completion)
+    }
+    
+    public func sendMessage(content: [String: Any], completion: @escaping(_ event: MXEvent?) -> Void) {
         var localEcho: MXEvent? = nil {
             didSet {
                 completion(localEcho)
             }
         }
-        
-        let messageContent: [String: Any] = [kMXMessageBodyKey: text, kMXMessageTypeKey: kMXMessageTypeText, "clientId": UUID().uuidString]
-        room.sendMessage(withContent: messageContent, localEcho: &localEcho) { fdsfds in
+        room.sendMessage(withContent: content, localEcho: &localEcho) { fdsfds in
             print("Da gui tin nhan")
             localEcho?.sentState = MXEventSentStateSent
             completion(localEcho)
@@ -111,6 +114,7 @@ public class TnexRoom {
 //            completion(localEcho)
 //        }
     }
+
 
     public func react(toEventId eventId: String, emoji: String) {
         // swiftlint:disable:next force_try
@@ -137,22 +141,15 @@ public class TnexRoom {
         room.redactEvent(eventId, reason: reason) { _ in }
     }
 
-    public func sendImage(image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: 0.0) else { return }
-
-        var localEcho: MXEvent? = nil
-        room.sendImage(
-            data: imageData,
-            size: image.size,
-            mimeType: "image/jpeg",
-            thumbnail: image,
-            blurhash: nil,
-            localEcho: &localEcho
-        ) { _ in
-            print("gui anh thanh cong")
+    public func sendImage(image: UIImage, completion: @escaping(_ event: MXEvent?) -> Void) {
+        NetworkManager.shared.createImageContent(image: image) {[weak self] content in
+            guard let content = content, let self = self else {
+                return
+            }
+            self.sendMessage(content: content, completion: completion)
         }
     }
-
+    
     public func markAllAsRead() {
         room.markAllAsRead()
     }

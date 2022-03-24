@@ -121,7 +121,7 @@ import ISEmojiView
         setStackViewItems([emojiButton, galleryButton], forStack: .left, animated: false)
         
         sendButton.configure {
-            $0.setSize(CGSize(width: 52, height: 36), animated: false)
+            $0.setSize(CGSize(width: 40, height: 40), animated: false)
             $0.setImage(UIImage(named: "chat_btn_send", in: Bundle.resources, compatibleWith: nil), for: .normal)
             $0.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
             $0.setTitle(nil, for: .normal)

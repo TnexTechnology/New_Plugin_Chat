@@ -154,7 +154,21 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
 
     func addPhotoMessage(_ image: UIImage) {
-        self.room?.sendImage(image: image)
+        self.room?.sendImage(image: image) {[weak self] _event in
+            if let self = self, let event = _event {
+                
+                if event.sentState == MXEventSentStateSending {
+                    let message = self.builderMessage(from: event)
+                    self.slidingWindow?.insertItem(message, position: .bottom)
+                    self.delegate?.chatDataSourceDidUpdate(self)
+                } else {
+                    if let client = event.clientId, let uuid = self.eventDic[client] {
+                        let message = self.builderMessage(from: event)
+                        self.replaceMessage(withUID: uuid, withNewMessage: message)
+                    }
+                }
+            }
+        }
     }
 
     public func adjustNumberOfMessages(preferredMaxCount: Int?, focusPosition: Double, completion:(_ didAdjust: Bool) -> Void) {

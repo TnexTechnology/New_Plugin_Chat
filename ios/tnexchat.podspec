@@ -27,4 +27,5 @@ A new flutter plugin project.
   s.dependency 'InputBarAccessoryView'
   s.dependency 'DropDown'
   s.dependency 'ISEmojiView'
+  s.dependency 'Alamofire', '~> 5.5'
 end

@@ -86,7 +86,7 @@ open class ChatInputBar: ReusableXibView {
         self.textView.delegate = self
         self.textView.placeholderDelegate = self
         self.scrollView.scrollsToTop = false
-        self.sendButton.isEnabled = false
+        self.sendButton.isSelected = false
     }
 
     open override func updateConstraints() {
@@ -189,7 +189,7 @@ open class ChatInputBar: ReusableXibView {
     }
 
     fileprivate func updateSendButton() {
-        self.sendButton.isEnabled = self.shouldEnableSendButton(self)
+        self.sendButton.isSelected = self.shouldEnableSendButton(self)
     }
 
     @IBAction func buttonTapped(_ sender: AnyObject) {
