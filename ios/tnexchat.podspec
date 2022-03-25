@@ -30,4 +30,6 @@ A new flutter plugin project.
   s.dependency 'Alamofire', '~> 5.5'
   s.dependency 'TLPhotoPicker'
   s.dependency 'FittedSheets', '~> 1.4.6'
+  s.dependency 'ImageViewer.swift'
+  s.dependency 'ImageViewer.swift/Fetcher'
 end

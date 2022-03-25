@@ -43,9 +43,9 @@ class TnexMediaItem: MediaItem {
     
 }
 
-class DemoPhotoMessageViewModel: PhotoMessageViewModel<DemoPhotoMessageModel> {
+class DemoPhotoMessageViewModel: PhotoMessageViewModel<TnextPhotoMessageModel> {
 
-    override init(photoMessage: DemoPhotoMessageModel, messageViewModel: MessageViewModelProtocol) {
+    override init(photoMessage: TnextPhotoMessageModel, messageViewModel: MessageViewModelProtocol) {
         super.init(photoMessage: photoMessage, messageViewModel: messageViewModel)
         if photoMessage.isIncoming {
             self.image.value = nil
@@ -82,18 +82,12 @@ class DemoPhotoMessageViewModel: PhotoMessageViewModel<DemoPhotoMessageModel> {
     }
 }
 
-class DemoPhotoMessageViewModelBuilder: ViewModelBuilderProtocol {
+class DemoPhotoMessageViewModelBuilder: PhotoMessageViewModelDefaultBuilder<TnextPhotoMessageModel> {
 
-    let messageViewModelBuilder = MessageViewModelDefaultBuilder()
-
-    func createViewModel(_ model: DemoPhotoMessageModel) -> DemoPhotoMessageViewModel {
+    override func createViewModel(_ model: TnextPhotoMessageModel) -> DemoPhotoMessageViewModel {
         let messageViewModel = self.messageViewModelBuilder.createMessageViewModel(model)
         let photoMessageViewModel = DemoPhotoMessageViewModel(photoMessage: model, messageViewModel: messageViewModel)
         photoMessageViewModel.avatarUrl = model.senderAvatarUrl
         return photoMessageViewModel
-    }
-
-    func canCreateViewModel(fromModel model: Any) -> Bool {
-        return model is DemoPhotoMessageModel
     }
 }

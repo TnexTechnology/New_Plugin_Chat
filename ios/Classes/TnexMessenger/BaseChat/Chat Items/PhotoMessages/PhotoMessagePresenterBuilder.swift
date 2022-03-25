@@ -27,7 +27,7 @@ import Foundation
 open class PhotoMessagePresenterBuilder<ViewModelBuilderT, InteractionHandlerT>: ChatItemPresenterBuilderProtocol where
     ViewModelBuilderT: ViewModelBuilderProtocol,
     ViewModelBuilderT.ViewModelT: PhotoMessageViewModelProtocol,
-    InteractionHandlerT: BaseMessageInteractionHandlerProtocol,
+    InteractionHandlerT: PhotoMessageInteractionHandlerProtocol,
     InteractionHandlerT.MessageType == ViewModelBuilderT.ModelT,
     InteractionHandlerT.ViewModelType == ViewModelBuilderT.ViewModelT {
     public typealias ModelT = ViewModelBuilderT.ModelT

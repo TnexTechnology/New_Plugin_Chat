@@ -126,16 +126,16 @@ open class ChatDetailViewController: BaseChatViewController {
             interactionHandler: DemoMessageInteractionHandler(messageSender: self.messageSender, messagesSelector: self.messagesSelector)
         )
         textMessagePresenter.baseMessageStyle = BaseMessageCollectionViewCellAvatarStyle()
-
-        let photoMessagePresenter = PhotoMessagePresenterBuilder(
-            viewModelBuilder: DemoPhotoMessageViewModelBuilder(),
-            interactionHandler: DemoMessageInteractionHandler(messageSender: self.messageSender, messagesSelector: self.messagesSelector)
-        )
-        photoMessagePresenter.baseCellStyle = BaseMessageCollectionViewCellAvatarStyle()
+        let photoMessagePresenter = createPhotoMessagePresenterBuilders()
+//        let photoMessagePresenter = PhotoMessagePresenterBuilder(
+//            viewModelBuilder: DemoPhotoMessageViewModelBuilder(),
+//            interactionHandler: DemoMessageInteractionHandler(messageSender: self.messageSender, messagesSelector: self.messagesSelector)
+//        )
+//        photoMessagePresenter.baseCellStyle = BaseMessageCollectionViewCellAvatarStyle()
 
         return [
             DemoTextMessageModel.chatItemType: [textMessagePresenter],
-            DemoPhotoMessageModel.chatItemType: [photoMessagePresenter],
+            TnextPhotoMessageModel.chatItemType: [photoMessagePresenter],
             SendingStatusModel.chatItemType: [SendingStatusPresenterBuilder()],
             DaySeparatorModel.chatItemType: [DaySeparatorPresenterBuilder()],
             TimeSeparatorModel.chatItemType: [TimeSeparatorPresenterBuilder()],
@@ -144,6 +144,15 @@ open class ChatDetailViewController: BaseChatViewController {
         ]
     }
 
+    func createPhotoMessagePresenterBuilders() -> ChatItemPresenterBuilderProtocol {
+        let photoMessagePresenter = PhotoMessagePresenterBuilder(
+            viewModelBuilder: DemoPhotoMessageViewModelBuilder(),
+            interactionHandler: TnexPhotoMessageInteractionHandler(messageSender: self.messageSender, messagesSelector: self.messagesSelector)
+        )
+        photoMessagePresenter.baseCellStyle = BaseMessageCollectionViewCellAvatarStyle()
+        return photoMessagePresenter
+    }
+    
     func createTextMessageViewModelBuilder() -> DemoTextMessageViewModelBuilder {
         return DemoTextMessageViewModelBuilder()
     }

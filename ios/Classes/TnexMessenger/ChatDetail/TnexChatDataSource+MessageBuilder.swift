@@ -79,7 +79,7 @@ extension TnexChatDataSource {
 //            return mediaURL.contentURL(on: URL(string: APIManager.shared.homeServer)!)
         }
         let photoItem = TnexMediaItem(imageSize: imageSize, image: nil, urlString: urls.first?.absoluteString)
-        let photoMessageModel = DemoPhotoMessageModel(messageModel: messageModel, mediaItem: photoItem)
+        let photoMessageModel = TnextPhotoMessageModel(messageModel: messageModel, mediaItem: photoItem)
         if let client = event.clientId {
             eventDic[client] = event.eventId
         }

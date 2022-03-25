@@ -23,7 +23,7 @@
 
 import UIKit
 
-final class DemoMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: MessageViewModelProtocol>: BaseMessageInteractionHandlerProtocol {
+class DemoMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: MessageViewModelProtocol>: BaseMessageInteractionHandlerProtocol {
 
     init(messageSender: DemoChatMessageSender, messagesSelector: MessagesSelectorProtocol) {
         self.messageSender = messageSender
@@ -45,6 +45,7 @@ final class DemoMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewM
     func userDidTapOnBubble(message: Model, viewModel: ViewModel) {
         print(#function)
     }
+    
 
     func userDidDoubleTapOnBubble(message: Model, viewModel: ViewModel) {
         print(#function)

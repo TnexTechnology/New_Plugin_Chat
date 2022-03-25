@@ -58,9 +58,18 @@ public final class PhotoMessageCollectionViewCell: BaseMessageCollectionViewCell
         }
     }
 
+    public var onImageTapped: ((_ imageView: UIImageView) -> Void)?
     public override func performBatchUpdates(_ updateClosure: @escaping () -> Void, animated: Bool, completion: (() -> Void)?) {
         super.performBatchUpdates({ () -> Void in
             self.bubbleView.performBatchUpdates(updateClosure, animated: false, completion: nil)
         }, animated: animated, completion: completion)
+    }
+    
+    public override func handleTapGesture(_ gesture: UIGestureRecognizer) {
+        guard allowRevealing else {
+            self.onSelection?(self)
+            return
+        }
+        onImageTapped?(self.bubbleView.imageView)
     }
 }

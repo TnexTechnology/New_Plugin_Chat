@@ -25,7 +25,7 @@
 import Foundation
 import UIKit
 
-public class DemoPhotoMessageModel: PhotoMessageModel<TnexMessageModel>, TnexMessageModelProtocol {
+public class TnextPhotoMessageModel: PhotoMessageModel<TnexMessageModel>, TnexMessageModelProtocol {
     
     public var clientId: String? {
         return _messageModel.event.clientId

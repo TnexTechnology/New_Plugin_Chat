@@ -24,11 +24,15 @@
 
 import UIKit
 
+public protocol PhotoMessageInteractionHandlerProtocol: BaseMessageInteractionHandlerProtocol {
+    func userDidTapOnImage(message: MessageType, viewModel: ViewModelType, imageView: UIImageView)
+}
+
 open class PhotoMessagePresenter<ViewModelBuilderT, InteractionHandlerT>
 : BaseMessagePresenter<PhotoBubbleView, ViewModelBuilderT, InteractionHandlerT> where
     ViewModelBuilderT: ViewModelBuilderProtocol,
     ViewModelBuilderT.ViewModelT: PhotoMessageViewModelProtocol,
-    InteractionHandlerT: BaseMessageInteractionHandlerProtocol,
+    InteractionHandlerT: PhotoMessageInteractionHandlerProtocol,
     InteractionHandlerT.MessageType == ViewModelBuilderT.ModelT,
     InteractionHandlerT.ViewModelType == ViewModelBuilderT.ViewModelT {
     public typealias ModelT = ViewModelBuilderT.ModelT
@@ -96,6 +100,10 @@ open class PhotoMessagePresenter<ViewModelBuilderT, InteractionHandlerT>
         super.configureCell(cell, decorationAttributes: decorationAttributes, animated: animated) { () -> Void in
             cell.photoMessageViewModel = self.messageViewModel
             cell.photoMessageStyle = self.photoCellStyle
+            cell.onImageTapped = {[weak self] imageView in
+                guard let sSelf = self else { return }
+                sSelf.onCellImageTapped(from: imageView)
+            }
             additionalConfiguration?()
         }
     }
@@ -104,5 +112,9 @@ open class PhotoMessagePresenter<ViewModelBuilderT, InteractionHandlerT>
         if let cell = self.photoCell, let decorationAttributes = self.decorationAttributes {
             self.configureCell(cell, decorationAttributes: decorationAttributes, animated: self.itemVisibility != .appearing, additionalConfiguration: nil)
         }
+    }
+        
+    open func onCellImageTapped(from imageView: UIImageView) {
+        self.interactionHandler?.userDidTapOnImage(message: self.messageModel, viewModel: self.messageViewModel, imageView: imageView)
     }
 }
