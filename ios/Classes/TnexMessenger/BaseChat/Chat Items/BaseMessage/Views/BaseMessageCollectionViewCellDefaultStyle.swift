@@ -179,6 +179,10 @@ open class BaseMessageCollectionViewCellDefaultStyle: BaseMessageCollectionViewC
         return self.selectionIndicatorStyle.margins
     }
 
+    public func actionAttributesString(action: ActionMessageType) -> NSAttributedString? {
+        return nil
+    }
+    
     public func selectionIndicatorIcon(for viewModel: MessageViewModelProtocol) -> UIImage {
         return viewModel.decorationAttributes.isSelected ? self.selectionIndicatorStyle.selectedIcon() : self.selectionIndicatorStyle.deselectedIcon()
     }

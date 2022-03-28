@@ -72,4 +72,9 @@ public final class PhotoMessageCollectionViewCell: BaseMessageCollectionViewCell
         }
         onImageTapped?(self.bubbleView.imageView)
     }
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        self.bubbleView.imageView.image = nil
+    }
 }

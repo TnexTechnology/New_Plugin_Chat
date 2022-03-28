@@ -28,6 +28,8 @@ public enum MessageStatus {
     case failed
     case sending
     case success
+    case uploading
+    case normal
 }
 
 public protocol MessageModelProtocol: ChatItemProtocol {
@@ -36,6 +38,8 @@ public protocol MessageModelProtocol: ChatItemProtocol {
     var date: Date { get }
     var status: MessageStatus { get }
     var canReply: Bool { get }
+    var seenInfo: [String] { get }
+    var messageAction: ActionMessageType { get }
 }
 
 extension MessageModelProtocol {
@@ -70,6 +74,10 @@ public extension DecoratedMessageModelProtocol {
     var status: MessageStatus {
         return self.messageModel.status
     }
+    
+    var seenInfo: [String] {
+        return self.messageModel.seenInfo
+    }
 }
 
 open class BaseMessageModel<MessageModelT: MessageModelProtocol>: DecoratedMessageModelProtocol, ContentEquatableChatItemProtocol {
@@ -79,6 +87,8 @@ open class BaseMessageModel<MessageModelT: MessageModelProtocol>: DecoratedMessa
     }
     public let _messageModel: MessageModelT // Can't make messageModel: MessageModelT: https://gist.github.com/diegosanchezr/5a66c7af862e1117b556
     public var canReply: Bool { self.messageModel.canReply }
+    public var seenInfo: [String] { self.messageModel.seenInfo }
+    public var messageAction: ActionMessageType { self.messageModel.messageAction }
     
     public init(messageModel: MessageModelT) {
         self._messageModel = messageModel

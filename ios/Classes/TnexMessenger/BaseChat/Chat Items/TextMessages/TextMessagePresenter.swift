@@ -42,7 +42,6 @@ open class TextMessagePresenter<ViewModelBuilderT, InteractionHandlerT>
                  textCellStyle: TextMessageCollectionViewCellStyleProtocol,
                  layoutCache: NSCache<AnyObject, AnyObject>,
                  menuPresenter: TextMessageMenuItemPresenterProtocol?) {
-        self.layoutCache = layoutCache
         self.textCellStyle = textCellStyle
         self.menuPresenter = menuPresenter
         super.init(
@@ -55,7 +54,6 @@ open class TextMessagePresenter<ViewModelBuilderT, InteractionHandlerT>
     }
 
     private let menuPresenter: TextMessageMenuItemPresenterProtocol?
-    let layoutCache: NSCache<AnyObject, AnyObject>
     let textCellStyle: TextMessageCollectionViewCellStyleProtocol
 
     public final override class func registerCells(_ collectionView: UICollectionView) {

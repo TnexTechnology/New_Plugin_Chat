@@ -35,15 +35,19 @@ public protocol BaseMessageInteractionHandlerProtocol {
 
     associatedtype MessageType
     associatedtype ViewModelType
-
+    
+    var labelDelegate: MKMessageLabelDelegate? { get set }
     func userDidTapOnFailIcon(message: MessageType, viewModel: ViewModelType, failIconView: UIView)
-    func userDidTapOnAvatar(message: MessageType, viewModel: ViewModelType)
-    func userDidTapOnBubble(message: MessageType, viewModel: ViewModelType)
+    func userDidTapOnAvatar(message: MessageType, viewModel: ViewModelType, avatarView: UIImageView)
+    func userDidTapOnBubble(message: MessageType, viewModel: ViewModelType, bubbleView: UIView)
     func userDidDoubleTapOnBubble(message: MessageType, viewModel: ViewModelType)
     func userDidBeginLongPressOnBubble(message: MessageType, viewModel: ViewModelType)
-    func userDidEndLongPressOnBubble(message: MessageType, viewModel: ViewModelType)
+    func userDidEndLongPressOnBubble(message: MessageType, viewModel: ViewModelType, bubbleView: UIView, touchPoint: CGPoint)
     func userDidSelectMessage(message: MessageType, viewModel: ViewModelType)
     func userDidDeselectMessage(message: MessageType, viewModel: ViewModelType)
+    func userDidTapOnActionView(message: MessageType, viewModel: ViewModelType, action: ActionMessageType, imageView: UIImageView?)
+    func userDidTapSingleSeenView(message: MessageType, viewModel: ViewModelType)
+    func userDidLongpressAvatar(message: MessageType, viewModel: ViewModelType, avatarView: UIImageView, touchPoint: CGPoint)
 }
 
 open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandlerT>: BaseChatItemPresenter<BaseMessageCollectionViewCell<BubbleViewT>> where
@@ -59,6 +63,8 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
     public typealias ModelT = ViewModelBuilderT.ModelT
     public typealias ViewModelT = ViewModelBuilderT.ViewModelT
 
+    let layoutCache = NSCache<AnyObject, AnyObject>()
+    
     public init (
         messageModel: ModelT,
         viewModelBuilder: ViewModelBuilderT,
@@ -76,6 +82,10 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
         didSet { self.messageViewModel = self.createViewModel() }
     }
 
+    public override func getViewModel() -> MessageViewModelProtocol? {
+        return self.messageViewModel
+    }
+    
     open override var isItemUpdateSupported: Bool {
         /*
          By default, item updates are not supported.
@@ -125,35 +135,50 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
             self.messageViewModel.isUserInteractionEnabled = true
             cell.baseStyle = self.cellStyle
             cell.messageViewModel = self.messageViewModel
-
-            cell.allowRevealing = !decorationAttributes.messageDecorationAttributes.isShowingSelectionIndicator
-            cell.onBubbleTapped = { [weak self] (cell) in
-                guard let sSelf = self else { return }
-                sSelf.onCellBubbleTapped()
-            }
-            cell.onBubbleDoubleTapped = { [weak self] (cell) in
-                guard let sSelf = self else { return }
-                sSelf.onCellBubbleDoubleTapped()
-            }
-            cell.onBubbleLongPressBegan = { [weak self] (cell) in
-                guard let sSelf = self else { return }
-                sSelf.onCellBubbleLongPressBegan()
-            }
-            cell.onBubbleLongPressEnded = { [weak self] (cell) in
-                guard let sSelf = self else { return }
-                sSelf.onCellBubbleLongPressEnded()
-            }
-            cell.onAvatarTapped = { [weak self] (cell) in
-                guard let sSelf = self else { return }
-                sSelf.onCellAvatarTapped()
-            }
-            cell.onFailedButtonTapped = { [weak self] (cell) in
-                guard let sSelf = self else { return }
-                sSelf.onCellFailedButtonTapped(cell.failedButton)
-            }
-            cell.onSelection = { [weak self] (cell) in
-                guard let sSelf = self else { return }
-                sSelf.onCellSelection()
+            
+            if let baseCell = cell as? BaseMessageCollectionViewCell<BubbleViewT> {
+                baseCell.delegate = self.interactionHandler?.labelDelegate
+                baseCell.allowRevealing = !decorationAttributes.messageDecorationAttributes.isShowingSelectionIndicator
+                baseCell.onBubbleTapped = { [weak self] (cell) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellBubbleTapped(cell.bubbleView)
+                }
+                baseCell.onBubbleDoubleTapped = { [weak self] (cell) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellBubbleDoubleTapped()
+                }
+                baseCell.onBubbleLongPressBegan = { [weak self] (cell) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellBubbleLongPressBegan()
+                }
+                baseCell.onBubbleLongPressEnded = { [weak self] (cell, touchPoint) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellBubbleLongPressEnded(cell.bubbleView, touchPoint: touchPoint)
+                }
+                baseCell.onAvatarTapped = { [weak self] (cell) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellAvatarTapped(cell.avatarView)
+                }
+                baseCell.onFailedButtonTapped = { [weak self] (cell) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellFailedButtonTapped(cell.failedButton)
+                }
+                baseCell.onSelection = { [weak self] (cell) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellSelection()
+                }
+                baseCell.onActionViewTapped = { [weak self] (action, imageView) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellTapActionView(action: action, imageView: imageView)
+                }
+                baseCell.onTapSingleSeenView = { [weak self] _ in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellTapSingleSeenView()
+                }
+                baseCell.onAvatarLongPressEnded = { [weak self] (cell, touchPoint) in
+                    guard let sSelf = self else { return }
+                    sSelf.onCellAvatarLongPressEnded(cell.avatarView, touchPoint: touchPoint)
+                }
             }
             additionalConfiguration?()
         }, animated: animated, completion: nil)
@@ -180,6 +205,12 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
         self.messageViewModel.wasHidden()
     }
 
+    open override func spotlight() {
+        if let baseCell = cell as? BaseMessageCollectionViewCell<BubbleViewT> {
+            baseCell.spotlightBubleView()
+        }
+    }
+    
     open override func shouldShowMenu() -> Bool {
         guard self.canShowMenu() else { return false }
         guard let cell = self.cell else {
@@ -209,8 +240,8 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
         return false
     }
 
-    open func onCellBubbleTapped() {
-        self.interactionHandler?.userDidTapOnBubble(message: self.messageModel, viewModel: self.messageViewModel)
+    open func onCellBubbleTapped(_ bubbleView: UIView) {
+        self.interactionHandler?.userDidTapOnBubble(message: self.messageModel, viewModel: self.messageViewModel, bubbleView: bubbleView)
     }
 
     open func onCellBubbleDoubleTapped() {
@@ -221,12 +252,16 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
         self.interactionHandler?.userDidBeginLongPressOnBubble(message: self.messageModel, viewModel: self.messageViewModel)
     }
 
-    open func onCellBubbleLongPressEnded() {
-        self.interactionHandler?.userDidEndLongPressOnBubble(message: self.messageModel, viewModel: self.messageViewModel)
+    open func onCellBubbleLongPressEnded(_ bubbleView: UIView, touchPoint: CGPoint) {
+        self.interactionHandler?.userDidEndLongPressOnBubble(message: self.messageModel, viewModel: self.messageViewModel, bubbleView: bubbleView, touchPoint: touchPoint)
     }
 
-    open func onCellAvatarTapped() {
-        self.interactionHandler?.userDidTapOnAvatar(message: self.messageModel, viewModel: self.messageViewModel)
+    open func onCellAvatarLongPressEnded(_ avatarView: UIImageView, touchPoint: CGPoint) {
+        self.interactionHandler?.userDidLongpressAvatar(message: self.messageModel, viewModel: self.messageViewModel, avatarView: avatarView, touchPoint: touchPoint)
+    }
+    
+    open func onCellAvatarTapped(_ avatarView: UIImageView) {
+        self.interactionHandler?.userDidTapOnAvatar(message: self.messageModel, viewModel: self.messageViewModel, avatarView: avatarView)
     }
 
     open func onCellFailedButtonTapped(_ failedButtonView: UIView) {
@@ -239,5 +274,13 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
         } else {
             self.interactionHandler?.userDidSelectMessage(message: self.messageModel, viewModel: self.messageViewModel)
         }
+    }
+    
+    open func onCellTapActionView(action: ActionMessageType, imageView: UIImageView?) {
+        self.interactionHandler?.userDidTapOnActionView(message: self.messageModel, viewModel: self.messageViewModel, action: action, imageView: imageView)
+    }
+    
+    open func onCellTapSingleSeenView() {
+        self.interactionHandler?.userDidTapSingleSeenView(message: self.messageModel, viewModel: self.messageViewModel)
     }
 }

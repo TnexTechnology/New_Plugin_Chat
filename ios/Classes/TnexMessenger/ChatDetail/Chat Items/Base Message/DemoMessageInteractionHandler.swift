@@ -24,6 +24,32 @@
 import UIKit
 
 class DemoMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: MessageViewModelProtocol>: BaseMessageInteractionHandlerProtocol {
+    var labelDelegate: MKMessageLabelDelegate?
+    
+    func userDidTapOnAvatar(message: Model, viewModel: ViewModel, avatarView: UIImageView) {
+        print("userDidTapOnAvatar")
+    }
+    
+    func userDidTapOnBubble(message: Model, viewModel: ViewModel, bubbleView: UIView) {
+        print("userDidTapOnBubble")
+    }
+    
+    func userDidEndLongPressOnBubble(message: Model, viewModel: ViewModel, bubbleView: UIView, touchPoint: CGPoint) {
+        print("userDidEndLongPressOnBubble")
+    }
+    
+    func userDidTapOnActionView(message: Model, viewModel: ViewModel, action: ActionMessageType, imageView: UIImageView?) {
+        print("userDidTapOnActionView")
+    }
+    
+    func userDidTapSingleSeenView(message: Model, viewModel: ViewModel) {
+        print("userDidTapSingleSeenView")
+    }
+    
+    func userDidLongpressAvatar(message: Model, viewModel: ViewModel, avatarView: UIImageView, touchPoint: CGPoint) {
+        print("userDidLongpressAvatar")
+    }
+    
 
     init(messageSender: DemoChatMessageSender, messagesSelector: MessagesSelectorProtocol) {
         self.messageSender = messageSender

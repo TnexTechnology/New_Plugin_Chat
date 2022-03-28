@@ -20,6 +20,8 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     var slidingWindow: SlidingDataSource<ChatItemProtocol>?
     var room: TnexRoom?
     private var memberDic: [String: MXRoomMember] = [:]
+    var lastMessageIdPartnerRead: String?
+    var partnerId: String?
 
     public init(roomId: String) {
         if let room = APIManager.shared.getRooms()?.first(where: {$0.room.roomId == roomId}) {
@@ -29,6 +31,18 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
             self.delegate?.chatDataSourceDidUpdate(self, updateType: .firstLoad)
             getInfoRoom()
             handleEvent()
+            getMessagePartnerRead()
+        }
+    }
+    
+    func getMessagePartnerRead() {
+        for event in events {
+            self.room?.room.getEventReceipts(event.eventId, sorted: true, completion: {[weak self] receipts in
+                guard let self = self, receipts.count > 0 else { return }
+                self.lastMessageIdPartnerRead = event.eventId
+                print(self.getText(event: event))
+                self.delegate?.chatDataSourceDidUpdate(self, updateType: .firstLoad)
+            })
         }
     }
     
@@ -156,7 +170,6 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     func addPhotoMessage(_ image: UIImage) {
         self.room?.sendImage(image: image) {[weak self] _event in
             if let self = self, let event = _event {
-                
                 if event.sentState == MXEventSentStateSending {
                     let message = self.builderMessage(from: event)
                     self.slidingWindow?.insertItem(message, position: .bottom)
@@ -168,6 +181,12 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                     }
                 }
             }
+        }
+    }
+    
+    func sendMarke() {
+        APIManager.shared.mxRestClient.sendReadReceipt(toRoom: self.room?.room.roomId ?? "", forEvent: "") { response in
+            //
         }
     }
 

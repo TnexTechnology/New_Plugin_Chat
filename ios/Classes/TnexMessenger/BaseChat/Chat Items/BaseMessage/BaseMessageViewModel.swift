@@ -27,7 +27,22 @@ import UIKit
 public enum MessageViewModelStatus {
     case success
     case sending
+    case uploading
+    case normal
     case failed
+    
+    var icon: UIImage? {
+        switch self {
+        case .success:
+            return UIImage(named: "ic-gpmessage-checked", in: Bundle.resources, compatibleWith: nil)
+        case .normal:
+            return nil
+        case .sending, .uploading:
+            return UIImage(named: "ic-gpmessage-unchecked", in: Bundle.resources, compatibleWith: nil)
+        case .failed:
+            return UIImage(named: "chat_btn_send", in: Bundle.resources, compatibleWith: nil)
+        }
+    }
 }
 
 public extension MessageStatus {
@@ -39,6 +54,10 @@ public extension MessageStatus {
             return MessageViewModelStatus.failed
         case .sending:
             return MessageViewModelStatus.sending
+        case .uploading:
+            return MessageViewModelStatus.uploading
+        case .normal:
+            return MessageViewModelStatus.normal
         }
     }
 }
@@ -49,12 +68,14 @@ public protocol MessageViewModelProtocol: class { // why class? https://gist.git
     var isUserInteractionEnabled: Bool { get set }
     var isShowingFailedIcon: Bool { get }
     var date: String { get }
+    var singleSeenUserId: String? { get }
     var status: MessageViewModelStatus { get }
     var avatarUrl: String? { get set }
     var messageContentTransferStatus: TransferStatus? { get set }
     var canReply: Bool { get }
     func willBeShown() // Optional
     func wasHidden() // Optional
+    var actionType: ActionMessageType { get set }
 }
 
 extension MessageViewModelProtocol {
@@ -95,6 +116,10 @@ extension DecoratedMessageViewModelProtocol {
     public var date: String {
         return self.messageViewModel.date
     }
+    
+    public var singleSeenUserId: String? {
+        return self.messageViewModel.singleSeenUserId
+    }
 
     public var messageContentTransferStatus: TransferStatus? {
         get {
@@ -120,10 +145,28 @@ extension DecoratedMessageViewModelProtocol {
             self.messageViewModel.avatarUrl = newValue
         }
     }
+    
+    public var actionType: ActionMessageType {
+        get {
+            return self.messageViewModel.actionType
+        }
+        set {
+            self.messageViewModel.actionType = newValue
+        }
+    }
 }
 
 open class MessageViewModel: MessageViewModelProtocol {
-
+    
+    public var singleSeenUserId: String?
+    public var actionType: ActionMessageType {
+        get {
+            self.messageModel.messageAction
+        }
+        set {
+            self.actionType = newValue
+        }
+    }
     open var canReply: Bool { self.messageModel.canReply }
 
     open var isIncoming: Bool {
@@ -159,6 +202,7 @@ open class MessageViewModel: MessageViewModelProtocol {
         self.messageModel = messageModel
         self.avatarUrl = avatarUrl
         self.decorationAttributes = decorationAttributes
+        self.singleSeenUserId = messageModel.seenInfo.first
     }
 
     open var isShowingFailedIcon: Bool {

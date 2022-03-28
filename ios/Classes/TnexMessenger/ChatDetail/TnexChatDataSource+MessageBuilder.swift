@@ -47,14 +47,22 @@ extension TnexChatDataSource {
         return textMessageModel
     }
     
-    private func getText(event: MXEvent) -> String {
+    func getText(event: MXEvent) -> String {
         if !event.isEdit() {
             if let newContent = event.content["text"] as? String {
                 return newContent.trimmingCharacters(in: .whitespacesAndNewlines)
             }
-            return (event.content["body"] as? String).map {
+            let msg = (event.content["body"] as? String).map {
                 $0.trimmingCharacters(in: .whitespacesAndNewlines)
             } ?? "event type: \(event.type) content: \(event.content)"
+            
+//            if msg == "Đấy" {
+//                print("Hiii@@@@@")
+//                let eventIds = event.readReceiptEventIds()
+//                print(eventIds?.count)
+//                print(event.readReceiptSenders()?.count)
+//            }
+            return msg
         } else {
             let newContent = event.content["m.new_content"]! as? NSDictionary
             return (newContent?["body"] as? String).map {

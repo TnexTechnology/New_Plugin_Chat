@@ -24,29 +24,33 @@
 
 import UIKit
 
+protocol TextBubbleProtocol: class {
+    var messageLabel: MessageLabel { get }
+    var delegate: MKMessageLabelDelegate? { get set }
+}
+
 public protocol BubbleViewStyleProtocol {
     func bubbleMaskLayer(viewModel: MessageViewModelProtocol, isSelected: Bool, frame: CGRect) -> CAShapeLayer?
     func bubbleBackgroundColor(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIColor?
 }
 
 public protocol TextBubbleViewStyleProtocol: BubbleViewStyleProtocol {
-    func textFont(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIFont
-    func textColor(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIColor
-    func textInsets(viewModel: TextMessageViewModelProtocol, isSelected: Bool) -> UIEdgeInsets
+    func textBubbleBorderLayer(viewModel: MessageViewModelProtocol, isSelected: Bool, frame: CGRect) -> CAShapeLayer?
+    func genTextAttributes(viewModel: MessageViewModelProtocol, text: String, isSelected: Bool) -> NSAttributedString?
+    func detectorAttributes(for detector: DetectorType, viewModel: MessageViewModelProtocol, isSelected: Bool) -> [NSAttributedString.Key: Any]
+    func getEnabledDetectors(viewModel: MessageViewModelProtocol, text: String, isSelected: Bool) -> [DetectorType]
+    func textInsets(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIEdgeInsets
+    func editedAttributedString(viewModel: MessageViewModelProtocol, isSelected: Bool) -> NSAttributedString?
 }
 
-public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, BackgroundSizingQueryable {
+public class TextBubbleView: MessageBubbleView, TextBubbleProtocol {
 
-    public var preferredMaxLayoutWidth: CGFloat = 0
-    public var animationDuration: CFTimeInterval = 0.33
     public var viewContext: ViewContext = .normal {
         didSet {
             if self.viewContext == .sizing {
-                self.textView.dataDetectorTypes = UIDataDetectorTypes()
-                self.textView.isSelectable = false
+                self.messageLabel.enabledDetectors = []
             } else {
-                self.textView.dataDetectorTypes = .all
-                self.textView.isSelectable = true
+                self.messageLabel.enabledDetectors = []
             }
         }
     }
@@ -57,6 +61,7 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         }
     }
 
+    var _editedView: UIView?
     public var textMessageViewModel: TextMessageViewModelProtocol! {
         didSet {
             self.accessibilityIdentifier = self.textMessageViewModel.bubbleAccessibilityIdentifier
@@ -72,7 +77,18 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         }
     }
     
-    private var maskLayer: CAShapeLayer?
+    //UI
+    public weak var delegate: MKMessageLabelDelegate? {
+        didSet {
+            messageLabel.delegate = self.delegate
+        }
+    }
+    open lazy var messageLabel: MessageLabel = {
+        let label = MessageLabel()
+        label.textInsets = MessageConstants.ContentInsets.Text.incomingMessageLabelInsets
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -85,87 +101,41 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
     }
 
     private func commonInit() {
-        self.addSubview(self.textView)
+        self.addSubview(self.messageLabel)
     }
 
-    private var textView: UITextView = {
-        let textView = ChatMessageTextView()
-        UIView.performWithoutAnimation({ () -> Void in // fixes iOS 8 blinking when cell appears
-            textView.backgroundColor = UIColor.clear
-        })
-        textView.isEditable = false
-        textView.isSelectable = true
-        textView.dataDetectorTypes = .all
-        textView.scrollsToTop = false
-        textView.isScrollEnabled = false
-        textView.bounces = false
-        textView.bouncesZoom = false
-        textView.showsHorizontalScrollIndicator = false
-        textView.showsVerticalScrollIndicator = false
-        textView.isExclusiveTouch = true
-        textView.textContainer.lineFragmentPadding = 0
-        textView.disableDragInteraction()
-        textView.disableLargeContentViewer()
-        return textView
-    }()
+    private var maskLayer: CAShapeLayer?
+    private var borderLayer: CAShapeLayer?
 
-    public private(set) var isUpdating: Bool = false
-    public func performBatchUpdates(_ updateClosure: @escaping () -> Void, animated: Bool, completion: (() -> Void)?) {
-        self.isUpdating = true
-        let updateAndRefreshViews = {
-            updateClosure()
-            self.isUpdating = false
-            self.updateViews()
-            if animated {
-                self.layoutIfNeeded()
-            }
-        }
-        if animated {
-            UIView.animate(withDuration: self.animationDuration, animations: updateAndRefreshViews, completion: { (_) -> Void in
-                completion?()
-            })
-        } else {
-            updateAndRefreshViews()
-        }
-    }
-
-    private func updateViews() {
+    public override func updateViews() {
         if self.viewContext == .sizing { return }
         if isUpdating { return }
-        guard let style = self.style else { return }
         self.updateTextView()
-        self.backgroundColor = style.bubbleBackgroundColor(viewModel: self.textMessageViewModel, isSelected: false)
-
+        if self.textMessageViewModel.text.isSingleEmoji {
+            self.backgroundColor = .clear
+        } else {
+            self.backgroundColor = self.style.bubbleBackgroundColor(viewModel: self.textMessageViewModel, isSelected: self.selected)
+        }
     }
 
-    private func updateTextView() {
+    func updateTextView() {
         guard let style = self.style, let viewModel = self.textMessageViewModel else { return }
-
-        let font = style.textFont(viewModel: viewModel, isSelected: self.selected)
-        let textColor = style.textColor(viewModel: viewModel, isSelected: self.selected)
-
-        var needsToUpdateText = false
-
-        if self.textView.font != font {
-            self.textView.font = font
-            needsToUpdateText = true
-        }
-
-        if self.textView.textColor != textColor {
-            self.textView.textColor = textColor
-            self.textView.linkTextAttributes = [
-                NSAttributedString.Key.foregroundColor: textColor,
-                NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
-            ]
-            needsToUpdateText = true
-        }
-
-        if needsToUpdateText || self.textView.text != viewModel.text {
-            self.textView.text = viewModel.text
+        guard let attributedText = style.genTextAttributes(viewModel: viewModel, text: viewModel.text, isSelected: self.selected) else { return }
+        if self.messageLabel.attributedText != attributedText {
+            let enabledDetectors = style.getEnabledDetectors(viewModel: viewModel, text: viewModel.text, isSelected: self.selected)
+            messageLabel.configure {
+                messageLabel.enabledDetectors = enabledDetectors
+                for detector in enabledDetectors {
+                    let attributes = self.style.detectorAttributes(for: detector, viewModel: viewModel, isSelected: self.selected)
+                    messageLabel.setAttributes(attributes, detector: detector)
+                }
+                messageLabel.attributedText = attributedText
+            }
         }
 
         let textInsets = style.textInsets(viewModel: viewModel, isSelected: self.selected)
-        if self.textView.textContainerInset != textInsets { self.textView.textContainerInset = textInsets }
+        if self.messageLabel.textInsets != textInsets { self.messageLabel.textInsets = textInsets }
+        self.maskLayerBubble()
     }
 
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -176,26 +146,38 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
     public override func layoutSubviews() {
         super.layoutSubviews()
         let layout = self.calculateTextBubbleLayout(preferredMaxLayoutWidth: self.preferredMaxLayoutWidth)
-        self.textView.bma_rect = layout.textFrame
+        self.messageLabel.bma_rect = layout.textFrame
+        UIView.performWithoutAnimation {
+            self._editedView?.bma_rect = layout.editedFrame
+        }
+        
         self.maskLayerBubble()
     }
-
+    
     func maskLayerBubble() {
         self.maskLayer?.removeFromSuperlayer()
         if let layer = style.bubbleMaskLayer(viewModel: self.textMessageViewModel, isSelected: self.selected, frame: self.bounds) {
+           
             self.layer.mask = layer
             self.maskLayer = layer
         }
-        
+        self.borderLayer?.removeFromSuperlayer()
+        if let borderLayer = style.textBubbleBorderLayer(viewModel: self.textMessageViewModel, isSelected: self.selected, frame: self.bounds) {
+            
+            self.layer.addSublayer(borderLayer)
+            self.borderLayer = borderLayer
+        }
     }
     
     public var layoutCache: NSCache<AnyObject, AnyObject>!
-    private func calculateTextBubbleLayout(preferredMaxLayoutWidth: CGFloat) -> TextBubbleLayoutModel {
+    func calculateTextBubbleLayout(preferredMaxLayoutWidth: CGFloat) -> TextBubbleLayoutModel {
         let layoutContext = TextBubbleLayoutModel.LayoutContext(
-            text: self.textMessageViewModel.text,
-            font: self.style.textFont(viewModel: self.textMessageViewModel, isSelected: self.selected),
+            text: self.style.genTextAttributes(viewModel: self.textMessageViewModel, text: self.textMessageViewModel.text, isSelected: self.selected)?.string ?? "",
+            attributedText: self.style.genTextAttributes(viewModel: self.textMessageViewModel, text: self.textMessageViewModel.text, isSelected: self.selected),
+            editedAttributedText: self.style.editedAttributedString(viewModel: self.textMessageViewModel, isSelected: self.selected),
             textInsets: self.style.textInsets(viewModel: self.textMessageViewModel, isSelected: self.selected),
-            preferredMaxLayoutWidth: preferredMaxLayoutWidth
+            preferredMaxLayoutWidth: preferredMaxLayoutWidth,
+            isIncoming: self.textMessageViewModel.isIncoming
         )
 
         if let layoutModel = self.layoutCache.object(forKey: layoutContext.hashValue as AnyObject) as? TextBubbleLayoutModel, layoutModel.layoutContext == layoutContext {
@@ -208,15 +190,14 @@ public final class TextBubbleView: UIView, MaximumLayoutWidthSpecificable, Backg
         self.layoutCache.setObject(layoutModel, forKey: layoutContext.hashValue as AnyObject)
         return layoutModel
     }
-
-    public var canCalculateSizeInBackground: Bool {
-        return true
-    }
+    
 }
 
-private final class TextBubbleLayoutModel {
+final class TextBubbleLayoutModel {
     let layoutContext: LayoutContext
     var textFrame: CGRect = CGRect.zero
+    var editedFrame: CGRect = CGRect.zero
+    var forwardFrame: CGRect = CGRect.zero
     var bubbleFrame: CGRect = CGRect.zero
     var size: CGSize = CGSize.zero
 
@@ -226,48 +207,61 @@ private final class TextBubbleLayoutModel {
 
     struct LayoutContext: Equatable, Hashable {
         let text: String
-        let font: UIFont
+        let attributedText: NSAttributedString?
+        let editedAttributedText: NSAttributedString?
         let textInsets: UIEdgeInsets
         let preferredMaxLayoutWidth: CGFloat
+        let isIncoming: Bool
     }
 
     func calculateLayout() {
-        let textHorizontalInset = self.layoutContext.textInsets.bma_horziontalInset
+        let textInsets = self.layoutContext.textInsets
+        let textHorizontalInset = textInsets.bma_horziontalInset
         let maxTextWidth = self.layoutContext.preferredMaxLayoutWidth - textHorizontalInset
-        let textSize = self.textSizeThatFitsWidth(maxTextWidth)
-        let bubbleSize = textSize.bma_outsetBy(dx: textHorizontalInset, dy: self.layoutContext.textInsets.bma_verticalInset)
+        guard let attributedText = self.layoutContext.attributedText else { return }
+        let textSize = TextBubbleLayoutModel.labelSize(for: attributedText, considering: maxTextWidth)
+        if let editedAttribute = self.layoutContext.editedAttributedText {
+            self.calculateLayoutWithEditView(editedAttribute: editedAttribute, maxTextWidth: maxTextWidth, textInsets: textInsets, textSize: textSize)
+        } else {
+            let bubbleSize = textSize.bma_outsetBy(dx: textHorizontalInset, dy: textInsets.bma_verticalInset)
+            self.bubbleFrame = CGRect(origin: CGPoint.zero, size: bubbleSize)
+            self.textFrame = self.bubbleFrame
+            self.editedFrame = .zero
+            self.size = bubbleSize
+        }
+    }
+    
+    private func calculateLayoutWithEditView(editedAttribute: NSAttributedString, maxTextWidth: CGFloat, textInsets: UIEdgeInsets, textSize: CGSize) {
+        let editedSize = TextBubbleLayoutModel.editedSize(for: editedAttribute, considering: maxTextWidth)
+        let textBoundSize = textSize.bma_outsetBy(dx: textInsets.bma_horziontalInset, dy: textInsets.bma_verticalInset)
+        
+        let bubbleSize = CGSize(width: max(textBoundSize.width, editedSize.width + textInsets.bma_horziontalInset), height: textBoundSize.height + editedSize.height + 8)
         self.bubbleFrame = CGRect(origin: CGPoint.zero, size: bubbleSize)
-        self.textFrame = self.bubbleFrame
+        if self.layoutContext.isIncoming {
+            self.textFrame = CGRect(origin: CGPoint.zero, size: textBoundSize)
+            editedFrame = CGRect(origin: CGPoint(x: textInsets.left, y: self.textFrame.maxY), size: editedSize)
+        } else {
+            self.textFrame = CGRect(origin: CGPoint(x: bubbleSize.width - textBoundSize.width, y: 0), size: CGSize(width: bubbleSize.width, height: textBoundSize.height))
+            editedFrame = CGRect(origin: CGPoint(x: bubbleSize.width - editedSize.width - textInsets.right, y: self.textFrame.maxY), size: editedSize)
+        }
         self.size = bubbleSize
     }
-
-    private func textSizeThatFitsWidth(_ width: CGFloat) -> CGSize {
-        let textContainer: NSTextContainer = {
-            let size = CGSize(width: width, height: .greatestFiniteMagnitude)
-            let container = NSTextContainer(size: size)
-            container.lineFragmentPadding = 0
-            return container
-        }()
-
-        let textStorage = self.replicateUITextViewNSTextStorage()
-        let layoutManager: NSLayoutManager = {
-            let layoutManager = NSLayoutManager()
-            layoutManager.addTextContainer(textContainer)
-            textStorage.addLayoutManager(layoutManager)
-            return layoutManager
-        }()
-
-        let rect = layoutManager.usedRect(for: textContainer)
-        return rect.size.bma_round()
+    
+    class func labelSize(for attributedText: NSAttributedString, considering maxWidth: CGFloat) -> CGSize {
+        let constraintBox = CGSize(width: maxWidth, height: .greatestFiniteMagnitude)
+        let rect = attributedText.boundingRect(with: constraintBox, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).integral
+        return rect.size
     }
-
-    private func replicateUITextViewNSTextStorage() -> NSTextStorage {
-        // See https://github.com/badoo/Chatto/issues/129
-        return NSTextStorage(string: self.layoutContext.text, attributes: [
-            NSAttributedString.Key.font: self.layoutContext.font,
-            NSAttributedString.Key(rawValue: "NSOriginalFont"): self.layoutContext.font
-        ])
+    
+    class func editedSize(for attributedText: NSAttributedString, considering maxWidth: CGFloat) -> CGSize {
+        let heightOfEditView: CGFloat = 16
+        let editedIconSize: CGSize = CGSize(width: 12, height: 12)
+        let editTextSize = TextBubbleLayoutModel.labelSize(for: attributedText, considering: maxWidth - heightOfEditView)
+        let widthOfEditedView = editedIconSize.width + 4 + editTextSize.width
+        let editedSize = CGSize(width: widthOfEditedView, height: heightOfEditView)
+        return editedSize
     }
+    
 }
 
 /// UITextView with hacks to avoid selection, loupe, define...

@@ -97,11 +97,35 @@ open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewC
         }
         let color = viewModel.isIncoming ? self.baseStyle.baseColorIncoming : self.baseStyle.baseColorOutgoing
         switch viewModel.status {
-        case .success:
+        case .success, .normal:
             return color
-        case .failed, .sending:
+        case .failed, .sending, .uploading:
             return color.bma_blendWithColor(UIColor.white.withAlphaComponent(0.70))
         }
+    }
+    
+    
+    public func textBubbleBorderLayer(viewModel: MessageViewModelProtocol, isSelected: Bool, frame: CGRect) -> CAShapeLayer? {
+        return nil
+    }
+    
+    public func genTextAttributes(viewModel: MessageViewModelProtocol, text: String, isSelected: Bool) -> NSAttributedString? {
+        let textColor: UIColor = viewModel.isIncoming ? self.incomingColor : self.outgoingColor
+        let textFont: UIFont = text.containsOnlyEmoji ? UIFont.systemFont(ofSize: 42) : self.font
+        return NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: textFont, NSAttributedString.Key.foregroundColor: textColor])
+    }
+    
+    public func detectorAttributes(for detector: DetectorType, viewModel: MessageViewModelProtocol, isSelected: Bool) -> [NSAttributedString.Key: Any] {
+        return MessageLabel.defaultAttributes
+    }
+    public func getEnabledDetectors(viewModel: MessageViewModelProtocol, text: String, isSelected: Bool) -> [DetectorType] {
+        return []
+    }
+    public func textInsets(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIEdgeInsets {
+        return viewModel.isIncoming ? self.textStyle.incomingInsets : self.textStyle.outgoingInsets
+    }
+    public func editedAttributedString(viewModel: MessageViewModelProtocol, isSelected: Bool) -> NSAttributedString? {
+        return nil
     }
 }
 

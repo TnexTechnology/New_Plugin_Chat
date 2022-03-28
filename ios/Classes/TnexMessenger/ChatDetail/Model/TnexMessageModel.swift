@@ -9,6 +9,7 @@ import Foundation
 import MatrixSDK
 
 public class TnexMessageModel: MessageModelProtocol {
+    
     public let uid: String
     public var senderId: String
     public var isIncoming: Bool
@@ -17,6 +18,8 @@ public class TnexMessageModel: MessageModelProtocol {
     public var canReply: Bool = true
     public var type: String
     public let event: MXEvent
+    public var messageAction: ActionMessageType = .default
+    public var seenInfo: [String] = []
     
     public init(event: MXEvent) {
         self.event = event

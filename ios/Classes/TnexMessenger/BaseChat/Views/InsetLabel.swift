@@ -1,7 +1,7 @@
 /*
- The MIT License (MIT)
+ MIT License
 
- Copyright (c) 2015-present Badoo Trading Limited.
+ Copyright (c) 2017-2019 MessageKit
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -10,30 +10,29 @@
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
 
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
-*/
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
 
-import Foundation
+import UIKit
 
-public protocol TextMessageModelProtocol: DecoratedMessageModelProtocol, ContentEquatableChatItemProtocol {
-    var text: String { get }
-}
+open class InsetLabel: UILabel {
 
-open class TextMessageModel<MessageModelT: MessageModelProtocol>: BaseMessageModel<MessageModelT>, TextMessageModelProtocol {
-    public let text: String
-   
-    public init(messageModel: MessageModelT,
-                text: String) {
-        self.text = text
-        super.init(messageModel: messageModel)
+    open var textInsets: UIEdgeInsets = .zero {
+        didSet { setNeedsDisplay() }
     }
+
+    open override func drawText(in rect: CGRect) {
+        let insetRect = rect.inset(by: textInsets)
+        super.drawText(in: insetRect)
+    }
+
 }

@@ -17,9 +17,7 @@ public protocol TnexMessageModelProtocol: MessageModelProtocol, ContentEquatable
 
 public extension TnexMessageModelProtocol {
     var senderAvatarUrl: String {
-        let path = senderId.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ":chat-matrix.tnex.com.vn", with: "")
-        let avatarUrl = "http://d1cc8adlak9j1y.cloudfront.net/avatar/\(path)"
-        return "https://customer-images.tnex.com.vn/null1291688755-d2040ed1-127c-43cc-b575-0bf25fef9817.jpg" //avatarUrl
+        return senderId.getAvatarUrl()
     }
     
 }
@@ -49,28 +47,7 @@ public class DemoChatMessageSender {
     }
 
     private func fakeMessageStatus(_ message: TnexMessageModelProtocol) {
-        switch message.status {
-        case .success:
-            break
-        case .failed:
-            self.updateMessage(message, status: .sending)
-            self.fakeMessageStatus(message)
-        case .sending:
-            switch arc4random_uniform(100) % 5 {
-            case 0:
-                if arc4random_uniform(100) % 2 == 0 {
-                    self.updateMessage(message, status: .failed)
-                } else {
-                    self.updateMessage(message, status: .success)
-                }
-            default:
-                let delaySeconds: Double = Double(arc4random_uniform(1200)) / 1000.0
-                let delayTime = DispatchTime.now() + Double(Int64(delaySeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-                DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                    self.fakeMessageStatus(message)
-                }
-            }
-        }
+        //
     }
 
     func updateMessage(_ message: TnexMessageModelProtocol, status: MessageStatus) {

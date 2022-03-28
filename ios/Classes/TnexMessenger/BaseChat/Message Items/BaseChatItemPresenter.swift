@@ -87,6 +87,10 @@ open class BaseChatItemPresenter<CellT: UICollectionViewCell>: ChatItemPresenter
     open func shouldShowMenu() -> Bool {
         return false
     }
+    
+    public func getViewModel() -> MessageViewModelProtocol? {
+        return nil
+    }
 
     public final func cellWasHidden(_ cell: UICollectionViewCell) {
         // Carefull!! This doesn't mean that this is no longer visible

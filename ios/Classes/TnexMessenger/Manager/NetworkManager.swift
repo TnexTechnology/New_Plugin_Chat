@@ -75,7 +75,7 @@ public class NetworkManager: NSObject {
                 completion(nil)
                 return
             }
-            var messageContent: [String: Any] = [MessageContants.messageBodyKey: url, MessageContants.messageTypeKey: MessageType.image.key, "clientId": UUID().uuidString]
+            var messageContent: [String: Any] = [MessageConstants.messageBodyKey: url, MessageConstants.messageTypeKey: MessageType.image.key, "clientId": UUID().uuidString]
             messageContent["format"] = "org.matrix.custom.html"
             messageContent["filename"] = url
             messageContent["url"] = url

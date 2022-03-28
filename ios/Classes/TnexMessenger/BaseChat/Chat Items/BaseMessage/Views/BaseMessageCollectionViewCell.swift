@@ -24,6 +24,12 @@
 
 import UIKit
 
+public protocol SeenViewProtocol: UIView {
+    var userId: String { get }
+    var messageId: String { get }
+}
+
+
 public struct ReplyIndicatorStyle {
     let image: UIImage
     let size: CGSize
@@ -48,6 +54,7 @@ public protocol BaseMessageCollectionViewCellStyleProtocol {
     func attributedStringForDate(_ date: String) -> NSAttributedString
     func layoutConstants(viewModel: MessageViewModelProtocol) -> BaseMessageCollectionViewCellLayoutConstants
     var replyIndicatorStyle: ReplyIndicatorStyle? { get }
+    func actionAttributesString(action: ActionMessageType) -> NSAttributedString?
 }
 
 public struct BaseMessageCollectionViewCellLayoutConstants {
@@ -119,6 +126,14 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
             self.addBubbleViewConstraintsIfNeeded()
         }
     }
+        
+        open weak var delegate: MKMessageLabelDelegate? {
+            didSet {
+                if let textBubbleView = self.bubbleView as? TextBubbleProtocol {
+                    textBubbleView.delegate = delegate
+                }
+            }
+        }
 
     public var baseStyle: BaseMessageCollectionViewCellStyleProtocol! {
         didSet {
@@ -150,6 +165,43 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         assert(false, "Override in subclass")
         return nil
     }
+        
+    open var singleAvatarSeenView: SeenViewProtocol!
+    
+        @objc
+        func failedButtonTapped() {
+            self.onFailedButtonTapped?(self)
+        }
+        
+        public var onFailedButtonTapped: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
+        public var onAvatarTapped: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
+        public var onActionViewTapped: ((_ action: ActionMessageType, _ imageView: UIImageView?) -> Void)?
+        public var onBubbleTapped: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
+        public var onBubbleDoubleTapped: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
+        public var onBubbleLongPressBegan: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
+        public var onBubbleLongPressEnded: ((_ cell: BaseMessageCollectionViewCell, _ touchPoint: CGPoint) -> Void)?
+        public var onAvatarLongPressEnded: ((_ cell: BaseMessageCollectionViewCell, _ touchPoint: CGPoint) -> Void)?
+        public var onSelection: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
+        public var onTapSingleSeenView: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
+        
+        open var statusMessageImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.layer.cornerRadius = 7.5
+            imageView.clipsToBounds = true
+            return imageView
+        }()
+        
+        lazy var actionContainerView: ActionMessageView = {
+            let actionView = ActionMessageView(action: self.messageViewModel.actionType)
+            actionView.backgroundColor = MessageConstants.ActionView.backgroundColor
+            actionView.layer.cornerRadius = MessageConstants.ActionView.cornerRadius
+            actionView.clipsToBounds = true
+            actionView.isUserInteractionEnabled = true
+            self.contentView.insertSubview(actionView, belowSubview: self.bubbleView)
+             self._actionContainerView = actionView
+            return actionView
+        }()
+        public var _actionContainerView: UIView?
 
     public private(set) var avatarView: UIImageView!
     open func createAvatarView() -> UIImageView! {
@@ -169,44 +221,18 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         self.commonInit()
     }
 
-    public private(set) lazy var tapGestureRecognizer: UITapGestureRecognizer = {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BaseMessageCollectionViewCell.bubbleTapped(_:)))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        tapGestureRecognizer.delegate = self
-        return tapGestureRecognizer
-    }()
-
-    public private(set) lazy var doubleTapGestureRecognizer: UITapGestureRecognizer = {
-        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BaseMessageCollectionViewCell.bubbleDoubleTapped(_:)))
-        doubleTapGestureRecognizer.numberOfTapsRequired = 2
-        doubleTapGestureRecognizer.delegate = self
-        return doubleTapGestureRecognizer
-    }()
-
-    public private (set) lazy var longPressGestureRecognizer: UILongPressGestureRecognizer = {
-        let longpressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(BaseMessageCollectionViewCell.bubbleLongPressed(_:)))
-        longpressGestureRecognizer.cancelsTouchesInView = true
-        longpressGestureRecognizer.delegate = self
-        return longpressGestureRecognizer
-    }()
-
-    public private(set) lazy var avatarTapGestureRecognizer: UITapGestureRecognizer = {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BaseMessageCollectionViewCell.avatarTapped(_:)))
-        return tapGestureRecognizer
-    }()
-
     private func commonInit() {
         self.avatarView = self.createAvatarView()
-        self.avatarView.addGestureRecognizer(self.avatarTapGestureRecognizer)
         self.bubbleView = self.createBubbleView()
         self.bubbleView.isExclusiveTouch = true
-        self.bubbleView.addGestureRecognizer(self.tapGestureRecognizer)
-        self.bubbleView.addGestureRecognizer(self.longPressGestureRecognizer)
-        self.bubbleView.addGestureRecognizer(self.doubleTapGestureRecognizer)
-        self.tapGestureRecognizer.require(toFail: self.longPressGestureRecognizer)
-        self.tapGestureRecognizer.require(toFail: self.doubleTapGestureRecognizer)
-        self.contentView.addSubview(self.avatarView)
         self.contentView.addSubview(self.bubbleView)
+//        self.bubbleView.addGestureRecognizer(self.tapGestureRecognizer)
+//        self.bubbleView.addGestureRecognizer(self.longPressGestureRecognizer)
+//        self.bubbleView.addGestureRecognizer(self.doubleTapGestureRecognizer)
+//        self.tapGestureRecognizer.require(toFail: self.longPressGestureRecognizer)
+//        self.tapGestureRecognizer.require(toFail: self.doubleTapGestureRecognizer)
+        self.contentView.addSubview(self.statusMessageImageView)
+        self.contentView.addSubview(self.avatarView)
         self.contentView.addSubview(self.failedButton)
         self.contentView.addSubview(self.selectionIndicator)
         self.contentView.addSubview(self.replyIndicator)
@@ -214,35 +240,12 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         self.contentView.isExclusiveTouch = true
         self.isExclusiveTouch = true
         self.backgroundColor = .clear
-
-        let selectionTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleSelectionTap(_:)))
-        self.selectionTapGestureRecognizer = selectionTapGestureRecognizer
-        self.addGestureRecognizer(selectionTapGestureRecognizer)
+        singleAvatarSeenView = AvatarSeenView(userId: "", messageId: "")
+        self.contentView.addSubview(singleAvatarSeenView)
     }
 
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return self.bubbleView.bounds.contains(touch.location(in: self.bubbleView))
-    }
-
-    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        let allowLongPressGestureRecognizerToBeRecognizedWithAnyOtherGestureRecognizersExceptTapGestures = gestureRecognizer === self.longPressGestureRecognizer && !(otherGestureRecognizer is UITapGestureRecognizer)
-        let allowTapGestureRecognizerToBeRecognizedWithOtherTapGestures = [self.tapGestureRecognizer, self.doubleTapGestureRecognizer].contains(gestureRecognizer) && otherGestureRecognizer is UITapGestureRecognizer
-        return allowLongPressGestureRecognizerToBeRecognizedWithAnyOtherGestureRecognizersExceptTapGestures
-            || allowTapGestureRecognizerToBeRecognizedWithOtherTapGestures
-    }
-
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer is UITapGestureRecognizer {
-            let allowTapGesturestToWaitUntilLongPressGesturesFail = otherGestureRecognizer == self.longPressGestureRecognizer
-            return allowTapGesturestToWaitUntilLongPressGesturesFail
-        }
-
-        guard let otherLongPressGestureRecognizer = otherGestureRecognizer as? UILongPressGestureRecognizer else {
-            return false
-        }
-
-        let allowLongPressGestureToWaitUntilOtherLongPressGesturesWithSingleTouchFail = gestureRecognizer == self.longPressGestureRecognizer && otherLongPressGestureRecognizer.numberOfTouchesRequired == 1
-        return allowLongPressGestureToWaitUntilOtherLongPressGesturesWithSingleTouchFail
     }
 
     open override func prepareForReuse() {
@@ -266,11 +269,12 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         self.updateFailedIconState()
         self.accessoryTimestampView.attributedText = style.attributedStringForDate(viewModel.date)
         self.updateSelectionIndicator(with: style)
-
+        if !(viewModel.actionType == ActionMessageType.default) {
+            self.updateActionView(viewModel: viewModel)
+        }
         self.contentView.isUserInteractionEnabled = !viewModel.decorationAttributes.isShowingSelectionIndicator
-        self.selectionTapGestureRecognizer?.isEnabled = viewModel.decorationAttributes.isShowingSelectionIndicator
         self.selectionIndicator.isHidden = !viewModel.decorationAttributes.isShowingSelectionIndicator
-
+        self.statusMessageImageView.image = viewModel.status.icon
         if let replyIndicatorStyle = style.replyIndicatorStyle {
             replyIndicator.image = replyIndicatorStyle.image
             replyIndicator.bounds.size = replyIndicatorStyle.size
@@ -279,6 +283,17 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }
+        
+        private func updateActionView(viewModel: MessageViewModelProtocol) {
+//            UIView.performWithoutAnimation {
+//                let attributedText = self.baseStyle.actionAttributesString(action: viewModel.actionType)
+//                self.actionContainerView.applyUI(isOutgoingMessage: !viewModel.isIncoming, action: viewModel.actionType, attributedText: attributedText)
+//                self.actionContainerView.layoutIfNeeded()
+//            }
+//            if let imageView = self.actionContainerView.imageView {
+//                viewModel.messageActionThumb?(imageView, viewModel.actionType)
+//            }
+        }
 
     public func updateFailedIconState() {
         let oldAlpha = self.failedButton.alpha
@@ -332,6 +347,7 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         super.layoutSubviews()
 
         let layout = self.calculateLayout(availableWidth: self.contentView.bounds.width)
+        self.updateSingleAvatarSeenView(layout: layout)
         self.failedButton.bma_rect = layout.failedButtonFrame
         if !self.useAutolayoutForBubbleView {
             self.bubbleView.bma_rect = layout.bubbleViewFrame
@@ -340,9 +356,46 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         }
 
         self.avatarView.bma_rect = layout.avatarViewFrame
+        self.avatarView.layer.cornerRadius = layout.avatarViewFrame.size.width / 2
         self.selectionIndicator.bma_rect = layout.selectionIndicatorFrame
-
-        if self.accessoryTimestampView.superview != nil {
+        self.statusMessageImageView.bma_rect = layout.messageStatusFrame
+        self.updateTimestampView()
+        if self.messageViewModel.decorationAttributes.isShowingSelectionIndicator {
+            self.singleAvatarSeenView?.isHidden = true
+            self.statusMessageImageView.isHidden = true
+        } else {
+            self.updateSingleAvatarSeenView(layout: layout)
+        }
+        self.updatereplyIndicator()
+    }
+        
+        private func updateSingleAvatarSeenView(layout: Layout) {
+            if let seenUserId = self.messageViewModel.singleSeenUserId, let avatarSeenView = self.singleAvatarSeenView as? AvatarSeenView {
+                avatarSeenView.imgAvatar.loadAvatar(url: seenUserId.getAvatarUrl())
+                singleAvatarSeenView.isHidden = false
+                self.statusMessageImageView.isHidden = true
+            } else {
+                singleAvatarSeenView.isHidden = true
+                self.statusMessageImageView.isHidden = self.messageViewModel.status == .normal
+            }
+            self.singleAvatarSeenView?.bma_rect = layout.singleAvatarSeenFrame
+            self.singleAvatarSeenView?.layer.cornerRadius = 8
+        }
+        
+        private func updatereplyIndicator() {
+            guard let style = self.baseStyle?.replyIndicatorStyle, offsetToRevealAccessoryView == 0 else { return }
+            let offset = self.offsetToRevealReplyIndicator
+            guard -offset < self.bounds.width/2 else { return }
+            let width = style.size.width
+            self.replyIndicator.center = CGPoint(
+                x: self.bounds.width - min(style.maxOffset + offset, 0) + width / 2,
+                y: self.bounds.height / 2
+            )
+            self.contentView.frame.origin.x = offset
+        }
+        
+        private func updateTimestampView() {
+            guard self.accessoryTimestampView.superview != nil else { return }
             let layoutConstants = baseStyle.layoutConstants(viewModel: messageViewModel)
             self.accessoryTimestampView.bounds = CGRect(origin: CGPoint.zero, size: self.accessoryTimestampView.intrinsicContentSize)
             let accessoryViewWidth = self.accessoryTimestampView.bounds.width
@@ -358,17 +411,6 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
             self.accessoryTimestampView.center = CGPoint(x: self.bounds.width - leftOffsetForAccessoryView + accessoryViewWidth / 2, y: self.contentView.center.y)
         }
 
-        if let style = self.baseStyle?.replyIndicatorStyle, offsetToRevealAccessoryView == 0 {
-            let offset = self.offsetToRevealReplyIndicator
-            let width = style.size.width
-            self.replyIndicator.center = CGPoint(
-                x: min(style.maxOffset - offset, 0) - width / 2,
-                y: self.bounds.height / 2
-            )
-            self.contentView.frame.origin.x = offset
-        }
-    }
-
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
         if self.useAutolayoutForBubbleView {
             return contentView.systemLayoutSizeFitting(.init(width: size.width, height: 0),
@@ -379,27 +421,29 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         }
     }
 
-    private func calculateLayout(availableWidth: CGFloat) -> Layout {
-        let layoutConstants = self.baseStyle.layoutConstants(viewModel: self.messageViewModel)
-        let parameters = LayoutParameters(
-            containerWidth: availableWidth,
-            horizontalMargin: layoutConstants.horizontalMargin,
-            horizontalInterspacing: layoutConstants.horizontalInterspacing,
-            maxContainerWidthPercentageForBubbleView: layoutConstants.maxContainerWidthPercentageForBubbleView,
-            bubbleView: self.bubbleView,
-            isIncoming: self.messageViewModel.isIncoming,
-            isShowingFailedButton: self.shouldShowFailedIcon,
-            failedButtonSize: self.baseStyle.failedIcon.size,
-            avatarSize: self.baseStyle.avatarSize(viewModel: self.messageViewModel),
-            avatarVerticalAlignment: self.baseStyle.avatarVerticalAlignment(viewModel: self.messageViewModel),
-            isShowingSelectionIndicator: self.messageViewModel.decorationAttributes.isShowingSelectionIndicator,
-            selectionIndicatorSize: self.baseStyle.selectionIndicatorIcon(for: self.messageViewModel).size,
-            selectionIndicatorMargins: self.baseStyle.selectionIndicatorMargins
-        )
-        var layoutModel = Layout()
-        layoutModel.calculateLayout(parameters: parameters)
-        return layoutModel
-    }
+        private func calculateLayout(availableWidth: CGFloat) -> Layout {
+            let layoutConstants = self.baseStyle.layoutConstants(viewModel: self.messageViewModel)
+            let parameters = LayoutParameters(
+                containerWidth: availableWidth,
+                horizontalMargin: layoutConstants.leftMargin,
+                horizontalInterspacing: layoutConstants.horizontalInterspacing,
+                maxContainerWidthPercentageForBubbleView: layoutConstants.maxContainerWidthPercentageForBubbleView,
+                bubbleView: self.bubbleView,
+                isIncoming: self.messageViewModel.isIncoming,
+                isShowingFailedButton: self.shouldShowFailedIcon,
+                failedButtonSize: self.baseStyle.failedIcon.size,
+                avatarSize: self.baseStyle.avatarSize(viewModel: self.messageViewModel),
+                avatarVerticalAlignment: self.baseStyle.avatarVerticalAlignment(viewModel: self.messageViewModel),
+                isShowingSelectionIndicator: self.messageViewModel.decorationAttributes.isShowingSelectionIndicator,
+                selectionIndicatorSize: self.baseStyle.selectionIndicatorIcon(for: self.messageViewModel).size,
+                action: self.messageViewModel.actionType,
+                selectionIndicatorMargins: self.baseStyle.selectionIndicatorMargins,
+                actionAttributesString: self.baseStyle.actionAttributesString(action: self.messageViewModel.actionType)
+            )
+            var layoutModel = Layout()
+            layoutModel.calculateLayout(parameters: parameters)
+            return layoutModel
+        }
 
     // MARK: timestamp revealing
 
@@ -486,14 +530,6 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         self.updateSelectionIndicatorAccessibilityIdentifier()
     }
 
-    private var selectionTapGestureRecognizer: UITapGestureRecognizer?
-    public var onSelection: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
-
-    @objc
-    private func handleSelectionTap(_ gestureRecognizer: UITapGestureRecognizer) {
-        self.onSelection?(self)
-    }
-
     private func updateSelectionIndicatorAccessibilityIdentifier() {
         let accessibilityIdentifier: String
         if self.messageViewModel.decorationAttributes.isShowingSelectionIndicator {
@@ -507,159 +543,141 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: MessageCollectionViewC
         }
         self.selectionIndicator.accessibilityIdentifier = accessibilityIdentifier
     }
-
-    // MARK: User interaction
-
-    public var onFailedButtonTapped: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
-    @objc
-    func failedButtonTapped() {
-        self.onFailedButtonTapped?(self)
-    }
-
-    public var onAvatarTapped: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
-    @objc
-    func avatarTapped(_ tapGestureRecognizer: UITapGestureRecognizer) {
-        self.onAvatarTapped?(self)
-    }
-
-    public var onBubbleTapped: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
-    @objc
-    func bubbleTapped(_ tapGestureRecognizer: UITapGestureRecognizer) {
-        self.onBubbleTapped?(self)
-    }
-
-    public var onBubbleDoubleTapped: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
-    @objc
-    func bubbleDoubleTapped(_ tapGestureRecognizer: UITapGestureRecognizer) {
-        self.onBubbleDoubleTapped?(self)
-    }
-
-    public var onBubbleLongPressBegan: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
-    public var onBubbleLongPressEnded: ((_ cell: BaseMessageCollectionViewCell) -> Void)?
-    @objc
-    private func bubbleLongPressed(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        switch longPressGestureRecognizer.state {
-        case .began:
-            self.onBubbleLongPressBegan?(self)
-        case .ended, .cancelled:
-            self.onBubbleLongPressEnded?(self)
-        default:
-            break
-        }
-    }
-}
-
-private struct Layout {
-    private (set) var size = CGSize.zero
-    private (set) var failedButtonFrame = CGRect.zero
-    private (set) var bubbleViewFrame = CGRect.zero
-    private (set) var avatarViewFrame = CGRect.zero
-    private (set) var selectionIndicatorFrame = CGRect.zero
-    private (set) var preferredMaxWidthForBubble: CGFloat = 0
-
-    mutating func calculateLayout(parameters: LayoutParameters) {
-        let containerWidth = parameters.containerWidth
-        let isIncoming = parameters.isIncoming
-        let isShowingFailedButton = parameters.isShowingFailedButton
-        let failedButtonSize = parameters.failedButtonSize
-        let bubbleView = parameters.bubbleView
-        let horizontalMargin = parameters.horizontalMargin
-        let horizontalInterspacing = parameters.horizontalInterspacing
-        let avatarSize = parameters.avatarSize
-        let selectionIndicatorSize = parameters.selectionIndicatorSize
-
-        let preferredWidthForBubble = (containerWidth * parameters.maxContainerWidthPercentageForBubbleView).bma_round()
-        let bubbleSize = bubbleView.sizeThatFits(CGSize(width: preferredWidthForBubble, height: .greatestFiniteMagnitude))
-        let containerRect = CGRect(origin: CGPoint.zero, size: CGSize(width: containerWidth, height: bubbleSize.height))
-
-        self.bubbleViewFrame = bubbleSize.bma_rect(
-            inContainer: containerRect,
-            xAlignament: .center,
-            yAlignment: .center
-        )
-
-        self.failedButtonFrame = failedButtonSize.bma_rect(
-            inContainer: containerRect,
-            xAlignament: .center,
-            yAlignment: .center
-        )
-
-        self.avatarViewFrame = avatarSize.bma_rect(
-            inContainer: containerRect,
-            xAlignament: .center,
-            yAlignment: parameters.avatarVerticalAlignment
-        )
-
-        self.selectionIndicatorFrame = selectionIndicatorSize.bma_rect(
-            inContainer: containerRect,
-            xAlignament: .left,
-            yAlignment: .center
-        )
-
-        // Adjust horizontal positions
-
-        var currentX: CGFloat = 0
-
-        if parameters.isShowingSelectionIndicator {
-            self.selectionIndicatorFrame.origin.x += parameters.selectionIndicatorMargins.left
-        } else {
-            self.selectionIndicatorFrame.origin.x -= selectionIndicatorSize.width
-        }
-
-        currentX += self.selectionIndicatorFrame.maxX
-
-        if isIncoming {
-            currentX += horizontalMargin
-            self.avatarViewFrame.origin.x = currentX
-            currentX += avatarSize.width
-            if isShowingFailedButton {
-                currentX += horizontalInterspacing
-                self.failedButtonFrame.origin.x = currentX
-                currentX += failedButtonSize.width
-                currentX += horizontalInterspacing
+        
+        // MARK: User interaction
+        
+        private var workItem: DispatchWorkItem?
+        private var timeout: TimeInterval = 0.3
+        private var tapCount = 0
+        
+        private func countTapAction(completion: @escaping((_ isDoubleTap: Bool) -> Void)) {
+            tapCount += 1
+            if tapCount == 1 {
+                workItem = DispatchWorkItem { [weak self] in
+                    guard let self = self else { return }
+                    self.tapCount = 0
+                    completion(false)
+                }
+                DispatchQueue.main.asyncAfter(
+                    deadline: .now() + timeout,
+                    execute: workItem!
+                )
             } else {
-                self.failedButtonFrame.origin.x = currentX - failedButtonSize.width
-                currentX += horizontalInterspacing
+                workItem?.cancel()
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.tapCount = 0
+                    completion(true)
+                }
             }
-            self.bubbleViewFrame.origin.x = currentX
-        } else {
-            currentX = containerRect.maxX - horizontalMargin
-            currentX -= avatarSize.width
-            self.avatarViewFrame.origin.x = currentX
-            if isShowingFailedButton {
-                currentX -= horizontalInterspacing
-                currentX -= failedButtonSize.width
-                self.failedButtonFrame.origin.x = currentX
-                currentX -= horizontalInterspacing
-            } else {
-                self.failedButtonFrame.origin.x = currentX
-                currentX -= horizontalInterspacing
+        }
+        
+        func handleTapBubbleView(touchLocation: CGPoint) {
+            self.onBubbleTapped?(self)
+        }
+        
+        public override func handleTapGesture(_ gesture: UIGestureRecognizer) {
+            guard allowRevealing else {
+                self.onSelection?(self)
+                return
             }
-            currentX -= bubbleSize.width
-            self.bubbleViewFrame.origin.x = currentX
+            let touchLocation = gesture.location(in: self)
+            switch true {
+            case self.bubbleView.frame.contains(touchLocation):
+                self.countTapAction {[weak self] (isDoubleTap) in
+                    guard let self = self else { return }
+                    if isDoubleTap {
+                        self.onBubbleDoubleTapped?(self)
+                    } else {
+                        let touchPointInBubbleView = self.convert(touchLocation, to: self.bubbleView)
+                        self.handleTapBubbleView(touchLocation: touchPointInBubbleView)
+                    }
+                }
+            case self.actionContainerView.frame.contains(touchLocation):
+                self.onActionViewTapped?(self.messageViewModel.actionType, self.actionContainerView.imageView)
+            case self.avatarView.frame.contains(touchLocation) && !avatarView.isHidden && self.avatarView.image != nil:
+                self.onAvatarTapped?(self)
+            default:
+                self.onSelection?(self)
+            }
+        }
+        
+        public override func handleDoubleTapGesture(_ gesture: UIGestureRecognizer) {
+            self.onBubbleDoubleTapped?(self)
+        }
+        
+        public override func handleLongPressGesture(in touchLocation: CGPoint, touchPointInWindow: CGPoint) {
+            guard self.messageViewModel.decorationAttributes.isShowingSelectionIndicator == false else { return }
+            if let textBubbleView = self.bubbleView as? TextBubbleProtocol {
+                let newTouch = self.convert(touchLocation, to: textBubbleView.messageLabel)
+                if textBubbleView.messageLabel.rangesForDetectors[.url]?.count ?? 0 > 1 {
+                    if textBubbleView.messageLabel.handleGesture(newTouch) {
+                        //Longpress to richtext
+                        return
+                    }
+                }
+            }
+            switch true {
+            case self.bubbleView.frame.contains(touchLocation):
+                self.spotlightBubleView {[weak self] in
+                    if let self = self {
+                        self.onBubbleLongPressEnded?(self, touchPointInWindow)
+                    }
+                }
+            case avatarView.frame.contains(touchLocation) && !avatarView.isHidden && self.avatarView.image != nil:
+                self.onAvatarLongPressEnded?(self, touchPointInWindow)
+            default:
+                break
+            }
+        }
+        
+        func setDidEndPressGesture() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {[weak self] in
+                self?.didEndPressGesture()
+            }
+        }
+        
+        public override func didEndPressGesture() {
+            if let textBubbView = self.bubbleView as? TextBubbleProtocol {
+                textBubbView.messageLabel.activeLink = nil
+            }
+        }
+        
+        @objc
+        private func bubbleLongPressed(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+            let touchPointInWindow = longPressGestureRecognizer.location(in: UIApplication.key)
+            switch longPressGestureRecognizer.state {
+            case .began:
+                self.spotlightBubleView {[weak self] in
+                    if let self = self {
+                        self.onBubbleLongPressEnded?(self, touchPointInWindow)
+                    }
+                }
+            case .ended, .cancelled:
+                break
+            default:
+                break
+            }
+        }
+        
+        final public func spotlightBubleView(completion: (()->Void)? = nil) {
+            self.bubbleView.alpha = 0.8
+            UIView.animate(withDuration: 0.3 / 1.5, animations: {
+                self.bubbleView.transform = CGAffineTransform(scaleX: 1.03, y: 1.03)
+            }) { _ in
+                UIView.animate(withDuration: 0.3 / 2, animations: {
+                    self.bubbleView.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+                }) { _ in
+                    UIView.animate(withDuration: 0.3 / 2, animations: {
+                        self.bubbleView.transform = CGAffineTransform.identity
+                        self.bubbleView.alpha = 1.0
+                        completion?()
+                    })
+                }
+            }
         }
 
-        self.size = containerRect.size
-        self.preferredMaxWidthForBubble = preferredWidthForBubble
-    }
 }
-
-private struct LayoutParameters {
-    let containerWidth: CGFloat
-    let horizontalMargin: CGFloat
-    let horizontalInterspacing: CGFloat
-    let maxContainerWidthPercentageForBubbleView: CGFloat // in [0, 1]
-    let bubbleView: UIView
-    let isIncoming: Bool
-    let isShowingFailedButton: Bool
-    let failedButtonSize: CGSize
-    let avatarSize: CGSize
-    let avatarVerticalAlignment: VerticalAlignment
-    let isShowingSelectionIndicator: Bool
-    let selectionIndicatorSize: CGSize
-    let selectionIndicatorMargins: UIEdgeInsets
-}
-
 
 open class MessageCollectionViewCell: UICollectionViewCell {
 
@@ -690,4 +708,3 @@ open class MessageCollectionViewCell: UICollectionViewCell {
         // Should be overridden
     }
 }
-

@@ -36,21 +36,25 @@ public protocol PhotoMessageModelProtocol: DecoratedMessageModelProtocol, Conten
     var mediaItem: MediaItem { get }
 }
 
-open class PhotoMessageModel<MessageModelT: MessageModelProtocol>: PhotoMessageModelProtocol {
-    public var messageModel: MessageModelProtocol {
-        return self._messageModel
-    }
-    public let _messageModel: MessageModelT // Can't make messageModel: MessageModelT: https://gist.github.com/diegosanchezr/5a66c7af862e1117b556
+open class PhotoMessageModel<MessageModelT: MessageModelProtocol>: BaseMessageModel<MessageModelT>, PhotoMessageModelProtocol {
+    
     public let mediaItem: MediaItem
-    public var canReply: Bool { self.messageModel.canReply }
     public init(messageModel: MessageModelT, mediaItem: MediaItem) {
-        self._messageModel = messageModel
         self.mediaItem = mediaItem
+        super.init(messageModel: messageModel)
     }
-    public func hasSameContent(as anotherItem: ChatItemProtocol) -> Bool {
+    public override func hasSameContent(as anotherItem: ChatItemProtocol) -> Bool {
         guard let anotherMessageModel = anotherItem as? PhotoMessageModel else { return false }
-        return self.mediaItem.urlString == anotherMessageModel.mediaItem.urlString
-        && self.mediaItem.id == anotherMessageModel.mediaItem.id
-        && self.mediaItem.imageSize == anotherMessageModel.mediaItem.imageSize
+        return self.mediaItem.image == anotherMessageModel.mediaItem.image
+            && self.mediaItem.urlString == anotherMessageModel.mediaItem.urlString
+    }
+    
+    open func willBeShown() {
+        //Update progres...
+        // Need to declare empty. Otherwise subclass code won't execute (as of Xcode 7.2)
+    }
+
+    open func wasHidden() {
+        // Need to declare empty. Otherwise subclass code won't execute (as of Xcode 7.2)
     }
 }

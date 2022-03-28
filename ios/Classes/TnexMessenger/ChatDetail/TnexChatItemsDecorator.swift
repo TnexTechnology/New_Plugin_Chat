@@ -16,18 +16,20 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
     }
     private let limitBetweenMessages: Double = 600
     private let messagesSelector: MessagesSelectorProtocol
-    init(messagesSelector: MessagesSelectorProtocol) {
+    weak var chatDataSource: TnexChatDataSource?
+    init(messagesSelector: MessagesSelectorProtocol, chatDataSource: TnexChatDataSource) {
         self.messagesSelector = messagesSelector
+        self.chatDataSource = chatDataSource
     }
 
     func decorateItems(_ chatItems: [ChatItemProtocol]) -> [DecoratedChatItem] {
         var decoratedChatItems = [DecoratedChatItem]()
         var dateTimeStamp: TimeSeparatorModel? = nil
+        var isReadMessage: Bool = false
         let calendar = Calendar.current
         for (index, chatItem) in chatItems.enumerated() {
             let next: ChatItemProtocol? = (index + 1 < chatItems.count) ? chatItems[index + 1] : nil
             let prev: ChatItemProtocol? = (index > 0) ? chatItems[index - 1] : nil
-
             var isSelected = false
             var isShowingSelectionIndicator = false
             var isTheBeginBlockChat = false
@@ -36,9 +38,16 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
             var isExpandCell = false
 
             if let currentMessage = chatItem as? TnexMessageModelProtocol {
+                if currentMessage.uid == self.chatDataSource?.lastMessageIdPartnerRead {
+                    isReadMessage = true
+                    if let msg = currentMessage as? DemoTextMessageModel {
+                        msg._messageModel.seenInfo = [self.chatDataSource?.partnerId ?? ""]
+                    }
+                    
+                }
                 isTheBeginBlockChat = self.checkIsTheBeginBlockChat(currentMessage, prevMessage: prev as? MessageModelProtocol)
                 isTheEndBlockChat = self.checkIsTheEndBlockChat(currentMessage, nextMessage: next as? MessageModelProtocol)
-                
+                self.setupStatus(currentMessage, nextMessage: next as? TnexMessageModelProtocol, isReadMessage: isReadMessage)
                 isShowSenderInfo = self.checkShowDisplayName(currentMessage, isIncoming: currentMessage.isIncoming, isTheFirstBlockChat: isTheBeginBlockChat)
                 isExpandCell = false
                 if isExpandCell {
@@ -158,6 +167,27 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
             return true
         }
         return false
+    }
+    
+    private func setupStatus(_ currentMessage: TnexMessageModelProtocol, nextMessage: MessageModelProtocol?, isReadMessage: Bool) {
+        guard currentMessage.status == .normal || currentMessage.status == .success else { return }
+        if currentMessage.isIncoming {
+            currentMessage.status = .normal
+            return
+        }
+        //Tin nhan da xem => Chuyen status normal
+        if currentMessage.status == .success {
+            if self.chatDataSource?.lastMessageIdPartnerRead == nil {
+                //User chua doc tin nhan
+                currentMessage.status = .success
+            } else {
+                if isReadMessage == true {
+                    currentMessage.status = .success
+                } else {
+                    currentMessage.status = .normal
+                }
+            }
+        }
     }
     
 }

@@ -93,7 +93,7 @@ public class TnexRoom {
 
     public func send(text: String, completion: @escaping(_ event: MXEvent?) -> Void) {
         guard !text.isEmpty else { return }
-        let messageContent: [String: Any] = [MessageContants.messageBodyKey: text, MessageContants.messageTypeKey: MessageType.text.key, "clientId": UUID().uuidString]
+        let messageContent: [String: Any] = [MessageConstants.messageBodyKey: text, MessageConstants.messageTypeKey: MessageType.text.key, "clientId": UUID().uuidString]
         self.sendMessage(content: messageContent, completion: completion)
     }
     

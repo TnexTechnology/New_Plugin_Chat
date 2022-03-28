@@ -125,9 +125,9 @@ open class PhotoMessageCollectionViewCellDefaultStyle: PhotoMessageCollectionVie
     open func bubbleBackgroundColor(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIColor? {
         let color = viewModel.isIncoming ? self.baseStyle.baseColorIncoming : self.baseStyle.baseColorOutgoing
         switch viewModel.status {
-        case .success:
+        case .success, .normal:
             return color
-        case .failed, .sending:
+        case .failed, .sending, .uploading:
             return color.bma_blendWithColor(UIColor.white.withAlphaComponent(0.70))
         }
 

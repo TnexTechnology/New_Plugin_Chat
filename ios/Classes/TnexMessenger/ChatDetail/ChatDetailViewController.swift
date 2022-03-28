@@ -51,7 +51,7 @@ open class ChatDetailViewController: BaseChatViewController {
         }
         self.cellPanGestureHandlerConfig.allowReplyRevealing = true
         self.messagesSelector.delegate = self
-        self.chatItemsDecorator = TnexChatItemsDecorator(messagesSelector: self.messagesSelector)
+        self.chatItemsDecorator = TnexChatItemsDecorator(messagesSelector: self.messagesSelector, chatDataSource: dataSource)
         self.replyActionHandler = TnexReplyActionHandler(presentingViewController: self)
         self.messagesCollectionView.backgroundColor = UIColor(red: 0.008, green: 0.0, blue: 0.212, alpha: 1)
         self.changeCollectionViewTopMarginTo(-ChatHeaderView.headerBarHeight/2, duration: 0.3)
@@ -91,6 +91,7 @@ open class ChatDetailViewController: BaseChatViewController {
         dataSource.room?.room.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
                 if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}) {
+                    self.dataSource.partnerId = partnerUser.userId
                     self.headerBar.updateUser(member: partnerUser)
                     if let mxUser = self.dataSource.room?.room.mxSession.user(withUserId: partnerUser.userId) {
                         self.headerBar.updateStatusUser(user: mxUser)
