@@ -8,6 +8,7 @@
 import UIKit
 import PureLayout
 import MatrixSDK
+import InputBarAccessoryView
 
 open class ChatDetailViewController: BaseChatViewController {
     var shouldUseAlternativePresenter: Bool = false
@@ -58,6 +59,12 @@ open class ChatDetailViewController: BaseChatViewController {
         addBackgroundInputBar()
     }
     
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.dataSource.markReadAll()
+    }
+    
     private func addBackgroundInputBar() {
         let backgroundInputView = InputBarBackgroundView()
         backgroundInputView.backgroundColor = .clear
@@ -75,6 +82,7 @@ open class ChatDetailViewController: BaseChatViewController {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        dataSource.listenTypingNotifications()
     }
 
     private func addHeaderView() {
@@ -92,6 +100,7 @@ open class ChatDetailViewController: BaseChatViewController {
             if let self = self, let timeline = timeline {
                 if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}) {
                     self.dataSource.partnerId = partnerUser.userId
+                    self.dataSource.partnerDisplayName = partnerUser.displayname
                     self.headerBar.updateUser(member: partnerUser)
                     if let mxUser = self.dataSource.room?.room.mxSession.user(withUserId: partnerUser.userId) {
                         self.headerBar.updateStatusUser(user: mxUser)
@@ -106,6 +115,7 @@ open class ChatDetailViewController: BaseChatViewController {
         let chatInputView = TnexContainerInputBar.loadNib()
         chatInputView.backgroundColor = .clear
         let inputbar = TnexInputBar()
+        inputbar.delegate = self
         inputbar.presentingController = self
         chatInputView.addSubview(inputbar)
         inputbar.fillSuperview()
@@ -141,7 +151,8 @@ open class ChatDetailViewController: BaseChatViewController {
             DaySeparatorModel.chatItemType: [DaySeparatorPresenterBuilder()],
             TimeSeparatorModel.chatItemType: [TimeSeparatorPresenterBuilder()],
             SenderInfoModel.chatItemType: [SenderInfoPresenterBuilder()],
-            ActionMessageModel.chatItemType: [ActionMessagePresenterBuilder()]
+            ActionMessageModel.chatItemType: [ActionMessagePresenterBuilder()],
+            TypingModel.chatItemType: [TypingPresenterBuilder()]
         ]
     }
 
@@ -190,5 +201,18 @@ extension ChatDetailViewController: MessagesSelectorDelegate {
 
     public func messagesSelector(_ messagesSelector: MessagesSelectorProtocol, didDeselectMessage: MessageModelProtocol) {
         self.enqueueModelUpdate(updateType: .normal)
+    }
+}
+
+
+extension ChatDetailViewController: InputBarAccessoryViewDelegate {
+    public func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+    }
+    
+    public func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+        if !text.isEmpty {
+            self.dataSource.typingTracker.startTimerSendTyping()
+        }
+        
     }
 }

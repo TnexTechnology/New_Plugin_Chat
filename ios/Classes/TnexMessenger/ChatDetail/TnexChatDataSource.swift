@@ -21,7 +21,20 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     var room: TnexRoom?
     private var memberDic: [String: MXRoomMember] = [:]
     var lastMessageIdPartnerRead: String?
+    var isShowTyping: Bool = false
     var partnerId: String?
+    var partnerDisplayName: String?
+    
+    lazy var typingTracker: TypingTracker = {
+        let tracker = TypingTracker()
+        tracker.typingCallback = { [weak self] in
+            self?.sendTyping()
+        }
+        tracker.showTypingCallback = { [weak self] isShow in
+            self?.showHideTyping(isShow: isShow)
+        }
+        return tracker
+    }()
 
     public init(roomId: String) {
         if let room = APIManager.shared.getRooms()?.first(where: {$0.room.roomId == roomId}) {
@@ -109,6 +122,14 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         }
         return sender
     }()
+    
+    func showHideTyping(isShow: Bool) {
+        print("Show before typing status: ....\(isShow)")
+        guard self.isShowTyping != isShow else { return }
+        print("Show typing status: ....\(isShow)")
+        self.isShowTyping = isShow
+        self.delegate?.chatDataSourceDidUpdate(self, updateType: .normal)
+    }
 
     public var hasMoreNext: Bool {
         return self.slidingWindow?.hasMore() ?? false
@@ -184,10 +205,23 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         }
     }
     
-    func sendMarke() {
-        APIManager.shared.mxRestClient.sendReadReceipt(toRoom: self.room?.room.roomId ?? "", forEvent: "") { response in
-            //
-        }
+    func markReadAll() {
+        self.room?.room.summary.markAllAsRead()
+    }
+    
+    func sendTyping() {
+        self.room?.room.sendTypingNotification(typing: true, timeout: 3.0, completion: { response in
+            print("Send typing....")
+        })
+    }
+    
+    func listenTypingNotifications() {
+        self.room?.room.listen(toEventsOfTypes: ["m.typing"], onEvent: {[weak self] event, direction, roomState in
+            print("Is typing......")
+            print(event.sender ?? "hic")
+            print(self?.room?.room.typingUsers)
+            self?.typingTracker.startShowTypingView()
+        })
     }
 
     public func adjustNumberOfMessages(preferredMaxCount: Int?, focusPosition: Double, completion:(_ didAdjust: Bool) -> Void) {

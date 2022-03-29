@@ -89,6 +89,10 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
             }
             
         }
+        if chatDataSource?.isShowTyping == true {
+            let typingModel = TypingModel(uid: "Typing_123", displayName: chatDataSource?.partnerDisplayName ?? "")
+            decoratedChatItems.append(DecoratedChatItem(chatItem: typingModel, decorationAttributes: nil))
+        }
         return decoratedChatItems
     }
 
