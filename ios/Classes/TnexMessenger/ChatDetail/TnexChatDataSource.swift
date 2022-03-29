@@ -65,7 +65,11 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
             if self.room?.room.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(event: event) {
                 let message = self.builderMessage(from: event)
                 self.slidingWindow?.insertItem(message, position: .bottom)
+                if event.sender != APIManager.shared.userId {
+                    self.isShowTyping = false
+                }
                 self.delegate?.chatDataSourceDidUpdate(self)
+                
             }
         }
     }
@@ -217,7 +221,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
             guard let self = self else { return }
             switch event.type {
             case "m.typing":
-                if self.room?.room.typingUsers.first != APIManager.shared.userId {
+                if let userIds = event.content["user_ids"] as? [String], userIds.first != APIManager.shared.userId {
                     self.typingTracker.startShowTypingView()
                 }
             case "m.receipt":
@@ -230,7 +234,6 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                         break
                     }
                 }
-                
             default: break
             }
         })

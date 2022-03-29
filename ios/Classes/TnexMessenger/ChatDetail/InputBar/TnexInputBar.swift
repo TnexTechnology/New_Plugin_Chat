@@ -114,7 +114,7 @@ import FittedSheets
         inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         inputTextView.textColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
         inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
-        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 12)
         inputTextView.layer.borderColor = UIColor(red: 0.078, green: 0.784, blue: 0.98, alpha: 0.4).cgColor
         inputTextView.layer.borderWidth = 1.0
         inputTextView.layer.cornerRadius = 20.0
