@@ -60,11 +60,13 @@ class TypingCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.label.bounds.size = self.label.sizeThatFits(self.contentView.bounds.size)
-        self.label.center.x = self.contentView.center.x
-        self.label.frame.origin.y = 0
+        self.label.center.y = self.contentView.center.y
+        let layoutConstant = BaseMessageCollectionViewCellDefaultStyle.createDefaultLayoutConstants()
+        let leftMargin = layoutConstant.leftMargin + layoutConstant.horizontalInterspacing + 30
+        self.label.frame.origin.x = leftMargin
     }
 
     deinit {
-        print("TimeSeparatorCollectionViewCell deinit")
+        print("TypingCollectionViewCell deinit")
     }
 }

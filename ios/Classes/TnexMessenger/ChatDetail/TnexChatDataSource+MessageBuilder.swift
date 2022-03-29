@@ -52,17 +52,10 @@ extension TnexChatDataSource {
             if let newContent = event.content["text"] as? String {
                 return newContent.trimmingCharacters(in: .whitespacesAndNewlines)
             }
-            let msg = (event.content["body"] as? String).map {
+            let contentString = (event.content["body"] as? String).map {
                 $0.trimmingCharacters(in: .whitespacesAndNewlines)
             } ?? "event type: \(event.type) content: \(event.content)"
-            
-//            if msg == "Đấy" {
-//                print("Hiii@@@@@")
-//                let eventIds = event.readReceiptEventIds()
-//                print(eventIds?.count)
-//                print(event.readReceiptSenders()?.count)
-//            }
-            return msg
+            return contentString
         } else {
             let newContent = event.content["m.new_content"]! as? NSDictionary
             return (newContent?["body"] as? String).map {

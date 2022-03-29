@@ -107,7 +107,7 @@ public struct ConnectedEdges: OptionSet {
 
 extension MXEvent {
     public var timestamp: Date {
-        Date(timeIntervalSince1970: TimeInterval(self.originServerTs / 1000))
+        return Date(timeIntervalSince1970: Double(self.originServerTs / 1000))
     }
 
     public func content<T>(valueFor key: String) -> T? {

@@ -62,7 +62,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     func handleEvent() {
         APIManager.shared.handleEvent = {[weak self] event, direction, roomState in
             guard let self = self else { return }
-            if self.room?.room.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(eventId: event.eventId) {
+            if self.room?.room.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(event: event) {
                 let message = self.builderMessage(from: event)
                 self.slidingWindow?.insertItem(message, position: .bottom)
                 self.delegate?.chatDataSourceDidUpdate(self)
@@ -70,11 +70,9 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         }
     }
     
-    func checkExistEvent(eventId: String) -> Bool {
-        for (_, value) in self.eventDic {
-            if value == eventId {
-                return true
-            }
+    func checkExistEvent(event: MXEvent) -> Bool {
+        if let clientId = event.clientId, self.eventDic[clientId] != nil {
+            return true
         }
         return false
     }
@@ -124,7 +122,6 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }()
     
     func showHideTyping(isShow: Bool) {
-        print("Show before typing status: ....\(isShow)")
         guard self.isShowTyping != isShow else { return }
         print("Show typing status: ....\(isShow)")
         self.isShowTyping = isShow
@@ -216,11 +213,26 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
     
     func listenTypingNotifications() {
-        self.room?.room.listen(toEventsOfTypes: ["m.typing"], onEvent: {[weak self] event, direction, roomState in
-            print("Is typing......")
-            print(event.sender ?? "hic")
-            print(self?.room?.room.typingUsers)
-            self?.typingTracker.startShowTypingView()
+        self.room?.room.listen(toEventsOfTypes: ["m.typing", "m.receipt"], onEvent: {[weak self] event, direction, roomState in
+            guard let self = self else { return }
+            switch event.type {
+            case "m.typing":
+                if self.room?.room.typingUsers.first != APIManager.shared.userId {
+                    self.typingTracker.startShowTypingView()
+                }
+            case "m.receipt":
+                for (key, value) in event.content {
+                    if let dic = value as? [String: Any], let readInfo = dic["m.read"] as? [String: Any] {
+                        if readInfo.keys.first != APIManager.shared.userId {
+                            self.lastMessageIdPartnerRead = key
+                            self.delegate?.chatDataSourceDidUpdate(self, updateType: .firstLoad)
+                        }
+                        break
+                    }
+                }
+                
+            default: break
+            }
         })
     }
 
@@ -253,7 +265,7 @@ extension MXEvent {
     }
     
     var clientId: String? {
-        return content["clientId"] as? String
+        return content["clientId"] as? String ?? self.eventId ?? nil
     }
     
     var isShowMessage: Bool {

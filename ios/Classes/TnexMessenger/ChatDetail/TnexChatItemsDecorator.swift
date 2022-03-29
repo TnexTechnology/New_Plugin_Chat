@@ -24,7 +24,6 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
 
     func decorateItems(_ chatItems: [ChatItemProtocol]) -> [DecoratedChatItem] {
         var decoratedChatItems = [DecoratedChatItem]()
-        var dateTimeStamp: TimeSeparatorModel? = nil
         var isReadMessage: Bool = false
         let calendar = Calendar.current
         for (index, chatItem) in chatItems.enumerated() {
@@ -36,7 +35,7 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
             var isTheEndBlockChat = false
             var isShowSenderInfo: Bool = false
             var isExpandCell = false
-
+            var dateTimeStamp: TimeSeparatorModel? = nil
             if let currentMessage = chatItem as? TnexMessageModelProtocol {
                 if currentMessage.uid == self.chatDataSource?.lastMessageIdPartnerRead {
                     isReadMessage = true
@@ -44,6 +43,10 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
                         msg._messageModel.seenInfo = [self.chatDataSource?.partnerId ?? ""]
                     }
                     
+                } else {
+                    if let msg = currentMessage as? DemoTextMessageModel {
+                        msg._messageModel.seenInfo = []
+                    }
                 }
                 isTheBeginBlockChat = self.checkIsTheBeginBlockChat(currentMessage, prevMessage: prev as? MessageModelProtocol)
                 isTheEndBlockChat = self.checkIsTheEndBlockChat(currentMessage, nextMessage: next as? MessageModelProtocol)
