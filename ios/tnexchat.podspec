@@ -15,9 +15,21 @@ A new flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.platform = :ios, '8.0'
+  s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
+  s.dependency 'MatrixSDK'
+  s.dependency 'KeychainAccess'
+  s.dependency 'SDWebImage', '~> 5.0'
+  s.dependency 'PureLayout'
+  s.dependency 'InputBarAccessoryView'
+  s.dependency 'DropDown'
+  s.dependency 'ISEmojiView'
+  s.dependency 'Alamofire', '~> 5.5'
+  s.dependency 'TLPhotoPicker'
+  s.dependency 'FittedSheets', '~> 1.4.6'
+  s.dependency 'ImageViewer.swift'
+  s.dependency 'ImageViewer.swift/Fetcher'
 end

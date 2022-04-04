@@ -1,0 +1,122 @@
+PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - Alamofire (5.5.0)
+  - DropDown (2.3.13)
+  - FittedSheets (1.4.6)
+  - Flutter (1.0.0)
+  - GZIP (1.3.0)
+  - ImageViewer.swift (3.3.6)
+  - ImageViewer.swift/Fetcher (3.3.6):
+    - SDWebImage
+  - InputBarAccessoryView (5.1.0):
+    - InputBarAccessoryView/Core (= 5.1.0)
+  - InputBarAccessoryView/Core (5.1.0)
+  - ISEmojiView (0.2.6)
+  - KeychainAccess (4.2.2)
+  - libbase58 (0.1.4)
+  - MatrixSDK (0.22.2):
+    - MatrixSDK/Core (= 0.22.2)
+  - MatrixSDK/Core (0.22.2):
+    - AFNetworking (~> 4.0.0)
+    - GZIP (~> 1.3.0)
+    - libbase58 (~> 0.1.4)
+    - OLMKit (~> 3.2.5)
+    - Realm (= 10.16.0)
+    - SwiftyBeaver (= 1.9.5)
+  - OLMKit (3.2.5):
+    - OLMKit/olmc (= 3.2.5)
+    - OLMKit/olmcpp (= 3.2.5)
+  - OLMKit/olmc (3.2.5)
+  - OLMKit/olmcpp (3.2.5)
+  - PureLayout (3.1.9)
+  - Realm (10.16.0):
+    - Realm/Headers (= 10.16.0)
+  - Realm/Headers (10.16.0)
+  - SDWebImage (5.12.3):
+    - SDWebImage/Core (= 5.12.3)
+  - SDWebImage/Core (5.12.3)
+  - SwiftyBeaver (1.9.5)
+  - TLPhotoPicker (2.1.9)
+  - tnexchat (0.0.1):
+    - Alamofire (~> 5.5)
+    - DropDown
+    - FittedSheets (~> 1.4.6)
+    - Flutter
+    - ImageViewer.swift
+    - ImageViewer.swift/Fetcher
+    - InputBarAccessoryView
+    - ISEmojiView
+    - KeychainAccess
+    - MatrixSDK
+    - PureLayout
+    - SDWebImage (~> 5.0)
+    - TLPhotoPicker
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - tnexchat (from `.symlinks/plugins/tnexchat/ios`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - Alamofire
+    - DropDown
+    - FittedSheets
+    - GZIP
+    - ImageViewer.swift
+    - InputBarAccessoryView
+    - ISEmojiView
+    - KeychainAccess
+    - libbase58
+    - MatrixSDK
+    - OLMKit
+    - PureLayout
+    - Realm
+    - SDWebImage
+    - SwiftyBeaver
+    - TLPhotoPicker
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  tnexchat:
+    :path: ".symlinks/plugins/tnexchat/ios"
+
+SPEC CHECKSUMS:
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  FittedSheets: 7f37fee2567d15dcde391f31eccbffb660ddebf0
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  GZIP: 416858efbe66b41b206895ac6dfd5493200d95b3
+  ImageViewer.swift: c1d26ca4b8194fef74c4193ee00c386920f1f9b8
+  InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
+  ISEmojiView: f7cd94a6c93307f429ec5da001293d0b02247f03
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  libbase58: 7c040313537b8c44b6e2d15586af8e21f7354efd
+  MatrixSDK: 4e7c8f0cfff3553e8dd60d97eef6b31653408ae7
+  OLMKit: 9fb4799c4a044dd2c06bda31ec31a12191ad30b5
+  PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
+  Realm: b6027801398f3743fc222f096faa85281b506e6c
+  SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
+  SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
+  TLPhotoPicker: 939c40eaad130b69f9571e61e021e8120fa76329
+  tnexchat: c4a46ca3e6ce485dc03b080fd251fb6bfa48549d
+
+PODFILE CHECKSUM: 011b9cb04c49a4a047f6557bc0a709e7fb539f84
+
+COCOAPODS: 1.11.3
