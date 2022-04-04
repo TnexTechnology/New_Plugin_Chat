@@ -1,10 +1,54 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/hoangsison/.gradle/caches/transforms-3/f4e1b91b1b529cdea5ba195f57500a43/transformed/jetified-emoji-0.8.0/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,120,180",
+                        "endColumns": "64,59,56",
+                        "endOffsets": "115,175,232"
+                    }
+                },
+                {
+                    "source": "/Users/hoangsison/.gradle/caches/transforms-3/6135dd33e6d5c4a886a6b31caba28e7f/transformed/appcompat-1.4.1/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    },
+                    "to": {
+                        "startLines": "13,14,15,16,17,18,19,44",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "703,773,857,941,1037,1139,1241,3989",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "768,852,936,1032,1134,1236,1330,4073"
+                    }
+                },
+                {
+                    "source": "/Users/hoangsison/.gradle/caches/transforms-3/c4090bf12bfafc44b7da9e0dc9816ca6/transformed/material-1.5.0/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,130,241,330,431,538,645,744,847,935,1059,1161,1263,1379,1481,1595,1723,1839,1961,2097,2217,2351,2471,2583,2709,2826,2950,3080,3202,3340,3474,3590",
+                        "endColumns": "74,110,88,100,106,106,98,102,87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,116,123,129,121,137,133,115,119",
+                        "endOffsets": "125,236,325,426,533,640,739,842,930,1054,1156,1258,1374,1476,1590,1718,1834,1956,2092,2212,2346,2466,2578,2704,2821,2945,3075,3197,3335,3469,3585,3705"
+                    },
+                    "to": {
+                        "startLines": "20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,45,46,47,48,49,50,51,52",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1335,1410,1521,1610,1711,1818,1925,2024,2127,2215,2339,2441,2543,2659,2761,2875,3003,3119,3241,3377,3497,3631,3751,3863,4078,4195,4319,4449,4571,4709,4843,4959",
+                        "endColumns": "74,110,88,100,106,106,98,102,87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,116,123,129,121,137,133,115,119",
+                        "endOffsets": "1405,1516,1605,1706,1813,1920,2019,2122,2210,2334,2436,2538,2654,2756,2870,2998,3114,3236,3372,3492,3626,3746,3858,3984,4190,4314,4444,4566,4704,4838,4954,5074"
+                    }
+                },
+                {
+                    "source": "/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -14,12 +58,12 @@
                         "endOffsets": "464,979"
                     },
                     "to": {
-                        "startLines": "2,7",
+                        "startLines": "5,10",
                         "startColumns": "4,4",
-                        "startOffsets": "55,352",
-                        "endLines": "6,9",
+                        "startOffsets": "237,534",
+                        "endLines": "9,12",
                         "endColumns": "12,12",
-                        "endOffsets": "347,516"
+                        "endOffsets": "529,698"
                     }
                 }
             ]
