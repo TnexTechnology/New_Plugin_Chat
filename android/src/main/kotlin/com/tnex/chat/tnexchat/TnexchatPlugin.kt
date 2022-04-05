@@ -26,15 +26,56 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getPlatformVersion") {
-      val tokenFake = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5NGVkM2IwNi1lN2E1LTQ2ODMtOWM0Ni0wZjc2YzEyZDlhYTAifQ.43m-TAjkt8AqHv1JGeAIJMrU-k2kdn-qh1p6FLCcd-Y"
-
-      val roomId = "!YKsBgFhGFwNhpbTxdZ:chat-matrix.tnex.com.vn"
-      MatrixApplication.sInstance.tnexMatrix.showChatDetail(roomId, tokenFake);
-      //result.success("Android ${AppTestInfo.getAndroidVersion()}")
-    } else {
-      result.notImplemented()
+    when (call.method) {
+      "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
+      "initMatrixWithToken" -> initMatrixWithToken(call, result)
+      "updateUserUploadInfo" -> updateUserUploadInfo(call, result)
+      "updateUserUploadToken" -> updateUserUploadToken(call, result)
+      "openRoomWithId" -> openRoomWithId(call, result)
+      else -> {
+        result.notImplemented()
+      }
     }
+
+//    var arguments = call.arguments as Map<String, Any>
+//    if (call.method == "initMatrixWithToken") {
+//      val tokenFake = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5NGVkM2IwNi1lN2E1LTQ2ODMtOWM0Ni0wZjc2YzEyZDlhYTAifQ.43m-TAjkt8AqHv1JGeAIJMrU-k2kdn-qh1p6FLCcd-Y"
+//
+//      val roomId = "!YKsBgFhGFwNhpbTxdZ:chat-matrix.tnex.com.vn"
+////      MatrixApplication.sInstance.tnexMatrix.showChatDetail(roomId, tokenFake);
+//      //result.success("Android ${AppTestInfo.getAndroidVersion()}")
+//    } else {
+//      result.notImplemented()
+//    }
+  }
+
+  private fun initMatrixWithToken(@NonNull call: MethodCall, @NonNull result: Result) {
+    var arguments = call.arguments as Map<String, Any>
+    var token = arguments["token"] as String
+    MatrixApplication.sInstance.tnexMatrix.loginMatrix(token, {
+      result.success(it)
+    })
+  }
+
+  private fun updateUserUploadInfo(@NonNull call: MethodCall, @NonNull result: Result) {
+    val arguments = call.arguments as Map<String, Any>
+    val userDeviceId = arguments["userDeviceId"] as String
+    val userUploadToken = arguments["userUploadToken"] as String
+    val userLocation = arguments["userLocation"] as String
+    val userLanguage = arguments["userLanguage"] as String
+    MatrixApplication.sInstance.tnexMatrix.updateUserUploadInfo(userDeviceId, userUploadToken, userLocation, userLanguage)
+  }
+
+  private fun updateUserUploadToken(@NonNull call: MethodCall, @NonNull result: Result) {
+    val arguments = call.arguments as Map<String, Any>
+    val userUploadToken = arguments["userUploadToken"] as String
+    MatrixApplication.sInstance.tnexMatrix.updateToken(userUploadToken)
+  }
+
+  private fun openRoomWithId(@NonNull call: MethodCall, @NonNull result: Result) {
+    val arguments = call.arguments as Map<String, Any>
+    val roomID = arguments["roomID"] as String
+    MatrixApplication.sInstance.tnexMatrix.openRoom(roomID)
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
