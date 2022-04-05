@@ -5,87 +5,1111 @@
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
-9        android:targetSdkVersion="30" />
+8        android:minSdkVersion="28"
+9        android:targetSdkVersion="32" />
 10    <!--
 11         Flutter needs it to communicate with the running application
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/debug/AndroidManifest.xml:6:5-66
-14-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/debug/AndroidManifest.xml:6:22-64
-15
-16    <application
-16-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:3:4-40:19
-17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-17-->[androidx.core:core:1.1.0] /Users/hoangsison/.gradle/caches/transforms-2/files-2.1/2e94107f30f39be366a17347c2bf100b/core-1.1.0/AndroidManifest.xml:24:18-86
-18        android:debuggable="true"
-19        android:icon="@mipmap/ic_launcher"
-19-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:5:9-43
-20        android:label="tnexchat_example" >
-20-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:4:9-41
-21        <activity
-21-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:6:9-34:20
-22            android:name="com.tnex.chat.tnexchat_example.MainActivity"
-22-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:7:13-41
-23            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-23-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:10:13-163
-24            android:hardwareAccelerated="true"
-24-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:11:13-47
-25            android:launchMode="singleTop"
-25-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:8:13-43
-26            android:theme="@style/LaunchTheme"
-26-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:9:13-47
-27            android:windowSoftInputMode="adjustResize" >
-27-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:12:13-55
-28
-29            <!--
-30                 Specifies an Android theme to apply to this Activity as soon as
-31                 the Android process has started. This theme is visible to the user
-32                 while the Flutter UI initializes. After that, this theme continues
-33                 to determine the Window background behind the Flutter UI.
-34            -->
-35            <meta-data
-35-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:17:13-20:17
-36                android:name="io.flutter.embedding.android.NormalTheme"
-36-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:18:15-70
-37                android:resource="@style/NormalTheme" />
-37-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:19:15-52
-38            <!--
-39                 Displays an Android View that continues showing the launch screen
-40                 Drawable until Flutter paints its first frame, then this splash
-41                 screen fades out. A splash screen is useful to avoid any visual
-42                 gap between the end of Android's launch screen and the painting of
-43                 Flutter's first frame.
-44            -->
-45            <meta-data
-45-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:26:13-29:17
-46                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-46-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:27:15-79
-47                android:resource="@drawable/launch_background" />
-47-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:28:15-61
+14-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/debug/AndroidManifest.xml:6:22-64
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:10:5-68
+15-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:10:22-65
+16    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+16-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:11:5-81
+16-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:11:22-78
+17    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+17-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:12:5-77
+17-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:12:22-74
+18    <!--
+19    Required for long polling account synchronisation in background.
+20    If not present ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS intent action won't work
+21    -->
+22    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+22-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:17:5-95
+22-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:17:22-92
+23    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+23-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:18:5-79
+23-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:18:22-76
+24    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+24-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:19:5-74
+24-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:19:22-71
+25    <uses-permission android:name="android.permission.VIBRATE" /> <!-- TODO Is WRITE_EXTERNAL_STORAGE necessary? -->
+25-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:20:5-66
+25-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:20:22-63
+26    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+26-->[tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6] /Users/hoangsison/.gradle/caches/transforms-3/e352ee577aa629fcbee39a003f13c042/transformed/jetified-tnex_matrix-android-sdk-1.0.6/AndroidManifest.xml:14:5-81
+26-->[tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6] /Users/hoangsison/.gradle/caches/transforms-3/e352ee577aa629fcbee39a003f13c042/transformed/jetified-tnex_matrix-android-sdk-1.0.6/AndroidManifest.xml:14:22-78
+27    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+28    <uses-permission android:name="android.permission.BLUETOOTH" />
+28-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:11:5-68
+28-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:11:22-65
+29    <uses-permission android:name="android.permission.CAMERA" />
+29-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:12:5-65
+29-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:12:22-62
+30    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
+30-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:14:5-75
+30-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:14:22-72
+31    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+31-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:15:5-80
+31-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:15:22-77
+32    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+32-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:16:5-71
+32-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:16:22-68
+33    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+33-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:17:5-78
+33-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:17:22-75
+34    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+34-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:19:5-76
+34-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:19:22-73
+35
+36    <uses-feature
+36-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:22:5-24:35
+37        android:glEsVersion="0x00020000"
+37-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:23:9-41
+38        android:required="true" />
+38-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:24:9-32
+39    <uses-feature
+39-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:25:5-27:36
+40        android:name="android.hardware.camera"
+40-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:26:9-47
+41        android:required="false" />
+41-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:27:9-33
+42    <uses-feature
+42-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:28:5-30:36
+43        android:name="android.hardware.camera.autofocus"
+43-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:29:9-57
+44        android:required="false" />
+44-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:30:9-33
+45
+46    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+46-->[com.facebook.react:react-native-calendar-events:2.0.0-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/5d8cf85e0442c417adb9fb6095c0d5a0/transformed/jetified-react-native-calendar-events-2.0.0-jitsi-8602449/AndroidManifest.xml:11:5-73
+46-->[com.facebook.react:react-native-calendar-events:2.0.0-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/5d8cf85e0442c417adb9fb6095c0d5a0/transformed/jetified-react-native-calendar-events-2.0.0-jitsi-8602449/AndroidManifest.xml:11:22-70
+47    <uses-permission android:name="android.permission.READ_CALENDAR" />
+47-->[com.facebook.react:react-native-calendar-events:2.0.0-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/5d8cf85e0442c417adb9fb6095c0d5a0/transformed/jetified-react-native-calendar-events-2.0.0-jitsi-8602449/AndroidManifest.xml:12:5-72
+47-->[com.facebook.react:react-native-calendar-events:2.0.0-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/5d8cf85e0442c417adb9fb6095c0d5a0/transformed/jetified-react-native-calendar-events-2.0.0-jitsi-8602449/AndroidManifest.xml:12:22-69
 48
-49            <intent-filter>
-49-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:30:13-33:29
-50                <action android:name="android.intent.action.MAIN" />
-50-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:31:17-68
-50-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:31:25-66
-51
-52                <category android:name="android.intent.category.LAUNCHER" />
-52-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:32:17-76
-52-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:32:27-74
-53            </intent-filter>
-54        </activity>
-55        <!--
-56             Don't delete the meta-data below.
-57             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-58        -->
-59        <meta-data
-59-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:37:9-39:33
-60            android:name="flutterEmbedding"
-60-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:38:13-44
-61            android:value="2" />
-61-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/tnexchat/example/android/app/src/main/AndroidManifest.xml:39:13-30
-62    </application>
-63
-64</manifest>
+49    <application
+49-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:4:4-44:19
+50        android:name="com.tnex.chat.tnexchat.MatrixApplication"
+50-->[:tnexchat] /Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/build/tnexchat/intermediates/merged_manifest/debug/AndroidManifest.xml:8:18-73
+51        android:allowBackup="false"
+51-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:8:9-36
+52        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+52-->[androidx.core:core:1.7.0] /Users/hoangsison/.gradle/caches/transforms-3/1d9b456f42409c3de687b45642b682f1/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+53        android:debuggable="true"
+54        android:exported="false"
+54-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:7:9-33
+55        android:extractNativeLibs="false"
+56        android:icon="@mipmap/ic_launcher"
+56-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:6:9-43
+57        android:label="tnexchat_example"
+57-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:5:9-41
+58        android:networkSecurityConfig="@xml/network_security_config"
+58-->[tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6] /Users/hoangsison/.gradle/caches/transforms-3/e352ee577aa629fcbee39a003f13c042/transformed/jetified-tnex_matrix-android-sdk-1.0.6/AndroidManifest.xml:16:18-78
+59        android:supportsRtl="true"
+59-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:35:9-35
+60        android:testOnly="true"
+61        android:theme="@style/Theme.Vector.Light" >
+61-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:25:9-50
+62        <activity
+62-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:10:9-38:20
+63            android:name="com.tnex.chat.tnexchat_example.MainActivity"
+63-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:11:13-41
+64            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+64-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:13:13-163
+65            android:exported="true"
+65-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:16:13-36
+66            android:hardwareAccelerated="true"
+66-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:14:13-47
+67            android:launchMode="singleTop"
+67-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:12:13-43
+68            android:windowSoftInputMode="adjustResize" >
+68-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:15:13-55
+69
+70            <!--
+71                 Specifies an Android theme to apply to this Activity as soon as
+72                 the Android process has started. This theme is visible to the user
+73                 while the Flutter UI initializes. After that, this theme continues
+74                 to determine the Window background behind the Flutter UI.
+75            -->
+76            <meta-data
+76-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:21:13-24:17
+77                android:name="io.flutter.embedding.android.NormalTheme"
+77-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:22:15-70
+78                android:resource="@style/NormalTheme" />
+78-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:23:15-52
+79            <!--
+80                 Displays an Android View that continues showing the launch screen
+81                 Drawable until Flutter paints its first frame, then this splash
+82                 screen fades out. A splash screen is useful to avoid any visual
+83                 gap between the end of Android's launch screen and the painting of
+84                 Flutter's first frame.
+85            -->
+86            <meta-data
+86-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:30:13-33:17
+87                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+87-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:31:15-79
+88                android:resource="@drawable/launch_background" />
+88-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:32:15-61
+89
+90            <intent-filter>
+90-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:34:13-37:29
+91                <action android:name="android.intent.action.MAIN" />
+91-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:35:17-68
+91-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:35:25-66
+92
+93                <category android:name="android.intent.category.LAUNCHER" />
+93-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:36:17-76
+93-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:36:27-74
+94            </intent-filter>
+95        </activity>
+96        <!--
+97             Don't delete the meta-data below.
+98             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+99        -->
+100        <meta-data
+100-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:41:9-43:33
+101            android:name="flutterEmbedding"
+101-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:42:13-44
+102            android:value="2" />
+102-->/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:43:13-30
+103
+104        <receiver
+104-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:26:9-33:20
+105            android:name="com.tnex.matrix.fdroid.receiver.OnApplicationUpgradeOrRebootReceiver"
+105-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:27:13-96
+106            android:exported="false" >
+106-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:28:13-37
+107            <intent-filter>
+107-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:29:13-32:29
+108                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+108-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:30:17-84
+108-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:30:25-81
+109                <action android:name="android.intent.action.BOOT_COMPLETED" />
+109-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:31:17-79
+109-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:31:25-76
+110            </intent-filter>
+111        </receiver>
+112        <receiver
+112-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:34:9-37:40
+113            android:name="com.tnex.matrix.fdroid.receiver.AlarmSyncBroadcastReceiver"
+113-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:35:13-86
+114            android:enabled="true"
+114-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:36:13-35
+115            android:exported="false" />
+115-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:37:13-37
+116
+117        <service
+117-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:39:9-42:45
+118            android:name="com.tnex.matrix.fdroid.service.GuardService"
+118-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:40:13-71
+119            android:exported="false" />
+119-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:41:13-37
+120
+121        <meta-data
+121-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:44:9-46:35
+122            android:name="android.max_aspect"
+122-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:45:13-46
+123            android:value="9.9" />
+123-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:46:13-32
+124        <meta-data
+124-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:47:9-49:59
+125            android:name="com.google.android.gms.car.application"
+125-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:48:13-66
+126            android:resource="@xml/automotive_app_desc" />
+126-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:49:13-56
+127
+128        <activity
+128-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:51:9-54:20
+129            android:name="com.tnex.matrix.app.TestActivity"
+129-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:52:13-60
+130            android:exported="false" >
+130-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:53:13-37
+131        </activity>
+132        <activity
+132-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:55:9-57:60
+133            android:name="com.tnex.matrix.app.features.MainActivity"
+133-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:56:13-69
+134            android:theme="@style/Theme.Vector.Launcher" /> <!-- Activity alias for the launcher Activity (must be declared after the Activity it targets) -->
+134-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:57:13-57
+135        <!-- exported="true" is required to launch application -->
+136        <activity-alias
+136-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:59:9-63:26
+137            android:name="com.tnex.matrix.features.Alias"
+137-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:60:13-58
+138            android:exported="true"
+138-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:61:13-36
+139            android:targetActivity="com.tnex.matrix.app.features.MainActivity" >
+139-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:62:13-79
+140        </activity-alias>
+141
+142        <activity android:name="com.tnex.matrix.app.features.home.HomeActivity" />
+142-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:65:9-83
+142-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:65:19-80
+143        <activity
+143-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:66:9-82:20
+144            android:name="com.tnex.matrix.app.features.login.SSORedirectRouterActivity"
+144-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:67:13-88
+145            android:exported="true"
+145-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:68:13-36
+146            android:theme="@style/Theme.Vector.Black.Transparent" >
+146-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:69:13-66
+147
+148            <!-- Add intent filter to handle redirection URL after SSO login in external browser -->
+149            <intent-filter>
+149-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:72:13-81:29
+150                <action android:name="android.intent.action.VIEW" />
+150-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:73:17-69
+150-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:73:25-66
+151
+152                <category android:name="android.intent.category.DEFAULT" />
+152-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:17-76
+152-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:27-73
+153                <category android:name="android.intent.category.BROWSABLE" />
+153-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:76:17-78
+153-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:76:27-75
+154
+155                <data
+155-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+156                    android:host="connect"
+156-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+157                    android:scheme="element" />
+157-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:80:21-45
+158            </intent-filter>
+159        </activity>
+160        <activity
+160-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:83:9-86:58
+161            android:name="com.tnex.matrix.app.features.login.LoginActivity"
+161-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:84:13-76
+162            android:launchMode="singleTask"
+162-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:85:13-44
+163            android:windowSoftInputMode="adjustResize" />
+163-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:86:13-55
+164        <activity
+164-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:87:9-90:58
+165            android:name="com.tnex.matrix.app.features.onboarding.OnboardingActivity"
+165-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:88:13-86
+166            android:launchMode="singleTask"
+166-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:89:13-44
+167            android:windowSoftInputMode="adjustResize" /> <!-- Add tools:ignore="Instantiatable" for the error reported only by Buildkite :/ -->
+167-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:90:13-55
+168        <activity
+168-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:91:9-94:45
+169            android:name="com.tnex.matrix.app.features.media.VectorAttachmentViewerActivity"
+169-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:92:13-93
+170            android:theme="@style/Theme.Vector.Black.Transparent" />
+170-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:93:13-66
+171        <activity android:name="com.tnex.matrix.app.features.media.BigImageViewerActivity" />
+171-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:95:9-94
+171-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:95:19-91
+172        <activity
+172-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:96:9-98:65
+173            android:name="com.tnex.matrix.app.features.rageshake.BugReportActivity"
+173-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:97:13-84
+174            android:label="@string/title_activity_bug_report" />
+174-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:98:13-62
+175        <activity
+175-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:99:9-102:58
+176            android:name="com.tnex.matrix.app.features.settings.VectorSettingsActivity"
+176-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:100:13-88
+177            android:label="@string/title_activity_settings"
+177-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:101:13-60
+178            android:windowSoftInputMode="adjustResize" />
+178-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:102:13-55
+179        <activity
+179-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:103:9-105:72
+180            android:name="com.tnex.matrix.app.features.crypto.keysbackup.restore.KeysBackupRestoreActivity"
+180-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:104:13-108
+181            android:label="@string/title_activity_keys_backup_setup" />
+181-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:105:13-69
+182        <activity
+182-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:106:9-108:74
+183            android:name="com.tnex.matrix.app.features.crypto.keysbackup.setup.KeysBackupSetupActivity"
+183-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:107:13-104
+184            android:label="@string/title_activity_keys_backup_restore" />
+184-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:108:13-71
+185        <activity
+185-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:109:9-111:67
+186            android:name="com.tnex.matrix.app.features.crypto.keysbackup.settings.KeysBackupManageActivity"
+186-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:110:13-108
+187            android:label="@string/encryption_message_recovery" />
+187-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:111:13-64
+188        <activity
+188-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:112:9-114:76
+189            android:name="com.tnex.matrix.app.features.reactions.EmojiReactionPickerActivity"
+189-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:113:13-94
+190            android:label="@string/title_activity_emoji_reaction_picker" />
+190-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:114:13-73
+191        <activity android:name="com.tnex.matrix.app.features.roomdirectory.createroom.CreateRoomActivity" />
+191-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:115:9-109
+191-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:115:19-106
+192        <activity android:name="com.tnex.matrix.app.features.roomdirectory.RoomDirectoryActivity" />
+192-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:116:9-101
+192-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:116:19-98
+193        <activity android:name="com.tnex.matrix.app.features.roomdirectory.roompreview.RoomPreviewActivity" />
+193-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:117:9-111
+193-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:117:19-108
+194        <activity android:name="com.tnex.matrix.app.features.home.room.filtered.FilteredRoomsActivity" />
+194-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:118:9-106
+194-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:118:19-103
+195        <activity
+195-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:119:9-125:20
+196            android:name="com.tnex.matrix.app.features.home.room.detail.RoomDetailActivity"
+196-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:120:13-92
+197            android:parentActivityName="com.tnex.matrix.app.features.home.HomeActivity" >
+197-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:121:13-88
+198            <meta-data
+198-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:122:13-124:67
+199                android:name="android.support.PARENT_ACTIVITY"
+199-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:123:17-63
+200                android:value=".app.features.home.HomeActivity" />
+200-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:124:17-64
+201        </activity>
+202        <activity android:name="com.tnex.matrix.features.debug.DebugMenuActivity" />
+202-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:126:9-85
+202-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:126:19-82
+203        <activity android:name="com.tnex.matrix.app.features.createdirect.CreateDirectRoomActivity" />
+203-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:127:9-103
+203-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:127:19-100
+204        <activity android:name="com.tnex.matrix.app.features.invite.InviteUsersToRoomActivity" />
+204-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:128:9-98
+204-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:128:19-95
+205        <activity android:name="com.tnex.matrix.app.features.webview.VectorWebViewActivity" /> <!-- Activity to intercept links coming from a web instance -->
+205-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:129:9-95
+205-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:129:19-92
+206        <!-- exported="true" is required to handle android.intent.action.VIEW for URL redirection -->
+207        <activity
+207-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:131:9-148:20
+208            android:name="com.tnex.matrix.app.features.link.LinkHandlerActivity"
+208-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:132:13-81
+209            android:enabled="true"
+209-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:133:13-35
+210            android:exported="true" >
+210-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:134:13-36
+211            <intent-filter>
+211-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:135:13-147:29
+212                <action android:name="android.intent.action.VIEW" />
+212-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:73:17-69
+212-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:73:25-66
+213
+214                <category android:name="android.intent.category.DEFAULT" />
+214-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:17-76
+214-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:27-73
+215                <category android:name="android.intent.category.BROWSABLE" />
+215-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:76:17-78
+215-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:76:27-75
+216
+217                <data android:scheme="https" />
+217-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+217-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:80:21-45
+218                <data android:host="riot.im" />
+218-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+218-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+219                <data android:host="app.element.io" />
+219-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+219-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+220                <data android:host="mobile.element.io" />
+220-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+220-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+221                <data android:host="develop.element.io" />
+221-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+221-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+222                <data android:host="staging.element.io" />
+222-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+222-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+223            </intent-filter>
+224        </activity> <!-- Activity alias for matrix.to or element permalinks -->
+225        <!-- exported="true" is required to handle android.intent.action.VIEW for URL redirection -->
+226        <activity-alias
+226-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:150:9-172:26
+227            android:name="com.tnex.matrix.features.permalink.PermalinkHandlerActivity"
+227-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:151:13-87
+228            android:enabled="true"
+228-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:152:13-35
+229            android:exported="true"
+229-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:153:13-36
+230            android:launchMode="singleTask"
+230-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:154:13-44
+231            android:targetActivity="com.tnex.matrix.app.features.link.LinkHandlerActivity" >
+231-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:155:13-91
+232            <intent-filter>
+232-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:156:13-171:29
+233                <action android:name="android.intent.action.VIEW" />
+233-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:73:17-69
+233-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:73:25-66
+234
+235                <category android:name="android.intent.category.DEFAULT" />
+235-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:17-76
+235-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:27-73
+236                <category android:name="android.intent.category.BROWSABLE" />
+236-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:76:17-78
+236-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:76:27-75
+237
+238                <data android:scheme="http" />
+238-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+238-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:80:21-45
+239                <data android:scheme="https" />
+239-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+239-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:80:21-45
+240                <data android:host="matrix.to" />
+240-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+240-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+241                <data
+241-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+242                    android:host="user"
+242-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+243                    android:scheme="element" />
+243-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:80:21-45
+244                <data
+244-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+245                    android:host="room"
+245-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:79:21-43
+246                    android:scheme="element" />
+246-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:80:21-45
+247            </intent-filter>
+248        </activity-alias> <!-- exported="true" is required for the share functionality -->
+249        <activity
+249-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:174:9-202:20
+250            android:name="com.tnex.matrix.app.features.share.IncomingShareActivity"
+250-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:175:13-84
+251            android:exported="true"
+251-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:176:13-36
+252            android:parentActivityName="com.tnex.matrix.app.features.home.HomeActivity" >
+252-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:177:13-88
+253            <meta-data
+253-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:122:13-124:67
+254                android:name="android.support.PARENT_ACTIVITY"
+254-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:123:17-63
+255                android:value=".app.features.home.HomeActivity" />
+255-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:124:17-64
+256
+257            <intent-filter>
+257-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:182:13-189:29
+258                <action android:name="android.intent.action.SEND" />
+258-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:183:17-69
+258-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:183:25-66
+259
+260                <data android:mimeType="*/*" />
+260-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+261
+262                <category android:name="android.intent.category.DEFAULT" />
+262-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:17-76
+262-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:27-73
+263                <category android:name="android.intent.category.OPENABLE" />
+263-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:188:17-77
+263-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:188:27-74
+264            </intent-filter>
+265            <intent-filter>
+265-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:190:13-197:29
+266                <action android:name="android.intent.action.SEND_MULTIPLE" />
+266-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:191:17-78
+266-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:191:25-75
+267
+268                <data android:mimeType="*/*" />
+268-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:78:17-80:48
+269
+270                <category android:name="android.intent.category.DEFAULT" />
+270-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:17-76
+270-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:75:27-73
+271                <category android:name="android.intent.category.OPENABLE" />
+271-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:188:17-77
+271-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:188:27-74
+272            </intent-filter>
+273
+274            <meta-data
+274-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:199:13-201:83
+275                android:name="android.service.chooser.chooser_target_service"
+275-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:200:17-78
+276                android:value="androidx.sharetarget.ChooserTargetServiceCompat" />
+276-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:201:17-80
+277        </activity>
+278        <activity android:name="com.tnex.matrix.app.features.roomprofile.RoomProfileActivity" />
+278-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:203:9-97
+278-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:203:19-94
+279        <activity android:name="com.tnex.matrix.app.features.roomprofile.settings.joinrule.RoomJoinRuleActivity" />
+279-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:204:9-116
+279-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:204:19-113
+280        <activity android:name="com.tnex.matrix.app.features.signout.hard.SignedOutActivity" />
+280-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:205:9-96
+280-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:205:19-93
+281        <activity
+281-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:206:9-208:58
+282            android:name="com.tnex.matrix.app.features.signout.soft.SoftLogoutActivity"
+282-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:207:13-88
+283            android:windowSoftInputMode="adjustResize" />
+283-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:208:13-55
+284        <activity
+284-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:209:9-215:20
+285            android:name="com.tnex.matrix.app.features.roommemberprofile.RoomMemberProfileActivity"
+285-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:210:13-100
+286            android:parentActivityName="com.tnex.matrix.app.features.home.HomeActivity" >
+286-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:211:13-88
+287            <meta-data
+287-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:122:13-124:67
+288                android:name="android.support.PARENT_ACTIVITY"
+288-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:123:17-63
+289                android:value=".app.features.home.HomeActivity" />
+289-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:124:17-64
+290        </activity>
+291        <activity android:name="com.tnex.matrix.app.features.qrcode.QrCodeScannerActivity" />
+291-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:216:9-94
+291-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:216:19-91
+292        <activity android:name="com.tnex.matrix.app.features.crypto.quads.SharedSecureStorageActivity" />
+292-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:217:9-106
+292-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:217:19-103
+293        <activity
+293-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:218:9-220:52
+294            android:name="com.yalantis.ucrop.UCropActivity"
+294-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:219:13-60
+295            android:screenOrientation="portrait" />
+295-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:220:13-49
+296        <activity
+296-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:221:9-223:76
+297            android:name="com.tnex.matrix.app.features.attachments.preview.AttachmentsPreviewActivity"
+297-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:222:13-103
+298            android:theme="@style/Theme.Vector.Black.AttachmentsPreview" />
+298-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:223:13-73
+299        <activity
+299-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:224:9-230:72
+300            android:name="com.tnex.matrix.app.features.call.VectorCallActivity"
+300-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:225:13-80
+301            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+301-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:226:13-91
+302            android:excludeFromRecents="true"
+302-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:227:13-46
+303            android:launchMode="singleTask"
+303-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:228:13-44
+304            android:supportsPictureInPicture="true"
+304-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:229:13-52
+305            android:taskAffinity=".features.call.VectorCallActivity" /> <!-- PIP Support https://developer.android.com/guide/topics/ui/picture-in-picture -->
+305-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:230:13-69
+306        <activity
+306-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:231:9-235:55
+307            android:name="com.tnex.matrix.app.features.call.conference.VectorJitsiActivity"
+307-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:232:13-92
+308            android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize"
+308-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:233:13-91
+309            android:launchMode="singleTask"
+309-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:234:13-44
+310            android:supportsPictureInPicture="true" />
+310-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:235:13-52
+311        <activity android:name="com.tnex.matrix.app.features.terms.ReviewTermsActivity" />
+311-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:236:9-91
+311-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:236:19-88
+312        <activity android:name="com.tnex.matrix.app.features.widgets.WidgetActivity" />
+312-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:237:9-88
+312-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:237:19-85
+313        <activity android:name="com.tnex.matrix.app.features.pin.PinActivity" />
+313-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:238:9-81
+313-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:238:19-78
+314        <activity android:name="com.tnex.matrix.app.features.analytics.ui.consent.AnalyticsOptInActivity" />
+314-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:239:9-109
+314-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:239:19-106
+315        <activity android:name="com.tnex.matrix.app.features.home.room.detail.search.SearchActivity" />
+315-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:240:9-104
+315-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:240:19-101
+316        <activity android:name="com.tnex.matrix.app.features.usercode.UserCodeActivity" />
+316-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:241:9-91
+316-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:241:19-88
+317        <activity android:name="com.tnex.matrix.app.features.call.transfer.CallTransferActivity" /> <!-- Single instance is very important for the custom scheme callback -->
+317-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:242:9-100
+317-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:242:19-97
+318        <activity
+318-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:243:9-264:20
+319            android:name="com.tnex.matrix.app.features.auth.ReAuthActivity"
+319-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:244:13-76
+320            android:launchMode="singleInstance" >
+320-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:245:13-48
+321
+322            <!--
+323            XXX: UIA SSO has only web fallback, i.e no url redirect, so for now we comment this out
+324            hopefully, we would use it when finally available
+325            -->
+326            <!-- Add intent filter to handle redirection URL after SSO login in external browser -->
+327            <!-- <intent-filter> -->
+328            <!-- <action android:name="android.intent.action.VIEW" /> -->
+329
+330
+331            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+332            <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+333
+334
+335            <!-- <data -->
+336            <!-- android:host="reauth" -->
+337            <!-- android:scheme="element" /> -->
+338            <!-- </intent-filter> -->
+339        </activity>
+340        <activity android:name="com.tnex.matrix.app.features.devtools.RoomDevToolActivity" />
+340-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:265:9-94
+340-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:265:19-91
+341        <activity android:name="com.tnex.matrix.app.features.spaces.SpacePreviewActivity" />
+341-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:266:9-93
+341-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:266:19-90
+342        <activity android:name="com.tnex.matrix.app.features.spaces.SpaceExploreActivity" />
+342-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:267:9-93
+342-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:267:19-90
+343        <activity android:name="com.tnex.matrix.app.features.spaces.SpaceCreationActivity" />
+343-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:268:9-94
+343-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:268:19-91
+344        <activity android:name="com.tnex.matrix.app.features.spaces.manage.SpaceManageActivity" />
+344-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:269:9-99
+344-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:269:19-96
+345        <activity android:name="com.tnex.matrix.app.features.spaces.people.SpacePeopleActivity" />
+345-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:270:9-99
+345-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:270:19-96
+346        <activity android:name="com.tnex.matrix.app.features.spaces.leave.SpaceLeaveAdvancedActivity" />
+346-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:271:9-105
+346-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:271:19-102
+347        <activity android:name="com.tnex.matrix.app.features.poll.create.CreatePollActivity" /> <!-- Services -->
+347-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:272:9-96
+347-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:272:19-93
+348        <service
+348-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:273:9-281:19
+349            android:name="com.tnex.matrix.app.core.services.CallService"
+349-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:274:13-73
+350            android:exported="false" >
+350-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:275:13-37
+351
+352            <!-- in order to get headset button events -->
+353            <intent-filter>
+353-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:278:13-280:29
+354                <action android:name="android.intent.action.MEDIA_BUTTON" />
+354-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:279:17-77
+354-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:279:25-74
+355            </intent-filter>
+356        </service> <!-- Add tools:ignore="Instantiatable" for the error reported only by Buildkite and for lintGplayRelease check :/ -->
+357        <service
+357-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:282:9-285:45
+358            android:name="com.tnex.matrix.app.core.services.VectorSyncService"
+358-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:283:13-79
+359            android:exported="false" />
+359-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:284:13-37
+360        <service
+360-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:286:9-293:19
+361            android:name="com.tnex.matrix.app.features.call.telecom.VectorConnectionService"
+361-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:287:13-93
+362            android:exported="false"
+362-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:288:13-37
+363            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" >
+363-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:289:13-84
+364            <intent-filter>
+364-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:290:13-292:29
+365                <action android:name="android.telecom.ConnectionService" />
+365-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:291:17-76
+365-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:291:25-73
+366            </intent-filter>
+367        </service> <!-- Receivers -->
+368        <receiver
+368-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:294:9-296:40
+369            android:name="com.tnex.matrix.app.features.call.service.CallHeadsUpActionReceiver"
+369-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:295:13-95
+370            android:exported="false" />
+370-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:296:13-37
+371        <receiver
+371-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:297:9-299:40
+372            android:name="com.tnex.matrix.app.features.settings.troubleshoot.TestNotificationReceiver"
+372-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:298:13-103
+373            android:exported="false" /> <!-- Exported false, should only be accessible from this app!! -->
+373-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:299:13-37
+374        <receiver
+374-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:300:9-303:40
+375            android:name="com.tnex.matrix.app.features.notifications.NotificationBroadcastReceiver"
+375-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:301:13-100
+376            android:enabled="true"
+376-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:302:13-35
+377            android:exported="false" />
+377-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:303:13-37
+378        <!--
+379        A media button receiver receives and helps translate hardware media playback buttons,
+380        such as those found on wired and wireless headsets, into the appropriate callbacks in your app.
+381        -->
+382        <receiver
+382-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:308:9-314:20
+383            android:name="androidx.media.session.MediaButtonReceiver"
+383-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:309:13-70
+384            android:exported="false" >
+384-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:310:13-37
+385            <intent-filter>
+385-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:278:13-280:29
+386                <action android:name="android.intent.action.MEDIA_BUTTON" />
+386-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:279:17-77
+386-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:279:25-74
+387            </intent-filter>
+388        </receiver> <!-- Providers -->
+389        <!-- Remove WorkManagerInitializer Provider because we are using on-demand initialization of WorkManager -->
+390        <provider
+390-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:316:9-330:20
+391            android:name="androidx.startup.InitializationProvider"
+391-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:317:13-67
+392            android:authorities="com.tnex.chat.tnexchat_example.androidx-startup"
+392-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:318:13-68
+393            android:exported="false" >
+393-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:319:13-37
+394            <meta-data
+394-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/hoangsison/.gradle/caches/transforms-3/38eec91bea79c4a9d72be3c6b61a9926/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+395                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+395-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/hoangsison/.gradle/caches/transforms-3/38eec91bea79c4a9d72be3c6b61a9926/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+396                android:value="androidx.startup" />
+396-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/hoangsison/.gradle/caches/transforms-3/38eec91bea79c4a9d72be3c6b61a9926/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+397        </provider>
+398        <provider
+398-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:331:9-339:20
+399            android:name="androidx.core.content.FileProvider"
+399-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:332:13-62
+400            android:authorities="com.tnex.chat.tnexchat_example.fileProvider"
+400-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:333:13-64
+401            android:exported="false"
+401-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:334:13-37
+402            android:grantUriPermissions="true" >
+402-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:335:13-47
+403            <meta-data
+403-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:336:13-338:62
+404                android:name="android.support.FILE_PROVIDER_PATHS"
+404-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:337:17-67
+405                android:resource="@xml/sdk_provider_paths" />
+405-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:338:17-59
+406        </provider> <!-- multipicker -->
+407        <provider
+407-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:340:9-348:20
+408            android:name="com.tnex.matrix.app.multipicker.provider.MultiPickerFileProvider"
+408-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:341:13-92
+409            android:authorities="com.tnex.chat.tnexchat_example.multipicker.fileprovider"
+409-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:342:13-76
+410            android:exported="false"
+410-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:343:13-37
+411            android:grantUriPermissions="true" >
+411-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:344:13-47
+412            <meta-data
+412-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:336:13-338:62
+413                android:name="android.support.FILE_PROVIDER_PATHS"
+413-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:337:17-67
+414                android:resource="@xml/multipicker_provider_paths" />
+414-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:338:17-59
+415        </provider>
+416        <!--
+417 Temporary fix for Android 12. android:exported has to be explicitly set when targeting Android 12
+418        Do it for services coming from dependencies - BEGIN
+419        -->
+420        <service
+420-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:353:9-356:34
+421            android:name="androidx.sharetarget.ChooserTargetServiceCompat"
+421-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:354:13-75
+422            android:exported="false" />
+422-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:355:13-37
+423
+424        <uses-library
+424-->[androidx.window:window:1.0.0] /Users/hoangsison/.gradle/caches/transforms-3/de0be2084db6bd2be927128387c3f193/transformed/jetified-window-1.0.0/AndroidManifest.xml:25:9-27:40
+425            android:name="androidx.window.extensions"
+425-->[androidx.window:window:1.0.0] /Users/hoangsison/.gradle/caches/transforms-3/de0be2084db6bd2be927128387c3f193/transformed/jetified-window-1.0.0/AndroidManifest.xml:26:13-54
+426            android:required="false" />
+426-->[androidx.window:window:1.0.0] /Users/hoangsison/.gradle/caches/transforms-3/de0be2084db6bd2be927128387c3f193/transformed/jetified-window-1.0.0/AndroidManifest.xml:27:13-37
+427        <uses-library
+427-->[androidx.window:window:1.0.0] /Users/hoangsison/.gradle/caches/transforms-3/de0be2084db6bd2be927128387c3f193/transformed/jetified-window-1.0.0/AndroidManifest.xml:28:9-30:40
+428            android:name="androidx.window.sidecar"
+428-->[androidx.window:window:1.0.0] /Users/hoangsison/.gradle/caches/transforms-3/de0be2084db6bd2be927128387c3f193/transformed/jetified-window-1.0.0/AndroidManifest.xml:29:13-51
+429            android:required="false" />
+429-->[androidx.window:window:1.0.0] /Users/hoangsison/.gradle/caches/transforms-3/de0be2084db6bd2be927128387c3f193/transformed/jetified-window-1.0.0/AndroidManifest.xml:30:13-37
+430        <!--
+431         The SDK offers a secured File provider to access downloaded files.
+432         Access to these file will be given via the FileService, with a temporary
+433         read access permission
+434        -->
+435        <provider
+435-->[tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6] /Users/hoangsison/.gradle/caches/transforms-3/e352ee577aa629fcbee39a003f13c042/transformed/jetified-tnex_matrix-android-sdk-1.0.6/AndroidManifest.xml:23:9-31:20
+436            android:name="org.matrix.android.sdk.api.session.file.MatrixSDKFileProvider"
+436-->[tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6] /Users/hoangsison/.gradle/caches/transforms-3/e352ee577aa629fcbee39a003f13c042/transformed/jetified-tnex_matrix-android-sdk-1.0.6/AndroidManifest.xml:24:13-89
+437            android:authorities="com.tnex.chat.tnexchat_example.mx-sdk.fileprovider"
+437-->[tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6] /Users/hoangsison/.gradle/caches/transforms-3/e352ee577aa629fcbee39a003f13c042/transformed/jetified-tnex_matrix-android-sdk-1.0.6/AndroidManifest.xml:25:13-71
+438            android:exported="false"
+438-->[tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6] /Users/hoangsison/.gradle/caches/transforms-3/e352ee577aa629fcbee39a003f13c042/transformed/jetified-tnex_matrix-android-sdk-1.0.6/AndroidManifest.xml:26:13-37
+439            android:grantUriPermissions="true" >
+439-->[tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6] /Users/hoangsison/.gradle/caches/transforms-3/e352ee577aa629fcbee39a003f13c042/transformed/jetified-tnex_matrix-android-sdk-1.0.6/AndroidManifest.xml:27:13-47
+440            <meta-data
+440-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:336:13-338:62
+441                android:name="android.support.FILE_PROVIDER_PATHS"
+441-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:337:17-67
+442                android:resource="@xml/sdk_provider_paths" />
+442-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:338:17-59
+443        </provider>
+444
+445        <activity android:name="im.dlg.dialer.DialpadActivity" />
+445-->[im.dlg:android-dialer:1.2.5] /Users/hoangsison/.gradle/caches/transforms-3/18ad4d59b6c34d8c74e4c25175eb7be6/transformed/jetified-android-dialer-1.2.5/AndroidManifest.xml:12:9-66
+445-->[im.dlg:android-dialer:1.2.5] /Users/hoangsison/.gradle/caches/transforms-3/18ad4d59b6c34d8c74e4c25175eb7be6/transformed/jetified-android-dialer-1.2.5/AndroidManifest.xml:12:19-63
+446        <activity
+446-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:36:9-42:58
+447            android:name="org.jitsi.meet.sdk.JitsiMeetActivity"
+447-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:37:13-64
+448            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"
+448-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:38:13-115
+449            android:launchMode="singleTask"
+449-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:39:13-44
+450            android:resizeableActivity="true"
+450-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:40:13-46
+451            android:supportsPictureInPicture="true"
+451-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:41:13-52
+452            android:windowSoftInputMode="adjustResize" />
+452-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:42:13-55
+453        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+453-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:43:9-86
+453-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:43:19-83
+454
+455        <service
+455-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:45:9-52:19
+456            android:name="org.jitsi.meet.sdk.ConnectionService"
+456-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:46:13-64
+457            android:exported="true"
+457-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:47:13-36
+458            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" >
+458-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:48:13-84
+459            <intent-filter>
+459-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:290:13-292:29
+460                <action android:name="android.telecom.ConnectionService" />
+460-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:291:17-76
+460-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:291:25-73
+461            </intent-filter>
+462        </service>
+463        <service
+463-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:53:9-55:63
+464            android:name="org.jitsi.meet.sdk.JitsiMeetOngoingConferenceService"
+464-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:54:13-80
+465            android:foregroundServiceType="mediaProjection" />
+465-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:55:13-60
+466
+467        <provider
+467-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:57:9-62:20
+468            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+468-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:58:13-83
+469            android:authorities="com.tnex.chat.tnexchat_example.fileprovider"
+469-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:59:13-64
+470            android:enabled="false"
+470-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/hoangsison/.gradle/caches/transforms-3/b79b74c44bcf7227540be4d4f5528ee2/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:60:13-36
+471            android:exported="false"
+471-->[com.facebook.react:react-native-webview:11.0.2-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/e6f9c36b03991ed8fbef1b4ed9037817/transformed/jetified-react-native-webview-11.0.2-jitsi-8602449/AndroidManifest.xml:15:13-37
+472            android:grantUriPermissions="true" >
+472-->[com.facebook.react:react-native-webview:11.0.2-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/e6f9c36b03991ed8fbef1b4ed9037817/transformed/jetified-react-native-webview-11.0.2-jitsi-8602449/AndroidManifest.xml:16:13-47
+473            <meta-data
+473-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:336:13-338:62
+474                android:name="android.support.FILE_PROVIDER_PATHS"
+474-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:337:17-67
+475                android:resource="@xml/file_provider_paths" />
+475-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:338:17-59
+476        </provider>
+477        <provider
+477-->[com.facebook.react:react-native-performance:2.0.0-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/75b3d4af67656bae0ec2ec4f2158ed67/transformed/jetified-react-native-performance-2.0.0-jitsi-8602449/AndroidManifest.xml:10:9-13:40
+478            android:name="com.oblador.performance.StartTimeProvider"
+478-->[com.facebook.react:react-native-performance:2.0.0-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/75b3d4af67656bae0ec2ec4f2158ed67/transformed/jetified-react-native-performance-2.0.0-jitsi-8602449/AndroidManifest.xml:11:13-69
+479            android:authorities="com.tnex.chat.tnexchat_example.start.time.provider"
+479-->[com.facebook.react:react-native-performance:2.0.0-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/75b3d4af67656bae0ec2ec4f2158ed67/transformed/jetified-react-native-performance-2.0.0-jitsi-8602449/AndroidManifest.xml:12:13-71
+480            android:exported="false" />
+480-->[com.facebook.react:react-native-performance:2.0.0-jitsi-8602449] /Users/hoangsison/.gradle/caches/transforms-3/75b3d4af67656bae0ec2ec4f2158ed67/transformed/jetified-react-native-performance-2.0.0-jitsi-8602449/AndroidManifest.xml:13:13-37
+481
+482        <meta-data
+482-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] /Users/hoangsison/.gradle/caches/transforms-3/8932d18d4ecc52185d1689feb198f961/transformed/jetified-okhttp3-integration-4.12.0/AndroidManifest.xml:11:9-13:43
+483            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+483-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] /Users/hoangsison/.gradle/caches/transforms-3/8932d18d4ecc52185d1689feb198f961/transformed/jetified-okhttp3-integration-4.12.0/AndroidManifest.xml:12:13-84
+484            android:value="GlideModule" />
+484-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] /Users/hoangsison/.gradle/caches/transforms-3/8932d18d4ecc52185d1689feb198f961/transformed/jetified-okhttp3-integration-4.12.0/AndroidManifest.xml:13:13-40
+485
+486        <service
+486-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:41:9-46:35
+487            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+487-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:42:13-88
+488            android:directBootAware="false"
+488-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:43:13-44
+489            android:enabled="@bool/enable_system_alarm_service_default"
+489-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:44:13-72
+490            android:exported="false" />
+490-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:45:13-37
+491        <service
+491-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:47:9-53:35
+492            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+492-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:48:13-84
+493            android:directBootAware="false"
+493-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:49:13-44
+494            android:enabled="@bool/enable_system_job_service_default"
+494-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:50:13-70
+495            android:exported="true"
+495-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:51:13-36
+496            android:permission="android.permission.BIND_JOB_SERVICE" />
+496-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:52:13-69
+497        <service
+497-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:54:9-59:35
+498            android:name="androidx.work.impl.foreground.SystemForegroundService"
+498-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:55:13-81
+499            android:directBootAware="false"
+499-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:56:13-44
+500            android:enabled="@bool/enable_system_foreground_service_default"
+500-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:57:13-77
+501            android:exported="false" />
+501-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:58:13-37
+502
+503        <receiver
+503-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:61:9-66:35
+504            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+504-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:62:13-88
+505            android:directBootAware="false"
+505-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:63:13-44
+506            android:enabled="true"
+506-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:64:13-35
+507            android:exported="false" />
+507-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:65:13-37
+508        <receiver
+508-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:67:9-77:20
+509            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+509-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:68:13-106
+510            android:directBootAware="false"
+510-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:69:13-44
+511            android:enabled="false"
+511-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:70:13-36
+512            android:exported="false" >
+512-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:71:13-37
+513            <intent-filter>
+513-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:73:13-76:29
+514                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+514-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:17-87
+514-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:25-84
+515                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+515-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:17-90
+515-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:25-87
+516            </intent-filter>
+517        </receiver>
+518        <receiver
+518-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:78:9-88:20
+519            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+519-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:79:13-104
+520            android:directBootAware="false"
+520-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:80:13-44
+521            android:enabled="false"
+521-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:81:13-36
+522            android:exported="false" >
+522-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:82:13-37
+523            <intent-filter>
+523-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:84:13-87:29
+524                <action android:name="android.intent.action.BATTERY_OKAY" />
+524-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:17-77
+524-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:25-74
+525                <action android:name="android.intent.action.BATTERY_LOW" />
+525-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:17-76
+525-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:25-73
+526            </intent-filter>
+527        </receiver>
+528        <receiver
+528-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:89:9-99:20
+529            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+529-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:90:13-104
+530            android:directBootAware="false"
+530-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:91:13-44
+531            android:enabled="false"
+531-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:92:13-36
+532            android:exported="false" >
+532-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:93:13-37
+533            <intent-filter>
+533-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:95:13-98:29
+534                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+534-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:17-83
+534-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:25-80
+535                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+535-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:17-82
+535-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:25-79
+536            </intent-filter>
+537        </receiver>
+538        <receiver
+538-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:100:9-109:20
+539            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+539-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:101:13-103
+540            android:directBootAware="false"
+540-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:102:13-44
+541            android:enabled="false"
+541-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:103:13-36
+542            android:exported="false" >
+542-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:104:13-37
+543            <intent-filter>
+543-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:106:13-108:29
+544                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+544-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:17-79
+544-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:25-76
+545            </intent-filter>
+546        </receiver>
+547        <receiver
+547-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:110:9-121:20
+548            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+548-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:111:13-88
+549            android:directBootAware="false"
+549-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:112:13-44
+550            android:enabled="false"
+550-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:113:13-36
+551            android:exported="false" >
+551-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:114:13-37
+552            <intent-filter>
+552-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:116:13-120:29
+553                <action android:name="android.intent.action.BOOT_COMPLETED" />
+553-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:31:17-79
+553-->[TnexMatrix1a.aar] /Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/AndroidManifest.xml:31:25-76
+554                <action android:name="android.intent.action.TIME_SET" />
+554-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:17-73
+554-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:25-70
+555                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+555-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:17-81
+555-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:25-78
+556            </intent-filter>
+557        </receiver>
+558        <receiver
+558-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:122:9-131:20
+559            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+559-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:123:13-99
+560            android:directBootAware="false"
+560-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:124:13-44
+561            android:enabled="@bool/enable_system_alarm_service_default"
+561-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:125:13-72
+562            android:exported="false" >
+562-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:126:13-37
+563            <intent-filter>
+563-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:128:13-130:29
+564                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+564-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:17-98
+564-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:25-95
+565            </intent-filter>
+566        </receiver>
+567        <receiver
+567-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:132:9-142:20
+568            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+568-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:133:13-78
+569            android:directBootAware="false"
+569-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:134:13-44
+570            android:enabled="true"
+570-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:135:13-35
+571            android:exported="true"
+571-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:136:13-36
+572            android:permission="android.permission.DUMP" >
+572-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:137:13-57
+573            <intent-filter>
+573-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:139:13-141:29
+574                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+574-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:17-88
+574-->[androidx.work:work-runtime:2.7.1] /Users/hoangsison/.gradle/caches/transforms-3/54a5bbe6d6855e04bce48c1d0b506680/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:25-85
+575            </intent-filter>
+576        </receiver>
+577
+578        <provider
+578-->[ru.noties:jlatexmath-android:0.2.0] /Users/hoangsison/.gradle/caches/transforms-3/a6525ba9130c82737202acf2fa654331/transformed/jetified-jlatexmath-android-0.2.0/AndroidManifest.xml:12:9-15:40
+579            android:name="ru.noties.jlatexmath.JLatexMathInitProvider"
+579-->[ru.noties:jlatexmath-android:0.2.0] /Users/hoangsison/.gradle/caches/transforms-3/a6525ba9130c82737202acf2fa654331/transformed/jetified-jlatexmath-android-0.2.0/AndroidManifest.xml:13:13-71
+580            android:authorities="com.tnex.chat.tnexchat_example.jlatexmathinitprovider"
+580-->[ru.noties:jlatexmath-android:0.2.0] /Users/hoangsison/.gradle/caches/transforms-3/a6525ba9130c82737202acf2fa654331/transformed/jetified-jlatexmath-android-0.2.0/AndroidManifest.xml:14:13-74
+581            android:exported="false" />
+581-->[ru.noties:jlatexmath-android:0.2.0] /Users/hoangsison/.gradle/caches/transforms-3/a6525ba9130c82737202acf2fa654331/transformed/jetified-jlatexmath-android-0.2.0/AndroidManifest.xml:15:13-37
+582
+583        <service
+583-->[androidx.room:room-runtime:2.2.5] /Users/hoangsison/.gradle/caches/transforms-3/784dc546720d8643f8e8926300c57445/transformed/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
+584            android:name="androidx.room.MultiInstanceInvalidationService"
+584-->[androidx.room:room-runtime:2.2.5] /Users/hoangsison/.gradle/caches/transforms-3/784dc546720d8643f8e8926300c57445/transformed/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
+585            android:directBootAware="true"
+585-->[androidx.room:room-runtime:2.2.5] /Users/hoangsison/.gradle/caches/transforms-3/784dc546720d8643f8e8926300c57445/transformed/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
+586            android:exported="false" />
+586-->[androidx.room:room-runtime:2.2.5] /Users/hoangsison/.gradle/caches/transforms-3/784dc546720d8643f8e8926300c57445/transformed/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
+587    </application>
+588
+589</manifest>

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: io.noties.markwon:inline-parser:4.6.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e7c140b2674af317e59c709afdf407f3/transformed/jetified-inline-parser-4.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e7c140b2674af317e59c709afdf407f3/transformed/jetified-inline-parser-4.6.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e7c140b2674af317e59c709afdf407f3/transformed/jetified-inline-parser-4.6.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/inline-parser/4.6.2/27333f6ba978344adda9ff0f933f540307109421/inline-parser-4.6.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/inline-parser/4.6.2/a08329abd6f9b8b979617a39276044adccdf46f9/inline-parser-4.6.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

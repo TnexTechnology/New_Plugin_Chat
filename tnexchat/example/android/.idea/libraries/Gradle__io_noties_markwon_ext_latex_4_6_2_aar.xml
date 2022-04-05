@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: io.noties.markwon:ext-latex:4.6.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5ef23d6137fc94bc8bf52c46d15462e2/transformed/jetified-ext-latex-4.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5ef23d6137fc94bc8bf52c46d15462e2/transformed/jetified-ext-latex-4.6.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5ef23d6137fc94bc8bf52c46d15462e2/transformed/jetified-ext-latex-4.6.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/ext-latex/4.6.2/a060382492083a7e1158eb58292ecde1b99c3f71/ext-latex-4.6.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/ext-latex/4.6.2/5ef94ea41fd97d879330e35c8097906362f6da63/ext-latex-4.6.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
