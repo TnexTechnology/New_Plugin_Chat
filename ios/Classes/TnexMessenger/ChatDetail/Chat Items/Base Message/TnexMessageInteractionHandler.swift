@@ -98,6 +98,7 @@ class TnexMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: 
     func userDidSelectMessage(message: Model, viewModel: ViewModel) {
         print(#function)
         self.messagesSelector.selectMessage(message)
+        self.chatviewController?.view.endEditing(true)
     }
 
     func userDidDeselectMessage(message: Model, viewModel: ViewModel) {

@@ -16,7 +16,23 @@ public class NetworkManager: NSObject {
     public var eventSink: FlutterEventSink?
     public var flutterVC: FlutterViewController!
     
-    
+    public func updateFont(flutterViewController: FlutterViewController) {
+//        let font: UIFont = UIFont(name: "Quicksand-Regular", size: 18.0)!
+        
+        let bundle = Bundle.main
+        let listFontNames: [String] = ["Quicksand-Regular", "Quicksand-Medium", "RobotoMono-SemiBold"]
+        listFontNames.forEach { name in
+            let fontKey = flutterViewController.lookupKey(forAsset: "fonts/\(name).ttf")
+            let path = bundle.path(forResource: fontKey, ofType: nil)
+            if let fontData = NSData(contentsOfFile: path ?? ""), let dataProvider = CGDataProvider(data: fontData) {
+                let fontRef = CGFont(dataProvider)
+                var errorRef: Unmanaged<CFError>? = nil
+                if let fr = fontRef {
+                 CTFontManagerRegisterGraphicsFont(fr, &errorRef)
+                }
+            }
+        }
+    }
     
     func uploadImageChat(imageData: Data, completion: @escaping(_ url: String?) -> Void) {
         self.getToken {[weak self] bearToken in

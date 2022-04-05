@@ -90,7 +90,8 @@ class TimeSeparatorCollectionViewCell: UICollectionViewCell {
         let dateString: String = time.toTimeActive()
         let style = NSMutableParagraphStyle()
         style.alignment = NSTextAlignment.center
-        return NSAttributedString(string: "\(dateString)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.fromHex("#808080"), NSAttributedString.Key.paragraphStyle: style])
+        let font: UIFont = UIFont(name: "Quicksand-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)
+        return NSAttributedString(string: "\(dateString)", attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.fromHex("#808080"), NSAttributedString.Key.paragraphStyle: style])
     }
 
     deinit {

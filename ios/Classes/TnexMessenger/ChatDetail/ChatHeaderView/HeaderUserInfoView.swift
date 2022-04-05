@@ -14,7 +14,7 @@ class HeaderUserInfoView: UIView {
         let label = UILabel.newAutoLayout()
         label.textColor = UIColor.fromHex("14C8FA")
         label.autoSetDimension(.height, toSize: 20)
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont(name: "Quicksand-Medium", size: 16)
         label.textAlignment = .center
         return label
     }()
@@ -23,7 +23,7 @@ class HeaderUserInfoView: UIView {
         let label = UILabel.newAutoLayout()
         label.textColor = UIColor.fromHex("61DB99")
         label.textAlignment = .center
-        label.font = UIFont.italicSystemFont(ofSize: 12)
+        label.font = UIFont(name: "Quicksand-Regular", size: 14)
         label.autoSetDimension(.height, toSize: 16)
         return label
     }()
@@ -33,7 +33,7 @@ class HeaderUserInfoView: UIView {
         self.backgroundColor = .clear
         self.addSubview(displayNameLabel)
         displayNameLabel.autoPinEdge(toSuperviewEdge: .right)
-        displayNameLabel.autoPinEdge(toSuperviewEdge: .top)
+        displayNameLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 5)
         displayNameLabel.autoPinEdge(toSuperviewEdge: .left)
         self.addSubview(statusLabel)
         statusLabel.autoPinEdge(toSuperviewEdge: .right)

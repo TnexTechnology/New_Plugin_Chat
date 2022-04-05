@@ -76,7 +76,8 @@ class DaySeparatorCollectionViewCell: UICollectionViewCell {
         }
         let style = NSMutableParagraphStyle()
         style.alignment = NSTextAlignment.center
-        return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.fromHex("#808080"), NSAttributedString.Key.paragraphStyle: style])
+        let font: UIFont = UIFont(name: "Quicksand-Medium", size: 14) ?? UIFont.systemFont(ofSize: 14)
+        return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.fromHex("#14C8FA"), NSAttributedString.Key.paragraphStyle: style])
     }
 
     deinit {
@@ -88,7 +89,7 @@ extension Date {
     func convertDateToDayString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "vi_VN") as Locale
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.dateFormat = "dd MMM.yyyy"
         return dateFormatter.string(from: self)
     }
 }

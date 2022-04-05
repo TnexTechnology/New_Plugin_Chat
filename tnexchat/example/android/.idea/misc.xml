@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../.gradle/caches/transforms-2/files-2.1/8881a5179396e90a22b35d6145ee55b0/jetified-TnexMatrix-2/res/layout/activity_main.xml" value="0.1" />
+        <entry key="../../../../../.gradle/caches/transforms-2/files-2.1/c9f9af7a2530a757efae7886ab1bfda3/jetified-TnexMatrix-debug/res/layout/activity_main.xml" value="0.10520833333333333" />
+        <entry key="../../../../../.gradle/caches/transforms-3/4135bcb00ae4f5fa1af558e5fe97da52/transformed/jetified-TnexMatrix-1b/res/layout/activity_big_image_viewer.xml" value="0.1" />
+        <entry key="../../../../../.gradle/caches/transforms-3/5312adc256242268e5c29170a5ee9946/transformed/jetified-TnexMatrix-1e/res/layout/activity_search.xml" value="0.1" />
+        <entry key="../../../../../.gradle/caches/transforms-3/9beda7a37042546679c9d5c80ad8b0b0/transformed/jetified-TnexMatrix-1g/res/layout/activity_search.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

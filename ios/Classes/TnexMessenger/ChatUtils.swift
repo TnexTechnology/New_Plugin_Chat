@@ -11,7 +11,8 @@ class ChatUtils {
     static func genTextAttributes(viewModel: MessageViewModelProtocol, text: String, messageType: MessageType) -> [NSAttributedString.Key: Any] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 1.1
-        let textFont: UIFont = text.isSingleEmoji ? UIFont.systemFont(ofSize: 40) : UIFont.systemFont(ofSize: 16)
+        let textFontSize: CGFloat = text.isSingleEmoji ? 40.0 : 16.0
+        let textFont: UIFont = UIFont(name: "Quicksand-Regular", size: textFontSize)!
         let textColor: UIColor = UIColor.white
         return [NSAttributedString.Key.font: textFont, NSAttributedString.Key.foregroundColor: textColor, .paragraphStyle: paragraphStyle, NSAttributedString.Key.kern: -0.46]
     }

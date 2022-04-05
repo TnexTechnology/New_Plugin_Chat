@@ -16,7 +16,7 @@ class ChatHeaderView: UIView {
     private let menuDropDown = DropDown()
     private var menuItems: [RightMenuItem] = [.profile, .mute, .remove]
     
-    static let headerBarHeight: CGFloat = 81
+    static let headerBarHeight: CGFloat = 91
     
     private lazy var headerLine: UIView = {
         let line = UIView.newAutoLayout()
@@ -40,7 +40,7 @@ class ChatHeaderView: UIView {
         button.setImage(image, for: .normal)
         button.autoSetDimension(.width, toSize: 44)
         button.backgroundColor = UIColor.clear
-        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.imageEdgeInsets = UIEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
         return button
     }()
     @objc private func actionBack() {
@@ -54,7 +54,7 @@ class ChatHeaderView: UIView {
         button.setImage(image, for: .normal)
         button.autoSetDimension(.width, toSize: 44)
         button.backgroundColor = UIColor.clear
-        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         return button
     }()
     @objc private func showMenu() {
@@ -134,7 +134,6 @@ class ChatHeaderView: UIView {
     
     private func setupDropDown() {
         let appearance = DropDown.appearance()
-        
         appearance.cellHeight = 35
         appearance.backgroundColor = UIColor.fromHex("#020036")
         appearance.selectionBackgroundColor = UIColor.clear
@@ -205,9 +204,11 @@ class ChatHeaderView: UIView {
     func updateStatusUser(user: MXUser) {
         if user.currentlyActive {
             self.infoView.statusLabel.text = "Đang hoạt động"
+            self.avatarView.statusView.isHidden = false
         } else {
             let second = user.lastActiveAgo / 1000
             self.infoView.statusLabel.text = Int(second).toTimeActive()
+            self.avatarView.statusView.isHidden = true
         }
 
     }
@@ -215,7 +216,6 @@ class ChatHeaderView: UIView {
     func updateUser(member: MXRoomMember) {
         self.userId = member.userId
         self.infoView.displayNameLabel.text = member.displayname
-        self.avatarView.statusView.isHidden = true
         let urlString = member.userId.getAvatarUrl()
         self.avatarView.imageView.loadAvatar(url: urlString)
     }

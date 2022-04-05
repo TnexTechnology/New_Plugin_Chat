@@ -21,9 +21,11 @@ class UserAvatarView: UIView {
     
     lazy var statusView: UIImageView = {
         let imgView = UIImageView.newAutoLayout()
-        imgView.image = UIImage(named: "chat_icon_status")
+        imgView.backgroundColor = UIColor.fromHex("#61DB99")
         imgView.autoSetDimension(.height, toSize: 14)
         imgView.autoSetDimension(.width, toSize: 14)
+        imgView.layer.cornerRadius = 7
+        imgView.clipsToBounds = true
         return imgView
     }()
     
