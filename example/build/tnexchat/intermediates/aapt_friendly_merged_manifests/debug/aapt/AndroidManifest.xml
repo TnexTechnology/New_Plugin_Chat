@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.tnex.chat.tnexchat" >
 
-    <uses-sdk android:minSdkVersion="16" />
+    <uses-sdk android:minSdkVersion="28" />
+
+    <application android:name="com.tnex.chat.tnexchat.MatrixApplication" >
+    </application>
 
 </manifest>
