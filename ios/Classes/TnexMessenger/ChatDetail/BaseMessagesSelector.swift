@@ -10,6 +10,7 @@ import Foundation
 public class BaseMessagesSelector: MessagesSelectorProtocol {
 
     public weak var delegate: MessagesSelectorDelegate?
+    public weak var labelDelegate: MKMessageLabelDelegate?
 
     public var isActive = false {
         didSet {

@@ -30,7 +30,7 @@ public enum RightMenuItem {
         case .unmute:
             return "Bật thông báo"
         case .remove:
-            return "Xoá thông báo"
+            return "Xoá tin nhắn"
         case .leave:
             return "Rời nhóm"
         }

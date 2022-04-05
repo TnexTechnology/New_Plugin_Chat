@@ -65,12 +65,12 @@ public final class PhotoMessageCollectionViewCell: BaseMessageCollectionViewCell
         }, animated: animated, completion: completion)
     }
     
-    public override func handleTapGesture(_ gesture: UIGestureRecognizer) {
-        guard allowRevealing else {
-            self.onSelection?(self)
-            return
+    override func handleTapBubbleView(touchLocation: CGPoint) {
+        if self.bubbleView.imageView.frame.contains(touchLocation) {
+            self.onImageTapped?(self.bubbleView.imageView)
+        } else {
+            super.handleTapBubbleView(touchLocation: touchLocation)
         }
-        onImageTapped?(self.bubbleView.imageView)
     }
     
     public override func prepareForReuse() {

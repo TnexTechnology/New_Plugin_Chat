@@ -5,34 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1037281e-6691-4a06-a2eb-68fc5669c096" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/NetworkManager.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/example/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/example/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/example/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/example/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/example/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Flutter/Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner/AppDelegate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner/Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/SwiftTnexchatPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/SwiftTnexchatPlugin.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/BaseChat/Input/ChatInputBar.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/BaseChat/Input/ChatInputBar.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/ChatDetailViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/ChatDetailViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/InputBar/TnexInputBar.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/InputBar/TnexInputBar.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/Base Message/DemoMessageInteractionHandler.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/Chat Items/Base Message/DemoMessageInteractionHandler.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatDataSource+MessageBuilder.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatDataSource+MessageBuilder.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatDataSource.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatDataSource.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/AccountStore.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/AccountStore.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Model/TnexRoom.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Model/TnexRoom.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/tnexchat.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/tnexchat.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/NetworkManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/NetworkManager.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/RecentConversation/ConversationViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/RecentConversation/ConversationViewController.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

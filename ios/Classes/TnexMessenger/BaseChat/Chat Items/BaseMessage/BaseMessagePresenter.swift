@@ -135,50 +135,47 @@ open class BaseMessagePresenter<BubbleViewT, ViewModelBuilderT, InteractionHandl
             self.messageViewModel.isUserInteractionEnabled = true
             cell.baseStyle = self.cellStyle
             cell.messageViewModel = self.messageViewModel
-            
-            if let baseCell = cell as? BaseMessageCollectionViewCell<BubbleViewT> {
-                baseCell.delegate = self.interactionHandler?.labelDelegate
-                baseCell.allowRevealing = !decorationAttributes.messageDecorationAttributes.isShowingSelectionIndicator
-                baseCell.onBubbleTapped = { [weak self] (cell) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellBubbleTapped(cell.bubbleView)
-                }
-                baseCell.onBubbleDoubleTapped = { [weak self] (cell) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellBubbleDoubleTapped()
-                }
-                baseCell.onBubbleLongPressBegan = { [weak self] (cell) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellBubbleLongPressBegan()
-                }
-                baseCell.onBubbleLongPressEnded = { [weak self] (cell, touchPoint) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellBubbleLongPressEnded(cell.bubbleView, touchPoint: touchPoint)
-                }
-                baseCell.onAvatarTapped = { [weak self] (cell) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellAvatarTapped(cell.avatarView)
-                }
-                baseCell.onFailedButtonTapped = { [weak self] (cell) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellFailedButtonTapped(cell.failedButton)
-                }
-                baseCell.onSelection = { [weak self] (cell) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellSelection()
-                }
-                baseCell.onActionViewTapped = { [weak self] (action, imageView) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellTapActionView(action: action, imageView: imageView)
-                }
-                baseCell.onTapSingleSeenView = { [weak self] _ in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellTapSingleSeenView()
-                }
-                baseCell.onAvatarLongPressEnded = { [weak self] (cell, touchPoint) in
-                    guard let sSelf = self else { return }
-                    sSelf.onCellAvatarLongPressEnded(cell.avatarView, touchPoint: touchPoint)
-                }
+            cell.delegate = self.interactionHandler?.labelDelegate
+            cell.allowRevealing = !decorationAttributes.messageDecorationAttributes.isShowingSelectionIndicator
+            cell.onBubbleTapped = { [weak self] (cell) in
+                guard let sSelf = self else { return }
+                sSelf.onCellBubbleTapped(cell.bubbleView)
+            }
+            cell.onBubbleDoubleTapped = { [weak self] (cell) in
+                guard let sSelf = self else { return }
+                sSelf.onCellBubbleDoubleTapped()
+            }
+            cell.onBubbleLongPressBegan = { [weak self] (cell) in
+                guard let sSelf = self else { return }
+                sSelf.onCellBubbleLongPressBegan()
+            }
+            cell.onBubbleLongPressEnded = { [weak self] (cell, touchPoint) in
+                guard let sSelf = self else { return }
+                sSelf.onCellBubbleLongPressEnded(cell.bubbleView, touchPoint: touchPoint)
+            }
+            cell.onAvatarTapped = { [weak self] (cell) in
+                guard let sSelf = self else { return }
+                sSelf.onCellAvatarTapped(cell.avatarView)
+            }
+            cell.onFailedButtonTapped = { [weak self] (cell) in
+                guard let sSelf = self else { return }
+                sSelf.onCellFailedButtonTapped(cell.failedButton)
+            }
+            cell.onSelection = { [weak self] (cell) in
+                guard let sSelf = self else { return }
+                sSelf.onCellSelection()
+            }
+            cell.onActionViewTapped = { [weak self] (action, imageView) in
+                guard let sSelf = self else { return }
+                sSelf.onCellTapActionView(action: action, imageView: imageView)
+            }
+            cell.onTapSingleSeenView = { [weak self] _ in
+                guard let sSelf = self else { return }
+                sSelf.onCellTapSingleSeenView()
+            }
+            cell.onAvatarLongPressEnded = { [weak self] (cell, touchPoint) in
+                guard let sSelf = self else { return }
+                sSelf.onCellAvatarLongPressEnded(cell.avatarView, touchPoint: touchPoint)
             }
             additionalConfiguration?()
         }, animated: animated, completion: nil)

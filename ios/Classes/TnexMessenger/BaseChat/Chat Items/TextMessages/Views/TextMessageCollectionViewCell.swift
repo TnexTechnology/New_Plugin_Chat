@@ -45,6 +45,14 @@ public final class TextMessageCollectionViewCell: BaseMessageCollectionViewCell<
             self.bubbleView.performBatchUpdates(updateClosure, animated: false, completion: nil)
         }, animated: animated, completion: completion)
     }
+    
+    override func handleTapBubbleView(touchLocation: CGPoint) {
+        if self.bubbleView.messageLabel.handleGesture(touchLocation) {
+            self.setDidEndPressGesture()
+        } else {
+            self.onBubbleTapped?(self)
+        }
+    }
 
     // MARK: Property forwarding
 

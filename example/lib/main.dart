@@ -53,43 +53,43 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     home: Scaffold(
-  //       appBar: AppBar(
-  //         title: const Text('Plugin example app'),
-  //       ),
-  //       body: Center(
-  //         child: Text('Running on: $_platformVersion\n'),
-  //       ),
-  //     ),
-  //   );
-  // }
-@override
+  @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(_batteryLevel, key: const Key('Battery level label')),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: _getBatteryLevel,
-                  child: const Text('Refresh'),
-                ),
-              ),
-            ],
-          ),
-          Text(_chargingStatus),
-        ],
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Plugin example app'),
+        ),
+        body: Center(
+          child: Text('Running on: $_platformVersion\n'),
+        ),
       ),
     );
   }
+// @override
+//   Widget build(BuildContext context) {
+//     return Material(
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//         children: <Widget>[
+//           Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               Text(_batteryLevel, key: const Key('Battery level label')),
+//               Padding(
+//                 padding: const EdgeInsets.all(16.0),
+//                 child: ElevatedButton(
+//                   onPressed: _getBatteryLevel,
+//                   child: const Text('Refresh'),
+//                 ),
+//               ),
+//             ],
+//           ),
+//           Text(_chargingStatus),
+//         ],
+//       ),
+//     );
+//   }
 
   Future<void> _getBatteryLevel() async {
     String batteryLevel;

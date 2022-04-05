@@ -116,14 +116,14 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         }
     }
         
-    lazy var messageSender: DemoChatMessageSender = {
-        let sender = DemoChatMessageSender()
-        sender.onMessageChanged = { [weak self] (message) in
-            guard let sSelf = self else { return }
-            sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
-        }
-        return sender
-    }()
+//    lazy var messageSender: DemoChatMessageSender = {
+//        let sender = DemoChatMessageSender()
+//        sender.onMessageChanged = { [weak self] (message) in
+//            guard let sSelf = self else { return }
+//            sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
+//        }
+//        return sender
+//    }()
     
     func showHideTyping(isShow: Bool) {
         guard self.isShowTyping != isShow else { return }

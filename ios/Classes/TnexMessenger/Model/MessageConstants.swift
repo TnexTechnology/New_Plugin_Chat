@@ -118,6 +118,18 @@ public struct MessageConstants {
         public static let bubbleBorderColor: UIColor = UIColor.fromHex("#DEDFE2")
         public static let incomingBubbleBackgroundColor: UIColor = UIColor.fromHex("#EDEDED")
         public static let outgoingBubbleBackgroundColor: UIColor = UIColor.fromHex("#375464")
+        struct TextLabel {
+            static let phoneOutgoing: UIColor = UIColor.white
+            static let phoneIncoming: UIColor = UIColor.fromHex("#1A1A1A")
+            static let urlOutgoing: UIColor = UIColor.white
+            static let urlIncoming: UIColor = UIColor.fromHex("#1A1A1A")
+            static let mentionOutgoing: UIColor = UIColor.white
+            static let mentionIncoming: UIColor = UIColor.fromHex("#30A960")
+            static let linkPreviewTitle: UIColor = UIColor.fromHex("#1A1A1A")
+            static let linkPreviewTeaser: UIColor = UIColor.fromHex("#808080")
+            static let textMessageOutgoing: UIColor = UIColor.white
+            static let textMessageIncoming: UIColor = UIColor.fromHex("#1A1A1A")
+        }
     }
     
     public enum Sizes {

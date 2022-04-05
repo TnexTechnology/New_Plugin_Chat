@@ -19,7 +19,8 @@ public class NetworkManager: NSObject {
     
     
     func uploadImageChat(imageData: Data, completion: @escaping(_ url: String?) -> Void) {
-        self.getToken { url in
+        self.getToken {[weak self] bearToken in
+            self?.tokenChannel = nil
             let requestUrl = "https://api-gw-user.tnex.com.vn/api/v1/customer-gw/services/uploadFiles"
             var headers: [String: String] = [:]
             headers["device-id"] =  "8c30f508-3b8d-4696-b7ef-135615e4e4b8"
@@ -27,7 +28,7 @@ public class NetworkManager: NSObject {
             headers["language"] = "vi"
             headers["unomi-session-id"] = "8c30f508-3b8d-4696-b7ef-135615e4e4b8"
             headers["Content-Type"] = "multipart/form-data"
-            headers["Authorization"] = url
+            headers["Authorization"] = bearToken
             AF.upload(multipartFormData: { multipartFormData in
                 multipartFormData.append(imageData, withName: "files", fileName: "image.png", mimeType: "image/png")
             }, to: requestUrl, usingThreshold: UInt64.init(), method: .post, headers: HTTPHeaders(headers))
@@ -47,7 +48,7 @@ public class NetworkManager: NSObject {
                     }
                 }
         }
-        eventSink?("dđ")
+        eventSink?("token")
         
         
     }
@@ -55,7 +56,7 @@ public class NetworkManager: NSObject {
     var tokenChannel: FlutterMethodChannel?
     
     func getToken(completion: @escaping(_ url: String?) -> Void) {
-        tokenChannel = FlutterMethodChannel(name: "samples.flutter.io/eventToken",
+        tokenChannel = FlutterMethodChannel(name: "tnex_token",
                                               binaryMessenger: flutterVC.binaryMessenger)
         tokenChannel?.setMethodCallHandler({
             (call: FlutterMethodCall, result: FlutterResult) -> Void in
@@ -65,12 +66,19 @@ public class NetworkManager: NSObject {
         
     }
     
+    public func showProfile(userId: String) {
+        let channel = FlutterMethodChannel(name: "tnex_chat",
+                                              binaryMessenger: flutterVC.binaryMessenger)
+        channel.invokeMethod("showProfile", arguments: userId)
+        
+    }
+    
     func createImageContent(image: UIImage, completion: @escaping (_ content: [String: Any]?) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 1.0) else {
             completion(nil)
             return
         }
-        NetworkManager.shared.uploadImageChat(imageData: imageData) { url in
+        self.uploadImageChat(imageData: imageData) { url in
             guard let url = url else {
                 completion(nil)
                 return

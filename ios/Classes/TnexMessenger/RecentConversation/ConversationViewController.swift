@@ -73,28 +73,8 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let room = rooms[indexPath.row]
-        let vc = ChatDetailViewController(roomId: room.room.roomId ?? "")
-//        let vc = ChatDetailTableViewController()
-//        vc.events = room.events()
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-//        self.getRoom(room: room)
-    }
-    
-    func getRoom(room: TnexRoom) {
-        room.room.liveTimeline { timeline in
-            if let user = timeline?.state?.members.members.first {
-                let mxUser: MXUser = room.room.mxSession.user(withUserId: user.userId)
-                print(mxUser.displayname)
-                print(mxUser.currentlyActive)
-                print(mxUser.lastActiveAgo)
-                let time = mxUser.lastActiveAgo / 1000
-                print(time/60)
-            }
-            print(timeline)
-            print(timeline?.state?.members.members.first?.displayname)
-//            print(timeline?.room.events().wrapped.count)
-        }
+//        let room = rooms[indexPath.row]
+//        let vc = ChatDetailViewController(roomId: room.room.roomId ?? "")
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

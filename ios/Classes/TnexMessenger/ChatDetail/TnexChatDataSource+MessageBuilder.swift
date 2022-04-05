@@ -67,8 +67,8 @@ extension TnexChatDataSource {
     func buildPhotoMessage(event: MXEvent) -> TnexMessageModelProtocol {
         var imageSize: CGSize = CGSize(width: 200, height: 200)
         if let info: [String: Any] = event.content(valueFor: "info") {
-            if let width = info["w"] as? Double,
-                let height = info["h"] as? Double {
+            if let width = info["w"] as? CGFloat,
+                let height = info["h"] as? CGFloat {
                 imageSize = CGSize(width: width, height: height)
             }
         }

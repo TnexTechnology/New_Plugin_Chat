@@ -63,6 +63,10 @@ class ChatHeaderView: UIView {
     }
     
     var onClickBack: (() -> Void)?
+    var onClickShowprofile: ((_ userId: String) -> Void)?
+    var onClickLeaving: (() -> Void)?
+    var onClickMute: (() -> Void)?
+    private var userId: String?
         
     lazy var leftItems: UIStackView = {
         let stackView = UIStackView.newAutoLayout()
@@ -89,8 +93,15 @@ class ChatHeaderView: UIView {
         let view = UserAvatarView.newAutoLayout()
         view.autoSetDimension(.height, toSize: 44)
         view.autoSetDimension(.width, toSize: 44)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAvatar)))
         return view
     }()
+    
+    @objc private func tapAvatar() {
+        if let id = self.userId {
+            self.onClickShowprofile?(id)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -134,6 +145,7 @@ class ChatHeaderView: UIView {
         appearance.shadowRadius = 5
         appearance.animationduration = 0.25
         appearance.textColor = UIColor.fromHex("#14C8FA")
+        appearance.selectedTextColor = UIColor.fromHex("#14C8FA")
         appearance.textFont = UIFont(name: "Quicksand-Medium", size: 14) ?? UIFont.systemFont(ofSize: 14)
 
 //        if #available(iOS 11.0, *) {
@@ -151,13 +163,20 @@ class ChatHeaderView: UIView {
         // So it will come over the anchor view and hide it completely
         // If you want to have the dropdown underneath your anchor view, you can do this:
         menuDropDown.bottomOffset = CGPoint(x: -150, y: 50)
-        
         // You can also use localizationKeysDataSource instead. Check the docs.
         menuDropDown.dataSource = menuItems.map({$0.title})
-        
         // Action triggered on selection
             menuDropDown.selectionAction = { [weak self] (index, item) in
-            print("dfsdfds")
+                switch index {
+                case 0:
+                    self?.tapAvatar()
+                case 1:
+                    self?.onClickMute?()
+                case 2:
+                    self?.onClickLeaving?()
+                default:
+                    break
+                }
         }
 
     }
@@ -194,6 +213,7 @@ class ChatHeaderView: UIView {
     }
     
     func updateUser(member: MXRoomMember) {
+        self.userId = member.userId
         self.infoView.displayNameLabel.text = member.displayname
         self.avatarView.statusView.isHidden = true
         let urlString = member.userId.getAvatarUrl()

@@ -8,7 +8,7 @@
 import Foundation
 import ImageViewer_swift
 
-final class TnexPhotoMessageInteractionHandler: DemoMessageInteractionHandler<TnextPhotoMessageModel, PhotoMessageViewModel<TnextPhotoMessageModel>>, PhotoMessageInteractionHandlerProtocol {
+final class TnexPhotoMessageInteractionHandler: TnexMessageInteractionHandler<TnextPhotoMessageModel, PhotoMessageViewModel<TnextPhotoMessageModel>>, PhotoMessageInteractionHandlerProtocol {
     
     func userDidTapOnImage(message: TnextPhotoMessageModel, viewModel: PhotoMessageViewModel<TnextPhotoMessageModel>, imageView: UIImageView) {
         guard let urlString = message.mediaItem.urlString, let url = URL(string: urlString) else { return }

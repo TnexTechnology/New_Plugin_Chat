@@ -9,6 +9,7 @@ import UIKit
 import PureLayout
 import MatrixSDK
 import InputBarAccessoryView
+import FittedSheets
 
 open class ChatDetailViewController: BaseChatViewController {
     var shouldUseAlternativePresenter: Bool = false
@@ -19,7 +20,6 @@ open class ChatDetailViewController: BaseChatViewController {
     public var dataSource: TnexChatDataSource! {
         didSet {
             self.chatDataSource = self.dataSource
-            self.messageSender = self.dataSource.messageSender
         }
     }
 
@@ -27,6 +27,15 @@ open class ChatDetailViewController: BaseChatViewController {
         let view = ChatHeaderView.newAutoLayout()
         view.onClickBack = {[weak self] in
             self?.actionBack()
+        }
+        view.onClickShowprofile = {[weak self] userId in
+            self?.showProfileUser(userId: userId)
+        }
+        view.onClickLeaving = {[weak self] in
+            self?.showPopupConfirmLeaving()
+        }
+        view.onClickMute = {[weak self] in
+            self?.muteConversation()
         }
         return view
     }()
@@ -46,6 +55,7 @@ open class ChatDetailViewController: BaseChatViewController {
     
     open override func viewDidLoad() {
         self.dataSource = TnexChatDataSource(roomId: roomId)
+        self.messagesSelector.labelDelegate = self
         super.viewDidLoad()
         DispatchQueue.main.async {[weak self] in
             self?.addHeaderView()
@@ -134,7 +144,7 @@ open class ChatDetailViewController: BaseChatViewController {
 
         let textMessagePresenter = TextMessagePresenterBuilder(
             viewModelBuilder: self.createTextMessageViewModelBuilder(),
-            interactionHandler: DemoMessageInteractionHandler(messageSender: self.messageSender, messagesSelector: self.messagesSelector)
+            interactionHandler: TnexMessageInteractionHandler(chatviewController: self, messagesSelector: self.messagesSelector)
         )
         textMessagePresenter.baseMessageStyle = BaseMessageCollectionViewCellAvatarStyle()
         let photoMessagePresenter = createPhotoMessagePresenterBuilders()
@@ -159,7 +169,7 @@ open class ChatDetailViewController: BaseChatViewController {
     func createPhotoMessagePresenterBuilders() -> ChatItemPresenterBuilderProtocol {
         let photoMessagePresenter = PhotoMessagePresenterBuilder(
             viewModelBuilder: DemoPhotoMessageViewModelBuilder(),
-            interactionHandler: TnexPhotoMessageInteractionHandler(messageSender: self.messageSender, messagesSelector: self.messagesSelector)
+            interactionHandler: TnexPhotoMessageInteractionHandler(chatviewController: self, messagesSelector: self.messagesSelector)
         )
         photoMessagePresenter.baseCellStyle = BaseMessageCollectionViewCellAvatarStyle()
         return photoMessagePresenter
@@ -215,4 +225,35 @@ extension ChatDetailViewController: InputBarAccessoryViewDelegate {
         }
         
     }
+}
+
+extension ChatDetailViewController {
+    func showProfileUser(userId: String) {
+        self.navigationController?.popViewController(animated: true)
+        NetworkManager.shared.showProfile(userId: userId)
+    }
+    
+    func showPopupConfirmLeaving() {
+        ConfirmLeavingViewController.showPopupConfirmLeaving(from: self) {[weak self] in
+            self?.dataSource.room?.room.leave(completion: { response in
+                switch response {
+                case .success:
+                    print("Xoa cuoc hoi thoai thanh cong")
+                case .failure(let error):
+                    print("Xoa cuoc hoi thoai that bai \(error.localizedDescription)")
+                }
+                self?.navigationController?.popViewController(animated: true)
+            })
+        }
+    }
+    
+    func muteConversation() {
+        guard let room = self.dataSource.room?.room else { return }
+        let notificationService = MXRoomNotificationSettingsService(room: room)
+        notificationService.update(state: .mute) {
+            print("update thanh cong")
+        }
+        
+    }
+   
 }

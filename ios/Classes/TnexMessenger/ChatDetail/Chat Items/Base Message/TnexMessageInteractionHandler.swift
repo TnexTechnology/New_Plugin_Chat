@@ -23,11 +23,20 @@
 
 import UIKit
 
-class DemoMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: MessageViewModelProtocol>: BaseMessageInteractionHandlerProtocol {
-    var labelDelegate: MKMessageLabelDelegate?
+class TnexMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: MessageViewModelProtocol>: BaseMessageInteractionHandlerProtocol {
+    weak var labelDelegate: MKMessageLabelDelegate?
+    weak var chatviewController: ChatDetailViewController?
+    private let messagesSelector: MessagesSelectorProtocol
+    
+    init(chatviewController: ChatDetailViewController?, messagesSelector: MessagesSelectorProtocol) {
+        self.messagesSelector = messagesSelector
+        self.labelDelegate = messagesSelector.labelDelegate
+        self.chatviewController = chatviewController
+    }
     
     func userDidTapOnAvatar(message: Model, viewModel: ViewModel, avatarView: UIImageView) {
         print("userDidTapOnAvatar")
+        self.chatviewController?.showProfileUser(userId: message.senderId)
     }
     
     func userDidTapOnBubble(message: Model, viewModel: ViewModel, bubbleView: UIView) {
@@ -36,6 +45,17 @@ class DemoMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: 
     
     func userDidEndLongPressOnBubble(message: Model, viewModel: ViewModel, bubbleView: UIView, touchPoint: CGPoint) {
         print("userDidEndLongPressOnBubble")
+        if let textMessage = message as? DemoTextMessageModel, message.type == TnexChatItemType.text.rawValue {
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let copyAction = UIAlertAction(title: "Sao chép", style: .default) {[weak self] _ in
+                UIPasteboard.general.string = textMessage.text
+                self?.chatviewController?.view.makeToast("Đã sao chép nội dung")
+            }
+            let cancel = UIAlertAction(title: "Thoát", style: .cancel)
+            alertController.addAction(copyAction)
+            alertController.addAction(cancel)
+            self.chatviewController?.present(alertController, animated: true)
+        }
     }
     
     func userDidTapOnActionView(message: Model, viewModel: ViewModel, action: ActionMessageType, imageView: UIImageView?) {
@@ -49,19 +69,9 @@ class DemoMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: 
     func userDidLongpressAvatar(message: Model, viewModel: ViewModel, avatarView: UIImageView, touchPoint: CGPoint) {
         print("userDidLongpressAvatar")
     }
-    
-
-    init(messageSender: DemoChatMessageSender, messagesSelector: MessagesSelectorProtocol) {
-        self.messageSender = messageSender
-        self.messagesSelector = messagesSelector
-    }
-
-    private let messageSender: DemoChatMessageSender
-    private let messagesSelector: MessagesSelectorProtocol
 
     func userDidTapOnFailIcon(message: Model, viewModel: ViewModel, failIconView: UIView) {
         print(#function)
-        self.messageSender.sendMessage(message)
     }
 
     func userDidTapOnAvatar(message: Model, viewModel: ViewModel) {

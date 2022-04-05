@@ -15,6 +15,7 @@ public protocol MessagesSelectorDelegate: AnyObject {
 
 public protocol MessagesSelectorProtocol: AnyObject {
     var delegate: MessagesSelectorDelegate? { get set }
+    var labelDelegate: MKMessageLabelDelegate? { get set }
     var isActive: Bool { get set }
     func canSelectMessage(_ message: MessageModelProtocol) -> Bool
     func isMessageSelected(_ message: MessageModelProtocol) -> Bool

@@ -110,16 +110,21 @@ open class TextMessageCollectionViewCellDefaultStyle: TextMessageCollectionViewC
     }
     
     public func genTextAttributes(viewModel: MessageViewModelProtocol, text: String, isSelected: Bool) -> NSAttributedString? {
-        let textColor: UIColor = viewModel.isIncoming ? self.incomingColor : self.outgoingColor
-        let textFont: UIFont = text.containsOnlyEmoji ? UIFont.systemFont(ofSize: 42) : self.font
-        return NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: textFont, NSAttributedString.Key.foregroundColor: textColor])
+        let attributes = ChatUtils.genTextAttributes(viewModel: viewModel, text: text, messageType: .text)
+        
+        let enabledDetectors = self.getEnabledDetectors(viewModel: viewModel, text: text, isSelected: isSelected)
+        return ChatUtils.getAttributeString(text: text, attributes: attributes, enabledDetectors: enabledDetectors, isIncoming: viewModel.isIncoming)
+        
+//        let textColor: UIColor = viewModel.isIncoming ? self.incomingColor : self.outgoingColor
+//        let textFont: UIFont = text.containsOnlyEmoji ? UIFont.systemFont(ofSize: 42) : self.font
+//        return NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: textFont, NSAttributedString.Key.foregroundColor: textColor])
     }
     
     public func detectorAttributes(for detector: DetectorType, viewModel: MessageViewModelProtocol, isSelected: Bool) -> [NSAttributedString.Key: Any] {
-        return MessageLabel.defaultAttributes
+        return ChatUtils.detectorAttributes(for: detector, isMe: !viewModel.isIncoming)
     }
     public func getEnabledDetectors(viewModel: MessageViewModelProtocol, text: String, isSelected: Bool) -> [DetectorType] {
-        return []
+        return [.url, .address, .phoneNumber, .date, .transitInformation]
     }
     public func textInsets(viewModel: MessageViewModelProtocol, isSelected: Bool) -> UIEdgeInsets {
         return viewModel.isIncoming ? self.textStyle.incomingInsets : self.textStyle.outgoingInsets

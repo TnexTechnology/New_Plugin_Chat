@@ -35,6 +35,11 @@ public extension TnexMessageModelProtocol {
 public class DemoChatMessageSender {
 
     public var onMessageChanged: ((_ message: TnexMessageModelProtocol) -> Void)?
+    weak var chatViewController: ChatDetailViewController?
+    
+    init(chatViewController: ChatDetailViewController?) {
+        self.chatViewController = chatViewController
+    }
 
     public func sendMessages(_ messages: [TnexMessageModelProtocol]) {
         for message in messages {
@@ -60,4 +65,5 @@ public class DemoChatMessageSender {
     private func notifyMessageChanged(_ message: TnexMessageModelProtocol) {
         self.onMessageChanged?(message)
     }
+    
 }
