@@ -50,11 +50,13 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   private fun initMatrixWithToken(@NonNull call: MethodCall, @NonNull result: Result) {
-    var arguments = call.arguments as Map<String, Any>
-    var token = arguments["token"] as String
-    MatrixApplication.sInstance.tnexMatrix.loginMatrix(token, {
-      result.success(it)
-    })
+    activity.runOnUiThread{
+      var arguments = call.arguments as Map<String, Any>
+      var token = arguments["token"] as String
+      MatrixApplication.sInstance.tnexMatrix.loginMatrix(token, {
+        result.success(it)
+      })
+    }
   }
 
   private fun updateUserUploadInfo(@NonNull call: MethodCall, @NonNull result: Result) {
@@ -73,9 +75,11 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   private fun openRoomWithId(@NonNull call: MethodCall, @NonNull result: Result) {
-    val arguments = call.arguments as Map<String, Any>
-    val roomID = arguments["roomID"] as String
-    MatrixApplication.sInstance.tnexMatrix.openRoom(roomID)
+    activity.runOnUiThread {
+      val arguments = call.arguments as Map<String, Any>
+      val roomID = arguments["roomID"] as String
+      MatrixApplication.sInstance.tnexMatrix.openRoom(roomID)
+    }
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
