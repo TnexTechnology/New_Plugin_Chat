@@ -25,7 +25,7 @@ class MatrixApplication : Application(), MatrixConfiguration.Provider {
         sInstance = this
         initAppData()
         super.onCreate()
-        tnexMatrix.initialize("https://chat-matrix.tnex.com.vn", "https://graviteeioapigw-preprod.tnex.vn/api/v1/customer-gw/services/uploadFiles")
+//        tnexMatrix.initialize("https://chat-matrix.tnex.com.vn", "https://graviteeioapigw-preprod.tnex.vn/api/v1/customer-gw/services/uploadFiles")
 //        val token = "Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIyNjMwY2I5Yy01NzcxLTRkZWUtOTVjZC1hZDkyYWNjNTg4ZGMiLC" +
 //                "JmaXJzdG5hbWUiOiJOR1VZ4buETiBUSOG7iiBCScOKTiIsInJvbGUiOlsiVDEiXSwiaXNzIjoiaHR0cDovL2dyYXZp" +
 //                "dGVlaW9hbWd5LXVhdC50bmRtYXJrZXRwbGFjZS5jb20vbXNiL29pZGMiLCJtb2JpbGUiOiIwOTY4OTY1NjU4IiwicG" +

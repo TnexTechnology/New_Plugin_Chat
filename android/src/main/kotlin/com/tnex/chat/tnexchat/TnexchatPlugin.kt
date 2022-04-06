@@ -53,6 +53,10 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     activity.runOnUiThread {
       var arguments = call.arguments as Map<String, Any>
       var token = arguments["token"] as String
+      var homeServerChat = arguments["homeServerChat"] as String
+      var urlUploadFiles = arguments["urlUploadFiles"] as String
+      MatrixApplication.sInstance.tnexMatrix.initialize(homeServerChat, urlUploadFiles)
+
       MatrixApplication.sInstance.tnexMatrix.loginMatrix(token, {
         activity.runOnUiThread {
           result.success(it)
