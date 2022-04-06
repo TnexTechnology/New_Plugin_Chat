@@ -50,11 +50,13 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   private fun initMatrixWithToken(@NonNull call: MethodCall, @NonNull result: Result) {
-    activity.runOnUiThread{
+    activity.runOnUiThread {
       var arguments = call.arguments as Map<String, Any>
       var token = arguments["token"] as String
       MatrixApplication.sInstance.tnexMatrix.loginMatrix(token, {
-        result.success(it)
+        activity.runOnUiThread {
+          result.success(it)
+        }
       })
     }
   }
