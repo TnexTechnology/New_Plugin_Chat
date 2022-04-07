@@ -64,7 +64,7 @@ class SenderInfoCollectionViewCell: UICollectionViewCell {
         if let displayName = model.displayName {
             self.updateUI(displayName: displayName, isIncoming: model.isIncoming)
         } else {
-            APIManager.shared.getSenderInfo(senderId: model.userId, at: nil) {[weak self] _displayName in
+            MatrixManager.shared.getSenderInfo(senderId: model.userId, at: nil) {[weak self] _displayName in
                 guard let self = self, let name = _displayName else { return }
                 self.updateUI(displayName: name, isIncoming: model.isIncoming)
             }

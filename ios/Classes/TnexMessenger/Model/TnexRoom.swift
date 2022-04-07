@@ -26,12 +26,13 @@ public struct RoomItem: Codable, Hashable {
 }
 
 public class TnexRoom {
-    public var room: MXRoom
-
+    
+    private var room: MXRoom
     public var summary: TnexRoomSummary
+    var listenReferenceRoom: Any?
     
     public var roomAvatarURL: URL? {
-        guard let client = APIManager.shared.mxRestClient,
+        guard let client = MatrixManager.shared.mxRestClient,
               let homeserver = URL(string: client.homeserver),
               let avatar = room.summary.avatar else { return nil }
         return MXURL(mxContentURI: avatar)?.contentURL(on: homeserver)
@@ -41,6 +42,10 @@ public class TnexRoom {
 
     public var isDirect: Bool {
         room.isDirect
+    }
+    
+    public var roomId: String {
+        return self.room.roomId
     }
 
     public var lastMessage: String {
@@ -66,11 +71,9 @@ public class TnexRoom {
     public init(_ room: MXRoom) {
         self.room = room
         self.summary = TnexRoomSummary(room.summary)
-
         let enumerator = room.enumeratorForStoredMessages//WithType(in: Self.displayedMessageTypes)
         let currentBatch = enumerator?.nextEventsBatch(200, threadId: nil) ?? []
         print("Got \(currentBatch.count) events.")
-
         self.eventCache.append(contentsOf: currentBatch)
     }
 
@@ -108,23 +111,6 @@ public class TnexRoom {
             localEcho?.sentState = MXEventSentStateSent
             completion(localEcho)
         }
-//        room.sendTextMessage(text, localEcho: &localEcho) { fdsfds in
-//            print("Da gui tin nhan\(fdsfds.value)")
-//            localEcho?.sentState = MXEventSentStateSent
-//            completion(localEcho)
-//        }
-    }
-
-
-    public func react(toEventId eventId: String, emoji: String) {
-        // swiftlint:disable:next force_try
-//        let content = try! ReactionEvent(eventId: eventId, key: emoji).encodeContent()
-//
-//        objectWillChange.send()             // room.outgoingMessages() will change
-//        var localEcho: MXEvent? = nil
-//        room.sendEvent(.reaction, content: content, localEcho: &localEcho) { _ in
-//            self.objectWillChange.send()    // localEcho.sentState has(!) changed
-//        }
     }
 
     public func edit(text: String, eventId: String) {
@@ -135,10 +121,6 @@ public class TnexRoom {
 //        let content = try! EditEvent(eventId: eventId, text: text).encodeContent()
 //        // TODO: Use localEcho to show sent message until it actually comes back
 //        room.sendMessage(withContent: content, localEcho: &localEcho) { _ in }
-    }
-
-    public func redact(eventId: String, reason: String?) {
-        room.redactEvent(eventId, reason: reason) { _ in }
     }
 
     public func sendImageTest(image: UIImage, completion: @escaping(_ event: MXEvent?) -> Void) {
@@ -177,7 +159,7 @@ public class TnexRoom {
                 localEcho?.sentState = MXEventSentStateFailed
                 completion(localEcho)
             case .success(let eventId):
-                print("eventId: \(eventId)")
+                print("eventId: \(eventId ?? "")")
                 localEcho?.sentState = MXEventSentStateSent
                 completion(localEcho)
             }
@@ -202,6 +184,10 @@ public class TnexRoom {
         }
     }
     
+    public func removeOutgoingMessage(_ eventId: String) {
+        room.removeOutgoingMessage(eventId)
+    }
+    
     private func createMediaMessageContent(url: String, imageSize: CGSize, fileSize: Int) -> [String: Any] {
         var messageContent: [String: Any] = [MessageConstants.messageBodyKey: url, MessageConstants.messageTypeKey: MessageType.image.key, "clientId": UUID().uuidString]
         messageContent["format"] = "org.matrix.custom.html"
@@ -221,6 +207,64 @@ public class TnexRoom {
 
     public func markAllAsRead() {
         room.markAllAsRead()
+        //room.summary.markAllAsRead()
     }
 
+    @nonobjc @discardableResult func sendTypingNotification(typing: Bool, timeout: TimeInterval?, completion: @escaping (_ response: MXResponse<Void>) -> Void) -> MXHTTPOperation {
+        self.room.sendTypingNotification(typing: typing, timeout: timeout, completion: completion)
+    }
+    
+    func listen(toEventsOfTypes: [String], onEvent: @escaping MXOnRoomEvent) {
+        self.room.listen(toEventsOfTypes: toEventsOfTypes, onEvent: onEvent)
+    }
+    
+    func getEventReceipts(_ eventId: String, sorted: Bool, completion: @escaping([MXReceiptData]) -> Void) {
+        self.room.getEventReceipts(eventId, sorted: sorted, completion: completion)
+    }
+    
+    func liveTimeline(_ completion: @escaping(MXEventTimeline?) -> Void) {
+        room.liveTimeline(completion)
+    }
+    
+    deinit {
+        listenReferenceRoom = nil
+    }
+}
+
+//Extension Setting room
+extension TnexRoom {
+    func leave(completion: @escaping(MXResponse<Void>) -> Void) {
+        room.leave(completion: completion)
+    }
+    
+    func muteConversation() {
+        let notificationService = MXRoomNotificationSettingsService(room: room)
+        notificationService.update(state: .mute) {
+            print("update thanh cong")
+        }
+        
+    }
+}
+
+//Get value
+extension TnexRoom {
+    func getUserInfo(from userId: String) -> MXUser? {
+        return room.mxSession.user(withUserId: userId)
+    }
+    
+    func toRoomItem() -> RoomItem {
+        RoomItem(room: room)
+    }
+    
+    func paginate(event: MXEvent, completion: @escaping(() -> Void)) {
+        guard let timeline = room.timeline(onEvent: event.eventId) else { return }
+        listenReferenceRoom = timeline.listenToEvents { event, direction, roomState in
+            if direction == .backwards {
+                self.add(event: event, direction: direction, roomState: roomState)
+            }
+        }
+        timeline.resetPaginationAroundInitialEvent(withLimit: 40) { _ in
+            completion()
+        }
+    }
 }

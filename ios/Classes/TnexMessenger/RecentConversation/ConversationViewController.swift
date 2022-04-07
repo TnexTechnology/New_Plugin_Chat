@@ -27,7 +27,7 @@ class ConversationViewController: UIViewController {
     init(rooms: [TnexRoom]) {
         super.init(nibName: "ConversationViewController", bundle: Bundle.resources)
         self.rooms = rooms
-        APIManager.shared.startListeningForRoomEvents()
+        MatrixManager.shared.startListeningForRoomEvents()
     }
     
     required init?(coder: NSCoder) {
@@ -61,10 +61,10 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
         if let avatar = room.roomAvatarURL {
             cell.avatarImageVIew.sd_setImage(with: avatar)
         }
-        let formatter4 = DateFormatter()
-        formatter4.dateFormat = "HH:mm E, d MMM y"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm E, d MMM y"
         
-        cell.timeLabel.text = formatter4.string(from: room.summary.lastMessageDate)
+        cell.timeLabel.text = formatter.string(from: room.summary.lastMessageDate)
         return cell
     }
     

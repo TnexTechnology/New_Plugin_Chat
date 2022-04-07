@@ -16,9 +16,9 @@ public enum LoginState {
     case loggedIn(userId: String)
 }
 
-final public class APIManager: NSObject {
+final public class MatrixManager: NSObject {
         
-    public static let shared = APIManager()
+    public static let shared = MatrixManager()
     var mxRestClient: MXRestClient!
     var mxSession: MXSession?
     var fileStore: MXFileStore?
@@ -33,13 +33,12 @@ final public class APIManager: NSObject {
         let rooms = session.rooms
             .map { roomCache[$0.roomId] ?? makeRoom(from: $0) }
             .sorted { $0.summary.lastMessageDate > $1.summary.lastMessageDate }
-
 //        updateUserDefaults(with: rooms)
         return rooms
     }
     
     private func updateUserDefaults(with rooms: [TnexRoom]) {
-        let roomItems = rooms.map { RoomItem(room: $0.room) }
+        let roomItems = rooms.map { $0.toRoomItem() }
         do {
             let data = try JSONEncoder().encode(roomItems)
             UserDefaults.group.set(data, forKey: "roomList")
@@ -60,7 +59,6 @@ final public class APIManager: NSObject {
         let homeServerUrl = URL(string: "https://chat-matrix.tnex.com.vn")!
        mxRestClient = MXRestClient(homeServer: homeServerUrl, unrecognizedCertificateHandler: nil)
     }
-    
     
     func loginToken(completion: @escaping(_ succeed: Bool) -> Void) {
         let params = ["type" : "m.login.jwt",
@@ -114,12 +112,6 @@ final public class APIManager: NSObject {
                     case .failure:
                         break
                     case .success:
-                        self.mxRestClient.maxUploadSize { size in
-                            print(size)
-                        } failure: { _ in
-                            //
-                        }
-
                         self.startListeningForRoomEvents()
                         completion()
                     @unknown default:
@@ -170,38 +162,6 @@ final public class APIManager: NSObject {
             .map { roomCache[$0.roomId] ?? makeRoom(from: $0) }
             .sorted { $0.summary.lastMessageDate > $1.summary.lastMessageDate }
         return rooms
-    }
-    
-    public func getPublicList() {
-        mxRestClient.publicRooms(onServer: nil, limit: nil) { response in
-            switch response {
-            case .success(let rooms):
-
-                // rooms is an array of MXPublicRoom objects containing information like room id
-                print("The public rooms are: \(rooms)")
-
-            case .failure: break
-            }
-        }
-    }
-    
-    
-    func getUserId(userId: String) {
-        mxRestClient?.displayName(forUser: userId, completion: { response in
-            print(response.value)
-        })
-    }
-    var listenReferenceRoom: Any?
-    func paginate(room: TnexRoom, event: MXEvent, completion: @escaping(() -> Void)) {
-        let timeline = room.room.timeline(onEvent: event.eventId)
-        listenReferenceRoom = timeline?.listenToEvents { event, direction, roomState in
-            if direction == .backwards {
-                room.add(event: event, direction: direction, roomState: roomState)
-            }
-        }
-        timeline?.resetPaginationAroundInitialEvent(withLimit: 40) { _ in
-            completion()
-        }
     }
     
     deinit {

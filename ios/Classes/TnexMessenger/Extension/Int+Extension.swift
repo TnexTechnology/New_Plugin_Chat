@@ -70,6 +70,9 @@ public extension Int {
     }
     
     func toTimeActive() -> String {
+        if self < 10 {
+            return "vừa xong"
+        }
         if self < 60 {
             return "\(self) giây trước"
         }

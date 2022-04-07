@@ -11,14 +11,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManager.shared
+        MatrixManager.shared
         
     }
 
     @IBAction func login(_ sender: Any) {
-        APIManager.shared.loginToken {[weak self] isSuccess in
+        MatrixManager.shared.loginToken {[weak self] isSuccess in
             if isSuccess {
-                guard let rooms = APIManager.shared.getRooms() else { return }
+                guard let rooms = MatrixManager.shared.getRooms() else { return }
                 let vc = ConversationViewController(rooms: rooms)
                 self?.navigationController?.pushViewController(vc, animated: true)
             }

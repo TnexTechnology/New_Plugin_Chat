@@ -106,13 +106,13 @@ open class ChatDetailViewController: BaseChatViewController {
         self.headerBar.autoSetDimension(.height, toSize: ChatHeaderView.headerBarHeight + topPadding)
         self.headerBar.infoView.displayNameLabel.text = self.dataSource.getDisplayName()
 //        self.headerBar.avatarView.imageView.sd_setImage(with: self.dataSource.getAvatarURL())
-        dataSource.room?.room.liveTimeline({[weak self] timeline in
+        dataSource.room?.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
-                if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != APIManager.shared.userId}) {
+                if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != MatrixManager.shared.userId}) {
                     self.dataSource.partnerId = partnerUser.userId
                     self.dataSource.partnerDisplayName = partnerUser.displayname
                     self.headerBar.updateUser(member: partnerUser)
-                    if let mxUser = self.dataSource.room?.room.mxSession.user(withUserId: partnerUser.userId) {
+                    if let mxUser = self.dataSource.room?.getUserInfo(from: partnerUser.userId) {
                         self.headerBar.updateStatusUser(user: mxUser)
                     }
                 }
@@ -235,7 +235,7 @@ extension ChatDetailViewController {
     
     func showPopupConfirmLeaving() {
         ConfirmLeavingViewController.showPopupConfirmLeaving(from: self) {[weak self] in
-            self?.dataSource.room?.room.leave(completion: { response in
+            self?.dataSource.room?.leave(completion: { response in
                 switch response {
                 case .success:
                     print("Xoa cuoc hoi thoai thanh cong")
@@ -248,12 +248,7 @@ extension ChatDetailViewController {
     }
     
     func muteConversation() {
-        guard let room = self.dataSource.room?.room else { return }
-        let notificationService = MXRoomNotificationSettingsService(room: room)
-        notificationService.update(state: .mute) {
-            print("update thanh cong")
-        }
-        
+        self.dataSource.room?.muteConversation()
     }
    
 }
