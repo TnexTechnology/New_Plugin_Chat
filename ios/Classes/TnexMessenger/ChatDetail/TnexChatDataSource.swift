@@ -191,19 +191,24 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
 
     func addPhotoMessage(_ image: UIImage) {
         self.room?.sendImage(image: image) {[weak self] _event in
-            if let self = self, let event = _event {
-                if event.sentState == MXEventSentStateSending {
+            guard let self = self, let event = _event else { return }
+            if event.sentState == MXEventSentStateSending || event.sentState == MXEventSentStateUploading {
+                let message = self.builderMessage(from: event)
+                self.slidingWindow?.insertItem(message, position: .bottom)
+                self.delegate?.chatDataSourceDidUpdate(self)
+            } else {
+                if let client = event.clientId, let uuid = self.eventDic[client] {
                     let message = self.builderMessage(from: event)
-                    self.slidingWindow?.insertItem(message, position: .bottom)
-                    self.delegate?.chatDataSourceDidUpdate(self)
-                } else {
-                    if let client = event.clientId, let uuid = self.eventDic[client] {
-                        let message = self.builderMessage(from: event)
-                        self.replaceMessage(withUID: uuid, withNewMessage: message)
-                    }
+                    self.replaceMessage(withUID: uuid, withNewMessage: message)
                 }
             }
         }
+    }
+    
+    func retryPhotoMessage(message: TnextPhotoMessageModel) {
+        removeMessage(eventId: message.uid)
+        guard let image = message.mediaItem.image else { return }
+        self.addPhotoMessage(image)
     }
     
     func markReadAll() {
@@ -249,6 +254,28 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         guard let slidingWindow = self.slidingWindow else { return }
         let didUpdate = slidingWindow.replaceItem(withNewItem: newMessage) { $0.uid == uid }
         guard didUpdate else { return }
+        self.delegate?.chatDataSourceDidUpdate(self)
+    }
+    
+    func removeMessage(eventId: String) {
+        guard let index = getIndexMessageId(eventId: eventId), let room = self.room?.room else { return }
+        events.remove(at: index)
+        if let indexItem = self.slidingWindow?.getIndexItem(where: {$0.uid == eventId}) {
+            self.removeMessage(at: indexItem)
+        }
+        room.removeOutgoingMessage(eventId)
+
+    }
+    
+    func getIndexMessageId(eventId: String) -> Int? {
+        if let index = self.events.firstIndex(where: {$0.eventId == eventId}) {
+            return index
+        }
+        return nil
+    }
+    
+    func removeMessage(at index: Int) {
+        self.slidingWindow?.removeItem(at: index)
         self.delegate?.chatDataSourceDidUpdate(self)
     }
 }

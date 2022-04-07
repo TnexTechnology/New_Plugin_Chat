@@ -38,6 +38,14 @@ public class SlidingDataSource<Element> {
         var iterator = items.makeIterator()
         self.init(count: items.count, pageSize: pageSize) { iterator.next()! }
     }
+    
+    func getItem(where predicate: (Element) -> Bool) -> Element? {
+        return self.items.first(where: predicate)
+    }
+    
+    func getIndexItem(where predicate: (Element) -> Bool) -> Int? {
+        return self.items.firstIndex(where: predicate)
+    }
 
     private func generateItems(_ count: Int, position: InsertPosition) {
         guard count > 0 else { return }
@@ -74,6 +82,14 @@ public class SlidingDataSource<Element> {
             self.windowCount -= 1
         }
         self.items.remove(at: randomIndex)
+    }
+    
+    public func removeItem(at index: Int) {
+        let shouldShrinkWindow = self.itemsOffset + self.items.count == self.windowOffset + self.windowCount
+        if shouldShrinkWindow {
+            self.windowCount -= 1
+        }
+        self.items.remove(at: index)
     }
 
     public func hasPrevious() -> Bool {

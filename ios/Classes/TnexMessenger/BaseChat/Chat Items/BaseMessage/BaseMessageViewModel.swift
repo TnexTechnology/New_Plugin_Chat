@@ -40,7 +40,7 @@ public enum MessageViewModelStatus {
         case .sending, .uploading:
             return UIImage(named: "ic-gpmessage-unchecked", in: Bundle.resources, compatibleWith: nil)
         case .failed:
-            return UIImage(named: "chat_btn_send", in: Bundle.resources, compatibleWith: nil)
+            return UIImage(named: "ic_message_status_fail", in: Bundle.resources, compatibleWith: nil)
         }
     }
 }

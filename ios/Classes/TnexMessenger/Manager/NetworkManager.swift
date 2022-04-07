@@ -89,25 +89,4 @@ public class NetworkManager: NSObject {
         
     }
     
-    func createImageContent(image: UIImage, completion: @escaping (_ content: [String: Any]?) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
-            completion(nil)
-            return
-        }
-        self.uploadImageChat(imageData: imageData) { url in
-            guard let url = url else {
-                completion(nil)
-                return
-            }
-            var messageContent: [String: Any] = [MessageConstants.messageBodyKey: url, MessageConstants.messageTypeKey: MessageType.image.key, "clientId": UUID().uuidString]
-            messageContent["format"] = "org.matrix.custom.html"
-            messageContent["filename"] = url
-            messageContent["url"] = url
-            let size = image.size
-            let info: [String: Any] = ["mimetype": "image/png", "size": imageData.count, "w": size.width, "h": size.height]
-            messageContent["info"] = info
-            completion(messageContent)
-        }
-        
-    }
 }

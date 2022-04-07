@@ -44,7 +44,6 @@ class TnexMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: 
     }
     
     func userDidEndLongPressOnBubble(message: Model, viewModel: ViewModel, bubbleView: UIView, touchPoint: CGPoint) {
-        print("userDidEndLongPressOnBubble")
         if let textMessage = message as? DemoTextMessageModel, message.type == TnexChatItemType.text.rawValue {
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             let copyAction = UIAlertAction(title: "Sao chép", style: .default) {[weak self] _ in
@@ -55,6 +54,21 @@ class TnexMessageInteractionHandler<Model: TnexMessageModelProtocol, ViewModel: 
             alertController.addAction(copyAction)
             alertController.addAction(cancel)
             self.chatviewController?.present(alertController, animated: true)
+        } else {
+            if let photoMessage = message as? TnextPhotoMessageModel, message.status == .failed {
+                let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                let retryAction = UIAlertAction(title: "Gửi lại", style: .default) {[weak self] _ in
+                    self?.chatviewController?.dataSource.retryPhotoMessage(message: photoMessage)
+                }
+                let removeAction = UIAlertAction(title: "Xoá tin nhắn", style: .default) {[weak self] _ in
+                    self?.chatviewController?.dataSource.removeMessage(eventId: message.uid)
+                }
+                let cancel = UIAlertAction(title: "Thoát", style: .cancel)
+                alertController.addAction(retryAction)
+                alertController.addAction(removeAction)
+                alertController.addAction(cancel)
+                self.chatviewController?.present(alertController, animated: true)
+            }
         }
     }
     

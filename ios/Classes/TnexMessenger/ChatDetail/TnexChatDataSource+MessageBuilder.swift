@@ -72,6 +72,7 @@ extension TnexChatDataSource {
                 imageSize = CGSize(width: width, height: height)
             }
         }
+        let eventContent = event.content
         let messageModel = TnexMessageModel(event: event)
         messageModel.type = PhotoMessageModel<TnexMessageModel>.chatItemType
         let mediaURLs = event.getMediaURLs().compactMap(MXURL.init)
@@ -79,7 +80,15 @@ extension TnexChatDataSource {
             return URL(string: mediaURL.mxContentURI.absoluteString)
 //            return mediaURL.contentURL(on: URL(string: APIManager.shared.homeServer)!)
         }
+        
         let photoItem = TnexMediaItem(imageSize: imageSize, image: nil, urlString: urls.first?.absoluteString)
+        if let urlString = eventContent?["url"] as? String, let path = MXMediaManager.cachePath(forMatrixContentURI: urlString, andType: "mimetype", inFolder: event.roomId) {
+            let urlPath = URL(fileURLWithPath: path)
+            let folder: String = urlPath.lastPathComponent
+            let fullPath = path.replacingOccurrences(of: folder, with: "ima\(folder).jpeg")
+            let image = UIImage(contentsOfFile: fullPath)
+            photoItem.image = image
+        }
         let photoMessageModel = TnextPhotoMessageModel(messageModel: messageModel, mediaItem: photoItem)
         if let client = event.clientId {
             eventDic[client] = event.eventId

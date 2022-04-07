@@ -141,46 +141,86 @@ public class TnexRoom {
         room.redactEvent(eventId, reason: reason) { _ in }
     }
 
-    public func sendImage(image: UIImage, completion: @escaping(_ event: MXEvent?) -> Void) {
-        NetworkManager.shared.createImageContent(image: image) {[weak self] content in
-            guard let content = content, let self = self else {
-                return
+    public func sendImageTest(image: UIImage, completion: @escaping(_ event: MXEvent?) -> Void) {
+//        NetworkManager.shared.createImageContent(image: image) {[weak self] content in
+//            guard let content = content, let self = self else {
+//                return
+//            }
+//            self.sendMessage(content: content, completion: completion)
+//        }
+        var localEcho: MXEvent? = nil {
+            didSet {
+                completion(localEcho)
             }
-            self.sendMessage(content: content, completion: completion)
+        }
+        guard let imageData = image.jpegData(compressionQuality: 1) else { return }
+//        let data1 = MXMediaManager.cachePath(forMatrixContentURI: "$ju7TzElOPO0hmc1YT-1nZXjHQZKpPNr_HOnqEPBHCBM", andType: "image/jpeg", inFolder: room.roomId)
+//        if let data = MXMediaManager.getFromMemoryCache(withFilePath: "$ju7TzElOPO0hmc1YT-1nZXjHQZKpPNr_HOnqEPBHCBM") {
+//            print("da co")
+//        }
+        let uploader = MXMediaManager.prepareUploader(withMatrixSession: room.mxSession, initialRange: 0, andRange: 1.0)
+        let fakeMediaURI = uploader?.uploadId
+        let cacheFilePath: String = MXMediaManager.cachePath(forMatrixContentURI: fakeMediaURI!, andType: "image/jpeg", inFolder: room.roomId)
+        MXMediaManager.writeMediaData(imageData, toFilePath: cacheFilePath)
+        
+        room.sendImage(
+            data: imageData,
+            size: image.size,
+            mimeType: "image/jpeg",
+            thumbnail: image,
+            blurhash: nil,
+            localEcho: &localEcho
+        ) { response in
+            switch response {
+            case .failure(let error):
+                print("Loi khong gui duoc: \(error.localizedDescription)")
+                localEcho?.sentState = MXEventSentStateFailed
+                completion(localEcho)
+            case .success(let eventId):
+                print("eventId: \(eventId)")
+                localEcho?.sentState = MXEventSentStateSent
+                completion(localEcho)
+            }
         }
     }
     
+    public func sendImage(image: UIImage, completion: @escaping(_ event: MXEvent?) -> Void) {
+        let imageSize = image.size
+        let quality: CGFloat = imageSize.width < 500 ? 1.0 : 0.5
+        guard let imageData = image.jpegData(compressionQuality: quality) else {
+            completion(nil)
+            return
+        }
+        self.storageImage(data: imageData)
+        NetworkManager.shared.uploadImageChat(imageData: imageData) {[weak self] url in
+            guard let self = self, let url = url else {
+                completion(nil)
+                return
+            }
+            let messageContent = self.createMediaMessageContent(url: url, imageSize: imageSize, fileSize: imageData.count)
+            self.sendMessage(content: messageContent, completion: completion)
+        }
+    }
+    
+    private func createMediaMessageContent(url: String, imageSize: CGSize, fileSize: Int) -> [String: Any] {
+        var messageContent: [String: Any] = [MessageConstants.messageBodyKey: url, MessageConstants.messageTypeKey: MessageType.image.key, "clientId": UUID().uuidString]
+        messageContent["format"] = "org.matrix.custom.html"
+        messageContent["filename"] = url
+        messageContent["url"] = url
+        let info: [String: Any] = ["mimetype": "image/png", "size": fileSize, "w": imageSize.width, "h": imageSize.height]
+        messageContent["info"] = info
+        return messageContent
+    }
+    
+    private func storageImage(data: Data) {
+        let uploader = MXMediaManager.prepareUploader(withMatrixSession: room.mxSession, initialRange: 0, andRange: 1.0)
+        let fakeMediaURI = uploader?.uploadId
+        let cacheFilePath: String = MXMediaManager.cachePath(forMatrixContentURI: fakeMediaURI!, andType: "image/jpeg", inFolder: room.roomId)
+        MXMediaManager.writeMediaData(data, toFilePath: cacheFilePath)
+    }
+
     public func markAllAsRead() {
         room.markAllAsRead()
     }
 
-//    public func removeOutgoingMessage(_ event: MXEvent) {
-//        objectWillChange.send()             // room.outgoingMessages() will change
-//        room.removeOutgoingMessage(event.eventId)
-//    }
 }
-
-//extension TnexRoom: Identifiable {
-//    public var id: Identifier {
-//        room.roomId
-//    }
-//}
-
-//extension UXImage {
-//    public enum JPEGQuality: CGFloat {
-//        case lowest  = 0
-//        case low     = 0.25
-//        case medium  = 0.5
-//        case high    = 0.75
-//        case highest = 1
-//    }
-//
-//    public func jpeg(_ jpegQuality: JPEGQuality) -> Data? {
-//        #if os(macOS)
-//            return tiffRepresentation(using  : .jpeg,
-//                                      factor : Float(jpegQuality.rawValue))
-//        #else
-//            return jpegData(compressionQuality: jpegQuality.rawValue)
-//        #endif
-//    }
-//}
