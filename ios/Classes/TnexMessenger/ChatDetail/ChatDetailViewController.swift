@@ -12,10 +12,12 @@ import InputBarAccessoryView
 import FittedSheets
 
 open class ChatDetailViewController: BaseChatViewController {
+    
     var shouldUseAlternativePresenter: Bool = false
-
     var messageSender: DemoChatMessageSender!
     let messagesSelector = BaseMessagesSelector()
+    var messageChangeTracker: MessageChangeTracker?
+    private var anchorScrollButtonView: UIView?
     private let roomId: String
     public var dataSource: TnexChatDataSource! {
         didSet {
@@ -67,12 +69,27 @@ open class ChatDetailViewController: BaseChatViewController {
         self.messagesCollectionView.backgroundColor = UIColor(red: 0.008, green: 0.0, blue: 0.212, alpha: 1)
         self.changeCollectionViewTopMarginTo(-ChatHeaderView.headerBarHeight/2, duration: 0.3)
         addBackgroundInputBar()
+        addMessageChangeTracker()
     }
     
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.dataSource.markReadAll()
+    }
+    
+    private func addMessageChangeTracker() {
+        self.messageChangeTracker = MessageChangeTracker(viewController: self, inputBarContainer: self.anchorScrollButtonView)
+        self.messageChangeTracker?.onClickScrollToBottom = {[weak self] in
+            self?.focusScrollToBottom()
+        }
+    }
+    
+    func focusScrollToBottom() {
+        guard self.chatItemCompanionCollection.count > 0 else { return }
+        let endIndex = self.chatItemCompanionCollection.endIndex
+        let lastItemIndex = self.chatItemCompanionCollection.index(endIndex, offsetBy: -1)
+        self.scrollToItem(withId: self.chatItemCompanionCollection[lastItemIndex].uid, position: .bottom, animated: true)
     }
     
     private func addBackgroundInputBar() {
@@ -87,6 +104,7 @@ open class ChatDetailViewController: BaseChatViewController {
         backgroundInputView.topAnchor.constraint(equalTo: inputBarContainer.topAnchor, constant: -5).isActive = true
         inputContentContainer.backgroundColor = .clear
         inputBarContainer.backgroundColor = .clear
+        self.anchorScrollButtonView = backgroundInputView
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -200,6 +218,10 @@ open class ChatDetailViewController: BaseChatViewController {
             self?.dataSource.addPhotoMessage(image)
         }
         return item
+    }
+    
+    deinit {
+        print("Deinit ChatDetailViewController")
     }
 
 }

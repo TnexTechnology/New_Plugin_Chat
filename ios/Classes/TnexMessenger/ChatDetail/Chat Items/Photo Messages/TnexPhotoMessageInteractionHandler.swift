@@ -16,23 +16,23 @@ final class TnexPhotoMessageInteractionHandler: TnexMessageInteractionHandler<Tn
             imageItems: [url].compactMap {
                 ImageItem.url($0, placeholder: imageView.image)
         })
-        let option = ImageViewerOption.rightNavItemTitle("Download") { index in
+        let downloadImage: UIImage = UIImage(named: "ic-download", in: Bundle.resources, with: nil)!
+        let downloadOption = ImageViewerOption.rightNavItemIcon(downloadImage, onTap: { index in
             guard let image = imageView.image else { return }
             DownloadManager.shared.saveImageToLibrary(image: image) { isSucceed in
-                print("Download thanh cong")
+                UIViewController.topController()?.view.makeToast("Download thành công!")
             }
-        }
+        })
+        let cancelOption = ImageViewerOption.closeIcon(UIImage(named: "ic-close-white", in: Bundle.resources, with: nil)!)
+        let themOption = ImageViewerOption.theme(.dark)
         let imageCarousel = ImageCarouselViewController.init(
             sourceView: imageView,
             imageDataSource: datasource,
             imageLoader: URLSessionImageLoader(),
-            options: [option],
+            options: [downloadOption, cancelOption, themOption],
             initialIndex: 0)
         UIViewController.topController()?.present(imageCarousel, animated: true)
     }
-    
-    
-    
     
 }
 

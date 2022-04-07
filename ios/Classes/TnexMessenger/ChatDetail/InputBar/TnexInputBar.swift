@@ -59,9 +59,7 @@ import FittedSheets
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configure()
-        
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -206,7 +204,7 @@ import FittedSheets
         configure.tapHereToChange = "Chọn album"
         configure.allowedVideo = false
         viewController.configure = configure
-        viewController.selectedAssets = self.selectedAssets
+//        viewController.selectedAssets = self.selectedAssets
         let sheetController = SheetViewController(
             controller: viewController,
             sizes: [.fixed(500), .fullScreen])
@@ -214,7 +212,6 @@ import FittedSheets
         sheetController.adjustForBottomSafeArea = true
         sheetController.blurBottomSafeArea = true
         sheetController.pullBarView.isHidden = true
-        
         self.presentingController?.present(sheetController, animated: false, completion: nil)
     }
     

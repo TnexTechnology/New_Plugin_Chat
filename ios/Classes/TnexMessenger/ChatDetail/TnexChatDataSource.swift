@@ -116,15 +116,6 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         }
     }
         
-//    lazy var messageSender: DemoChatMessageSender = {
-//        let sender = DemoChatMessageSender()
-//        sender.onMessageChanged = { [weak self] (message) in
-//            guard let sSelf = self else { return }
-//            sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
-//        }
-//        return sender
-//    }()
-    
     func showHideTyping(isShow: Bool) {
         guard self.isShowTyping != isShow else { return }
         print("Show typing status: ....\(isShow)")
@@ -157,7 +148,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     public func loadPrevious() {
         guard let topEvent = self.events.first, let _room = self.room else { return }
         self.canLoadMore = false
-        room?.paginate(event: topEvent) {[weak self] in
+        room?.paginate(event: topEvent) { [weak self] _ in
             guard let self = self else { return }
             let newEvents = _room.events().wrapped.filter({$0.isShowMessage})
             if self.events.count < newEvents.count {
@@ -173,17 +164,15 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
 
     func addTextMessage(_ text: String) {
         self.room?.send(text: text) {[weak self] _event in
-            if let self = self, let event = _event {
-                
-                if event.sentState == MXEventSentStateSending {
+            guard let self = self, let event = _event else { return }
+            if event.sentState == MXEventSentStateSending {
+                let message = self.builderMessage(from: event)
+                self.slidingWindow?.insertItem(message, position: .bottom)
+                self.delegate?.chatDataSourceDidUpdate(self)
+            } else {
+                if let client = event.clientId, let uuid = self.eventDic[client] {
                     let message = self.builderMessage(from: event)
-                    self.slidingWindow?.insertItem(message, position: .bottom)
-                    self.delegate?.chatDataSourceDidUpdate(self)
-                } else {
-                    if let client = event.clientId, let uuid = self.eventDic[client] {
-                        let message = self.builderMessage(from: event)
-                        self.replaceMessage(withUID: uuid, withNewMessage: message)
-                    }
+                    self.replaceMessage(withUID: uuid, withNewMessage: message)
                 }
             }
         }
@@ -277,6 +266,10 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     func removeMessage(at index: Int) {
         self.slidingWindow?.removeItem(at: index)
         self.delegate?.chatDataSourceDidUpdate(self)
+    }
+    
+    deinit {
+        print("Deinit TnexChatDataSource")
     }
 }
 

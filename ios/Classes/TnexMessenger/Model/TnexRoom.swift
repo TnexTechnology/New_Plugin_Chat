@@ -106,10 +106,16 @@ public class TnexRoom {
                 completion(localEcho)
             }
         }
-        room.sendMessage(withContent: content, localEcho: &localEcho) { fdsfds in
+        room.sendMessage(withContent: content, localEcho: &localEcho) { response in
             print("Da gui tin nhan")
-            localEcho?.sentState = MXEventSentStateSent
-            completion(localEcho)
+            switch response {
+            case .success:
+                localEcho?.sentState = MXEventSentStateSent
+                completion(localEcho)
+            case .failure:
+                localEcho?.sentState = MXEventSentStateFailed
+                completion(localEcho)
+            }
         }
     }
 
@@ -206,8 +212,8 @@ public class TnexRoom {
     }
 
     public func markAllAsRead() {
-        room.markAllAsRead()
-        //room.summary.markAllAsRead()
+//        room.markAllAsRead()
+        room.summary.markAllAsReadLocally()
     }
 
     @nonobjc @discardableResult func sendTypingNotification(typing: Bool, timeout: TimeInterval?, completion: @escaping (_ response: MXResponse<Void>) -> Void) -> MXHTTPOperation {
@@ -256,15 +262,14 @@ extension TnexRoom {
         RoomItem(room: room)
     }
     
-    func paginate(event: MXEvent, completion: @escaping(() -> Void)) {
+    func paginate(event: MXEvent, completion: @escaping((MXResponse<Void>) -> Void)) {
         guard let timeline = room.timeline(onEvent: event.eventId) else { return }
-        listenReferenceRoom = timeline.listenToEvents { event, direction, roomState in
+        listenReferenceRoom = timeline.listenToEvents {[weak self] event, direction, roomState in
+            guard let self = self else { return }
             if direction == .backwards {
                 self.add(event: event, direction: direction, roomState: roomState)
             }
         }
-        timeline.resetPaginationAroundInitialEvent(withLimit: 40) { _ in
-            completion()
-        }
+        timeline.resetPaginationAroundInitialEvent(withLimit: 40, completion: completion)
     }
 }
