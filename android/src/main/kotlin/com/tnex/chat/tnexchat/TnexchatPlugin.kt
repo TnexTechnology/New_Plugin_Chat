@@ -84,7 +84,12 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     activity.runOnUiThread {
       val arguments = call.arguments as Map<String, Any>
       val roomID = arguments["roomID"] as String
-      MatrixApplication.sInstance.tnexMatrix.openRoom(roomID)
+      MatrixApplication.sInstance.tnexMatrix.openRoom(roomID, {
+        activity.runOnUiThread {
+          result.success(it)
+          print("openRoomWithId callback userID = " + it)
+        }
+      })
     }
   }
 
@@ -108,5 +113,4 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onDetachedFromActivity() {
     //TODO("Not yet implemented")
   }
-
 }
