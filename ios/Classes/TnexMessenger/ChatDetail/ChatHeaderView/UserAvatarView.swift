@@ -26,6 +26,7 @@ class UserAvatarView: UIView {
         imgView.autoSetDimension(.width, toSize: 14)
         imgView.layer.cornerRadius = 7
         imgView.clipsToBounds = true
+        imgView.isHidden = true
         return imgView
     }()
     

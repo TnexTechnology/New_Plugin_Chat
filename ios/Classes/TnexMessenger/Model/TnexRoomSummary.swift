@@ -13,7 +13,8 @@ public class TnexRoomSummary {
     internal var summary: MXRoomSummary
 
     public var lastMessageDate: Date {
-        let timestamp = Double(summary.lastMessage.originServerTs)
+        guard let lastMessage = summary.lastMessage else { return Date()}
+        let timestamp = Double(lastMessage.originServerTs)
         return Date(timeIntervalSince1970: timestamp / 1000)
     }
 

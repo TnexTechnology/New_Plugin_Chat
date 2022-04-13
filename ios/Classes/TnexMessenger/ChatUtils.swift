@@ -12,7 +12,7 @@ class ChatUtils {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 1.1
         let textFontSize: CGFloat = text.isSingleEmoji ? 40.0 : 16.0
-        let textFont: UIFont = UIFont(name: "Quicksand-Regular", size: textFontSize)!
+        let textFont: UIFont = UIFont(name: "Quicksand-Regular", size: textFontSize) ?? UIFont.systemFont(ofSize: textFontSize)
         let textColor: UIColor = UIColor.white
         return [NSAttributedString.Key.font: textFont, NSAttributedString.Key.foregroundColor: textColor, .paragraphStyle: paragraphStyle, NSAttributedString.Key.kern: -0.46]
     }

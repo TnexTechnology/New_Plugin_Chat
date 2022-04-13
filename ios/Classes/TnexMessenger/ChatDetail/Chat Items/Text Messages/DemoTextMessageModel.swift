@@ -32,6 +32,9 @@ public class DemoTextMessageModel: TextMessageModel<TnexMessageModel>, TnexMessa
     }
     
     public var senderName: String? {
+        if let user = MatrixManager.shared.mxSession?.getOrCreateUser(senderId) {
+            return user.displayname
+        }
         return _messageModel.event.content(valueFor: "displayname")
     }
     

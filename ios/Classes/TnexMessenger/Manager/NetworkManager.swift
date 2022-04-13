@@ -89,4 +89,52 @@ public class NetworkManager: NSObject {
         
     }
     
+    public func gotoTransfer(mobile: String) {
+        let channel = FlutterMethodChannel(name: "tnex_chat",
+                                              binaryMessenger: flutterVC.binaryMessenger)
+        channel.invokeMethod("transfer", arguments: mobile)
+        
+    }
+    
+    func getProfile(by userId: String, completion: @escaping(MSBUserInfoModel?) -> Void) {
+        //consumer-api/service-user/user/friendprofile/
+        self.getToken {[weak self] bearToken in
+            guard let self = self else { return }
+            self.tokenChannel = nil
+            guard let msbUserId = self.convertChatFriendIdToMsbUserId(userId: userId) else {
+                completion(nil)
+                return
+            }
+            let requestUrl = "https://api-gw-user.tnex.com.vn/consumer-api/service-user/user/friendprofile/\(msbUserId)"
+            var headers: HTTPHeaders = [:]
+            headers["Authorization"] = bearToken
+            headers["messageId"] = UUID().uuidString
+            AF.request(requestUrl, method:.get,parameters: nil,encoding: JSONEncoding.default, headers: headers).responseData { response in
+                switch response.result {
+                case .success(let value):
+                    do{
+                        if let result = try JSONSerialization.jsonObject(with: value, options: []) as? [String: Any] {
+                            let avatarUrl = result["avatarImage"] as? String
+                            let displayName = result["firstname"] as? String
+                            let coverUrl = result["backgroundImage"] as? String
+                            let mobile = result["mobile"] as? String
+                            let userInfo = MSBUserInfoModel(avatarUrl: avatarUrl, coverUrl: coverUrl, displayName: displayName ?? "", userId: userId, msbUserId: msbUserId, mobile: mobile ?? "")
+                            completion(userInfo)
+                        }
+                        
+                    }catch{ print("erroMsg") }
+                case .failure(let error):
+                    print("Error in upload: \(error.localizedDescription)")
+                    completion(nil)
+                }
+            }
+            
+        }
+        eventSink?("token")
+    }
+    
+    private func convertChatFriendIdToMsbUserId(userId: String) -> String? {
+        let msbUserId = userId.replacingOccurrences(of: "@", with: "")
+        return msbUserId.components(separatedBy: ":").first
+    }
 }

@@ -202,10 +202,23 @@ class ChatHeaderView: UIView {
     }
     
     func updateStatusUser(user: MXUser) {
+        switch user.presence {
+        case MXPresenceOnline:
+            self.infoView.statusLabel.text = "Đang hoạt động"
+            self.avatarView.statusView.isHidden = false
+        case MXPresenceUnavailable:
+            self.infoView.statusLabel.text = ""
+            self.avatarView.statusView.isHidden = true
+        case MXPresenceOffline:
+            self.infoView.statusLabel.text = "Ngoại tuyến"
+            self.avatarView.statusView.isHidden = true
+        default:
+            break
+        }
         if user.currentlyActive {
             self.infoView.statusLabel.text = "Đang hoạt động"
             self.avatarView.statusView.isHidden = false
-        } else {
+        } else {//if (-1 != user.lastActiveAgo && 0 < user.lastActiveAgo)
             let second = user.lastActiveAgo / 1000
             self.infoView.statusLabel.text = Int(second).toTimeActive()
             self.avatarView.statusView.isHidden = true

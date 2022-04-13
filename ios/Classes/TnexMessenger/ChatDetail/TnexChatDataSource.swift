@@ -98,11 +98,13 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                     MatrixManager.shared.memberDic[member.userId] = member
                 }
             }
+            self.room?.sendReadReceipt(eventId: self.events.last?.eventId ?? "")
             self.loadData()
         }
     }
     
     func loadData() {
+        guard !events.isEmpty else { return }
         var indexMessage: Int = 0
         let messageCount: Int = events.count
         let mes = self.builderMessage(from: events[0])
@@ -295,9 +297,10 @@ extension MXEvent {
         if eventId == nil {
             return false
         }
-        return self.type != kMXEventTypeStringRoomPowerLevels
-        && self.type != kMXEventTypeStringRoomGuestAccess
-        && self.type != kMXEventTypeStringRoomHistoryVisibility
-        && self.type != kMXEventTypeStringRoomJoinRules
+        return self.type == kMXEventTypeStringRoomMessage
+//        return self.type != kMXEventTypeStringRoomPowerLevels
+//        && self.type != kMXEventTypeStringRoomGuestAccess
+//        && self.type != kMXEventTypeStringRoomHistoryVisibility
+//        && self.type != kMXEventTypeStringRoomJoinRules
     }
 }

@@ -142,10 +142,6 @@ public class TnexRoom {
             }
         }
         guard let imageData = image.jpegData(compressionQuality: 1) else { return }
-//        let data1 = MXMediaManager.cachePath(forMatrixContentURI: "$ju7TzElOPO0hmc1YT-1nZXjHQZKpPNr_HOnqEPBHCBM", andType: "image/jpeg", inFolder: room.roomId)
-//        if let data = MXMediaManager.getFromMemoryCache(withFilePath: "$ju7TzElOPO0hmc1YT-1nZXjHQZKpPNr_HOnqEPBHCBM") {
-//            print("da co")
-//        }
         let uploader = MXMediaManager.prepareUploader(withMatrixSession: room.mxSession, initialRange: 0, andRange: 1.0)
         let fakeMediaURI = uploader?.uploadId
         let cacheFilePath: String = MXMediaManager.cachePath(forMatrixContentURI: fakeMediaURI!, andType: "image/jpeg", inFolder: room.roomId)
@@ -230,6 +226,12 @@ public class TnexRoom {
     
     func liveTimeline(_ completion: @escaping(MXEventTimeline?) -> Void) {
         room.liveTimeline(completion)
+    }
+    
+    func sendReadReceipt(eventId: String) {
+        room.mxSession.matrixRestClient.sendReadReceipt(toRoom: self.roomId, forEvent: eventId) { response in
+            //
+        }
     }
     
     deinit {

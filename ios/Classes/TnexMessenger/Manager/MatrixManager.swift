@@ -20,7 +20,7 @@ final public class MatrixManager: NSObject {
         
     public static let shared = MatrixManager()
     var mxRestClient: MXRestClient!
-    var mxSession: MXSession?
+    public var mxSession: MXSession?
     var fileStore: MXFileStore?
     
     var handleEvent: MXOnSessionEvent?
@@ -125,7 +125,6 @@ final public class MatrixManager: NSObject {
     }
     
     func getSenderInfo(senderId: String, at room: MXRoom?, completion: @escaping (_ displayName: String?) -> Void) {
-        
         if let user = self.memberDic[senderId] {
             completion(user.displayname)
         } else {

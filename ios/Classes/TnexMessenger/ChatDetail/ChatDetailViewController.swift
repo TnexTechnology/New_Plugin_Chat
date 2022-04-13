@@ -251,8 +251,10 @@ extension ChatDetailViewController: InputBarAccessoryViewDelegate {
 
 extension ChatDetailViewController {
     func showProfileUser(userId: String) {
-        self.navigationController?.popViewController(animated: true)
-        NetworkManager.shared.showProfile(userId: userId)
+//        self.navigationController?.popViewController(animated: true)
+//        NetworkManager.shared.showProfile(userId: userId)
+        let vc = ProfileViewController(userId: userId)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func showPopupConfirmLeaving() {

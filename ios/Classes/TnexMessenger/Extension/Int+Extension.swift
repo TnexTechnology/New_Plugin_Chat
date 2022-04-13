@@ -147,3 +147,24 @@ public extension Double {
         return (formatter.string(from: number) ?? "").replacingOccurrences(of: ",", with: ".")
     }
 }
+
+enum TemplateUserProfilePresence {
+    case online
+    case idle
+    case offline
+}
+
+extension TemplateUserProfilePresence: Identifiable, CaseIterable {
+    var id: Self { self }
+    
+    var title: String {
+        switch self {
+        case .online:
+            return "Đang trực tuyến"
+        case .idle:
+            return "VectorL10n.roomParticipantsIdle"
+        case .offline:
+            return "VectorL10n.roomParticipantsOffline"
+        }
+    }
+}
