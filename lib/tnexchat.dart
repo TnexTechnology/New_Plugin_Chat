@@ -31,8 +31,8 @@ class Tnexchat {
     return isSuccess;
   }
 
-  static Future<bool> openRoomWithId(dynamic method) async {
-    final bool isSuccess = await _channel.invokeMethod('openRoomWithId', method);
-    return isSuccess;
+  static Future<String> openRoomWithId(dynamic method) async {
+    final String userID = await _channel.invokeMethod('openRoomWithId', method);
+    return userID;
   }
 }
