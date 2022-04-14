@@ -84,12 +84,12 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     activity.runOnUiThread {
       val arguments = call.arguments as Map<String, Any>
       val roomID = arguments["roomID"] as String
-      MatrixApplication.sInstance.tnexMatrix.openRoom(roomID, {
+      MatrixApplication.sInstance.tnexMatrix.openRoom(roomID) { userID, roomID ->
         activity.runOnUiThread {
-          result.success(it)
-          print("openRoomWithId callback userID = " + it)
+          result.success("$userID,$roomID")
+          print("openRoomWithId callback userID = $userID --- roomID = $roomID")
         }
-      })
+      }
     }
   }
 
