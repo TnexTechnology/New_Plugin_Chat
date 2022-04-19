@@ -69,7 +69,6 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                     self.isShowTyping = false
                 }
                 self.delegate?.chatDataSourceDidUpdate(self)
-                
             }
         }
     }
@@ -104,10 +103,9 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
     
     func loadData() {
-        guard !events.isEmpty else { return }
         var indexMessage: Int = 0
         let messageCount: Int = events.count
-        let mes = self.builderMessage(from: events[0])
+        lazy var mes = self.builderMessage(from: events[0])
         self.slidingWindow = SlidingDataSource(count: messageCount, pageSize: messageCount) { [weak self] () -> ChatItemProtocol in
             guard let self = self else { return mes }
             let index = messageCount - 1 - indexMessage

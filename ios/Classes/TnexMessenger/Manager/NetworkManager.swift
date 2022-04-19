@@ -15,6 +15,7 @@ public class NetworkManager: NSObject {
     public static let shared = NetworkManager()
     public var eventSink: FlutterEventSink?
     public var flutterVC: FlutterViewController!
+    public var domain: String = "https://api-gw-user.tnex.com.vn"
     
     public func updateFont(flutterViewController: FlutterViewController) {
 //        let font: UIFont = UIFont(name: "Quicksand-Regular", size: 18.0)!
@@ -36,8 +37,9 @@ public class NetworkManager: NSObject {
     
     func uploadImageChat(imageData: Data, completion: @escaping(_ url: String?) -> Void) {
         self.getToken {[weak self] bearToken in
-            self?.tokenChannel = nil
-            let requestUrl = "https://api-gw-user.tnex.com.vn/api/v1/customer-gw/services/uploadFiles"
+            guard let self = self else { return }
+            self.tokenChannel = nil
+            let requestUrl = self.domain + "/api/v1/customer-gw/services/uploadFiles"
             var headers: [String: String] = [:]
             headers["device-id"] =  "8c30f508-3b8d-4696-b7ef-135615e4e4b8"
             headers["location"] = "21.032876784,105.839820047"
@@ -105,7 +107,7 @@ public class NetworkManager: NSObject {
                 completion(nil)
                 return
             }
-            let requestUrl = "https://api-gw-user.tnex.com.vn/consumer-api/service-user/user/friendprofile/\(msbUserId)"
+            let requestUrl = self.domain + "/consumer-api/service-user/user/friendprofile/\(msbUserId)"
             var headers: HTTPHeaders = [:]
             headers["Authorization"] = bearToken
             headers["messageId"] = UUID().uuidString

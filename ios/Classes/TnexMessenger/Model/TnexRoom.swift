@@ -234,6 +234,10 @@ public class TnexRoom {
         }
     }
     
+    func setPartialTextMessage(text: String) {
+        self.room.partialTextMessage = text
+    }
+    
     deinit {
         listenReferenceRoom = nil
     }
@@ -256,6 +260,11 @@ extension TnexRoom {
 
 //Get value
 extension TnexRoom {
+    
+    func getPartialTextMessage() -> String {
+        return self.room.partialTextMessage ?? ""
+    }
+    
     func getUserInfo(from userId: String) -> MXUser? {
         return room.mxSession.user(withUserId: userId)
     }

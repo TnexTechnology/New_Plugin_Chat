@@ -17,6 +17,7 @@ open class ChatDetailViewController: BaseChatViewController {
     var messageSender: DemoChatMessageSender!
     let messagesSelector = BaseMessagesSelector()
     var messageChangeTracker: MessageChangeTracker?
+    var inputBar: TnexInputBar?
     private var anchorScrollButtonView: UIView?
     private let roomId: String
     public var dataSource: TnexChatDataSource! {
@@ -76,6 +77,15 @@ open class ChatDetailViewController: BaseChatViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.dataSource.markReadAll()
+        self.inputBar?.inputTextView.text = self.dataSource.room?.getPartialTextMessage()
+    
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let text = self.inputBar?.inputTextView.text {
+            self.dataSource.room?.setPartialTextMessage(text: text)
+        }
     }
     
     private func addMessageChangeTracker() {
@@ -123,7 +133,6 @@ open class ChatDetailViewController: BaseChatViewController {
 //        let topPadding: CGFloat = UIApplication.key?.safeAreaInsets.top ?? 20
         self.headerBar.autoSetDimension(.height, toSize: ChatHeaderView.headerBarHeight + topPadding)
         self.headerBar.infoView.displayNameLabel.text = self.dataSource.getDisplayName()
-//        self.headerBar.avatarView.imageView.sd_setImage(with: self.dataSource.getAvatarURL())
         dataSource.room?.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
                 if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != MatrixManager.shared.userId}) {
@@ -155,6 +164,7 @@ open class ChatDetailViewController: BaseChatViewController {
         inputbar.photoInputHandler = { [weak self] image in
             self?.dataSource.addPhotoMessage(image)
         }
+        self.inputBar = inputbar
         return chatInputView
     }
     
@@ -166,11 +176,6 @@ open class ChatDetailViewController: BaseChatViewController {
         )
         textMessagePresenter.baseMessageStyle = BaseMessageCollectionViewCellAvatarStyle()
         let photoMessagePresenter = createPhotoMessagePresenterBuilders()
-//        let photoMessagePresenter = PhotoMessagePresenterBuilder(
-//            viewModelBuilder: DemoPhotoMessageViewModelBuilder(),
-//            interactionHandler: DemoMessageInteractionHandler(messageSender: self.messageSender, messagesSelector: self.messagesSelector)
-//        )
-//        photoMessagePresenter.baseCellStyle = BaseMessageCollectionViewCellAvatarStyle()
 
         return [
             DemoTextMessageModel.chatItemType: [textMessagePresenter],
@@ -251,8 +256,6 @@ extension ChatDetailViewController: InputBarAccessoryViewDelegate {
 
 extension ChatDetailViewController {
     func showProfileUser(userId: String) {
-//        self.navigationController?.popViewController(animated: true)
-//        NetworkManager.shared.showProfile(userId: userId)
         let vc = ProfileViewController(userId: userId)
         self.navigationController?.pushViewController(vc, animated: true)
     }

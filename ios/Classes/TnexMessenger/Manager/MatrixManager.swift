@@ -128,19 +128,24 @@ final public class MatrixManager: NSObject {
         if let user = self.memberDic[senderId] {
             completion(user.displayname)
         } else {
-            room?.liveTimeline {[weak self] eventTimeline in
-                guard let self = self else { return }
-                if let members = eventTimeline?.state?.members.members {
-                    for member in members {
-                        if let userId = member.userId, !userId.isEmpty {
-                            self.memberDic[userId] = member
-                            if senderId == userId {
-                                completion(member.displayname)
+            if let user = room?.mxSession.user(withUserId: senderId) {
+                completion(user.displayname)
+            } else {
+                room?.liveTimeline {[weak self] eventTimeline in
+                    guard let self = self else { return }
+                    if let members = eventTimeline?.state?.members.members {
+                        for member in members {
+                            if let userId = member.userId, !userId.isEmpty {
+                                self.memberDic[userId] = member
+                                if senderId == userId {
+                                    completion(member.displayname)
+                                }
                             }
                         }
                     }
                 }
             }
+            
         }
     }
     
@@ -161,6 +166,35 @@ final public class MatrixManager: NSObject {
             .map { roomCache[$0.roomId] ?? makeRoom(from: $0) }
             .sorted { $0.summary.lastMessageDate > $1.summary.lastMessageDate }
         return rooms
+    }
+    
+    public func createRoom(with userId: String, completion: @escaping(MXRoom?) -> Void) {
+        let parameters = MXRoomCreationParameters()
+        parameters.inviteArray = [userId]
+        parameters.isDirect = true
+        parameters.visibility = MXRoomDirectoryVisibility.private.identifier
+        parameters.preset = MXRoomPreset.trustedPrivateChat.identifier
+        if let room = self.mxSession?.directJoinedRoom(withUserId: userId) {
+            print(room.roomId)
+            print(room.summary.displayname)
+            print("$$$$$$$")
+            completion(room)
+            return
+        }
+            
+        self.mxSession?.createRoom(parameters: parameters) { response in
+            switch response {
+            case .success(let room):
+                print("######")
+                print(parameters.isDirect)
+                print(room.isDirect)
+                print(room.summary.displayname)
+                completion(room)
+            case.failure(let error):
+                print("Error on creating room: \(error)")
+                completion(nil)
+            }
+        }
     }
     
     deinit {
