@@ -63,7 +63,7 @@ open class ChatDetailViewController: BaseChatViewController {
         DispatchQueue.main.async {[weak self] in
             self?.addHeaderView()
         }
-        self.cellPanGestureHandlerConfig.allowReplyRevealing = true
+        self.cellPanGestureHandlerConfig.allowReplyRevealing = false
         self.messagesSelector.delegate = self
         self.chatItemsDecorator = TnexChatItemsDecorator(messagesSelector: self.messagesSelector, chatDataSource: dataSource)
         self.replyActionHandler = TnexReplyActionHandler(presentingViewController: self)

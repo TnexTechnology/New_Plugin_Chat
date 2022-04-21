@@ -53,7 +53,6 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
             self.room?.getEventReceipts(event.eventId, sorted: true, completion: {[weak self] receipts in
                 guard let self = self, receipts.count > 0 else { return }
                 self.lastMessageIdPartnerRead = event.eventId
-                print(self.getText(event: event))
                 self.delegate?.chatDataSourceDidUpdate(self, updateType: .firstLoad)
             })
         }
@@ -215,7 +214,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
             guard let self = self else { return }
             switch event.type {
             case "m.typing":
-                if let userIds = event.content["user_ids"] as? [String], userIds.first != MatrixManager.shared.userId {
+                if let userIds = event.content["user_ids"] as? [String], !userIds.isEmpty && userIds.first != MatrixManager.shared.userId {
                     self.typingTracker.startShowTypingView()
                 }
             case "m.receipt":
