@@ -229,9 +229,14 @@ public class TnexRoom {
     }
     
     func sendReadReceipt(eventId: String) {
-        room.mxSession.matrixRestClient.sendReadReceipt(toRoom: self.roomId, forEvent: eventId) { response in
-            //
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {[weak self] in
+            guard let self = self else { return }
+            self.room.mxSession.matrixRestClient.sendReadReceipt(toRoom: self.roomId, forEvent: eventId) { response in
+                print("Send read receipt: \(eventId)")
+                print(response)
+            }
         }
+        
     }
     
     func setPartialTextMessage(text: String) {

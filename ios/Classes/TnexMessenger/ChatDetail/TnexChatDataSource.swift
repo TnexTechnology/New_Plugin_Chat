@@ -68,6 +68,9 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                     self.isShowTyping = false
                 }
                 self.delegate?.chatDataSourceDidUpdate(self)
+                if event.sender != MatrixManager.shared.userId {
+                    self.room?.sendReadReceipt(eventId: event.eventId)
+                }
             }
         }
     }
@@ -96,8 +99,11 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                     MatrixManager.shared.memberDic[member.userId] = member
                 }
             }
-            self.room?.sendReadReceipt(eventId: self.events.last?.eventId ?? "")
             self.loadData()
+            self.room?.sendReadReceipt(eventId: self.events.last?.eventId ?? "")
+            if let eventId =  self.events.last?.eventId {
+                self.room?.sendReadReceipt(eventId: eventId)
+            }
         }
     }
     
@@ -201,6 +207,10 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     
     func markReadAll() {
         self.room?.markAllAsRead()
+        if let eventId = self.events.last?.eventId {
+            self.room?.sendReadReceipt(eventId: eventId)
+        }
+        
     }
     
     func sendTyping() {

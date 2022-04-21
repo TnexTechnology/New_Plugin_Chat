@@ -76,10 +76,10 @@ class SenderInfoCollectionViewCell: UICollectionViewCell {
         let messageAttributedText = NSAttributedString(string: displayName)
         let labelSize = SenderInfoCollectionViewCell.labelSize(for: messageAttributedText, considering: self.contentView.bounds.size.width)
         let layoutConstant = BaseMessageCollectionViewCellDefaultStyle.createDefaultLayoutConstants()
-        self.label.frame.size = labelSize
+        self.label.frame.size = labelSize.bma_outsetBy(dx: 1, dy: 0)
         self.label.center.y = self.contentView.center.y
         if isIncoming == true {
-            let leftMargin = layoutConstant.leftMargin + layoutConstant.horizontalInterspacing + 30
+            let leftMargin = layoutConstant.leftMargin + layoutConstant.horizontalInterspacing + 35
             self.label.frame.origin.x = leftMargin
         } else {
             self.label.frame.origin.x = self.contentView.bounds.size.width - labelSize.width - layoutConstant.rightMargin

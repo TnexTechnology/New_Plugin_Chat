@@ -14,7 +14,7 @@ import DropDown
 class ChatHeaderView: UIView {
     
     private let menuDropDown = DropDown()
-    private var menuItems: [RightMenuItem] = [.profile, .mute, .remove]
+    private var menuItems: [RightMenuItem] = [.profile, .remove]
     
     static let headerBarHeight: CGFloat = 91
     

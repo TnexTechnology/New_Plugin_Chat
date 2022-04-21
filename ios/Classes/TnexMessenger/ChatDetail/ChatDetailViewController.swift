@@ -128,11 +128,11 @@ open class ChatDetailViewController: BaseChatViewController {
         headerBar.autoPinEdge(toSuperviewEdge: .top)
         headerBar.autoPinEdge(toSuperviewSafeArea: .left)
         headerBar.autoPinEdge(toSuperviewSafeArea: .right)
-        let topPadding: CGFloat = self.view.safeAreaInsets.top
-
-//        let topPadding: CGFloat = UIApplication.key?.safeAreaInsets.top ?? 20
+//        let topPadding: CGFloat = self.view.safeAreaInsets.top
+        let topPadding: CGFloat = UIApplication.key?.safeAreaInsets.top ?? 20
         self.headerBar.autoSetDimension(.height, toSize: ChatHeaderView.headerBarHeight + topPadding)
         self.headerBar.infoView.displayNameLabel.text = self.dataSource.getDisplayName()
+        self.changeCollectionViewTopMarginTo(-(ChatHeaderView.headerBarHeight - topPadding), duration: 0.5)
         dataSource.room?.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
                 if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != MatrixManager.shared.userId}) {
