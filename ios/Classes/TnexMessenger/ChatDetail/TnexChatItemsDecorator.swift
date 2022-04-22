@@ -180,7 +180,7 @@ final class TnexChatItemsDecorator: ChatItemsDecoratorProtocol {
         guard currentMessage.status == .normal || currentMessage.status == .success else { return }
         if currentMessage.isIncoming {
             currentMessage.status = .normal
-            return
+//            return
         }
         //Tin nhan da xem => Chuyen status normal
         if currentMessage.status == .success {

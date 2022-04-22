@@ -63,10 +63,14 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
             guard let self = self else { return }
             if self.room?.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(event: event) {
                 let message = self.builderMessage(from: event)
-                self.slidingWindow?.insertItem(message, position: .bottom)
                 if event.sender != MatrixManager.shared.userId {
                     self.isShowTyping = false
+                    if event.type == kMXEventTypeStringRoomMessage {
+                        self.lastMessageIdPartnerRead = event.eventId
+                    }
                 }
+                self.slidingWindow?.insertItem(message, position: .bottom)
+                
                 self.delegate?.chatDataSourceDidUpdate(self)
                 if event.sender != MatrixManager.shared.userId {
                     self.room?.sendReadReceipt(eventId: event.eventId)
@@ -100,7 +104,6 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                 }
             }
             self.loadData()
-            self.room?.sendReadReceipt(eventId: self.events.last?.eventId ?? "")
             if let eventId =  self.events.last?.eventId {
                 self.room?.sendReadReceipt(eventId: eventId)
             }
@@ -116,6 +119,9 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
             let index = messageCount - 1 - indexMessage
             let event = self.events[index]
             let message = self.builderMessage(from: event)
+            if let msg = message as? DemoTextMessageModel, msg.isIncoming, self.lastMessageIdPartnerRead?.isEmpty ?? true {
+                self.lastMessageIdPartnerRead = message.uid
+            }
             indexMessage += 1
             return message
         }
