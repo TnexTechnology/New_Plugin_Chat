@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/hoangsison/Documents/GitHub/New_Plugin_Chat/example/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Users/tnex/BienNT/New_Plugin_Chat/example/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/hoangsison/.gradle/caches/transforms-3/bd399b42ab05f6abf9cd6c7dd778204b/transformed/jetified-TnexMatrix1a/res/values-v16/values-v16.xml",
+                    "source": "/Users/tnex/.gradle/caches/transforms-3/feaabc58d928cdefd8c97f6b50b4c8d1/transformed/core-1.7.0/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +33,7 @@
                     }
                 },
                 {
-                    "source": "/Users/hoangsison/.gradle/caches/transforms-3/6135dd33e6d5c4a886a6b31caba28e7f/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
+                    "source": "/Users/tnex/.gradle/caches/transforms-3/eb1148373fb70d350ebac8db527b8c3b/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -39,16 +49,6 @@
                         "endLines": "10",
                         "endColumns": "12",
                         "endOffsets": "477"
-                    }
-                },
-                {
-                    "source": "/Users/hoangsison/.gradle/caches/transforms-3/1d9b456f42409c3de687b45642b682f1/transformed/core-1.7.0/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]
