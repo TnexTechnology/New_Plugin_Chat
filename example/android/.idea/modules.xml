@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidMatrix/android.AndroidMatrix.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidMatrix/android.AndroidMatrix.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/libandroidmatrix/android.libandroidmatrix.iml" filepath="$PROJECT_DIR$/.idea/modules/libandroidmatrix/android.libandroidmatrix.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1989988055/android.tnexchat.iml" filepath="$PROJECT_DIR$/.idea/modules/-1989988055/android.tnexchat.iml" />
     </modules>
   </component>

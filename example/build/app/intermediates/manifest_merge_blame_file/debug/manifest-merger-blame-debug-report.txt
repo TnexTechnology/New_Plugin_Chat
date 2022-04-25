@@ -15,20 +15,20 @@
 14-->/Users/tnex/BienNT/New_Plugin_Chat/example/android/app/src/debug/AndroidManifest.xml:6:5-66
 14-->/Users/tnex/BienNT/New_Plugin_Chat/example/android/app/src/debug/AndroidManifest.xml:6:22-64
 15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:10:5-79
-15-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:10:22-76
+15-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:10:5-79
+15-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:10:22-76
 16    <uses-permission android:name="android.permission.VIBRATE" /> <!-- TODO Is WRITE_EXTERNAL_STORAGE necessary? -->
-16-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:12:5-66
-16-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:12:22-63
+16-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:12:5-66
+16-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:12:22-63
 17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-17-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:13:5-81
-17-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:13:22-78
+17-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:13:5-81
+17-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:13:22-78
 18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-18-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:14:5-80
-18-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:14:22-77
+18-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:14:5-80
+18-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:14:22-77
 19    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-19-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:15:5-74
-19-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:15:22-71
+19-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:15:5-74
+19-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:15:22-71
 20    <uses-permission android:name="android.permission.BLUETOOTH" />
 20-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/tnex/.gradle/caches/transforms-3/7bbc7d30cdc4c8b5e0c80c786dbf35e0/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:11:5-68
 20-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/tnex/.gradle/caches/transforms-3/7bbc7d30cdc4c8b5e0c80c786dbf35e0/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:11:22-65
@@ -106,12 +106,12 @@
 53        android:label="tnexchat_example"
 53-->/Users/tnex/BienNT/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:5:9-41
 54        android:networkSecurityConfig="@xml/network_security_config"
-54-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:20:9-69
+54-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:20:9-69
 55        android:supportsRtl="true"
 55-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/tnex/.gradle/caches/transforms-3/7bbc7d30cdc4c8b5e0c80c786dbf35e0/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:35:9-35
 56        android:testOnly="true"
 57        android:theme="@style/Theme.Vector.Light" >
-57-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:21:9-50
+57-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:21:9-50
 58        <activity
 58-->/Users/tnex/BienNT/New_Plugin_Chat/example/android/app/src/main/AndroidManifest.xml:10:9-38:20
 59            android:name="com.tnex.chat.tnexchat_example.MainActivity"
@@ -228,440 +228,440 @@
 126            android:required="false" /> <!-- Firebase components -->
 126-->[androidx.window:window:1.0.0] /Users/tnex/.gradle/caches/transforms-3/a869cbacb8b50e8af8f92530a2a61a6b/transformed/jetified-window-1.0.0/AndroidManifest.xml:30:13-37
 127        <meta-data
-127-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:24:9-26:36
+127-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:24:9-26:36
 128            android:name="firebase_analytics_collection_deactivated"
-128-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:25:13-69
+128-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:25:13-69
 129            android:value="true" />
-129-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:26:13-33
+129-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:26:13-33
 130
 131        <service
-131-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:28:9-34:19
+131-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:28:9-34:19
 132            android:name="com.tnex.matrix.gplay.gplay.push.fcm.VectorFirebaseMessagingService"
-132-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:29:13-95
+132-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:29:13-95
 133            android:exported="false" >
-133-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:30:13-37
+133-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:30:13-37
 134            <intent-filter>
-134-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:31:13-33:29
+134-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:31:13-33:29
 135                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-135-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:32:17-78
-135-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:32:25-75
+135-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:32:17-78
+135-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:32:25-75
 136            </intent-filter>
 137        </service>
 138
 139        <meta-data
-139-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:36:9-38:35
+139-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:36:9-38:35
 140            android:name="android.max_aspect"
-140-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:37:13-46
+140-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:37:13-46
 141            android:value="9.9" />
-141-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:38:13-32
+141-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:38:13-32
 142        <meta-data
-142-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:39:9-41:59
+142-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:39:9-41:59
 143            android:name="com.google.android.gms.car.application"
-143-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:40:13-66
+143-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:40:13-66
 144            android:resource="@xml/automotive_app_desc" />
-144-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:41:13-56
+144-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:41:13-56
 145
 146        <activity
-146-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:43:9-46:20
+146-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:43:9-46:20
 147            android:name="com.tnex.matrix.app.TestActivity"
-147-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:44:13-60
+147-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:44:13-60
 148            android:exported="false" >
-148-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:45:13-37
+148-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:45:13-37
 149        </activity>
 150        <activity
-150-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:47:9-49:60
+150-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:47:9-49:60
 151            android:name="com.tnex.matrix.app.features.MainActivity"
-151-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:48:13-69
+151-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:48:13-69
 152            android:theme="@style/Theme.Vector.Launcher" /> <!-- Activity alias for the launcher Activity (must be declared after the Activity it targets) -->
-152-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:49:13-57
+152-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:49:13-57
 153        <!-- exported="true" is required to launch application -->
 154        <activity-alias
-154-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:51:9-55:26
+154-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:51:9-55:26
 155            android:name="com.tnex.matrix.features.Alias"
-155-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:52:13-58
+155-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:52:13-58
 156            android:exported="true"
-156-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:53:13-36
+156-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:53:13-36
 157            android:targetActivity="com.tnex.matrix.app.features.MainActivity" >
-157-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:54:13-79
+157-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:54:13-79
 158        </activity-alias>
 159
 160        <activity android:name="com.tnex.matrix.app.features.home.HomeActivity" />
-160-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:57:9-83
-160-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:57:19-80
+160-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:57:9-83
+160-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:57:19-80
 161        <activity
-161-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:58:9-74:20
+161-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:58:9-74:20
 162            android:name="com.tnex.matrix.app.features.login.SSORedirectRouterActivity"
-162-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:59:13-88
+162-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:59:13-88
 163            android:exported="true"
-163-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:60:13-36
+163-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:60:13-36
 164            android:theme="@style/Theme.Vector.Black.Transparent" >
-164-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:61:13-66
+164-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:61:13-66
 165
 166            <!-- Add intent filter to handle redirection URL after SSO login in external browser -->
 167            <intent-filter>
-167-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:64:13-73:29
+167-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:64:13-73:29
 168                <action android:name="android.intent.action.VIEW" />
-168-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:17-69
-168-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:25-66
+168-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:17-69
+168-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:25-66
 169
 170                <category android:name="android.intent.category.DEFAULT" />
-170-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
-170-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
+170-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
+170-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
 171                <category android:name="android.intent.category.BROWSABLE" />
-171-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:17-78
-171-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:27-75
+171-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:17-78
+171-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:27-75
 172
 173                <data
-173-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+173-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
 174                    android:host="connect"
-174-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+174-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 175                    android:scheme="element" />
-175-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
+175-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
 176            </intent-filter>
 177        </activity>
 178        <activity
-178-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:75:9-78:58
+178-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:75:9-78:58
 179            android:name="com.tnex.matrix.app.features.login.LoginActivity"
-179-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:76:13-76
+179-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:76:13-76
 180            android:launchMode="singleTask"
-180-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:77:13-44
+180-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:77:13-44
 181            android:windowSoftInputMode="adjustResize" />
-181-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:78:13-55
+181-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:78:13-55
 182        <activity
-182-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:79:9-82:58
+182-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:79:9-82:58
 183            android:name="com.tnex.matrix.app.features.onboarding.OnboardingActivity"
-183-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:80:13-86
+183-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:80:13-86
 184            android:launchMode="singleTask"
-184-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:81:13-44
+184-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:81:13-44
 185            android:windowSoftInputMode="adjustResize" /> <!-- Add tools:ignore="Instantiatable" for the error reported only by Buildkite :/ -->
-185-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:82:13-55
+185-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:82:13-55
 186        <activity
-186-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:85:9-88:45
+186-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:85:9-88:45
 187            android:name="com.tnex.matrix.app.features.media.VectorAttachmentViewerActivity"
-187-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:86:13-93
+187-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:86:13-93
 188            android:theme="@style/Theme.Vector.Black.Transparent" />
-188-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:87:13-66
+188-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:87:13-66
 189        <activity android:name="com.tnex.matrix.app.features.media.BigImageViewerActivity" />
-189-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:89:9-94
-189-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:89:19-91
+189-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:89:9-94
+189-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:89:19-91
 190        <activity
-190-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:90:9-92:65
+190-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:90:9-92:65
 191            android:name="com.tnex.matrix.app.features.rageshake.BugReportActivity"
-191-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:91:13-84
+191-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:91:13-84
 192            android:label="@string/title_activity_bug_report" />
-192-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:92:13-62
+192-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:92:13-62
 193        <activity
-193-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:93:9-96:58
+193-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:93:9-96:58
 194            android:name="com.tnex.matrix.app.features.settings.VectorSettingsActivity"
-194-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:94:13-88
+194-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:94:13-88
 195            android:label="@string/title_activity_settings"
-195-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:95:13-60
+195-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:95:13-60
 196            android:windowSoftInputMode="adjustResize" />
-196-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:96:13-55
+196-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:96:13-55
 197        <activity
-197-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:97:9-99:72
+197-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:97:9-99:72
 198            android:name="com.tnex.matrix.app.features.crypto.keysbackup.restore.KeysBackupRestoreActivity"
-198-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:98:13-108
+198-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:98:13-108
 199            android:label="@string/title_activity_keys_backup_setup" />
-199-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:99:13-69
+199-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:99:13-69
 200        <activity
-200-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:100:9-102:74
+200-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:100:9-102:74
 201            android:name="com.tnex.matrix.app.features.crypto.keysbackup.setup.KeysBackupSetupActivity"
-201-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:101:13-104
+201-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:101:13-104
 202            android:label="@string/title_activity_keys_backup_restore" />
-202-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:102:13-71
+202-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:102:13-71
 203        <activity
-203-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:103:9-105:67
+203-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:103:9-105:67
 204            android:name="com.tnex.matrix.app.features.crypto.keysbackup.settings.KeysBackupManageActivity"
-204-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:104:13-108
+204-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:104:13-108
 205            android:label="@string/encryption_message_recovery" />
-205-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:105:13-64
+205-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:105:13-64
 206        <activity
-206-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:106:9-108:76
+206-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:106:9-108:76
 207            android:name="com.tnex.matrix.app.features.reactions.EmojiReactionPickerActivity"
-207-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:107:13-94
+207-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:107:13-94
 208            android:label="@string/title_activity_emoji_reaction_picker" />
-208-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:108:13-73
+208-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:108:13-73
 209        <activity android:name="com.tnex.matrix.app.features.roomdirectory.createroom.CreateRoomActivity" />
-209-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:109:9-109
-209-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:109:19-106
+209-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:109:9-109
+209-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:109:19-106
 210        <activity android:name="com.tnex.matrix.app.features.roomdirectory.RoomDirectoryActivity" />
-210-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:110:9-101
-210-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:110:19-98
+210-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:110:9-101
+210-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:110:19-98
 211        <activity android:name="com.tnex.matrix.app.features.roomdirectory.roompreview.RoomPreviewActivity" />
-211-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:111:9-111
-211-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:111:19-108
+211-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:111:9-111
+211-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:111:19-108
 212        <activity android:name="com.tnex.matrix.app.features.home.room.filtered.FilteredRoomsActivity" />
-212-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:112:9-106
-212-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:112:19-103
+212-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:112:9-106
+212-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:112:19-103
 213        <activity
-213-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:113:9-119:20
+213-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:113:9-119:20
 214            android:name="com.tnex.matrix.app.features.home.room.detail.RoomDetailActivity"
-214-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:114:13-92
+214-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:114:13-92
 215            android:parentActivityName="com.tnex.matrix.app.features.home.HomeActivity" >
-215-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:115:13-88
+215-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:115:13-88
 216            <meta-data
-216-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:116:13-118:67
+216-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:116:13-118:67
 217                android:name="android.support.PARENT_ACTIVITY"
-217-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:117:17-63
+217-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:117:17-63
 218                android:value=".app.features.home.HomeActivity" />
-218-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:118:17-64
+218-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:118:17-64
 219        </activity>
 220        <activity android:name="com.tnex.matrix.features.debug.DebugMenuActivity" />
-220-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:120:9-85
-220-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:120:19-82
+220-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:120:9-85
+220-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:120:19-82
 221        <activity android:name="com.tnex.matrix.app.features.createdirect.CreateDirectRoomActivity" />
-221-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:121:9-103
-221-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:121:19-100
+221-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:121:9-103
+221-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:121:19-100
 222        <activity android:name="com.tnex.matrix.app.features.invite.InviteUsersToRoomActivity" />
-222-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:122:9-98
-222-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:122:19-95
+222-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:122:9-98
+222-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:122:19-95
 223        <activity android:name="com.tnex.matrix.app.features.webview.VectorWebViewActivity" /> <!-- Activity to intercept links coming from a web instance -->
-223-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:123:9-95
-223-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:123:19-92
+223-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:123:9-95
+223-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:123:19-92
 224        <!-- exported="true" is required to handle android.intent.action.VIEW for URL redirection -->
 225        <activity
-225-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:127:9-144:20
+225-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:127:9-144:20
 226            android:name="com.tnex.matrix.app.features.link.LinkHandlerActivity"
-226-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:128:13-81
+226-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:128:13-81
 227            android:enabled="true"
-227-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:129:13-35
+227-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:129:13-35
 228            android:exported="true" >
-228-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:130:13-36
+228-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:130:13-36
 229            <intent-filter>
-229-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:131:13-143:29
+229-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:131:13-143:29
 230                <action android:name="android.intent.action.VIEW" />
-230-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:17-69
-230-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:25-66
+230-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:17-69
+230-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:25-66
 231
 232                <category android:name="android.intent.category.DEFAULT" />
-232-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
-232-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
+232-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
+232-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
 233                <category android:name="android.intent.category.BROWSABLE" />
-233-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:17-78
-233-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:27-75
+233-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:17-78
+233-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:27-75
 234
 235                <data android:scheme="https" />
-235-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-235-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
+235-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+235-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
 236                <data android:host="riot.im" />
-236-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-236-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+236-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+236-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 237                <data android:host="app.element.io" />
-237-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-237-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+237-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+237-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 238                <data android:host="mobile.element.io" />
-238-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-238-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+238-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+238-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 239                <data android:host="develop.element.io" />
-239-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-239-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+239-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+239-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 240                <data android:host="staging.element.io" />
-240-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-240-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+240-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+240-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 241            </intent-filter>
 242        </activity> <!-- Activity alias for matrix.to or element permalinks -->
 243        <!-- exported="true" is required to handle android.intent.action.VIEW for URL redirection -->
 244        <activity-alias
-244-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:146:9-168:26
+244-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:146:9-168:26
 245            android:name="com.tnex.matrix.features.permalink.PermalinkHandlerActivity"
-245-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:147:13-87
+245-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:147:13-87
 246            android:enabled="true"
-246-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:148:13-35
+246-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:148:13-35
 247            android:exported="true"
-247-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:149:13-36
+247-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:149:13-36
 248            android:launchMode="singleTask"
-248-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:150:13-44
+248-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:150:13-44
 249            android:targetActivity="com.tnex.matrix.app.features.link.LinkHandlerActivity" >
-249-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:151:13-91
+249-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:151:13-91
 250            <intent-filter>
-250-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:152:13-167:29
+250-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:152:13-167:29
 251                <action android:name="android.intent.action.VIEW" />
-251-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:17-69
-251-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:25-66
+251-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:17-69
+251-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:65:25-66
 252
 253                <category android:name="android.intent.category.DEFAULT" />
-253-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
-253-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
+253-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
+253-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
 254                <category android:name="android.intent.category.BROWSABLE" />
-254-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:17-78
-254-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:27-75
+254-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:17-78
+254-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:68:27-75
 255
 256                <data android:scheme="http" />
-256-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-256-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
+256-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+256-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
 257                <data android:scheme="https" />
-257-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-257-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
+257-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+257-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
 258                <data android:host="matrix.to" />
-258-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
-258-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+258-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+258-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 259                <data
-259-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+259-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
 260                    android:host="user"
-260-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+260-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 261                    android:scheme="element" />
-261-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
+261-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
 262                <data
-262-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+262-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
 263                    android:host="room"
-263-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
+263-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:71:21-43
 264                    android:scheme="element" />
-264-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
+264-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:72:21-45
 265            </intent-filter>
 266        </activity-alias> <!-- exported="true" is required for the share functionality -->
 267        <activity
-267-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:171:9-199:20
+267-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:171:9-199:20
 268            android:name="com.tnex.matrix.app.features.share.IncomingShareActivity"
-268-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:172:13-84
+268-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:172:13-84
 269            android:exported="true"
-269-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:173:13-36
+269-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:173:13-36
 270            android:parentActivityName="com.tnex.matrix.app.features.home.HomeActivity" >
-270-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:174:13-88
+270-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:174:13-88
 271            <meta-data
-271-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:116:13-118:67
+271-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:116:13-118:67
 272                android:name="android.support.PARENT_ACTIVITY"
-272-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:117:17-63
+272-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:117:17-63
 273                android:value=".app.features.home.HomeActivity" />
-273-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:118:17-64
+273-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:118:17-64
 274
 275            <intent-filter>
-275-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:179:13-186:29
+275-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:179:13-186:29
 276                <action android:name="android.intent.action.SEND" />
-276-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:180:17-69
-276-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:180:25-66
+276-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:180:17-69
+276-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:180:25-66
 277
 278                <data android:mimeType="*/*" />
-278-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+278-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
 279
 280                <category android:name="android.intent.category.DEFAULT" />
-280-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
-280-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
+280-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
+280-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
 281                <category android:name="android.intent.category.OPENABLE" />
-281-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:185:17-77
-281-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:185:27-74
+281-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:185:17-77
+281-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:185:27-74
 282            </intent-filter>
 283            <intent-filter>
-283-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:187:13-194:29
+283-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:187:13-194:29
 284                <action android:name="android.intent.action.SEND_MULTIPLE" />
-284-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:188:17-78
-284-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:188:25-75
+284-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:188:17-78
+284-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:188:25-75
 285
 286                <data android:mimeType="*/*" />
-286-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
+286-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:70:17-72:48
 287
 288                <category android:name="android.intent.category.DEFAULT" />
-288-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
-288-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
+288-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:17-76
+288-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:67:27-73
 289                <category android:name="android.intent.category.OPENABLE" />
-289-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:185:17-77
-289-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:185:27-74
+289-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:185:17-77
+289-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:185:27-74
 290            </intent-filter>
 291
 292            <meta-data
-292-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:196:13-198:83
+292-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:196:13-198:83
 293                android:name="android.service.chooser.chooser_target_service"
-293-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:197:17-78
+293-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:197:17-78
 294                android:value="androidx.sharetarget.ChooserTargetServiceCompat" />
-294-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:198:17-80
+294-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:198:17-80
 295        </activity>
 296        <activity android:name="com.tnex.matrix.app.features.roomprofile.RoomProfileActivity" />
-296-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:200:9-97
-296-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:200:19-94
+296-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:200:9-97
+296-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:200:19-94
 297        <activity android:name="com.tnex.matrix.app.features.roomprofile.settings.joinrule.RoomJoinRuleActivity" />
-297-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:201:9-116
-297-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:201:19-113
+297-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:201:9-116
+297-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:201:19-113
 298        <activity android:name="com.tnex.matrix.app.features.signout.hard.SignedOutActivity" />
-298-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:202:9-96
-298-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:202:19-93
+298-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:202:9-96
+298-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:202:19-93
 299        <activity
-299-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:203:9-205:58
+299-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:203:9-205:58
 300            android:name="com.tnex.matrix.app.features.signout.soft.SoftLogoutActivity"
-300-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:204:13-88
+300-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:204:13-88
 301            android:windowSoftInputMode="adjustResize" />
-301-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:205:13-55
+301-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:205:13-55
 302        <activity
-302-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:206:9-212:20
+302-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:206:9-212:20
 303            android:name="com.tnex.matrix.app.features.roommemberprofile.RoomMemberProfileActivity"
-303-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:207:13-100
+303-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:207:13-100
 304            android:parentActivityName="com.tnex.matrix.app.features.home.HomeActivity" >
-304-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:208:13-88
+304-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:208:13-88
 305            <meta-data
-305-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:116:13-118:67
+305-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:116:13-118:67
 306                android:name="android.support.PARENT_ACTIVITY"
-306-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:117:17-63
+306-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:117:17-63
 307                android:value=".app.features.home.HomeActivity" />
-307-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:118:17-64
+307-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:118:17-64
 308        </activity>
 309        <activity android:name="com.tnex.matrix.app.features.qrcode.QrCodeScannerActivity" />
-309-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:213:9-94
-309-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:213:19-91
+309-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:213:9-94
+309-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:213:19-91
 310        <activity android:name="com.tnex.matrix.app.features.crypto.quads.SharedSecureStorageActivity" />
-310-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:214:9-106
-310-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:214:19-103
+310-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:214:9-106
+310-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:214:19-103
 311        <activity
-311-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:215:9-217:52
+311-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:215:9-217:52
 312            android:name="com.yalantis.ucrop.UCropActivity"
-312-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:216:13-60
+312-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:216:13-60
 313            android:screenOrientation="portrait" />
-313-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:217:13-49
+313-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:217:13-49
 314        <activity
-314-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:218:9-220:76
+314-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:218:9-220:76
 315            android:name="com.tnex.matrix.app.features.attachments.preview.AttachmentsPreviewActivity"
-315-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:219:13-103
+315-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:219:13-103
 316            android:theme="@style/Theme.Vector.Black.AttachmentsPreview" />
-316-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:220:13-73
+316-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:220:13-73
 317        <activity
-317-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:221:9-227:72
+317-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:221:9-227:72
 318            android:name="com.tnex.matrix.app.features.call.VectorCallActivity"
-318-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:222:13-80
+318-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:222:13-80
 319            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-319-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:223:13-91
+319-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:223:13-91
 320            android:excludeFromRecents="true"
-320-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:224:13-46
+320-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:224:13-46
 321            android:launchMode="singleTask"
-321-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:225:13-44
+321-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:225:13-44
 322            android:supportsPictureInPicture="true"
-322-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:226:13-52
+322-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:226:13-52
 323            android:taskAffinity=".features.call.VectorCallActivity" /> <!-- PIP Support https://developer.android.com/guide/topics/ui/picture-in-picture -->
-323-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:227:13-69
+323-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:227:13-69
 324        <activity
-324-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:229:9-233:55
+324-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:229:9-233:55
 325            android:name="com.tnex.matrix.app.features.call.conference.VectorJitsiActivity"
-325-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:230:13-92
+325-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:230:13-92
 326            android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize"
-326-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:231:13-91
+326-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:231:13-91
 327            android:launchMode="singleTask"
-327-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:232:13-44
+327-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:232:13-44
 328            android:supportsPictureInPicture="true" />
-328-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:233:13-52
+328-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:233:13-52
 329        <activity android:name="com.tnex.matrix.app.features.terms.ReviewTermsActivity" />
-329-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:234:9-91
-329-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:234:19-88
+329-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:234:9-91
+329-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:234:19-88
 330        <activity android:name="com.tnex.matrix.app.features.widgets.WidgetActivity" />
-330-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:235:9-88
-330-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:235:19-85
+330-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:235:9-88
+330-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:235:19-85
 331        <activity android:name="com.tnex.matrix.app.features.pin.PinActivity" />
-331-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:236:9-81
-331-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:236:19-78
+331-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:236:9-81
+331-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:236:19-78
 332        <activity android:name="com.tnex.matrix.app.features.analytics.ui.consent.AnalyticsOptInActivity" />
-332-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:237:9-109
-332-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:237:19-106
+332-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:237:9-109
+332-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:237:19-106
 333        <activity android:name="com.tnex.matrix.app.features.home.room.detail.search.SearchActivity" />
-333-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:238:9-104
-333-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:238:19-101
+333-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:238:9-104
+333-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:238:19-101
 334        <activity android:name="com.tnex.matrix.app.features.usercode.UserCodeActivity" />
-334-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:239:9-91
-334-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:239:19-88
+334-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:239:9-91
+334-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:239:19-88
 335        <activity android:name="com.tnex.matrix.app.features.call.transfer.CallTransferActivity" /> <!-- Single instance is very important for the custom scheme callback -->
-335-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:240:9-100
-335-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:240:19-97
+335-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:240:9-100
+335-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:240:19-97
 336        <activity
-336-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:243:9-264:20
+336-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:243:9-264:20
 337            android:name="com.tnex.matrix.app.features.auth.ReAuthActivity"
-337-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:244:13-76
+337-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:244:13-76
 338            android:launchMode="singleInstance" >
-338-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:245:13-48
+338-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:245:13-48
 339
 340            <!--
 341            XXX: UIA SSO has only web fallback, i.e no url redirect, so for now we comment this out
@@ -682,111 +682,111 @@
 356            <!-- </intent-filter> -->
 357        </activity>
 358        <activity android:name="com.tnex.matrix.app.features.devtools.RoomDevToolActivity" />
-358-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:265:9-94
-358-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:265:19-91
+358-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:265:9-94
+358-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:265:19-91
 359        <activity android:name="com.tnex.matrix.app.features.spaces.SpacePreviewActivity" />
-359-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:266:9-93
-359-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:266:19-90
+359-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:266:9-93
+359-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:266:19-90
 360        <activity android:name="com.tnex.matrix.app.features.spaces.SpaceExploreActivity" />
-360-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:267:9-93
-360-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:267:19-90
+360-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:267:9-93
+360-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:267:19-90
 361        <activity android:name="com.tnex.matrix.app.features.spaces.SpaceCreationActivity" />
-361-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:268:9-94
-361-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:268:19-91
+361-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:268:9-94
+361-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:268:19-91
 362        <activity android:name="com.tnex.matrix.app.features.spaces.manage.SpaceManageActivity" />
-362-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:269:9-99
-362-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:269:19-96
+362-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:269:9-99
+362-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:269:19-96
 363        <activity android:name="com.tnex.matrix.app.features.spaces.people.SpacePeopleActivity" />
-363-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:270:9-99
-363-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:270:19-96
+363-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:270:9-99
+363-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:270:19-96
 364        <activity android:name="com.tnex.matrix.app.features.spaces.leave.SpaceLeaveAdvancedActivity" />
-364-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:271:9-105
-364-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:271:19-102
+364-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:271:9-105
+364-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:271:19-102
 365        <activity android:name="com.tnex.matrix.app.features.poll.create.CreatePollActivity" /> <!-- Services -->
-365-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:272:9-96
-365-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:272:19-93
+365-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:272:9-96
+365-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:272:19-93
 366        <service
-366-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:276:9-284:19
+366-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:276:9-284:19
 367            android:name="com.tnex.matrix.app.core.services.CallService"
-367-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:277:13-73
+367-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:277:13-73
 368            android:exported="false" >
-368-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:278:13-37
+368-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:278:13-37
 369
 370            <!-- in order to get headset button events -->
 371            <intent-filter>
-371-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:281:13-283:29
+371-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:281:13-283:29
 372                <action android:name="android.intent.action.MEDIA_BUTTON" />
-372-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:282:17-77
-372-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:282:25-74
+372-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:282:17-77
+372-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:282:25-74
 373            </intent-filter>
 374        </service> <!-- Add tools:ignore="Instantiatable" for the error reported only by Buildkite and for lintGplayRelease check :/ -->
 375        <service
-375-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:287:9-290:45
+375-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:287:9-290:45
 376            android:name="com.tnex.matrix.app.core.services.VectorSyncService"
-376-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:288:13-79
+376-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:288:13-79
 377            android:exported="false" />
-377-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:289:13-37
+377-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:289:13-37
 378        <service
-378-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:291:9-298:19
+378-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:291:9-298:19
 379            android:name="com.tnex.matrix.app.features.call.telecom.VectorConnectionService"
-379-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:292:13-93
+379-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:292:13-93
 380            android:exported="false"
-380-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:293:13-37
+380-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:293:13-37
 381            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" >
-381-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:294:13-84
+381-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:294:13-84
 382            <intent-filter>
-382-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:295:13-297:29
+382-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:295:13-297:29
 383                <action android:name="android.telecom.ConnectionService" />
-383-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:296:17-76
-383-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:296:25-73
+383-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:296:17-76
+383-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:296:25-73
 384            </intent-filter>
 385        </service> <!-- Receivers -->
 386        <receiver
-386-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:302:9-304:40
+386-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:302:9-304:40
 387            android:name="com.tnex.matrix.app.features.call.service.CallHeadsUpActionReceiver"
-387-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:303:13-95
+387-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:303:13-95
 388            android:exported="false" />
-388-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:304:13-37
+388-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:304:13-37
 389        <receiver
-389-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:305:9-307:40
+389-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:305:9-307:40
 390            android:name="com.tnex.matrix.app.features.settings.troubleshoot.TestNotificationReceiver"
-390-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:306:13-103
+390-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:306:13-103
 391            android:exported="false" /> <!-- Exported false, should only be accessible from this app!! -->
-391-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:307:13-37
+391-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:307:13-37
 392        <receiver
-392-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:310:9-313:40
+392-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:310:9-313:40
 393            android:name="com.tnex.matrix.app.features.notifications.NotificationBroadcastReceiver"
-393-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:311:13-100
+393-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:311:13-100
 394            android:enabled="true"
-394-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:312:13-35
+394-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:312:13-35
 395            android:exported="false" />
-395-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:313:13-37
+395-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:313:13-37
 396        <!--
 397        A media button receiver receives and helps translate hardware media playback buttons,
 398        such as those found on wired and wireless headsets, into the appropriate callbacks in your app.
 399        -->
 400        <receiver
-400-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:319:9-325:20
+400-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:319:9-325:20
 401            android:name="androidx.media.session.MediaButtonReceiver"
-401-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:320:13-70
+401-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:320:13-70
 402            android:exported="false" >
-402-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:321:13-37
+402-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:321:13-37
 403            <intent-filter>
-403-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:281:13-283:29
+403-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:281:13-283:29
 404                <action android:name="android.intent.action.MEDIA_BUTTON" />
-404-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:282:17-77
-404-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:282:25-74
+404-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:282:17-77
+404-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:282:25-74
 405            </intent-filter>
 406        </receiver> <!-- Providers -->
 407        <!-- Remove WorkManagerInitializer Provider because we are using on-demand initialization of WorkManager -->
 408        <provider
-408-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:332:9-346:20
+408-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:332:9-346:20
 409            android:name="androidx.startup.InitializationProvider"
-409-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:333:13-67
+409-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:333:13-67
 410            android:authorities="com.tnex.chat.tnexchat_example.androidx-startup"
-410-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:334:13-68
+410-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:334:13-68
 411            android:exported="false" >
-411-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:335:13-37
+411-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:335:13-37
 412            <meta-data
 412-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/tnex/.gradle/caches/transforms-3/7cfa630b999681af4917bc6d3214c49d/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
 413                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
@@ -795,70 +795,70 @@
 414-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/tnex/.gradle/caches/transforms-3/7cfa630b999681af4917bc6d3214c49d/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
 415        </provider>
 416        <provider
-416-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:347:9-355:20
+416-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:347:9-355:20
 417            android:name="androidx.core.content.FileProvider"
-417-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:348:13-62
+417-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:348:13-62
 418            android:authorities="com.tnex.chat.tnexchat_example.fileProvider"
-418-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:349:13-64
+418-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:349:13-64
 419            android:exported="false"
-419-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:350:13-37
+419-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:350:13-37
 420            android:grantUriPermissions="true" >
-420-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:351:13-47
+420-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:351:13-47
 421            <meta-data
-421-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:352:13-354:62
+421-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:352:13-354:62
 422                android:name="android.support.FILE_PROVIDER_PATHS"
-422-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:353:17-67
+422-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:353:17-67
 423                android:resource="@xml/sdk_provider_paths" />
-423-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:354:17-59
+423-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:354:17-59
 424        </provider> <!-- multipicker -->
 425        <provider
-425-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:358:9-366:20
+425-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:358:9-366:20
 426            android:name="com.tnex.matrix.app.multipicker.provider.MultiPickerFileProvider"
-426-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:359:13-92
+426-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:359:13-92
 427            android:authorities="com.tnex.chat.tnexchat_example.multipicker.fileprovider"
-427-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:360:13-76
+427-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:360:13-76
 428            android:exported="false"
-428-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:361:13-37
+428-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:361:13-37
 429            android:grantUriPermissions="true" >
-429-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:362:13-47
+429-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:362:13-47
 430            <meta-data
-430-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:352:13-354:62
+430-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:352:13-354:62
 431                android:name="android.support.FILE_PROVIDER_PATHS"
-431-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:353:17-67
+431-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:353:17-67
 432                android:resource="@xml/multipicker_provider_paths" />
-432-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:354:17-59
+432-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:354:17-59
 433        </provider>
 434        <!--
 435        Temporary fix for Android 12. android:exported has to be explicitly set when targeting Android 12
 436        Do it for services coming from dependencies - BEGIN
 437        -->
 438        <service
-438-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:372:9-375:34
+438-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:372:9-375:34
 439            android:name="androidx.sharetarget.ChooserTargetServiceCompat"
-439-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:373:13-75
+439-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:373:13-75
 440            android:exported="false" /> <!-- Temporary fix for Android 12 change - END -->
-440-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:374:13-37
+440-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:374:13-37
 441        <!--
 442         The SDK offers a secured File provider to access downloaded files.
 443         Access to these file will be given via the FileService, with a temporary
 444         read access permission
 445        -->
 446        <provider
-446-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:382:9-390:20
+446-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:382:9-390:20
 447            android:name="org.matrix.android.sdk.api.session.file.MatrixSDKFileProvider"
-447-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:383:13-89
+447-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:383:13-89
 448            android:authorities="com.tnex.chat.tnexchat_example.mx-sdk.fileprovider"
-448-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:384:13-71
+448-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:384:13-71
 449            android:exported="false"
-449-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:385:13-37
+449-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:385:13-37
 450            android:grantUriPermissions="true" >
-450-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:386:13-47
+450-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:386:13-47
 451            <meta-data
-451-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:352:13-354:62
+451-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:352:13-354:62
 452                android:name="android.support.FILE_PROVIDER_PATHS"
-452-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:353:17-67
+452-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:353:17-67
 453                android:resource="@xml/sdk_provider_paths" />
-453-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:354:17-59
+453-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:354:17-59
 454        </provider>
 455
 456        <activity android:name="im.dlg.dialer.DialpadActivity" />
@@ -891,10 +891,10 @@
 469            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" >
 469-->[org.jitsi.react:jitsi-meet-sdk:3.10.0] /Users/tnex/.gradle/caches/transforms-3/7bbc7d30cdc4c8b5e0c80c786dbf35e0/transformed/jetified-jitsi-meet-sdk-3.10.0/AndroidManifest.xml:48:13-84
 470            <intent-filter>
-470-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:295:13-297:29
+470-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:295:13-297:29
 471                <action android:name="android.telecom.ConnectionService" />
-471-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:296:17-76
-471-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:296:25-73
+471-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:296:17-76
+471-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:296:25-73
 472            </intent-filter>
 473        </service>
 474        <service
@@ -917,11 +917,11 @@
 483            android:grantUriPermissions="true" >
 483-->[com.facebook.react:react-native-webview:11.0.2-jitsi-8602449] /Users/tnex/.gradle/caches/transforms-3/c6fbc022a456a6679c2291776fb5e549/transformed/jetified-react-native-webview-11.0.2-jitsi-8602449/AndroidManifest.xml:16:13-47
 484            <meta-data
-484-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:352:13-354:62
+484-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:352:13-354:62
 485                android:name="android.support.FILE_PROVIDER_PATHS"
-485-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:353:17-67
+485-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:353:17-67
 486                android:resource="@xml/file_provider_paths" />
-486-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:354:17-59
+486-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:354:17-59
 487        </provider>
 488        <provider
 488-->[com.facebook.react:react-native-performance:2.0.0-jitsi-8602449] /Users/tnex/.gradle/caches/transforms-3/f5f8ad70b80f266386a79c0c1b68b3aa/transformed/jetified-react-native-performance-2.0.0-jitsi-8602449/AndroidManifest.xml:10:9-13:40
@@ -967,10 +967,10 @@
 512            android:exported="false" >
 512-->[com.google.firebase:firebase-messaging:23.0.2] /Users/tnex/.gradle/caches/transforms-3/1f85f296629d19ef3187f65ff5e5b779/transformed/jetified-firebase-messaging-23.0.2/AndroidManifest.xml:47:13-37
 513            <intent-filter android:priority="-500" >
-513-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:31:13-33:29
+513-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:31:13-33:29
 514                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-514-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:32:17-78
-514-->[:AndroidMatrix] /Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/AndroidManifest.xml:32:25-75
+514-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:32:17-78
+514-->[:TnexMatrix9:] /Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/AndroidManifest.xml:32:25-75
 515            </intent-filter>
 516        </service>
 517

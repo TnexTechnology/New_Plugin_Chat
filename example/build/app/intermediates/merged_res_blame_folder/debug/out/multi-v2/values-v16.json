@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/tnex/BienNT/New_Plugin_Chat/example/build/AndroidMatrix/.transforms/1733790a4319fc5f10ed172b44996f80/transformed/jetified-TnexMatrix9/res/values-v16/values-v16.xml",
+                    "source": "/Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
