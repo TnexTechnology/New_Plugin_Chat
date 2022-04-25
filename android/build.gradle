@@ -27,17 +27,17 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
-        maven {
-            def propsFile = rootProject.file('../android/github.properties')
-            def props = new Properties()
-            props.load(new FileInputStream(propsFile))
-            name = "GitHubPackages"
-            url "https://maven.pkg.github.com/bienntiteal/tnex_matrix-android-sdk"
-            credentials {
-                username props['username']
-                password props['token']
-            }
-        }
+//        maven {
+//            def propsFile = rootProject.file('../android/github.properties')
+//            def props = new Properties()
+//            props.load(new FileInputStream(propsFile))
+//            name = "GitHubPackages"
+//            url "https://maven.pkg.github.com/bienntiteal/tnex_matrix-android-sdk"
+//            credentials {
+//                username props['username']
+//                password props['token']
+//            }
+//        }
         maven { url 'https://jitpack.io' }
         maven {
             url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
@@ -77,10 +77,15 @@ android {
     defaultConfig {
         minSdkVersion 23
         multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildFeatures {
         viewBinding true
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
     }
 }
 
@@ -89,8 +94,10 @@ artifacts.add("default", file('TnexMatrix9.aar'))
 
 
 dependencies {
-    implementation fileTree(include: ['*.aar'], dir: 'libs')
+    //implementation fileTree(include: ['*.aar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.2'
 
     implementation 'com.github.Zhuinden:realm-monarchy:0.7.1'
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -98,6 +105,8 @@ dependencies {
     implementation "com.squareup.moshi:moshi-adapters:1.12.0"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.12.0"
     implementation ('com.facebook.stetho:stetho:1.6.0')
+    api project(":AndroidMatrix")
+
     //implementation ('tnex.org.matrix.android:tnex_matrix-android-sdk:1.0.6')
 
     //implementation ('org.matrix.android:matrix-android-sdk2:1.3.18')

@@ -1657,6 +1657,7 @@ color emoji_icons
 color emoji_white
 color error_color_material_dark
 color error_color_material_light
+color fcm_test_color
 color foreground_material_dark
 color foreground_material_light
 color form_edit_text_hint_color_selector
@@ -2294,6 +2295,7 @@ color viewfinder_border
 color viewfinder_laser
 color viewfinder_mask
 color warning_color
+color white
 color white_selector_pf
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -3111,6 +3113,9 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable adaptive_icon
+drawable adaptive_icon_background
+drawable adaptive_icon_foreground
 drawable alerter_alert_button_background
 drawable alerter_ic_face
 drawable alerter_ic_notifications
@@ -3140,6 +3145,7 @@ drawable bg_carousel_page_2
 drawable bg_carousel_page_3
 drawable bg_carousel_page_4
 drawable bg_composer_edit_text
+drawable bg_conner_chat_bottom_view
 drawable bg_group_item
 drawable bg_header_chat_detail
 drawable bg_login_server
@@ -3285,6 +3291,8 @@ drawable filetype_attachment
 drawable fingerprint_dialog_error_to_fp
 drawable fingerprint_dialog_fp_to_error
 drawable fingerprint_lockscreen_pf
+drawable gcm_icon
+drawable gcm_icon2
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable header_panel_round_background
@@ -3620,6 +3628,7 @@ drawable ic_voice_slide_to_cancel_arrow
 drawable ic_warning_badge
 drawable ic_x_18dp
 drawable ic_x_gray
+drawable icon_with_gradient
 drawable images_avatar
 drawable images_btn_google_signin_dark_normal
 drawable images_dropboxlogo_square
@@ -5341,7 +5350,6 @@ id roomCategoryTitleView
 id roomCategoryUnreadCounterBadgeView
 id roomCreateItemDescription
 id roomDetailContainer
-id roomDetailDrawerContainer
 id roomDirectoryPickerList
 id roomDividerView
 id roomDraftBadge
@@ -5553,6 +5561,7 @@ id spaceSettings
 id spaceSummaryMemberCountIcon
 id spaceSummaryMemberCountText
 id spaceSummaryTopic
+id spaceTop
 id space_around
 id space_between
 id space_evenly
@@ -6611,6 +6620,7 @@ plurals wrong_pin_message_remaining_attempts
 raw busy
 raw callend
 raw emoji_picker_datasource
+raw gcm_bip
 raw keep_third_party_licenses
 raw lang_languages
 raw lang_languagesaf
@@ -7612,6 +7622,9 @@ string failed_to_unban
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string fcm_2_args
+string fcm_fallback_notification_channel_label
+string fcm_no_args
 string feedback
 string feedback_failed
 string feedback_sent
