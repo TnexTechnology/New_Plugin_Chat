@@ -8,6 +8,11 @@
 import Foundation
 import MatrixSDK
 
+let CUSTOMER_SUPPORT_MATRIX_USER_ID =
+    "fb61917e-e6c8-40b4-9304-6ecc74c5fe74"
+let CUSTOMER_SUPPORT_MATRIX_USER_NAME = "Supporter"
+
+
 public struct RoomItem: Codable, Hashable {
     public static func == (lhs: RoomItem, rhs: RoomItem) -> Bool {
         return lhs.displayName == rhs.displayName &&
@@ -57,14 +62,21 @@ public class TnexRoom {
             return "Invitation from: \(sender)"
         }
 
-        let lastMessageEvent = eventCache.last {
-            $0.type == kMXEventTypeStringRoomMessage
+        let lastMessageEvent = getLastEvent()
+        if lastMessageEvent?.isMediaAttachment() == true {
+            return "đã gửi một tấm hình"
         }
         if lastMessageEvent?.isEdit() ?? false {
             let newContent = lastMessageEvent?.content["m.new_content"]! as? NSDictionary
             return newContent?["body"] as? String ?? ""
         } else {
             return lastMessageEvent?.content["body"] as? String ?? ""
+        }
+    }
+    
+    public func getLastEvent() -> MXEvent? {
+        return eventCache.last {
+            $0.type == kMXEventTypeStringRoomMessage
         }
     }
 
@@ -278,6 +290,10 @@ extension TnexRoom {
         RoomItem(room: room)
     }
     
+    func getRoom() -> MXRoom {
+        return room
+    }
+    
     func paginate(event: MXEvent, completion: @escaping((MXResponse<Void>) -> Void)) {
         guard let timeline = room.timeline(onEvent: event.eventId) else { return }
         listenReferenceRoom = timeline.listenToEvents {[weak self] event, direction, roomState in
@@ -287,5 +303,9 @@ extension TnexRoom {
             }
         }
         timeline.resetPaginationAroundInitialEvent(withLimit: 40, completion: completion)
+    }
+    
+    func getState(completion: @escaping(MXRoomState?) -> Void){
+        self.room.state(completion)
     }
 }

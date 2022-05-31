@@ -36,8 +36,26 @@ class ConversationCellViewModel: NSObject {
     }
  
     func react() {
-        rxDisplayName.accept(room.summary.displayname)
-        rxLastMessage.accept(room.lastMessage)
+        let lastEvent = room.getLastEvent()
+        let senderId = lastEvent?.sender ?? ""
+        if senderId == MatrixManager.shared.userId {
+            self.rxLastMessage.accept("Bạn: \(self.room.lastMessage)")
+        } else {
+            MatrixManager.shared.getSenderInfo(senderId: senderId, at: self.room.getRoom()) { [weak self] displayName in
+                guard let self = self else { return }
+                if let displayName = displayName {
+                    self.rxLastMessage.accept("\(displayName): \(self.room.lastMessage)")
+                } else {
+                    self.rxLastMessage.accept(self.room.lastMessage)
+                }
+            }
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm E, d MMM y"
+        let timeString = formatter.string(from: room.summary.lastMessageDate)
+        rxTime.accept(timeString)
+        getDisplayname()
         isReacted = true
         
     }
@@ -45,6 +63,24 @@ class ConversationCellViewModel: NSObject {
     func reactIfNeeded() {
         guard isReacted == false else { return }
         react()
+    }
+    
+    func getDisplayname() {
+        let displayname = self.room.summary.displayname ?? ""
+        if room.isDirect {
+            rxDisplayName.accept(displayname + "OK")
+            return
+        }
+        if displayname.contains(CUSTOMER_SUPPORT_MATRIX_USER_ID) {
+            rxDisplayName.accept(CUSTOMER_SUPPORT_MATRIX_USER_NAME)
+            return
+        }
+        self.room.getState {[weak self] state in
+            guard let self = self, let state = state else { return }
+            let partnerName = state.members.members.first(where: {$0.userId != MatrixManager.shared.userId})?.displayname ?? "Nhóm chat"
+            self.rxDisplayName.accept(partnerName)
+
+        }
     }
     
 }

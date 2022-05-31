@@ -49,9 +49,15 @@ class ConversationCell: SwipeTableViewCell {
     }
     
     func bindViewAndViewModel() {
-        guard let viewModel = viewModel else { return }
+        guard let viewModel = viewModel, let disposeBag = self.disposeBag else { return }
         viewModel.rxDisplayName.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (name) in
             self?.titleLabel.text = name
-        }).disposed(by: self.disposeBag!)
+        }).disposed(by: disposeBag)
+        viewModel.rxLastMessage.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (content) in
+            self?.contentLabel.text = content
+        }).disposed(by: disposeBag)
+        viewModel.rxTime.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (timeString) in
+            self?.timeLabel.text = timeString
+        }).disposed(by: disposeBag)
     }
 }

@@ -10,20 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="434e1764-ad46-426e-a395-d6a1aef53ad5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationCellViewModel.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationsSection.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationsViewModel.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/ChatDetail/Chat Items/Photo Messages/TnexPhotoMessageInteractionHandler.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/ChatDetail/Chat Items/Photo Messages/TnexPhotoMessageInteractionHandler.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Classes/SwiftTnexchatPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/SwiftTnexchatPlugin.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/Manager/MatrixManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/Manager/MatrixManager.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/Model/TnexRoom.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/Model/TnexRoom.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationCell.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ios/tnexchat.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/tnexchat.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationCellViewModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationCellViewModel.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

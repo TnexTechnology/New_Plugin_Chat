@@ -38,5 +38,13 @@ public class SwiftTnexchatPlugin: NSObject, FlutterPlugin {
         }
     }
 
+//    private func gotoViewController() {
+//        MatrixManager.shared.loginToken { succeed in
+//            let vc = ConversationViewController(rooms: MatrixManager.shared.getRooms()!)
+//            let navi = UINavigationController(rootViewController: vc)
+//            navi.modalPresentationStyle = .fullScreen
+//            UIViewController.visibleViewController()?.present(navi, animated: true)
+//        }
+//    }
 
 }

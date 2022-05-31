@@ -31,7 +31,7 @@ final public class MatrixManager: NSObject {
     var rooms: [TnexRoom] {
         guard let session = self.mxSession else { return [] }
         let rooms = session.rooms
-            .map { roomCache[$0.roomId] ?? makeRoom(from: $0) }
+            .compactMap { roomCache[$0.roomId] ?? makeRoom(from: $0) }
             .sorted { $0.summary.lastMessageDate > $1.summary.lastMessageDate }
 //        updateUserDefaults(with: rooms)
         return rooms
@@ -48,10 +48,13 @@ final public class MatrixManager: NSObject {
     }
     
     private var roomCache = [String: TnexRoom]()
-    private func makeRoom(from mxRoom: MXRoom) -> TnexRoom {
+    private func makeRoom(from mxRoom: MXRoom) -> TnexRoom? {
         let room = TnexRoom(mxRoom)
-        roomCache[mxRoom.roomId] = room
-        return room
+        if !room.lastMessage.isEmpty {
+            roomCache[mxRoom.roomId] = room
+            return room
+        }
+        return nil
     }
     
     override init() {
@@ -163,7 +166,7 @@ final public class MatrixManager: NSObject {
     
     public func getRooms() -> [TnexRoom]? {
         let rooms = self.mxSession?.rooms
-            .map { roomCache[$0.roomId] ?? makeRoom(from: $0) }
+            .compactMap { roomCache[$0.roomId] ?? makeRoom(from: $0) }
             .sorted { $0.summary.lastMessageDate > $1.summary.lastMessageDate }
         return rooms
     }
@@ -175,9 +178,6 @@ final public class MatrixManager: NSObject {
         parameters.visibility = MXRoomDirectoryVisibility.private.identifier
         parameters.preset = MXRoomPreset.trustedPrivateChat.identifier
         if let room = self.mxSession?.directJoinedRoom(withUserId: userId) {
-            print(room.roomId)
-            print(room.summary.displayname)
-            print("$$$$$$$")
             completion(room)
             return
         }
