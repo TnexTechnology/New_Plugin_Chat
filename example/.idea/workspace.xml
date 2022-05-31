@@ -10,18 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="434e1764-ad46-426e-a395-d6a1aef53ad5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationCellViewModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationsSection.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationsViewModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tnexchat_example.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tnexchat_example.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/ChatDetail/Chat Items/Photo Messages/TnexPhotoMessageInteractionHandler.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/ChatDetail/Chat Items/Photo Messages/TnexPhotoMessageInteractionHandler.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationCell.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Classes/TnexMessenger/RecentConversation/ConversationViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/tnexchat.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/tnexchat.podspec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/macos/.android/avd/Pixel_3a_API_31_arm64-v8a.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -40,6 +48,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />

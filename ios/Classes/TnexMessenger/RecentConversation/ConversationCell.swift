@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import SwipeCellKit
+import RxSwift
 
-class ConversationCell: UITableViewCell {
+class ConversationCell: SwipeTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -15,6 +17,8 @@ class ConversationCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     
     @IBOutlet weak var timeLabel: UILabel!
+    public var disposeBag: DisposeBag? = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,4 +30,28 @@ class ConversationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    private var _viewModel: ConversationCellViewModel?
+    var viewModel: ConversationCellViewModel! {
+        get { return _viewModel }
+        set {
+            if newValue != _viewModel {
+                disposeBag = DisposeBag()
+
+                _viewModel = newValue
+                viewModelChanged()
+            }
+        }
+    }
+    
+    private func viewModelChanged() {
+        bindViewAndViewModel()
+        _viewModel?.reactIfNeeded()
+    }
+    
+    func bindViewAndViewModel() {
+        guard let viewModel = viewModel else { return }
+        viewModel.rxDisplayName.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (name) in
+            self?.titleLabel.text = name
+        }).disposed(by: self.disposeBag!)
+    }
 }
