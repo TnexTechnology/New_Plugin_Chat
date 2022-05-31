@@ -13,6 +13,7 @@ class ConversationCell: SwipeTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var avatarImageVIew: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     
@@ -21,7 +22,7 @@ class ConversationCell: SwipeTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        containerView.layer.cornerRadius = 8.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

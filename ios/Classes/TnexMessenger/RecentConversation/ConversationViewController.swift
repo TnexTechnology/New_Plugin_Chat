@@ -23,6 +23,7 @@ class ConversationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.fromHex("#011830")
         configTableView()
         setupRx()
     }
@@ -44,7 +45,7 @@ class ConversationViewController: UIViewController {
     
     private func configTableView() {
         self.tableView.delegate = self
-//        self.tableView.dataSource = self
+        self.tableView.backgroundColor = .clear
         self.tableView.register(UINib(nibName: "ConversationCell", bundle: Bundle.resources), forCellReuseIdentifier: "ConversationCell")
     }
 
@@ -77,7 +78,7 @@ extension ConversationViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(80)
+        return CGFloat(92)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
