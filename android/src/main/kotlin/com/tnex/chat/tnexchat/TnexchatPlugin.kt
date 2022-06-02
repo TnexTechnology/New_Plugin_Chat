@@ -50,11 +50,19 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   private fun initMatrixWithToken(@NonNull call: MethodCall, @NonNull result: Result) {
-    var arguments = call.arguments as Map<String, Any>
-    var token = arguments["token"] as String
-    MatrixApplication.sInstance.tnexMatrix.loginMatrix(token, {
-      result.success(it)
-    })
+    activity.runOnUiThread {
+      var arguments = call.arguments as Map<String, Any>
+      var token = arguments["token"] as String
+      var homeServerChat = arguments["homeServerChat"] as String
+      var urlUploadFiles = arguments["urlUploadFiles"] as String
+      MatrixApplication.sInstance.tnexMatrix.initialize(homeServerChat, urlUploadFiles)
+
+      MatrixApplication.sInstance.tnexMatrix.loginMatrix(token, {
+        activity.runOnUiThread {
+          result.success(it)
+        }
+      })
+    }
   }
 
   private fun updateUserUploadInfo(@NonNull call: MethodCall, @NonNull result: Result) {
@@ -73,9 +81,16 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   private fun openRoomWithId(@NonNull call: MethodCall, @NonNull result: Result) {
-    val arguments = call.arguments as Map<String, Any>
-    val roomID = arguments["roomID"] as String
-    MatrixApplication.sInstance.tnexMatrix.openRoom(roomID)
+    activity.runOnUiThread {
+      val arguments = call.arguments as Map<String, Any>
+      val roomID = arguments["roomID"] as String
+      MatrixApplication.sInstance.tnexMatrix.openRoom(roomID) { userID, roomID ->
+        activity.runOnUiThread {
+          result.success("$userID,$roomID")
+          print("openRoomWithId callback userID = $userID --- roomID = $roomID")
+        }
+      }
+    }
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
@@ -98,5 +113,4 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onDetachedFromActivity() {
     //TODO("Not yet implemented")
   }
-
 }

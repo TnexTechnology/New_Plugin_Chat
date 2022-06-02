@@ -5,18 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1037281e-6691-4a06-a2eb-68fc5669c096" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/ChatDetailViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/ChatDetailViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/InputBar/ImagePicker/CustomPhotoPickerViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/InputBar/ImagePicker/CustomPhotoPickerViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatDataSource.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/ChatDetail/TnexChatDataSource.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/MatrixManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/TnexMessenger/Manager/MatrixManager.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/tnexchat.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/tnexchat.podspec" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/android/Matrix/TnexMatrix9.aar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/Matrix/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/modules/tnexchat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/modules/tnexchat.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_collection_collection_1_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_java8_2_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__io_flutter_arm64_v8a_debug_1_0_0_d3ea636dc5d16b56819f3266241e1f708979c233.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__io_flutter_armeabi_v7a_debug_1_0_0_d3ea636dc5d16b56819f3266241e1f708979c233.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__io_flutter_flutter_embedding_debug_1_0_0_d3ea636dc5d16b56819f3266241e1f708979c233.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__io_flutter_x86_64_debug_1_0_0_d3ea636dc5d16b56819f3266241e1f708979c233.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__io_flutter_x86_debug_1_0_0_d3ea636dc5d16b56819f3266241e1f708979c233.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/libraries/Gradle__org_jetbrains_annotations_13_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/AndroidMatrix/TnexMatrix9.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/AndroidMatrix/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/settings.gradle" afterDir="false" />
+>>>>>>> biennt
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/tnex/.android/avd/10.1_WXGA_Tablet_API_31.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -29,9 +63,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/android/build.gradle" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/android/local.properties" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/android/build.gradle" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="27KKHKJfRg0m7t8yCTzYPVMGqOo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />

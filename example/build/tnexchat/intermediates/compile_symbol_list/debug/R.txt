@@ -1656,6 +1656,7 @@ int color emoji_icons 0x0
 int color emoji_white 0x0
 int color error_color_material_dark 0x0
 int color error_color_material_light 0x0
+int color fcm_test_color 0x0
 int color foreground_material_dark 0x0
 int color foreground_material_light 0x0
 int color form_edit_text_hint_color_selector 0x0
@@ -2293,6 +2294,7 @@ int color viewfinder_border 0x0
 int color viewfinder_laser 0x0
 int color viewfinder_mask 0x0
 int color warning_color 0x0
+int color white 0x0
 int color white_selector_pf 0x0
 int dimen abc_action_bar_content_inset_material 0x0
 int dimen abc_action_bar_content_inset_with_nav 0x0
@@ -3110,6 +3112,9 @@ int drawable abc_textfield_search_activated_mtrl_alpha 0x0
 int drawable abc_textfield_search_default_mtrl_alpha 0x0
 int drawable abc_textfield_search_material 0x0
 int drawable abc_vector_test 0x0
+int drawable adaptive_icon 0x0
+int drawable adaptive_icon_background 0x0
+int drawable adaptive_icon_foreground 0x0
 int drawable alerter_alert_button_background 0x0
 int drawable alerter_ic_face 0x0
 int drawable alerter_ic_notifications 0x0
@@ -3139,6 +3144,7 @@ int drawable bg_carousel_page_2 0x0
 int drawable bg_carousel_page_3 0x0
 int drawable bg_carousel_page_4 0x0
 int drawable bg_composer_edit_text 0x0
+int drawable bg_conner_chat_bottom_view 0x0
 int drawable bg_group_item 0x0
 int drawable bg_header_chat_detail 0x0
 int drawable bg_login_server 0x0
@@ -3284,6 +3290,8 @@ int drawable filetype_attachment 0x0
 int drawable fingerprint_dialog_error_to_fp 0x0
 int drawable fingerprint_dialog_fp_to_error 0x0
 int drawable fingerprint_lockscreen_pf 0x0
+int drawable gcm_icon 0x0
+int drawable gcm_icon2 0x0
 int drawable googleg_disabled_color_18 0x0
 int drawable googleg_standard_color_18 0x0
 int drawable header_panel_round_background 0x0
@@ -3619,6 +3627,7 @@ int drawable ic_voice_slide_to_cancel_arrow 0x0
 int drawable ic_warning_badge 0x0
 int drawable ic_x_18dp 0x0
 int drawable ic_x_gray 0x0
+int drawable icon_with_gradient 0x0
 int drawable images_avatar 0x0
 int drawable images_btn_google_signin_dark_normal 0x0
 int drawable images_dropboxlogo_square 0x0
@@ -5340,7 +5349,6 @@ int id roomCategoryTitleView 0x0
 int id roomCategoryUnreadCounterBadgeView 0x0
 int id roomCreateItemDescription 0x0
 int id roomDetailContainer 0x0
-int id roomDetailDrawerContainer 0x0
 int id roomDirectoryPickerList 0x0
 int id roomDividerView 0x0
 int id roomDraftBadge 0x0
@@ -5552,6 +5560,7 @@ int id spaceSettings 0x0
 int id spaceSummaryMemberCountIcon 0x0
 int id spaceSummaryMemberCountText 0x0
 int id spaceSummaryTopic 0x0
+int id spaceTop 0x0
 int id space_around 0x0
 int id space_between 0x0
 int id space_evenly 0x0
@@ -6610,6 +6619,7 @@ int plurals wrong_pin_message_remaining_attempts 0x0
 int raw busy 0x0
 int raw callend 0x0
 int raw emoji_picker_datasource 0x0
+int raw gcm_bip 0x0
 int raw keep_third_party_licenses 0x0
 int raw lang_languages 0x0
 int raw lang_languagesaf 0x0
@@ -7611,6 +7621,9 @@ int string failed_to_unban 0x0
 int string fallback_menu_item_copy_link 0x0
 int string fallback_menu_item_open_in_browser 0x0
 int string fallback_menu_item_share_link 0x0
+int string fcm_2_args 0x0
+int string fcm_fallback_notification_channel_label 0x0
+int string fcm_no_args 0x0
 int string feedback 0x0
 int string feedback_failed 0x0
 int string feedback_sent 0x0

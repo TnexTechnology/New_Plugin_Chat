@@ -3,6 +3,5 @@
     package="com.tnex.chat.tnexchat">
     <application
         android:name=".MatrixApplication">
-
     </application>
 </manifest>
