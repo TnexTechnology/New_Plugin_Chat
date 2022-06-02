@@ -72,12 +72,12 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 child: const Text('Open route'),
                 onPressed: () {
-                  final native = ChatIOSNative();
-                  native.getRooms();
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => const MyAppTest()),
-                  // );
+                  // final native = ChatIOSNative();
+                  // native.getRooms();
+                  `Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyAppTest()),
+                  );`
                 },
               )
             ]

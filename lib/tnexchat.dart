@@ -1,7 +1,9 @@
+library tnexchat;
+export 'src/test-widget.dart';
 
 import 'dart:async';
-
 import 'package:flutter/services.dart';
+
 
 class Tnexchat {
   static const MethodChannel _channel = MethodChannel('tnexchat');

@@ -5,16 +5,17 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:tnexchat/tnexchat.dart';
+import 'package:tnexchat/tnexchat.dart';
 
 
-class MyAppTest extends StatefulWidget {
-  const MyAppTest({Key? key}) : super(key: key);
+class MyPluginAppTest extends StatefulWidget {
+  const MyPluginAppTest({Key? key}) : super(key: key);
 
   @override
-  State<MyAppTest> createState() => _MyAppTestState();
+  State<MyPluginAppTest> createState() => _MyPluginTestState();
 }
 
-class _MyAppTestState extends State<MyAppTest> {
+class _MyPluginTestState extends State<MyPluginAppTest> {
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +26,8 @@ class _MyAppTestState extends State<MyAppTest> {
       appBar: AppBar(
         title: Text("Native OS")
       ),
-      body: UiKitView(
-        viewType: viewType,
-        layoutDirection: TextDirection.ltr,
-        creationParams: creationParams,
-        creationParamsCodec: const StandardMessageCodec(),
-      ),
+      //
+      body: MyPluginAppTest()
     );
   }
 }
