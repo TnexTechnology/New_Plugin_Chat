@@ -23,8 +23,8 @@
 
 import Foundation
 
-extension Bundle {
-    static let resources: Bundle = {
+public extension Bundle {
+     public static let resources: Bundle = {
         let bundle = Bundle(for: BundleToken.self)
         return bundle
     }()

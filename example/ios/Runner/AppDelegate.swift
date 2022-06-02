@@ -45,8 +45,18 @@ enum MyFlutterErrorCode {
           let chargingChannel = FlutterEventChannel(name: ChannelName.charging,
                                                     binaryMessenger: controller.binaryMessenger)
           chargingChannel.setStreamHandler(self)
+      registerFlutterView()
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+    
+    private func registerFlutterView() {
+        weak var registrar = self.registrar(forPlugin: "plugin-name")
+
+                let factory = FLNativeViewFactory(messenger: registrar!.messenger())
+                self.registrar(forPlugin: "<plugin-name>")!.register(
+                    factory,
+                    withId: "<platform-view-type>")
+    }
     
     private func receiveBatteryLevel(result: FlutterResult) {
 //        let device = UIDevice.current

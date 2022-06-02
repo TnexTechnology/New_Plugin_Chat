@@ -3,9 +3,13 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:tnexchat/tnexchat.dart';
+import 'package:tnexchat_example/ios-widget.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    title: 'Navigation Basics',
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -61,7 +65,20 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Column(
+            children: [
+              Text('Running on: $_platformVersion\n'),
+              ElevatedButton(
+                child: const Text('Open route'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyAppTest()),
+                  );
+                },
+              )
+            ]
+          )
         ),
       ),
     );
