@@ -74,10 +74,10 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () {
                   // final native = ChatIOSNative();
                   // native.getRooms();
-                  `Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const MyAppTest()),
-                  );`
+                  );
                 },
               )
             ]
