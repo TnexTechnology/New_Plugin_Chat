@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:tnexchat/tnexchat.dart';
+import 'package:tnexchat_example/chat_native.dart';
 import 'package:tnexchat_example/ios-widget.dart';
 
 void main() {
@@ -71,10 +72,12 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 child: const Text('Open route'),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyAppTest()),
-                  );
+                  final native = ChatIOSNative();
+                  native.getRooms();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => const MyAppTest()),
+                  // );
                 },
               )
             ]

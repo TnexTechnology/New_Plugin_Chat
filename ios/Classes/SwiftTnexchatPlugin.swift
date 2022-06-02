@@ -11,7 +11,7 @@ public class SwiftTnexchatPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-      gotoChatDetail()
+//      gotoChatDetail()
     result("iOS " + UIDevice.current.systemVersion)
   }
      

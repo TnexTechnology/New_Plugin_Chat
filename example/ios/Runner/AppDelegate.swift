@@ -1,10 +1,12 @@
 import UIKit
 import Flutter
-
+import MatrixSDK
+import tnexchat
 
 enum ChannelName {
-  static let battery = "samples.flutter.io/battery"
-  static let charging = "samples.flutter.io/charging"
+    static let battery = "samples.flutter.io/battery"
+    static let charging = "samples.flutter.io/charging"
+    static let chatList = "tnex_chat_list"
 }
 
 enum BatteryState {
@@ -41,6 +43,7 @@ enum MyFlutterErrorCode {
             }
             self?.receiveBatteryLevel(result: result)
           })
+      _ = ListChatFlutterHandler(appDelegate: self, flutterController: controller)
 
           let chargingChannel = FlutterEventChannel(name: ChannelName.charging,
                                                     binaryMessenger: controller.binaryMessenger)
@@ -120,4 +123,13 @@ enum MyFlutterErrorCode {
         eventSink = nil
         return nil
       }
+    
+    func getListRoom() -> [[String: Any]] {
+        print("111")
+        guard let rooms = MatrixManager.shared.getRooms() else { return []}
+        print("2222")
+        return rooms.map({ room in
+            return ["displayname": room.summary.displayname ?? "Unknown", "avatar": room.roomAvatarURL?.absoluteString ?? "", "lastMessage": "last message content" ]
+        })
+    }
 }
