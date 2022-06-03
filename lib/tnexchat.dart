@@ -4,7 +4,22 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class Tnexchat {
+  static Tnexchat? _instance;
+  static get instance => _instance ??= Tnexchat._();
+  Tnexchat._() {
+    _channel.setMethodCallHandler(_fromNative);
+  }
   static const MethodChannel _channel = MethodChannel('tnexchat');
+
+  final void Function(MethodCall call) callback;
+
+  Future<void> _fromNative(MethodCall call) async {
+    print('callTest result 1111 = ${call.arguments}');
+    if (call.method == 'getPlatformVersion') {
+      print('callTest result = ${call.arguments}');
+    }
+    callback(call);
+  }
 
   static Future<String?> get platformVersion async {
     final String? version = await _channel.invokeMethod('getPlatformVersion');
