@@ -11,9 +11,9 @@ class Tnexchat {
   }
   static const MethodChannel _channel = MethodChannel('tnexchat');
 
-  void Function(MethodCall call)? callback;
+  static void Function(MethodCall call)? callback;
 
-  Future<void> _fromNative(MethodCall call) async {
+  static Future<void> _fromNative(MethodCall call) async {
     print('callTest result 1111 = ${call.arguments}');
     if (call.method == 'getPlatformVersion') {
       print('callTest result = ${call.arguments}');
@@ -34,6 +34,7 @@ class Tnexchat {
   }
 
   static Future<bool> initMatrixWithToken(dynamic method) async {
+    _channel.setMethodCallHandler(_fromNative);
     final bool isSuccess = await _channel.invokeMethod('initMatrixWithToken', method);
     return isSuccess;
   }

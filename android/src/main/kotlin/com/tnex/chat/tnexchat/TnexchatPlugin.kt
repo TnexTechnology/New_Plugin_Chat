@@ -27,9 +27,10 @@ class TnexchatPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
 //      channel.invokeMethod(type, data);
 //    }
 
-//    MatrixApplication.sInstance.tnexMatrix.callbackData { type, data ->
-//      print("MatrixApplication.sInstance.tnexMatrix.callbackData $type --- data = $data")
-//    }
+    MatrixApplication.sInstance.tnexMatrix.callbackData { type, data ->
+      print("MatrixApplication.sInstance.tnexMatrix.callbackData $type --- data = $data")
+      channel.invokeMethod(type, data);
+    }
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
