@@ -11,14 +11,16 @@ class Tnexchat {
   }
   static const MethodChannel _channel = MethodChannel('tnexchat');
 
-  final void Function(MethodCall call) callback;
+  void Function(MethodCall call)? callback;
 
   Future<void> _fromNative(MethodCall call) async {
     print('callTest result 1111 = ${call.arguments}');
     if (call.method == 'getPlatformVersion') {
       print('callTest result = ${call.arguments}');
     }
-    callback(call);
+    if (callback != null) {
+      callback!(call);
+    }
   }
 
   static Future<String?> get platformVersion async {
