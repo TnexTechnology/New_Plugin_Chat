@@ -104,7 +104,9 @@ class _MyAppState extends State<MyApp> {
     }
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ChatList(roomModels)),
+      MaterialPageRoute(builder: (context) => ChatList(roomModels, didTapRoom: (roomId) {
+        print(roomId);
+      },)),
     );
   }
 // @override

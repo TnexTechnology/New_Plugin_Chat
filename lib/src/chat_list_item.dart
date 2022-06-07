@@ -1,13 +1,10 @@
 import 'dart:async';
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import '../tnexchat.dart';
 export './floating_circle_button.dart';
 import './room_model.dart';
 import './avatar_room.dart';
-import 'dart:convert';
 
 import 'package:intl/intl.dart';
 
@@ -15,8 +12,8 @@ class ChatListItem extends StatelessWidget {
   final RoomModel room;
   final bool activeChat;
   final Function? onForget;
-  // final Function(String roomId)? didTapRoom;
-  const ChatListItem(this.room, {this.activeChat = false, this.onForget});
+  final Function(String roomId)? didTapRoom;
+  const ChatListItem(this.room, {this.activeChat = false, this.onForget, this.didTapRoom});
 
   @override
   Widget build(BuildContext context) {
@@ -125,9 +122,9 @@ class ChatListItem extends StatelessWidget {
                     )
                   ]),
                     onTap: () {
-                      // if (didTapRoom != null) {
-                      //   didTapRoom!(room.id);
-                      // }
+                      if (didTapRoom != null) {
+                        didTapRoom!(room.id);
+                      }
                     }
                 )
               ),

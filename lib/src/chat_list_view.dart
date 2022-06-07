@@ -13,8 +13,9 @@ enum SelectMode { normal, share }
 
 class ChatList extends StatefulWidget {
   final List<RoomModel> rooms;
+  final Function(String roomId)? didTapRoom;
 
-  const ChatList(this.rooms, {Key? key}) : super(key: key);
+  const ChatList(this.rooms, {this.didTapRoom, Key? key}) : super(key: key);
 
   @override
   _ChatListState createState() => _ChatListState();
@@ -93,7 +94,7 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
           itemCount: widget.rooms.length,
           // The list items
           itemBuilder: (context, index) {
-            return ChatListItem(widget.rooms[index]);
+            return ChatListItem(widget.rooms[index], didTapRoom: widget.didTapRoom);
           },
           // The separators
           separatorBuilder: (context, index) {
