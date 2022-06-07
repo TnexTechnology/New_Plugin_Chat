@@ -1,5 +1,7 @@
 library tnexchat;
 export 'src/test-widget.dart';
+export 'src/chat_list_view.dart';
+export 'src/room_model.dart';
 
 import 'dart:async';
 import 'package:flutter/services.dart';

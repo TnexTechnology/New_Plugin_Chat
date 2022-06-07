@@ -8,6 +8,7 @@
 import Foundation
 
 class ChatUtils {
+    
     static func genTextAttributes(viewModel: MessageViewModelProtocol, text: String, messageType: MessageType) -> [NSAttributedString.Key: Any] {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 1.1

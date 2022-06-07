@@ -17,6 +17,10 @@ public class TnexRoomSummary {
         let timestamp = Double(lastMessage.originServerTs)
         return Date(timeIntervalSince1970: timestamp / 1000)
     }
+    
+    public var originServerTs: UInt64 {
+        return summary.lastMessage.originServerTs
+    }
 
     public init(_ summary: MXRoomSummary) {
         self.summary = summary

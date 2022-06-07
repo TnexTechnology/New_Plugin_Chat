@@ -125,11 +125,15 @@ enum MyFlutterErrorCode {
       }
     
     func getListRoom() -> [[String: Any]] {
-        print("111")
         guard let rooms = MatrixManager.shared.getRooms() else { return []}
-        print("2222")
         return rooms.map({ room in
-            return ["displayname": room.summary.displayname ?? "Unknown", "avatar": room.roomAvatarURL?.absoluteString ?? "", "lastMessage": "last message content" ]
+            let avatarUrl: String = room.getAvatarURLString() ?? "22222"
+            return ["displayname": room.summary.displayname ?? "Unknown",
+                    "avatar": room.roomAvatarURL?.absoluteString ?? "",
+                    "lastMessage": room.lastMessage,
+                    "id": room.roomId,
+                    "timeCreated": room.getLastEvent()!.originServerTs,
+                    "avatarUrl": avatarUrl]
         })
     }
 }

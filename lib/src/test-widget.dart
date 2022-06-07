@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MyAppTest extends StatefulWidget {
-  const MyAppTest({Key? key}) : super(key: key);
+  final String dat;
+  const MyAppTest(this.dat, {Key? key}) : super(key: key);
 
   @override
   State<MyAppTest> createState() => _MyAppTestState();

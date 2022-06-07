@@ -22,13 +22,14 @@ class ChatIOSNative {
   }
 
 
-  Future getRooms() async {
+  Future <List<Object?>> getRooms() async {
+    var rooms;
     try {
       final List<Object?> result = await _chatListChannel.invokeMethod('rooms');
-      final numberItems = result.length;
-      print('Resul getRooms: $numberItems');
+      rooms = result;
     } on Exception catch (e) {
       print("Failed: ....");
     }
+    return rooms;
   }
 }

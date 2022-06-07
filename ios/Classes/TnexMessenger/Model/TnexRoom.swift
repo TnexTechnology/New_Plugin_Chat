@@ -42,6 +42,13 @@ public class TnexRoom {
               let avatar = room.summary.avatar else { return nil }
         return MXURL(mxContentURI: avatar)?.contentURL(on: homeserver)
     }
+    
+    public func getAvatarURLString() -> String? {
+        if let url = roomAvatarURL {
+            return url.absoluteString
+        }
+        return self.room.summary.displayname
+    }
 
     internal var eventCache: [MXEvent] = []
 

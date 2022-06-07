@@ -43,6 +43,8 @@ PODS:
     - OLMKit/olmcpp (= 3.2.5)
   - OLMKit/olmc (3.2.5)
   - OLMKit/olmcpp (3.2.5)
+  - path_provider_ios (0.0.1):
+    - Flutter
   - PureLayout (3.1.9)
   - Realm (10.16.0):
     - Realm/Headers (= 10.16.0)
@@ -82,6 +84,7 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - tnexchat (from `.symlinks/plugins/tnexchat/ios`)
 
 SPEC REPOS:
@@ -113,6 +116,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  path_provider_ios:
+    :path: ".symlinks/plugins/path_provider_ios/ios"
   tnexchat:
     :path: ".symlinks/plugins/tnexchat/ios"
 
@@ -131,6 +136,7 @@ SPEC CHECKSUMS:
   libbase58: 7c040313537b8c44b6e2d15586af8e21f7354efd
   MatrixSDK: 4e7c8f0cfff3553e8dd60d97eef6b31653408ae7
   OLMKit: 9fb4799c4a044dd2c06bda31ec31a12191ad30b5
+  path_provider_ios: 7d7ce634493af4477d156294792024ec3485acd5
   PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
   Realm: b6027801398f3743fc222f096faa85281b506e6c
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
