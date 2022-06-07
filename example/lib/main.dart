@@ -105,10 +105,12 @@ class _MyAppState extends State<MyApp> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ChatList(roomModels, didTapRoom: (roomId) {
-        print(roomId);
+        native.gotoChatDetail(roomId);
       },)),
     );
+    
   }
+  
 // @override
 //   Widget build(BuildContext context) {
 //     return Material(

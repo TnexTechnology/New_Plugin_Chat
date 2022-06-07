@@ -32,4 +32,18 @@ class ChatIOSNative {
     }
     return rooms;
   }
+
+  Future<void> gotoChatDetail(String roomId) async {
+    handleMethod();
+    try {
+      final int result = await _methodChannel.invokeMethod('gotoChatDetail', roomId);
+      print('Resul: $result');
+    } on Exception catch (e) {
+      print("gotoChatDetail: Failed: ....");
+    }
+  }
+
+  void handleMethod() {
+    print("hanlde method");
+  }
 }

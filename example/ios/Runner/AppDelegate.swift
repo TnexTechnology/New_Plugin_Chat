@@ -24,11 +24,14 @@ enum MyFlutterErrorCode {
 @objc class AppDelegate: FlutterAppDelegate, FlutterStreamHandler {
     
     private var eventSink: FlutterEventSink?
+    private var mainCoordinator: AppCoordinator?
+    var flutterVC: FlutterViewController!
     
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+//
     GeneratedPluginRegistrant.register(with: self)
       guard let controller = window?.rootViewController as? FlutterViewController else {
             fatalError("rootViewController is not type FlutterViewController")
@@ -43,14 +46,17 @@ enum MyFlutterErrorCode {
             }
             self?.receiveBatteryLevel(result: result)
           })
+      configNaviFlutter(flutterViewController: controller)
       _ = ListChatFlutterHandler(appDelegate: self, flutterController: controller)
 
           let chargingChannel = FlutterEventChannel(name: ChannelName.charging,
                                                     binaryMessenger: controller.binaryMessenger)
           chargingChannel.setStreamHandler(self)
-      registerFlutterView()
+//      registerFlutterView()
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+    
+    
     
     private func registerFlutterView() {
         weak var registrar = self.registrar(forPlugin: "plugin-name")
@@ -59,6 +65,55 @@ enum MyFlutterErrorCode {
                 self.registrar(forPlugin: "<plugin-name>")!.register(
                     factory,
                     withId: "<platform-view-type>")
+    }
+    
+    private func configNaviFlutter(flutterViewController: FlutterViewController) {
+        self.flutterVC = flutterViewController
+        NetworkManager.shared.updateFont(flutterViewController: flutterViewController)
+        self.createMethodChannel()
+        let navigationController = UINavigationController(rootViewController: flutterViewController)
+        navigationController.isNavigationBarHidden = true
+        window?.rootViewController = navigationController
+        mainCoordinator = AppCoordinator(navigationController: navigationController)
+        window?.makeKeyAndVisible()
+
+        let chargingChannel = FlutterEventChannel(name: "tnex_chat/refreshToken",
+                                                  binaryMessenger: flutterViewController.binaryMessenger)
+        chargingChannel.setStreamHandler(self)
+    }
+    
+    private func createMethodChannel() {
+        let channel = FlutterMethodChannel(name: "tnex_chat",
+                                              binaryMessenger: flutterVC.binaryMessenger)
+        channel.setMethodCallHandler {[weak self] (call: FlutterMethodCall, result: FlutterResult) in
+            self?.handleMethodChannel(call: call, result: result)
+        }
+        
+    }
+    
+    private func handleMethodChannel(call: FlutterMethodCall, result: FlutterResult) {
+        switch call.method {
+        case "gotoChatDetail":
+            self.mainCoordinator?.start(call: call)
+        case "loginMatrix":
+            self.mainCoordinator?.loginMatrix(call: call)
+        case "roomInfo":
+            if let userId = call.arguments as? String {
+                print(userId)
+                if let room = MatrixManager.shared.mxSession?.directJoinedRoom(withUserId: userId) {
+                    result(room.roomId)
+                } else {
+                    result("none")
+                }
+                
+            } else {
+                result("none")
+            }
+        case "createRoom":
+            self.mainCoordinator?.createRoom(call: call)
+        default:
+            result(FlutterMethodNotImplemented)
+        }
     }
     
     private func receiveBatteryLevel(result: FlutterResult) {
