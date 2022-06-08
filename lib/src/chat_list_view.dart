@@ -81,14 +81,11 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
   }
 
   void getListRoom() async {
-    final native = ChatIOSNative();
-    final roomsNative = await native.getRooms();
+    final roomsNative = await ChatIOSNative.instance.getRooms();
     List<RoomModel> roomModels = [];
     for (final room in roomsNative) {
       final roomString = json.encode(room);
       final roomDic = json.decode(roomString);
-      print("@@@@@");
-      print(roomDic["avatarUrl"]);
       final roomModel = RoomModel(
           id: roomDic["id"],
           displayname: roomDic["displayname"],
@@ -104,8 +101,6 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
     });
 
   }
-
-
 
   @override
   Widget screen(BuildContext context) {

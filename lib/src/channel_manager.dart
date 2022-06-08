@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 final ChatIOSNative native = new ChatIOSNative();
 
 class ChatIOSNative {
+  ChatIOSNative._();
+  static final instance = ChatIOSNative._();
   static const _methodChannel =
   const MethodChannel('tnex_chat');
   static const _tokenChannel =
@@ -47,7 +49,7 @@ class ChatIOSNative {
   }
 
   Future<void> getMembersInRoom(String roomId) async {
-    handleMethod();
+    // handleMethod();
     try {
       await _chatListChannel.invokeMethod('members', roomId);
     } on Exception catch (e) {
@@ -61,8 +63,9 @@ class ChatIOSNative {
         final userId = call.arguments["avatarUrl"].toString();
         final roomId = call.arguments["roomId"].toString();
         roomAvatarDic[userId] = roomId;
-        print("*******");
+        print("*******@@@@11111");
         print(userId);
+        print(roomId);
       } if (call.method == "transfer") {
         // final mobile = call.arguments.toString();
         // _onTransfer(mobile);

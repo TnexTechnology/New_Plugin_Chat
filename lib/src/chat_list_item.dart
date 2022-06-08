@@ -5,7 +5,7 @@ import '../tnexchat.dart';
 export './floating_circle_button.dart';
 import './room_model.dart';
 import './avatar_room.dart';
-
+import './channel_manager.dart';
 import 'package:intl/intl.dart';
 
 class ChatListItem extends StatelessWidget {
@@ -123,9 +123,7 @@ class ChatListItem extends StatelessWidget {
                     )
                   ]),
                     onTap: () {
-                      if (didTapRoom != null) {
-                        didTapRoom!(room.id);
-                      }
+                      ChatIOSNative.instance.gotoChatDetail(room.id);
                     }
                 )
               ),
