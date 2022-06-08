@@ -230,6 +230,7 @@ class ChatHeaderView: UIView {
         self.userId = member.userId
         self.infoView.displayNameLabel.text = member.displayname
         let urlString = member.userId.getAvatarUrl()
+        print("urlString@@@@: \(urlString)")
         self.avatarView.imageView.loadAvatar(url: urlString)
     }
 }
@@ -244,7 +245,7 @@ extension MXUser {
 
 extension String {
     //Chi dung rieng cho Id
-    func getAvatarUrl() -> String{
+    public func getAvatarUrl() -> String{
         let id = self.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ":chat-matrix.tnex.com.vn", with: "")
         return "https://d1cc8adlak9j1y.cloudfront.net/avatar/\(id)"
     }

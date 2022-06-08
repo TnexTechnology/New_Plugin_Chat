@@ -8,14 +8,16 @@ import '../tnexchat.dart';
 export './floating_circle_button.dart';
 import './room_model.dart';
 import './chat_list_item.dart';
+import './channel_manager.dart';
+import 'dart:convert';
 
 enum SelectMode { normal, share }
 
 class ChatList extends StatefulWidget {
-  final List<RoomModel> rooms;
+
   final Function(String roomId)? didTapRoom;
 
-  const ChatList(this.rooms, {this.didTapRoom, Key? key}) : super(key: key);
+  const ChatList({this.didTapRoom, Key? key}) : super(key: key);
 
   @override
   _ChatListState createState() => _ChatListState();
@@ -27,6 +29,7 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
   final FocusNode _searchFocusNode = FocusNode();
   Timer? coolDown;
   bool loadingPublicRooms = false;
+  List<RoomModel> rooms = [];
   final ScrollController _scrollController = ScrollController();
   Future<void> waitForFirstSync(BuildContext context) async {
     // var client = Matrix.of(context).client;
@@ -73,9 +76,37 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
       }
     });
     super.initState();
+    getListRoom();
     if (_firstTime) waitingInitFirstTime();
   }
-  final List<String> _myList = List.generate(100, (index) => 'Product $index');
+
+  void getListRoom() async {
+    final native = ChatIOSNative();
+    final roomsNative = await native.getRooms();
+    List<RoomModel> roomModels = [];
+    for (final room in roomsNative) {
+      final roomString = json.encode(room);
+      final roomDic = json.decode(roomString);
+      print("@@@@@");
+      print(roomDic["avatarUrl"]);
+      final roomModel = RoomModel(
+          id: roomDic["id"],
+          displayname: roomDic["displayname"],
+          unreadCount: 0,
+          lastMessage: roomDic["lastMessage"],
+          timeCreated: roomDic["timeCreated"],
+          avatarUrl: roomDic["avatarUrl"]
+      );
+      roomModels.add(roomModel);
+    }
+    setState(() {
+      rooms = roomModels;
+    });
+
+  }
+
+
+
   @override
   Widget screen(BuildContext context) {
     return Scaffold(
@@ -91,10 +122,10 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
         ),
       body: ListView.separated(
           padding: const EdgeInsets.only(top: 10, bottom: 10),
-          itemCount: widget.rooms.length,
+          itemCount: rooms.length,
           // The list items
           itemBuilder: (context, index) {
-            return ChatListItem(widget.rooms[index], didTapRoom: widget.didTapRoom);
+            return ChatListItem(rooms[index], didTapRoom: widget.didTapRoom);
           },
           // The separators
           separatorBuilder: (context, index) {

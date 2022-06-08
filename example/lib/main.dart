@@ -85,27 +85,28 @@ class _MyAppState extends State<MyApp> {
 
   void getListRoom() async {
     final native = ChatIOSNative();
-    final rooms = await native.getRooms();
-    List<RoomModel> roomModels = [];
-    for (final room in rooms) {
-      final roomString = json.encode(room);
-      final roomDic = json.decode(roomString);
-      print("@@@@@");
-      print(roomDic["avatarUrl"]);
-      final roomModel = RoomModel(
-          id: roomDic["id"],
-          displayname: roomDic["displayname"],
-          unreadCount: 0,
-          lastMessage: roomDic["lastMessage"],
-          timeCreated: roomDic["timeCreated"],
-          avatarUrl: roomDic["avatarUrl"]
-      );
-      roomModels.add(roomModel);
-    }
+    // final rooms = await native.getRooms();
+    // List<RoomModel> roomModels = [];
+    // for (final room in rooms) {
+    //   final roomString = json.encode(room);
+    //   final roomDic = json.decode(roomString);
+    //   print("@@@@@");
+    //   print(roomDic["avatarUrl"]);
+    //   final roomModel = RoomModel(
+    //       id: roomDic["id"],
+    //       displayname: roomDic["displayname"],
+    //       unreadCount: 0,
+    //       lastMessage: roomDic["lastMessage"],
+    //       timeCreated: roomDic["timeCreated"],
+    //       avatarUrl: roomDic["avatarUrl"]
+    //   );
+    //   roomModels.add(roomModel);
+    // }
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ChatList(roomModels, didTapRoom: (roomId) {
-        native.gotoChatDetail(roomId);
+      MaterialPageRoute(builder: (context) => ChatList(didTapRoom: (roomId) {
+        // native.gotoChatDetail(roomId);
+        native.getMembersInRoom(roomId);
       },)),
     );
     

@@ -13,6 +13,7 @@ import MatrixSDK
 enum MethodCode {
     case rooms
     case sender
+    case members
     case lastMessage
     
     var methodId: String {
@@ -23,6 +24,8 @@ enum MethodCode {
             return "sender"
         case .lastMessage:
             return "lastMessage"
+        case .members:
+            return "members"
         }
     }
 }
@@ -46,10 +49,19 @@ final class ListChatFlutterHandler {
     private func handlerMethod(appDelegate: AppDelegate) {
         self.methodChannel.setMethodCallHandler({
           [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
+            print("method: \(call.method)")
             switch call.method {
             case MethodCode.rooms.methodId:
                 print(MethodCode.rooms.methodId)
                 result(appDelegate.getListRoom())
+            case MethodCode.members.methodId:
+                guard let roomId = call.arguments as? String,
+                      let room = MatrixManager.shared.getRoom(roomId: roomId) else { break }
+                room.getState { state in
+                    if let userId = state?.members.members.first(where: {$0.userId != MatrixManager.shared.userId})?.userId {
+                        appDelegate.channel.invokeMethod("listMember", arguments: userId.getAvatarUrl())
+                    }
+                }
             default:
                 print(MethodCode.lastMessage.methodId)
                 break

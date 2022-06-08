@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 
 class RoomAvatar extends StatelessWidget {
+  final String roomId;
   final String? avatarUrl;
   final String? name;
   final double size;
@@ -10,6 +11,7 @@ class RoomAvatar extends StatelessWidget {
   static const double defaultSize = 44;
 
   const RoomAvatar({
+    this.roomId = "",
     this.avatarUrl,
     this.name,
     this.backgroundColor,

@@ -49,7 +49,8 @@ class ChatListItem extends StatelessWidget {
                 color: Colors.transparent,
                 child: ListTile(
                     leading: RoomAvatar(
-                        name: room.displayname,
+                      roomId: room.id,
+                      name: room.displayname,
                       avatarUrl: room.avatarUrl,
                     ),
                     title: Row(

@@ -26,6 +26,7 @@ enum MyFlutterErrorCode {
     private var eventSink: FlutterEventSink?
     private var mainCoordinator: AppCoordinator?
     var flutterVC: FlutterViewController!
+    var channel: FlutterMethodChannel!
     
   override func application(
     _ application: UIApplication,
@@ -85,13 +86,16 @@ enum MyFlutterErrorCode {
     private func createMethodChannel() {
         let channel = FlutterMethodChannel(name: "tnex_chat",
                                               binaryMessenger: flutterVC.binaryMessenger)
+       
         channel.setMethodCallHandler {[weak self] (call: FlutterMethodCall, result: FlutterResult) in
             self?.handleMethodChannel(call: call, result: result)
         }
+        self.channel = channel
         
     }
     
     private func handleMethodChannel(call: FlutterMethodCall, result: FlutterResult) {
+        print(call.method)
         switch call.method {
         case "gotoChatDetail":
             self.mainCoordinator?.start(call: call)
@@ -182,13 +186,18 @@ enum MyFlutterErrorCode {
     func getListRoom() -> [[String: Any]] {
         guard let rooms = MatrixManager.shared.getRooms() else { return []}
         return rooms.map({ room in
-            let avatarUrl: String = room.getAvatarURLString() ?? "22222"
+            room.getState {[weak self] roomState in
+                if let partnerId = roomState?.members?.members.first(where: {$0.userId != MatrixManager.shared.userId})?.userId {
+                    self?.channel.invokeMethod("listMember", arguments: ["roomId": room.roomId, "avatarUrl": partnerId.getAvatarUrl()])
+                }
+            }
+            let avatarUrl: String? = room.getRoom().directUserId
             return ["displayname": room.summary.displayname ?? "Unknown",
                     "avatar": room.roomAvatarURL?.absoluteString ?? "",
                     "lastMessage": room.lastMessage,
                     "id": room.roomId,
                     "timeCreated": room.getLastEvent()!.originServerTs,
-                    "avatarUrl": avatarUrl]
+                    "avatarUrl": avatarUrl?.getAvatarUrl() ?? ""]
         })
     }
 }

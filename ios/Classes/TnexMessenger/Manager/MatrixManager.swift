@@ -26,7 +26,7 @@ final public class MatrixManager: NSObject {
     var handleEvent: MXOnSessionEvent?
     var memberDic: [String: MXRoomMember] = [:]
     
-    var userId: String?
+    public var userId: String?
     
     var rooms: [TnexRoom] {
         guard let session = self.mxSession else { return [] }
@@ -50,7 +50,7 @@ final public class MatrixManager: NSObject {
     private var roomCache = [String: TnexRoom]()
     private func makeRoom(from mxRoom: MXRoom) -> TnexRoom? {
         let room = TnexRoom(mxRoom)
-        if !room.lastMessage.isEmpty {
+        if !room.lastMessage.isEmpty && !room.isDirect {
             roomCache[mxRoom.roomId] = room
             return room
         }
@@ -169,6 +169,10 @@ final public class MatrixManager: NSObject {
             .compactMap { roomCache[$0.roomId] ?? makeRoom(from: $0) }
             .sorted { $0.summary.lastMessageDate > $1.summary.lastMessageDate }
         return rooms
+    }
+    
+    public func getRoom(roomId: String) -> TnexRoom? {
+        return roomCache[roomId]
     }
     
     public func createRoom(with userId: String, completion: @escaping(MXRoom?) -> Void) {

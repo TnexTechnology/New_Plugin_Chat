@@ -47,7 +47,7 @@ public class TnexRoom {
         if let url = roomAvatarURL {
             return url.absoluteString
         }
-        return self.room.summary.displayname
+        return self.room.directUserId
     }
 
     internal var eventCache: [MXEvent] = []
@@ -297,7 +297,7 @@ extension TnexRoom {
         RoomItem(room: room)
     }
     
-    func getRoom() -> MXRoom {
+    public func getRoom() -> MXRoom {
         return room
     }
     
@@ -312,7 +312,7 @@ extension TnexRoom {
         timeline.resetPaginationAroundInitialEvent(withLimit: 40, completion: completion)
     }
     
-    func getState(completion: @escaping(MXRoomState?) -> Void){
+    public func getState(completion: @escaping(MXRoomState?) -> Void){
         self.room.state(completion)
     }
 }
