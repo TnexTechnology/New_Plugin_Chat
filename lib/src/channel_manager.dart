@@ -27,7 +27,7 @@ class ChatIOSNative {
 
 
   Future <List<Object?>> getRooms() async {
-    handleMethod();
+    // handleMethod();
     var rooms;
     try {
       final List<Object?> result = await _chatListChannel.invokeMethod('rooms');
@@ -59,6 +59,8 @@ class ChatIOSNative {
 
   void handleMethod() {
     _methodChannel.setMethodCallHandler((call) async {
+      print("*******@@@@11111");
+      print(call.method);
       if (call.method == "listMember") {
         final userId = call.arguments["avatarUrl"].toString();
         final roomId = call.arguments["roomId"].toString();

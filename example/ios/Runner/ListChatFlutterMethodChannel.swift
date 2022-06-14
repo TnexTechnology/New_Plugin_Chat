@@ -53,15 +53,13 @@ final class ListChatFlutterHandler {
             switch call.method {
             case MethodCode.rooms.methodId:
                 print(MethodCode.rooms.methodId)
-                result(appDelegate.getListRoom())
+//                result(appDelegate.getListRoom())
+                appDelegate.getListRooms()
             case MethodCode.members.methodId:
                 guard let roomId = call.arguments as? String,
                       let room = MatrixManager.shared.getRoom(roomId: roomId) else { break }
-                print("vao 1")
                 room.getState { state in
-                    print("vao 2")
                     if let userId = state?.members.members.first(where: {$0.userId != MatrixManager.shared.userId})?.userId {
-                        print("vao 3")
                         appDelegate.channel.invokeMethod("listMember", arguments: ["roomId": room.roomId, "avatarUrl": userId.getAvatarUrl()])
                     }
                 }

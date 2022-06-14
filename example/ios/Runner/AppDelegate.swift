@@ -200,4 +200,32 @@ enum MyFlutterErrorCode {
                     "avatarUrl": avatarUrl?.getAvatarUrl() ?? ""]
         })
     }
+    
+    func getListRooms() {
+        guard let rooms = MatrixManager.shared.getRooms() else { return }
+        let dispatchGroup = DispatchGroup()
+        let tnexRooms = rooms.map({ room -> NSDictionary in
+            let item: NSMutableDictionary = ["displayname": room.summary.displayname ?? "Unknown",
+                                       "avatar": room.roomAvatarURL?.absoluteString ?? "",
+                                       "lastMessage": room.lastMessage,
+                                       "id": room.roomId,
+                                             "unreadCount": room.summary.notificationCount,
+                                      "timeCreated": room.getLastEvent()!.originServerTs]
+            if let avatarUrl: String = room.getRoom().directUserId, !avatarUrl.isEmpty {
+                item.setValue(avatarUrl, forKey: "avatarUrl")
+            } else {
+                dispatchGroup.enter()
+                room.getState { roomState in
+                    if let partnerId = roomState?.members?.members.first(where: {$0.userId != MatrixManager.shared.userId})?.userId {
+                        item["avatarUrl"] = partnerId.getAvatarUrl()
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+            return item
+        })
+        dispatchGroup.notify(queue: .main, execute: { [weak self] in
+            self?.channel.invokeMethod("rooms", arguments: tnexRooms)
+            })
+    }
 }

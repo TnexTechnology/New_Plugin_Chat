@@ -50,7 +50,7 @@ final public class MatrixManager: NSObject {
     private var roomCache = [String: TnexRoom]()
     private func makeRoom(from mxRoom: MXRoom) -> TnexRoom? {
         let room = TnexRoom(mxRoom)
-        if !room.lastMessage.isEmpty && !room.isDirect {
+        if !room.lastMessage.isEmpty {
             roomCache[mxRoom.roomId] = room
             return room
         }

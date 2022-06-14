@@ -95,7 +95,7 @@ class ChatListItem extends StatelessWidget {
                                     color: room.unreadCount > 0
                                         ? Colors.white
                                         : Colors.white60,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: room.unreadCount > 0 ? FontWeight.w500: FontWeight.w300,
                                     fontSize: 16
                                   ),
                                 ),
