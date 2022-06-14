@@ -39,8 +39,6 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
     // }
     // return true;
   }
-  static const _methodChannel =
-  const MethodChannel('tnex_chat');
   bool _scrolledToTop = true;
   static bool _firstTime = true;
   loader() {
@@ -83,34 +81,10 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
   }
 
   void getListRoom() async {
-    handleMethod();
-    final roomsNative = await ChatIOSNative.instance.getRooms();
-
-  }
-
-  void handleMethod() {
-    _methodChannel.setMethodCallHandler((call) async {
-      if (call.method == "rooms") {
-        List<RoomModel> roomModels = [];
-        final roomsNative = call.arguments;
-        for (final room in roomsNative) {
-          final roomString = json.encode(room);
-          final roomDic = json.decode(roomString);
-          print(roomDic["avatarUrl"]);
-          final roomModel = RoomModel(
-              id: roomDic["id"],
-              displayname: roomDic["displayname"],
-              unreadCount: roomDic["unreadCount"],
-              lastMessage: roomDic["lastMessage"],
-              timeCreated: roomDic["timeCreated"],
-              avatarUrl: roomDic["avatarUrl"],
-          );
-          roomModels.add(roomModel);
-        }
+    ChatIOSNative.instance.getRooms((listRooms) async {
         setState(() {
-          rooms = roomModels;
+          rooms = listRooms;
         });
-      }
     });
   }
 

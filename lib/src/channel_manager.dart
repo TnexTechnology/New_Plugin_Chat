@@ -1,79 +1,62 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-final ChatIOSNative native = new ChatIOSNative();
+import './room_model.dart';
+import 'dart:convert';
 
 class ChatIOSNative {
   ChatIOSNative._();
-  static final instance = ChatIOSNative._();
-  static const _methodChannel =
-  const MethodChannel('tnex_chat');
-  static const _tokenChannel =
-  const MethodChannel('tnex_token');
-  static const EventChannel _eventChannel =
-  EventChannel('tnex_chat/refreshToken');
-  static const _chatListChannel =
-  const MethodChannel('tnex_chat_list');
+  static final _instance = ChatIOSNative();
+  static ChatIOSNative get instance => _instance;
+  static const _chatChannel = MethodChannel('tnex_chat');
 
   Map<String, String> roomAvatarDic = <String, String>{};
+  Function(List<RoomModel>)? _rooms = null;
 
   static final ChatIOSNative _singleton = ChatIOSNative._internal();
-  ChatIOSNative._internal();
-
+  ChatIOSNative._internal() {
+    handleMethod();
+  }
   factory ChatIOSNative() {
     return _singleton;
   }
 
-
-  Future <List<Object?>> getRooms() async {
-    // handleMethod();
-    var rooms;
-    try {
-      final List<Object?> result = await _chatListChannel.invokeMethod('rooms');
-      rooms = result;
-    } on Exception catch (e) {
-      print("Failed: ....");
-    }
-    return rooms;
+  void getRooms(Function(List<RoomModel>) listrooms) async {
+    _rooms = listrooms;
+    await _chatChannel.invokeMethod('rooms');
   }
 
   Future<void> gotoChatDetail(String roomId) async {
-    handleMethod();
-    try {
-      final int result = await _methodChannel.invokeMethod('gotoChatDetail', roomId);
-      print('Resul: $result');
-    } on Exception catch (e) {
-      print("gotoChatDetail: Failed: ....");
-    }
+    await _chatChannel.invokeMethod('gotoChatDetail', roomId);
   }
 
   Future<void> getMembersInRoom(String roomId) async {
-    // handleMethod();
-    try {
-      await _chatListChannel.invokeMethod('members', roomId);
-    } on Exception catch (e) {
-      print("getMembersInRoom: Failed: ....");
-    }
+    await _chatChannel.invokeMethod('members', roomId);
   }
 
   void handleMethod() {
-    _methodChannel.setMethodCallHandler((call) async {
-      print("*******@@@@11111");
-      print(call.method);
-      if (call.method == "listMember") {
-        final userId = call.arguments["avatarUrl"].toString();
-        final roomId = call.arguments["roomId"].toString();
-        roomAvatarDic[userId] = roomId;
-        print("*******@@@@11111");
-        print(userId);
-        print(roomId);
-      } if (call.method == "transfer") {
-        // final mobile = call.arguments.toString();
-        // _onTransfer(mobile);
-      } else {
-        throw Exception('not implemented ${call.method}');
+    _chatChannel.setMethodCallHandler((call) async {
+      if (call.method == "rooms") {
+        List<RoomModel> roomModels = [];
+        final roomsNative = call.arguments;
+        for (final room in roomsNative) {
+          final roomString = json.encode(room);
+          final roomDic = json.decode(roomString);
+          final roomModel = RoomModel(
+            id: roomDic["id"],
+            displayname: roomDic["displayname"],
+            unreadCount: roomDic["unreadCount"],
+            lastMessage: roomDic["lastMessage"],
+            timeCreated: roomDic["timeCreated"],
+            avatarUrl: roomDic["avatarUrl"],
+          );
+          roomModels.add(roomModel);
+        }
+        if (_rooms != null) {
+          _rooms!(roomModels);
+        }
       }
     });
   }
+
 }

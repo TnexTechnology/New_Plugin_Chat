@@ -6,7 +6,6 @@ import tnexchat
 enum ChannelName {
     static let battery = "samples.flutter.io/battery"
     static let charging = "samples.flutter.io/charging"
-    static let chatList = "tnex_chat_list"
 }
 
 enum BatteryState {
@@ -48,7 +47,7 @@ enum MyFlutterErrorCode {
             self?.receiveBatteryLevel(result: result)
           })
       configNaviFlutter(flutterViewController: controller)
-      _ = ListChatFlutterHandler(appDelegate: self, flutterController: controller)
+      _ = ListChatFlutterHandler(appDelegate: self)
 
           let chargingChannel = FlutterEventChannel(name: ChannelName.charging,
                                                     binaryMessenger: controller.binaryMessenger)
@@ -115,6 +114,18 @@ enum MyFlutterErrorCode {
             }
         case "createRoom":
             self.mainCoordinator?.createRoom(call: call)
+        case MethodCode.rooms.methodId:
+            print(MethodCode.rooms.methodId)
+//                result(appDelegate.getListRoom())
+            self.getListRooms()
+        case MethodCode.members.methodId:
+            guard let roomId = call.arguments as? String,
+                  let room = MatrixManager.shared.getRoom(roomId: roomId) else { break }
+            room.getState { state in
+                if let userId = state?.members.members.first(where: {$0.userId != MatrixManager.shared.userId})?.userId {
+                    self.channel.invokeMethod("listMember", arguments: ["roomId": room.roomId, "avatarUrl": userId.getAvatarUrl()])
+                }
+            }
         default:
             result(FlutterMethodNotImplemented)
         }
