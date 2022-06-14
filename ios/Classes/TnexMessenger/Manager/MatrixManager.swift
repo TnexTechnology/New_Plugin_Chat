@@ -8,6 +8,10 @@
 import Foundation
 import MatrixSDK
 import KeychainAccess
+import RxSwift
+import RxRelay
+
+public typealias SectionEvent = (event: MXEvent, direction: MXTimelineDirection, customObject: Any?)
 
 public enum LoginState {
     case loggedOut
@@ -22,10 +26,10 @@ final public class MatrixManager: NSObject {
     var mxRestClient: MXRestClient!
     public var mxSession: MXSession?
     var fileStore: MXFileStore?
-    
-    var handleEvent: MXOnSessionEvent?
     var memberDic: [String: MXRoomMember] = [:]
-    
+    var dicRoomAvatar: [String: String] = [:]
+    public let rxEvent = BehaviorRelay<SectionEvent?>(value: nil)
+        
     public var userId: String?
     
     var rooms: [TnexRoom] {
@@ -160,15 +164,51 @@ final public class MatrixManager: NSObject {
             for room in affectedRooms {
                 room.add(event: event, direction: direction, roomState: roomState as? MXRoomState)
             }
-            self.handleEvent?(event, direction, roomState)
+            self.rxEvent.accept((event, direction, roomState))
         }
     }
     
-    public func getRooms() -> [TnexRoom]? {
+    func getRooms() -> [TnexRoom]? {
         let rooms = self.mxSession?.rooms
             .compactMap { roomCache[$0.roomId] ?? makeRoom(from: $0) }
             .sorted { $0.summary.lastMessageDate > $1.summary.lastMessageDate }
         return rooms
+    }
+    
+    public func getDicRooms(completion: @escaping([NSDictionary]) -> Void) {
+        guard let rooms = getRooms() else { return }
+        let dispatchGroup = DispatchGroup()
+        let tnexRooms = rooms.map({ room -> NSDictionary in
+            let roomId = room.roomId
+            let item: NSMutableDictionary = ["displayname": room.summary.displayname ?? "Unknown",
+                                             "avatar": room.roomAvatarURL?.absoluteString ?? "",
+                                             "lastMessage": room.lastMessage,
+                                             "id": roomId,
+                                             "unreadCount": room.summary.notificationCount,
+                                             "timeCreated": room.getLastEvent()!.originServerTs
+            ]
+            
+            if let avatarUrl: String = room.getRoom().directUserId, !avatarUrl.isEmpty {
+                //Avatar direct chat la avatar partner
+                item["avatarUrl"] = avatarUrl
+            } else if let groupAvatarUrl = self.dicRoomAvatar[roomId]{
+                item["avatarUrl"] = groupAvatarUrl
+            } else {
+                dispatchGroup.enter()
+                room.getState { roomState in
+                    if let partnerId = roomState?.members?.members.first(where: {$0.userId != MatrixManager.shared.userId})?.userId {
+                        let groupAvatarUrl = partnerId.getAvatarUrl()
+                        self.dicRoomAvatar[roomId] = groupAvatarUrl
+                        item["avatarUrl"] = groupAvatarUrl
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+            return item
+        })
+        dispatchGroup.notify(queue: .main, execute: {
+            completion(tnexRooms)
+        })
     }
     
     public func getRoom(roomId: String) -> TnexRoom? {
@@ -189,10 +229,6 @@ final public class MatrixManager: NSObject {
         self.mxSession?.createRoom(parameters: parameters) { response in
             switch response {
             case .success(let room):
-                print("######")
-                print(parameters.isDirect)
-                print(room.isDirect)
-                print(room.summary.displayname)
                 completion(room)
             case.failure(let error):
                 print("Error on creating room: \(error)")
@@ -206,7 +242,6 @@ final public class MatrixManager: NSObject {
     }
     
 }
-
 
 @objcMembers
 final class RiotSettings: NSObject {

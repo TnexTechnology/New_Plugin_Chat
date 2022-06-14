@@ -8,7 +8,8 @@ class ChatIOSNative {
   ChatIOSNative._();
   static final _instance = ChatIOSNative();
   static ChatIOSNative get instance => _instance;
-  static const _chatChannel = MethodChannel('tnex_chat');
+  static const MethodChannel _chatChannel = MethodChannel('tnex_chat');
+  static const EventChannel _eventChannel = EventChannel('event_room');
 
   Map<String, String> roomAvatarDic = <String, String>{};
   Function(List<RoomModel>)? _rooms = null;
@@ -16,9 +17,25 @@ class ChatIOSNative {
   static final ChatIOSNative _singleton = ChatIOSNative._internal();
   ChatIOSNative._internal() {
     handleMethod();
+    _eventChannel.receiveBroadcastStream().listen(_onEvent, onError: _onError);
   }
   factory ChatIOSNative() {
     return _singleton;
+  }
+
+  void _onEvent(Object? event) {
+    print("a new event");
+    final eventString = json.encode(event);
+    final eventDic = json.decode(eventString);
+    print(eventDic["event"]);
+    if (eventDic["event"] != null) {
+      _chatChannel.invokeMethod('rooms');
+    }
+    print("!!!!!@@@@@");
+  }
+
+  void _onError(Object error) {
+    print("error!!!");
   }
 
   void getRooms(Function(List<RoomModel>) listrooms) async {

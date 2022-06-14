@@ -2,11 +2,7 @@ import UIKit
 import Flutter
 import MatrixSDK
 import tnexchat
-
-enum ChannelName {
-    static let battery = "samples.flutter.io/battery"
-    static let charging = "samples.flutter.io/charging"
-}
+import RxSwift
 
 enum BatteryState {
   static let charging = "charging"
@@ -26,6 +22,7 @@ enum MyFlutterErrorCode {
     private var mainCoordinator: AppCoordinator?
     var flutterVC: FlutterViewController!
     var channel: FlutterMethodChannel!
+    var disposeBag: DisposeBag? = DisposeBag()
     
   override func application(
     _ application: UIApplication,
@@ -36,20 +33,10 @@ enum MyFlutterErrorCode {
       guard let controller = window?.rootViewController as? FlutterViewController else {
             fatalError("rootViewController is not type FlutterViewController")
           }
-          let batteryChannel = FlutterMethodChannel(name: ChannelName.battery,
-                                                    binaryMessenger: controller.binaryMessenger)
-          batteryChannel.setMethodCallHandler({
-            [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
-            guard call.method == "getBatteryLevel" else {
-              result(FlutterMethodNotImplemented)
-              return
-            }
-            self?.receiveBatteryLevel(result: result)
-          })
       configNaviFlutter(flutterViewController: controller)
       _ = ListChatFlutterHandler(appDelegate: self)
 
-          let chargingChannel = FlutterEventChannel(name: ChannelName.charging,
+          let chargingChannel = FlutterEventChannel(name: "event_room",
                                                     binaryMessenger: controller.binaryMessenger)
           chargingChannel.setStreamHandler(self)
 //      registerFlutterView()
@@ -77,9 +64,9 @@ enum MyFlutterErrorCode {
         mainCoordinator = AppCoordinator(navigationController: navigationController)
         window?.makeKeyAndVisible()
 
-        let chargingChannel = FlutterEventChannel(name: "tnex_chat/refreshToken",
-                                                  binaryMessenger: flutterViewController.binaryMessenger)
-        chargingChannel.setStreamHandler(self)
+//        let chargingChannel = FlutterEventChannel(name: "tnex_chat/refreshToken",
+//                                                  binaryMessenger: flutterViewController.binaryMessenger)
+//        chargingChannel.setStreamHandler(ChatStreamHandler())
     }
     
     private func createMethodChannel() {
@@ -130,33 +117,20 @@ enum MyFlutterErrorCode {
             result(FlutterMethodNotImplemented)
         }
     }
-    
-    private func receiveBatteryLevel(result: FlutterResult) {
-//        let device = UIDevice.current
-//        device.isBatteryMonitoringEnabled = true
-//        guard device.batteryState != .unknown  else {
-//          result(FlutterError(code: MyFlutterErrorCode.unavailable,
-//                              message: "Battery info unavailable",
-//                              details: nil))
-//          return
-//        }
-//        result(Int(device.batteryLevel * 100))
-        print("############")
-      }
 
       public func onListen(withArguments arguments: Any?,
                            eventSink: @escaping FlutterEventSink) -> FlutterError? {
           print("onListen")
         self.eventSink = eventSink
-//        UIDevice.current.isBatteryMonitoringEnabled = true
-//        sendBatteryStateEvent()
-//        NotificationCenter.default.addObserver(
-//          self,
-//          selector: #selector(AppDelegate.onBatteryStateDidChange),
-//          name: UIDevice.batteryStateDidChangeNotification,
-//          object: nil)
+          MatrixManager.shared.rxEvent.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (_sessionEvent) in
+              if let self = self, let sessionEvent = _sessionEvent {
+                  self.eventSink?(["event": sessionEvent.event.eventId])
+              }
+          }).disposed(by: disposeBag!)
+//          MatrixManager.shared.handleEvent = {[weak self] event, direction, roomState in
+//              self?.eventSink?(["event": event.eventId])
 //
-//          Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+//          }
         return nil
       }
     
@@ -173,18 +147,6 @@ enum MyFlutterErrorCode {
           return
         }
           eventSink(BatteryState.charging)
-//        switch UIDevice.current.batteryState {
-//        case .full:
-//          eventSink(BatteryState.charging)
-//        case .charging:
-//          eventSink(BatteryState.charging)
-//        case .unplugged:
-//          eventSink(BatteryState.discharging)
-//        default:
-//          eventSink(FlutterError(code: MyFlutterErrorCode.unavailable,
-//                                 message: "Charging status unavailable",
-//                                 details: nil))
-//        }
       }
 
       public func onCancel(withArguments arguments: Any?) -> FlutterError? {
@@ -194,49 +156,10 @@ enum MyFlutterErrorCode {
         return nil
       }
     
-    func getListRoom() -> [[String: Any]] {
-        guard let rooms = MatrixManager.shared.getRooms() else { return []}
-        return rooms.map({ room in
-            room.getState {[weak self] roomState in
-                if let partnerId = roomState?.members?.members.first(where: {$0.userId != MatrixManager.shared.userId})?.userId {
-                    self?.channel.invokeMethod("listMember", arguments: ["roomId": room.roomId, "avatarUrl": partnerId.getAvatarUrl()])
-                }
-            }
-            let avatarUrl: String? = room.getRoom().directUserId
-            return ["displayname": room.summary.displayname ?? "Unknown",
-                    "avatar": room.roomAvatarURL?.absoluteString ?? "",
-                    "lastMessage": room.lastMessage,
-                    "id": room.roomId,
-                    "timeCreated": room.getLastEvent()!.originServerTs,
-                    "avatarUrl": avatarUrl?.getAvatarUrl() ?? ""]
-        })
-    }
     
     func getListRooms() {
-        guard let rooms = MatrixManager.shared.getRooms() else { return }
-        let dispatchGroup = DispatchGroup()
-        let tnexRooms = rooms.map({ room -> NSDictionary in
-            let item: NSMutableDictionary = ["displayname": room.summary.displayname ?? "Unknown",
-                                       "avatar": room.roomAvatarURL?.absoluteString ?? "",
-                                       "lastMessage": room.lastMessage,
-                                       "id": room.roomId,
-                                             "unreadCount": room.summary.notificationCount,
-                                      "timeCreated": room.getLastEvent()!.originServerTs]
-            if let avatarUrl: String = room.getRoom().directUserId, !avatarUrl.isEmpty {
-                item.setValue(avatarUrl, forKey: "avatarUrl")
-            } else {
-                dispatchGroup.enter()
-                room.getState { roomState in
-                    if let partnerId = roomState?.members?.members.first(where: {$0.userId != MatrixManager.shared.userId})?.userId {
-                        item["avatarUrl"] = partnerId.getAvatarUrl()
-                    }
-                    dispatchGroup.leave()
-                }
-            }
-            return item
-        })
-        dispatchGroup.notify(queue: .main, execute: { [weak self] in
-            self?.channel.invokeMethod("rooms", arguments: tnexRooms)
-            })
+        MatrixManager.shared.getDicRooms {[weak self] rooms in
+            self?.channel.invokeMethod("rooms", arguments: rooms)
+        }
     }
 }

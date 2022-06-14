@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MatrixSDK
+import RxSwift
 
 open class TnexChatDataSource: ChatDataSourceProtocol {
 
@@ -24,6 +25,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     var isShowTyping: Bool = false
     var partnerId: String?
     var partnerDisplayName: String?
+    var disposeBag: DisposeBag? = DisposeBag()
     
     lazy var typingTracker: TypingTracker = {
         let tracker = TypingTracker()
@@ -59,8 +61,9 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
     
     func handleEvent() {
-        MatrixManager.shared.handleEvent = {[weak self] event, direction, roomState in
-            guard let self = self else { return }
+        MatrixManager.shared.rxEvent.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (_sessionEvent) in
+            guard let self = self, let sessionEvent = _sessionEvent else { return }
+            let event = sessionEvent.event
             if self.room?.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(event: event) {
                 let message = self.builderMessage(from: event)
                 if event.sender != MatrixManager.shared.userId {
@@ -76,7 +79,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                     self.room?.sendReadReceipt(eventId: event.eventId)
                 }
             }
-        }
+        }).disposed(by: disposeBag!)
     }
     
     func checkExistEvent(event: MXEvent) -> Bool {

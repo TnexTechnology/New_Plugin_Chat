@@ -18,6 +18,7 @@
 		961DC060284F5D0100A897F1 /* FlutterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961DC059284F5D0100A897F1 /* FlutterCoordinator.swift */; };
 		961DC061284F5D0100A897F1 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961DC05A284F5D0100A897F1 /* ChatCoordinator.swift */; };
 		961DC062284F5D0100A897F1 /* TnexChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961DC05B284F5D0100A897F1 /* TnexChatViewController.swift */; };
+		967DB6FA285879110036644B /* ChatStreamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967DB6F9285879110036644B /* ChatStreamHandler.swift */; };
 		96B25AA8284710D2008747D4 /* FLNativeViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B25AA7284710D1008747D4 /* FLNativeViewFactory.swift */; };
 		96B25AAA28477C94008747D4 /* ConversationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B25AA928477C94008747D4 /* ConversationListView.swift */; };
 		96B25AC7284895B0008747D4 /* ListChatFlutterMethodChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B25AC6284895AF008747D4 /* ListChatFlutterMethodChannel.swift */; };
@@ -56,6 +57,7 @@
 		961DC059284F5D0100A897F1 /* FlutterCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlutterCoordinator.swift; sourceTree = "<group>"; };
 		961DC05A284F5D0100A897F1 /* ChatCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		961DC05B284F5D0100A897F1 /* TnexChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TnexChatViewController.swift; sourceTree = "<group>"; };
+		967DB6F9285879110036644B /* ChatStreamHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStreamHandler.swift; sourceTree = "<group>"; };
 		96B25AA7284710D1008747D4 /* FLNativeViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLNativeViewFactory.swift; sourceTree = "<group>"; };
 		96B25AA928477C94008747D4 /* ConversationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListView.swift; sourceTree = "<group>"; };
 		96B25AC6284895AF008747D4 /* ListChatFlutterMethodChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChatFlutterMethodChannel.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				961DC058284F5D0100A897F1 /* Flutter */,
 				961DC05A284F5D0100A897F1 /* ChatCoordinator.swift */,
 				961DC05B284F5D0100A897F1 /* TnexChatViewController.swift */,
+				967DB6F9285879110036644B /* ChatStreamHandler.swift */,
 			);
 			path = ChatComponent;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				96B25AAA28477C94008747D4 /* ConversationListView.swift in Sources */,
 				961DC05D284F5D0100A897F1 /* AppCoordinator.swift in Sources */,
+				967DB6FA285879110036644B /* ChatStreamHandler.swift in Sources */,
 				961DC05F284F5D0100A897F1 /* SlideAnimatedTransitioning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
