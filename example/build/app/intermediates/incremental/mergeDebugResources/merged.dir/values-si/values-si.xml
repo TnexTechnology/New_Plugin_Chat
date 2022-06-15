@@ -55,7 +55,6 @@
     <string name="common_signin_button_text_long">Google සමගින් පුරන්න</string>
     <string msgid="6083905920877235314" name="copy">"පිටපත් කරන්න"</string>
     <string msgid="3260749812566568062" name="copy_toast_msg">"සබැඳිය පසුරු පුවරුවට පිටපත් කෙරිණි"</string>
-    <string name="dark_theme">අඳුරු තේමාව</string>
     <string msgid="8431313818404527096" name="description_delete_button">"backspace බොත්තම"</string>
     <string msgid="6226488105558971135" name="description_dialpad_back">"ආපසු සංචාලනය කරන්න"</string>
     <string msgid="5984341386518189787" name="description_dialpad_overflow">"තවත් විකල්ප"</string>
@@ -115,23 +114,11 @@
     <string name="mtrl_picker_toggle_to_text_input_mode">පෙළ ආදාන ප්‍රකාරයට මාරු වන්න</string>
     <string name="mtrl_picker_toggle_to_year_selection">වසරක් තේරීමට මාරු වීමට තට්ටු කරන්න</string>
     <string msgid="6573031135582639649" name="not_set">"සකසා නැත"</string>
-    <string name="notice_room_invite_no_invitee_by_you">ඔබගේ ආරාධනය</string>
     <string name="password_toggle_content_description">මුරපදය පෙන්වන්න</string>
     <string msgid="6685851473431805375" name="preference_copied">"\"<ns1:g id="SUMMARY">%1$s</ns1:g>\" පසුරු පුවරුවට පිටපත් කරන ලදී."</string>
-    <string name="resources_country_code">LK</string>
-    <string name="resources_language">si</string>
-    <string name="resources_script">Latn</string>
     <string msgid="6264217191555673260" name="search_menu_title">"සෙවීම"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string msgid="9167775378838880170" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
-    <string name="summary_message">%1$s: %2$s</string>
-    <string name="title_activity_home">පණිවිඩ</string>
-    <string name="title_activity_room">කාමරය</string>
-    <string name="title_activity_settings">සැකසුම්</string>
     <string msgid="3140233346420563315" name="v7_preference_off">"ක්‍රියාවිරහිතයි"</string>
     <string msgid="89551595707643515" name="v7_preference_on">"ක්‍රියාත්මකයි"</string>
-    <string name="verification_emoji_cat">පූසා</string>
-    <string name="verification_emoji_dog">බල්ලා</string>
-    <string name="verification_emoji_horse">අශ්වයා</string>
-    <string name="verification_emoji_lion">සිංහයා</string>
 </resources>

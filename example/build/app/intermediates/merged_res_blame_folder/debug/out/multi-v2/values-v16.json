@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/tnex/BienNT/New_Plugin_Chat/example/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Volumes/Data/TNEX/Plugin/New_Plugin_Chat/example/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/tnex/.gradle/caches/transforms-3/feaabc58d928cdefd8c97f6b50b4c8d1/transformed/core-1.7.0/res/values-v16/values-v16.xml",
+                    "source": "/Users/dinvudinh/.gradle/caches/transforms-3/feaabc58d928cdefd8c97f6b50b4c8d1/transformed/core-1.7.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,26 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/tnex/.gradle/caches/transforms-3/1a0011950398e7ee2f3686474973e161/transformed/jetified-TnexMatrix9/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "5",
-                        "endColumns": "12",
-                        "endOffsets": "238"
-                    },
-                    "to": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "121",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "304"
-                    }
-                },
-                {
-                    "source": "/Users/tnex/.gradle/caches/transforms-3/eb1148373fb70d350ebac8db527b8c3b/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
+                    "source": "/Users/dinvudinh/.gradle/caches/transforms-3/eb1148373fb70d350ebac8db527b8c3b/transformed/appcompat-1.4.1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -43,12 +24,12 @@
                         "endOffsets": "223"
                     },
                     "to": {
-                        "startLines": "7",
+                        "startLines": "3",
                         "startColumns": "4",
-                        "startOffsets": "309",
-                        "endLines": "10",
+                        "startOffsets": "121",
+                        "endLines": "6",
                         "endColumns": "12",
-                        "endOffsets": "477"
+                        "endOffsets": "289"
                     }
                 }
             ]

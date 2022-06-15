@@ -31,7 +31,6 @@ class ChatIOSNative {
     if (eventDic["event"] != null) {
       _chatChannel.invokeMethod('rooms');
     }
-    print("!!!!!@@@@@");
   }
 
   void _onError(Object error) {

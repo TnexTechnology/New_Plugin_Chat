@@ -60,14 +60,14 @@ extension AppCoordinator: NewsToAppCoordinatorDelegate{
 }
 
 extension AppCoordinator: FlutterToAppCoordinatorDelegate{
-    func navigateToNewsViewController(call: FlutterMethodCall){
+    func navigateToNewsViewController(call: FlutterMethodCall) {
         let coordinator = ChatCoordinator(navigationController: self.navigationController)
         coordinator.delegate = self
         self.add(coordinator)
         coordinator.start(call: call)
     }
     
-    func navigateToCreateRoom(call: FlutterMethodCall){
+    func navigateToCreateRoom(call: FlutterMethodCall) {
         let coordinator = ChatCoordinator(navigationController: self.navigationController)
         coordinator.delegate = self
         self.add(coordinator)

@@ -185,7 +185,7 @@ final public class MatrixManager: NSObject {
                                              "lastMessage": room.lastMessage,
                                              "id": roomId,
                                              "unreadCount": room.summary.notificationCount,
-                                             "timeCreated": room.getLastEvent()!.originServerTs
+                                             "timeCreated": room.getLastEvent()?.originServerTs ?? UInt64(Date().timeIntervalSince1970)
             ]
             
             if let avatarUrl: String = room.getRoom().directUserId, !avatarUrl.isEmpty {

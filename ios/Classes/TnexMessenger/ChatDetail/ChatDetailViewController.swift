@@ -19,7 +19,7 @@ open class ChatDetailViewController: BaseChatViewController {
     var messageChangeTracker: MessageChangeTracker?
     var inputBar: TnexInputBar?
     private var anchorScrollButtonView: UIView?
-    private let roomId: String
+    private let room: TnexRoom
     public var dataSource: TnexChatDataSource! {
         didSet {
             self.chatDataSource = self.dataSource
@@ -47,8 +47,8 @@ open class ChatDetailViewController: BaseChatViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    public init(roomId: String) {
-        self.roomId = roomId
+    public init(room: TnexRoom) {
+        self.room = room
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,7 +57,7 @@ open class ChatDetailViewController: BaseChatViewController {
     }
     
     open override func viewDidLoad() {
-        self.dataSource = TnexChatDataSource(roomId: roomId)
+        self.dataSource = TnexChatDataSource(room: room)
         self.messagesSelector.labelDelegate = self
         super.viewDidLoad()
         DispatchQueue.main.async {[weak self] in
@@ -77,14 +77,14 @@ open class ChatDetailViewController: BaseChatViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.dataSource.markReadAll()
-        self.inputBar?.inputTextView.text = self.dataSource.room?.getPartialTextMessage()
+        self.inputBar?.inputTextView.text = self.dataSource.room.getPartialTextMessage()
     
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let text = self.inputBar?.inputTextView.text {
-            self.dataSource.room?.setPartialTextMessage(text: text)
+            self.dataSource.room.setPartialTextMessage(text: text)
         }
     }
     
@@ -133,13 +133,13 @@ open class ChatDetailViewController: BaseChatViewController {
         self.headerBar.autoSetDimension(.height, toSize: ChatHeaderView.headerBarHeight + topPadding)
         self.headerBar.infoView.displayNameLabel.text = self.dataSource.getDisplayName()
         self.changeCollectionViewTopMarginTo(-(ChatHeaderView.headerBarHeight - topPadding), duration: 0.5)
-        dataSource.room?.liveTimeline({[weak self] timeline in
+        dataSource.room.liveTimeline({[weak self] timeline in
             if let self = self, let timeline = timeline {
                 if let partnerUser = timeline.state?.members.members.first(where: {$0.userId != MatrixManager.shared.userId}) {
                     self.dataSource.partnerId = partnerUser.userId
                     self.dataSource.partnerDisplayName = partnerUser.displayname
                     self.headerBar.updateUser(member: partnerUser)
-                    if let mxUser = self.dataSource.room?.getUserInfo(from: partnerUser.userId) {
+                    if let mxUser = self.dataSource.room.getUserInfo(from: partnerUser.userId) {
                         self.headerBar.updateStatusUser(user: mxUser)
                     }
                 }
@@ -262,7 +262,7 @@ extension ChatDetailViewController {
     
     func showPopupConfirmLeaving() {
         ConfirmLeavingViewController.showPopupConfirmLeaving(from: self) {[weak self] in
-            self?.dataSource.room?.leave(completion: { response in
+            self?.dataSource.room.leave(completion: { response in
                 switch response {
                 case .success:
                     print("Xoa cuoc hoi thoai thanh cong")
@@ -275,7 +275,7 @@ extension ChatDetailViewController {
     }
     
     func muteConversation() {
-        self.dataSource.room?.muteConversation()
+        self.dataSource.room.muteConversation()
     }
    
 }

@@ -9,8 +9,7 @@ export './floating_circle_button.dart';
 import './room_model.dart';
 import './chat_list_item.dart';
 import './channel_manager.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
+import './chat_stream_controller.dart';
 
 enum SelectMode { normal, share }
 
@@ -32,6 +31,8 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
   bool loadingPublicRooms = false;
   List<RoomModel> rooms = [];
   final ScrollController _scrollController = ScrollController();
+  ChatStreamController myStream = new ChatStreamController();
+
   Future<void> waitForFirstSync(BuildContext context) async {
     // var client = Matrix.of(context).client;
     // if (client.prevBatch?.isEmpty ?? true) {
@@ -82,9 +83,12 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
 
   void getListRoom() async {
     ChatIOSNative.instance.getRooms((listRooms) async {
-        setState(() {
-          rooms = listRooms;
-        });
+        // setState(() {
+        //   rooms = listRooms;
+        // });
+      print("fsdfdsf");
+      rooms = listRooms;
+      myStream.increment(listRooms);
     });
   }
 
@@ -101,19 +105,26 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
             print("fsdfsdfd");
           },
         ),
-      body: ListView.separated(
-          padding: const EdgeInsets.only(top: 10, bottom: 10),
-          itemCount: rooms.length,
-          // The list items
-          itemBuilder: (context, index) {
-            return ChatListItem(rooms[index], didTapRoom: widget.didTapRoom);
-          },
-          // The separators
-          separatorBuilder: (context, index) {
-            return const SizedBox(
-              height: 8,
-            );
-          }),
+      body: StreamBuilder(
+        stream: myStream.counterStream,
+        builder: (context, snapshot) {
+          print("fdsfdsfsdf11111");
+          print(snapshot.hasData);
+          return ListView.separated(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              itemCount: rooms.length,
+              // The list items
+              itemBuilder: (context, index) {
+                return ChatListItem(rooms[index], didTapRoom: widget.didTapRoom);
+              },
+              // The separators
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 8,
+                );
+              });
+        },
+      ),
     );
 
   }

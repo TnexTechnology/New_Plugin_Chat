@@ -19,7 +19,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
 
     var onDidUpdate: (() -> Void)?
     var slidingWindow: SlidingDataSource<ChatItemProtocol>?
-    var room: TnexRoom?
+    let room: TnexRoom
     private var memberDic: [String: MXRoomMember] = [:]
     var lastMessageIdPartnerRead: String?
     var isShowTyping: Bool = false
@@ -38,21 +38,19 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         return tracker
     }()
 
-    public init(roomId: String) {
-        if let room = MatrixManager.shared.getRooms()?.first(where: {$0.roomId == roomId}) {
-            self.room = room
-            self.events = room.events().wrapped.filter({$0.isShowMessage})
-            self.loadData()
-            self.delegate?.chatDataSourceDidUpdate(self, updateType: .firstLoad)
-            getInfoRoom()
-            handleEvent()
-            getMessagePartnerRead()
-        }
+    public init(room: TnexRoom) {
+        self.room = room
+        self.events = room.events().wrapped.filter({$0.isShowMessage})
+        self.loadData()
+        self.delegate?.chatDataSourceDidUpdate(self, updateType: .firstLoad)
+        getInfoRoom()
+        handleEvent()
+        getMessagePartnerRead()
     }
     
     func getMessagePartnerRead() {
         for event in events {
-            self.room?.getEventReceipts(event.eventId, sorted: true, completion: {[weak self] receipts in
+            self.room.getEventReceipts(event.eventId, sorted: true, completion: {[weak self] receipts in
                 guard let self = self, receipts.count > 0 else { return }
                 self.lastMessageIdPartnerRead = event.eventId
                 self.delegate?.chatDataSourceDidUpdate(self, updateType: .firstLoad)
@@ -64,7 +62,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         MatrixManager.shared.rxEvent.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (_sessionEvent) in
             guard let self = self, let sessionEvent = _sessionEvent else { return }
             let event = sessionEvent.event
-            if self.room?.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(event: event) {
+            if self.room.roomId == event.roomId, event.eventId != nil && !self.checkExistEvent(event: event) {
                 let message = self.builderMessage(from: event)
                 if event.sender != MatrixManager.shared.userId {
                     self.isShowTyping = false
@@ -76,7 +74,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
                 
                 self.delegate?.chatDataSourceDidUpdate(self)
                 if event.sender != MatrixManager.shared.userId {
-                    self.room?.sendReadReceipt(eventId: event.eventId)
+                    self.room.sendReadReceipt(eventId: event.eventId)
                 }
             }
         }).disposed(by: disposeBag!)
@@ -90,15 +88,15 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
     
     func getDisplayName() -> String {
-        return self.room?.summary.displayname ?? ""
+        return self.room.summary.displayname ?? ""
     }
     
     func getAvatarURL() -> URL? {
-        return self.room?.roomAvatarURL
+        return self.room.roomAvatarURL
     }
     
     func getInfoRoom() {
-        self.room?.liveTimeline {[weak self] eventTimeline in
+        self.room.liveTimeline {[weak self] eventTimeline in
             guard let self = self else { return }
             if let members = eventTimeline?.state?.members.members {
                 for member in members {
@@ -108,7 +106,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
             }
             self.loadData()
             if let eventId =  self.events.last?.eventId {
-                self.room?.sendReadReceipt(eventId: eventId)
+                self.room.sendReadReceipt(eventId: eventId)
             }
         }
     }
@@ -160,11 +158,11 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
 
     var canLoadMore: Bool = true
     public func loadPrevious() {
-        guard let topEvent = self.events.first, let _room = self.room else { return }
+        guard let topEvent = self.events.first else { return }
         self.canLoadMore = false
-        room?.paginate(event: topEvent) { [weak self] _ in
+        room.paginate(event: topEvent) { [weak self] _ in
             guard let self = self else { return }
-            let newEvents = _room.events().wrapped.filter({$0.isShowMessage})
+            let newEvents = self.room.events().wrapped.filter({$0.isShowMessage})
             if self.events.count < newEvents.count {
                 self.canLoadMore = true
                 self.events = newEvents
@@ -177,7 +175,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
 
     func addTextMessage(_ text: String) {
-        self.room?.send(text: text) {[weak self] _event in
+        self.room.send(text: text) {[weak self] _event in
             guard let self = self, let event = _event else { return }
             if event.sentState == MXEventSentStateSending {
                 let message = self.builderMessage(from: event)
@@ -193,7 +191,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
 
     func addPhotoMessage(_ image: UIImage) {
-        self.room?.sendImage(image: image) {[weak self] _event in
+        self.room.sendImage(image: image) {[weak self] _event in
             guard let self = self, let event = _event else { return }
             if event.sentState == MXEventSentStateSending || event.sentState == MXEventSentStateUploading {
                 let message = self.builderMessage(from: event)
@@ -215,21 +213,21 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
     
     func markReadAll() {
-        self.room?.markAllAsRead()
+        self.room.markAllAsRead()
         if let eventId = self.events.last?.eventId {
-            self.room?.sendReadReceipt(eventId: eventId)
+            self.room.sendReadReceipt(eventId: eventId)
         }
         
     }
     
     func sendTyping() {
-        self.room?.sendTypingNotification(typing: true, timeout: 3.0, completion: { response in
+        self.room.sendTypingNotification(typing: true, timeout: 3.0, completion: { response in
             print("Send typing....")
         })
     }
     
     func listenTypingNotifications() {
-        self.room?.listen(toEventsOfTypes: ["m.typing", "m.receipt"], onEvent: {[weak self] event, direction, roomState in
+        self.room.listen(toEventsOfTypes: ["m.typing", "m.receipt"], onEvent: {[weak self] event, direction, roomState in
             guard let self = self else { return }
             switch event.type {
             case "m.typing":
@@ -270,7 +268,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
         if let indexItem = self.slidingWindow?.getIndexItem(where: {$0.uid == eventId}) {
             self.removeMessage(at: indexItem)
         }
-        room?.removeOutgoingMessage(eventId)
+        room.removeOutgoingMessage(eventId)
 
     }
     
