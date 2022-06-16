@@ -29,7 +29,6 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
   final FocusNode _searchFocusNode = FocusNode();
   Timer? coolDown;
   bool loadingPublicRooms = false;
-  List<RoomModel> rooms = [];
   final ScrollController _scrollController = ScrollController();
   ChatStreamController myStream = new ChatStreamController();
 
@@ -83,11 +82,6 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
 
   void getListRoom() async {
     ChatIOSNative.instance.getRooms((listRooms) async {
-        // setState(() {
-        //   rooms = listRooms;
-        // });
-      print("fsdfdsf");
-      rooms = listRooms;
       myStream.increment(listRooms);
     });
   }
@@ -107,10 +101,10 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
         ),
       body: StreamBuilder(
         stream: myStream.counterStream,
-        builder: (context, snapshot) {
-          print("fdsfdsfsdf11111");
-          print(snapshot.hasData);
-          return ListView.separated(
+        builder: (context, AsyncSnapshot<dynamic> snapshot) {
+          List<RoomModel> rooms = List<RoomModel>.from(snapshot.data);
+          return snapshot.hasData
+              ? ListView.separated(
               padding: const EdgeInsets.only(top: 10, bottom: 10),
               itemCount: rooms.length,
               // The list items
@@ -122,7 +116,8 @@ class _ChatListState extends State<ChatList> with ScreenLoader {
                 return const SizedBox(
                   height: 8,
                 );
-              });
+              })
+          : SizedBox();
         },
       ),
     );
