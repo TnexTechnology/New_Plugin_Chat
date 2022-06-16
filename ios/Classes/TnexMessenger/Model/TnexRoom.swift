@@ -227,8 +227,8 @@ public class TnexRoom {
     }
 
     public func markAllAsRead() {
-//        room.markAllAsRead()
-        room.summary.markAllAsReadLocally()
+        room.summary.markAllAsRead()
+        MatrixManager.shared.rxEvent.accept((self.eventCache.last!, MXTimelineDirection(rawValue: 1)!, nil))
     }
 
     @nonobjc @discardableResult func sendTypingNotification(typing: Bool, timeout: TimeInterval?, completion: @escaping (_ response: MXResponse<Void>) -> Void) -> MXHTTPOperation {

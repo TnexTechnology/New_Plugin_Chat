@@ -4,16 +4,6 @@ import MatrixSDK
 import tnexchat
 import RxSwift
 
-enum BatteryState {
-  static let charging = "charging"
-  static let discharging = "discharging"
-}
-
-enum MyFlutterErrorCode {
-  static let unavailable = "UNAVAILABLE"
-}
-
-
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate, FlutterStreamHandler {
@@ -63,10 +53,6 @@ enum MyFlutterErrorCode {
         window?.rootViewController = navigationController
         mainCoordinator = AppCoordinator(navigationController: navigationController)
         window?.makeKeyAndVisible()
-
-//        let chargingChannel = FlutterEventChannel(name: "tnex_chat/refreshToken",
-//                                                  binaryMessenger: flutterViewController.binaryMessenger)
-//        chargingChannel.setStreamHandler(ChatStreamHandler())
     }
     
     private func createMethodChannel() {
@@ -124,29 +110,11 @@ enum MyFlutterErrorCode {
         self.eventSink = eventSink
           MatrixManager.shared.rxEvent.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (_sessionEvent) in
               if let self = self, let sessionEvent = _sessionEvent {
-                  self.eventSink?(["event": sessionEvent.event.eventId])
+                  print("event moi@@@: \(sessionEvent.event.eventId)")
+                  self.eventSink?(["event": "sessionEvent.event.eventId"])
               }
           }).disposed(by: disposeBag!)
-//          MatrixManager.shared.handleEvent = {[weak self] event, direction, roomState in
-//              self?.eventSink?(["event": event.eventId])
-//
-//          }
         return nil
-      }
-    
-    @objc func update() {
-        sendBatteryStateEvent()
-    }
-
-      @objc private func onBatteryStateDidChange(notification: NSNotification) {
-        sendBatteryStateEvent()
-      }
-
-      private func sendBatteryStateEvent() {
-        guard let eventSink = eventSink else {
-          return
-        }
-          eventSink(BatteryState.charging)
       }
 
       public func onCancel(withArguments arguments: Any?) -> FlutterError? {

@@ -114,7 +114,7 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     func loadData() {
         var indexMessage: Int = 0
         let messageCount: Int = events.count
-        lazy var mes = self.builderMessage(from: events[0])
+        let mes = self.builderMessage(from: events[0])
         self.slidingWindow = SlidingDataSource(count: messageCount, pageSize: messageCount) { [weak self] () -> ChatItemProtocol in
             guard let self = self else { return mes }
             let index = messageCount - 1 - indexMessage
@@ -214,10 +214,10 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     
     func markReadAll() {
         self.room.markAllAsRead()
-        if let eventId = self.events.last?.eventId {
-            self.room.sendReadReceipt(eventId: eventId)
-        }
-        
+//        if let eventId = self.events.last?.eventId {
+//            self.room.sendReadReceipt(eventId: eventId)
+//        }
+
     }
     
     func sendTyping() {

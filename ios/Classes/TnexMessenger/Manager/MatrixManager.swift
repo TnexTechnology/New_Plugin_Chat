@@ -160,6 +160,8 @@ final public class MatrixManager: NSObject {
     func startListeningForRoomEvents() {
         // roomState is nil for presence events, just for future reference
         listenReference = self.mxSession?.listenToEvents { event, direction, roomState in
+            print("have new event!!!!!!!")
+            print(event.type)
             let affectedRooms = self.rooms.filter { $0.summary.roomId == event.roomId }
             for room in affectedRooms {
                 room.add(event: event, direction: direction, roomState: roomState as? MXRoomState)

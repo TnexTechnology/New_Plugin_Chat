@@ -24,11 +24,10 @@ class ChatIOSNative {
   }
 
   void _onEvent(Object? event) {
-    print("a new event");
     final eventString = json.encode(event);
     final eventDic = json.decode(eventString);
-    print(eventDic["event"]);
     if (eventDic["event"] != null) {
+      //Can toi uu lai cho nay -> Tu tinh toan va sap xep lai data
       _chatChannel.invokeMethod('rooms');
     }
   }
