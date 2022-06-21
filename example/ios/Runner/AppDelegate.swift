@@ -110,8 +110,9 @@ import RxSwift
         self.eventSink = eventSink
           MatrixManager.shared.rxEvent.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] (_sessionEvent) in
               if let self = self, let sessionEvent = _sessionEvent {
-                  print("event moi@@@: \(sessionEvent.event.eventId)")
-                  self.eventSink?(["event": "sessionEvent.event.eventId"])
+                  let event = sessionEvent.event
+                  print("sending event!!!!")
+                  self.eventSink?(["roomId": event.roomId ?? "", "eventType": event.type ?? "", "roomInfo": sessionEvent.room.toDic()])
               }
           }).disposed(by: disposeBag!)
         return nil

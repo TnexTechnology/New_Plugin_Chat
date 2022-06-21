@@ -36,20 +36,13 @@ public class TnexRoom {
     public var summary: TnexRoomSummary
     var listenReferenceRoom: Any?
     
-    public var roomAvatarURL: URL? {
+    public var roomAvatarUrl: String? {
         guard let client = MatrixManager.shared.mxRestClient,
               let homeserver = URL(string: client.homeserver),
               let avatar = room.summary.avatar else { return nil }
-        return MXURL(mxContentURI: avatar)?.contentURL(on: homeserver)
+        return MXURL(mxContentURI: avatar)?.contentURL(on: homeserver)?.absoluteString ?? self.getAvatarUrl()
     }
     
-    public func getAvatarURLString() -> String? {
-        if let url = roomAvatarURL {
-            return url.absoluteString
-        }
-        return self.room.directUserId
-    }
-
     internal var eventCache: [MXEvent] = []
 
     public var isDirect: Bool {
@@ -228,7 +221,7 @@ public class TnexRoom {
 
     public func markAllAsRead() {
         room.summary.markAllAsRead()
-        MatrixManager.shared.rxEvent.accept((self.eventCache.last!, MXTimelineDirection(rawValue: 1)!, nil))
+        MatrixManager.shared.rxEvent.accept((self.eventCache.last!, self, MXTimelineDirection(rawValue: 1)!, nil))
     }
 
     @nonobjc @discardableResult func sendTypingNotification(typing: Bool, timeout: TimeInterval?, completion: @escaping (_ response: MXResponse<Void>) -> Void) -> MXHTTPOperation {
@@ -314,5 +307,29 @@ extension TnexRoom {
     
     public func getState(completion: @escaping(MXRoomState?) -> Void){
         self.room.state(completion)
+    }
+}
+
+public extension TnexRoom {
+    func toDic() -> NSMutableDictionary {
+        return ["displayname": self.summary.displayname ?? "Unknown",
+                "avatar": self.roomAvatarUrl ?? "",
+                "lastMessage": self.lastMessage,
+                "id": self.roomId,
+                "unreadCount": self.summary.notificationCount,
+                "timeCreated": self.getLastEvent()?.originServerTs ?? UInt64(Date().timeIntervalSince1970)
+        ]
+    }
+    
+    private func getAvatarUrl() -> String? {
+        if let avatarUrl = MatrixManager.shared.dicRoomAvatar[roomId] {
+            //Avatar direct chat la avatar partner
+            return avatarUrl
+        } else if let avatarUrl = self.room.directUserId, !avatarUrl.isEmpty {
+            //Avatar direct chat la avatar partner
+            MatrixManager.shared.dicRoomAvatar[roomId] = avatarUrl
+            return avatarUrl
+        }
+        return nil
     }
 }

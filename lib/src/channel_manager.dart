@@ -12,7 +12,8 @@ class ChatIOSNative {
   static const EventChannel _eventChannel = EventChannel('event_room');
 
   Map<String, String> roomAvatarDic = <String, String>{};
-  Function(List<RoomModel>)? _rooms = null;
+  Function(List<RoomModel>)? _handleRooms = null;
+  List<RoomModel> _rooms = [];
 
   static final ChatIOSNative _singleton = ChatIOSNative._internal();
   ChatIOSNative._internal() {
@@ -23,12 +24,31 @@ class ChatIOSNative {
     return _singleton;
   }
 
-  void _onEvent(Object? event) {
-    final eventString = json.encode(event);
-    final eventDic = json.decode(eventString);
-    if (eventDic["event"] != null) {
+  void _onEvent(dynamic event) {
+    final eventDic = Map.from(event);
+    if (eventDic["roomId"] != null)  {
       //Can toi uu lai cho nay -> Tu tinh toan va sap xep lai data
+    final String roomId = eventDic["roomId"];
+    final index = this._rooms.indexWhere((room) {
+      return room.id == roomId;
+    });
+    if (index == null || eventDic["roomInfo"] == null) {
+      //Cuoc hoi thoai moi hoac khong xac dinh thi reload lai list rooms
+      print("khong dc");
+      print("$index");
       _chatChannel.invokeMethod('rooms');
+      return;
+    }
+    final roomDic = Map.from(eventDic["roomInfo"]);
+    final roomModel = _convertDicToRoom(roomDic);
+    if (index == 0) {
+      _rooms[0] = roomModel;
+    } else {
+      _rooms.removeAt(index);
+      _rooms.insert(0, roomModel);
+    }
+    print("reload okkkk!!!");
+    _handleRooms!(_rooms);
     }
   }
 
@@ -37,7 +57,7 @@ class ChatIOSNative {
   }
 
   void getRooms(Function(List<RoomModel>) listrooms) async {
-    _rooms = listrooms;
+    _handleRooms = listrooms;
     await _chatChannel.invokeMethod('rooms');
   }
 
@@ -53,25 +73,29 @@ class ChatIOSNative {
     _chatChannel.setMethodCallHandler((call) async {
       if (call.method == "rooms") {
         List<RoomModel> roomModels = [];
-        final roomsNative = call.arguments;
-        for (final room in roomsNative) {
-          final roomString = json.encode(room);
-          final roomDic = json.decode(roomString);
-          final roomModel = RoomModel(
-            id: roomDic["id"],
-            displayname: roomDic["displayname"],
-            unreadCount: roomDic["unreadCount"],
-            lastMessage: roomDic["lastMessage"],
-            timeCreated: roomDic["timeCreated"],
-            avatarUrl: roomDic["avatarUrl"],
-          );
+        for (final room in call.arguments) {
+          final roomDic = Map.from(room);
+          final roomModel = _convertDicToRoom(roomDic);
           roomModels.add(roomModel);
         }
-        if (_rooms != null) {
-          _rooms!(roomModels);
+        _rooms = roomModels;
+        if (_handleRooms != null) {
+          _handleRooms!(roomModels);
         }
       }
     });
+  }
+
+  RoomModel _convertDicToRoom(Map<dynamic, dynamic> roomDic) {
+    final roomModel = RoomModel(
+      id: roomDic["id"],
+      displayname: roomDic["displayname"],
+      unreadCount: roomDic["unreadCount"],
+      lastMessage: roomDic["lastMessage"],
+      timeCreated: roomDic["timeCreated"],
+      avatarUrl: roomDic["avatarUrl"],
+    );
+    return roomModel;
   }
 
 }

@@ -92,7 +92,10 @@ open class TnexChatDataSource: ChatDataSourceProtocol {
     }
     
     func getAvatarURL() -> URL? {
-        return self.room.roomAvatarURL
+        if let avatarUrl = room.roomAvatarUrl {
+            return URL(string: avatarUrl)
+        }
+        return nil
     }
     
     func getInfoRoom() {

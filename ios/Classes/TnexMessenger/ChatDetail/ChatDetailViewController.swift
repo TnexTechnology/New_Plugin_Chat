@@ -76,7 +76,9 @@ open class ChatDetailViewController: BaseChatViewController {
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.dataSource.markReadAll()
+        if room.summary.hasAnyUnread {
+            self.dataSource.markReadAll()
+        }
         self.inputBar?.inputTextView.text = self.dataSource.room.getPartialTextMessage()
     
     }

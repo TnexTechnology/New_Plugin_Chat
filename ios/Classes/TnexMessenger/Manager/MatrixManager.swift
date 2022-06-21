@@ -11,7 +11,7 @@ import KeychainAccess
 import RxSwift
 import RxRelay
 
-public typealias SectionEvent = (event: MXEvent, direction: MXTimelineDirection, customObject: Any?)
+public typealias SectionEvent = (event: MXEvent, room: TnexRoom, direction: MXTimelineDirection, customObject: Any?)
 
 public enum LoginState {
     case loggedOut
@@ -161,12 +161,12 @@ final public class MatrixManager: NSObject {
         // roomState is nil for presence events, just for future reference
         listenReference = self.mxSession?.listenToEvents { event, direction, roomState in
             print("have new event!!!!!!!")
-            print(event.type)
-            let affectedRooms = self.rooms.filter { $0.summary.roomId == event.roomId }
-            for room in affectedRooms {
+            print(event.type ?? "")
+            if let roomId = event.roomId,
+               let room = self.getRoom(roomId: roomId) {
                 room.add(event: event, direction: direction, roomState: roomState as? MXRoomState)
+                self.rxEvent.accept((event, room, direction, roomState))
             }
-            self.rxEvent.accept((event, direction, roomState))
         }
     }
     
@@ -182,19 +182,9 @@ final public class MatrixManager: NSObject {
         let dispatchGroup = DispatchGroup()
         let tnexRooms = rooms.map({ room -> NSDictionary in
             let roomId = room.roomId
-            let item: NSMutableDictionary = ["displayname": room.summary.displayname ?? "Unknown",
-                                             "avatar": room.roomAvatarURL?.absoluteString ?? "",
-                                             "lastMessage": room.lastMessage,
-                                             "id": roomId,
-                                             "unreadCount": room.summary.notificationCount,
-                                             "timeCreated": room.getLastEvent()?.originServerTs ?? UInt64(Date().timeIntervalSince1970)
-            ]
-            
-            if let avatarUrl: String = room.getRoom().directUserId, !avatarUrl.isEmpty {
-                //Avatar direct chat la avatar partner
-                item["avatarUrl"] = avatarUrl
-            } else if let groupAvatarUrl = self.dicRoomAvatar[roomId]{
-                item["avatarUrl"] = groupAvatarUrl
+            let item = room.toDic()
+            if let avatarUrl = room.roomAvatarUrl {
+                self.dicRoomAvatar[roomId] = avatarUrl
             } else {
                 dispatchGroup.enter()
                 room.getState { roomState in
@@ -212,7 +202,7 @@ final public class MatrixManager: NSObject {
             completion(tnexRooms)
         })
     }
-    
+        
     public func getRoom(roomId: String) -> TnexRoom? {
         return roomCache[roomId]
     }
