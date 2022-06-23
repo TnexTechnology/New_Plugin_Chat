@@ -15,7 +15,8 @@ dependencies:
   intl: ^0.17.0
   flutter_advanced_networkimage:
     git: https://github.com/TnexTechnology/flutter_advanced_networkimage
-
+  flutter_screenutil: ^5.0.0+2
+  get: ^4.3.8
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -37,6 +38,8 @@ flutter:
         pluginClass: TnexchatPlugin
       ios:
         pluginClass: TnexchatPlugin
+  assets:
+    - packages/tnexchat/assets/delete_room_chat.png
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

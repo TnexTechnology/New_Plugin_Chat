@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+class ChatColor {
+  ChatColor._();
+
+  static const Color backgroundButton = Color(0xFF00A3E0);
+  static const Color background = Color(0xFF00A3E0);
+  static const Color backgroundDM = Color(0xFF011830);
+  static const Color backgroundBlue900 = Color(0xFF00A3E0);
+  static const Color backgroundGrey800 = Color(0xFF344659);
+  static const Color backgroundGrey900 = Color(0xFF1A2F45);
+  static const Color backgroundPopup = Color(0xFF011830);
+  static const Color backgroundSelectedDropdown = Color.fromRGBO(20, 200, 250, 0.2);
+  static const Color backgroundNormalDropdown = Color(0xFF1A2F45);
+  static const Color backgroundSperator = Color.fromRGBO(52, 70, 89, 0.5);
+  static const Color backgroundFooter = Color(0xFF1A2F45);
+  static const Color backgroundCell = Color(0xFF1A2F45);
+  static const Color backgroundInput = Color(0xFF1A2F45);
+  static const Color backgroundCircleButton = Color(0xFF1A2F45);
+  static const Color backgroundDMBg = Color(0xFF011830);
+  static const Color backgroundPrimaryBlue500 = Color(0xFF005D88);
+  static const Color toastBackground = Color(0xFF5FD788);
+  static const Color titleButton = Color(0xFFF7F8F9);
+  static const Color titleUnderlineButton = Color(0xFF00A3E0);
+  static const Color naviTitle = Color(0xFFF7F8F9);
+  static const Color sectionTitle = Color(0xFFF7F8F9);
+  static const Color dropDownIcon = Color(0xFFF7F8F9);
+  static const Color whiteIcon = Color(0xFFF7F8F9);
+  static const Color greenIcon = Color(0xFF5FD788);
+  static const Color title = Color(0xFFF7F8F9);
+  static const Color content = Color(0xFFF7F8F9);
+  static const Color content80 = Color.fromRGBO(247, 248, 249, 0.8);
+  static const Color titleGrey500 = Color(0xFF808B97);
+  static const Color titleGrey400 = Color(0xFF9CA3AF);
+  static const Color hyperLink = Color(0xFF00A3E0);
+  static const Color tabSelectedTitle = Color(0xFFF9FAFB);
+  static const Color tabNormalTitle = Color.fromRGBO(247, 248, 249, 0.6);
+  static const Color titleGrey50 = Color(0xFFF9FAFB);
+  static const Color titleGrey200 = Color(0xFFCCD1D6);
+  static const Color titlePlaceholder = Color(0xFF9CA3AF);
+  static const Color titleTextField = Color(0xFF808B97);
+  static const Color contentInput = Color(0xFFF7F8F9);
+  static const Color primaryTitle = Color(0xFF00A3E0);
+  static const Color cursorColor = Color(0xFF00A3E0);
+  static const Color plusAmountTitle = Color(0xFF5FD788);
+  static const Color gray700 = Color(0xFF4D5D6E);
+  static const Color blueIcon = Color(0xFF00A3E0);
+  static const Color naviIcon = Color(0xFFF7F8F9);
+  static const Color c051830 = Color(0xFF051830);
+  static const Color c5FD788 = Color(0xFF5FD788);
+  static const Color cB3BAC1 = Color(0xFFB3BAC1);
+  static const Color borderWidget = Color(0xFF00A3E0);
+  static const Color contentGrey400 = Color(0xFF99A3AC);
+  static const Color black = Color(0xFF000000);
+}

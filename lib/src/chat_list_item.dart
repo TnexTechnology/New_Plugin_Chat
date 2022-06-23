@@ -6,6 +6,7 @@ export './floating_circle_button.dart';
 import './room_model.dart';
 import './avatar_room.dart';
 import './channel_manager.dart';
+import 'package:tnexchat/src/popup/popup_bottom_sheet.dart';
 import 'package:intl/intl.dart';
 
 class ChatListItem extends StatelessWidget {
@@ -29,12 +30,13 @@ class ChatListItem extends StatelessWidget {
                 //     .delete,
                 color: Colors.transparent,
                 iconWidget: Padding(
-                    padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                     child:
-                    Icon(Icons.add,
-                        color: Colors.white)),
-                onTap: () => {
-                  print("tapppp icon")
+                    Image.asset('packages/tnexchat/assets/delete_room_chat.png')),
+                onTap: ()  {
+                  print("tapppp icon");
+                  Popup.instance.showConfirmPopup(context);
+
                 },
               ),
               ],
@@ -131,6 +133,17 @@ class ChatListItem extends StatelessWidget {
         )
 
     );
+  }
+
+  showDeleteConfirmPopup() async {
+    // double contentHeight = 480;
+    // return await slideDialog.showSlideDialog(
+    //     context: context,
+    //     pillColor: Colors.transparent,
+    //     backgroundColor: Colors.transparent,
+    //     child: ChatConfirmPopupContent(contentHeight: contentHeight - 115,),
+    //     contentHeight: contentHeight
+    // );
   }
 }
 
