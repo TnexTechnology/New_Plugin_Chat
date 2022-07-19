@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:tnexchat/tnexchat.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp1());
 }
 
 class MyApp extends StatefulWidget {
@@ -16,7 +16,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
   static const MethodChannel methodChannel =
       MethodChannel('samples.flutter.io/battery');
   static const EventChannel eventChannel =
@@ -49,44 +48,37 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
     });
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     home: Scaffold(
-  //       appBar: AppBar(
-  //         title: const Text('Plugin example app'),
-  //       ),
-  //       body: Center(
-  //         child: Text('Running on: $_platformVersion\n'),
-  //       ),
-  //     ),
-  //   );
-  // }
-@override
+  @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Plugin example app'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(_batteryLevel, key: const Key('Battery level label')),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: _getBatteryLevel,
-                  child: const Text('Refresh'),
-                ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(_batteryLevel),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ElevatedButton(
+                      onPressed: _getBatteryLevel,
+                      child: const Text('Refresh'),
+                    ),
+                  ),
+                ],
               ),
+              Text(_chargingStatus),
             ],
           ),
-          Text(_chargingStatus),
-        ],
+        ),
       ),
     );
   }
@@ -100,9 +92,9 @@ class _MyAppState extends State<MyApp> {
     } on PlatformException {
       batteryLevel = 'Failed to get battery level.';
     }
-    // setState(() {
-    //   _batteryLevel = batteryLevel;
-    // });
+    setState(() {
+      _batteryLevel = batteryLevel;
+    });
   }
 
   void _onEvent(Object? event) {
@@ -132,3 +124,32 @@ class _MyAppState extends State<MyApp> {
 
 
 }
+
+class MyApp1 extends StatefulWidget {
+  const MyApp1({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp1> createState() => _MyAppState1();
+}
+
+class _MyAppState1 extends State<MyApp1> {
+  String _platformVersion = 'Unknown';
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Plugin example app'),
+        ),
+        body: Center(
+          child: Text('Running on: $_platformVersion\n'),
+        ),
+      ),
+    );
+  }
+
+}
+

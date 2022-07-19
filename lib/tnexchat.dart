@@ -14,7 +14,6 @@ class Tnexchat {
   static void Function(MethodCall call)? callback;
 
   static Future<void> _fromNative(MethodCall call) async {
-    print('callTest result 1111 = ${call.arguments}');
     if (call.method == 'getPlatformVersion') {
       print('callTest result = ${call.arguments}');
     }

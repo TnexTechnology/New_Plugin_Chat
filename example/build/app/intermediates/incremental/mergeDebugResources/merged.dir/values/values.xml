@@ -3125,8 +3125,8 @@
     <string name="git_olm_revision" translatable="false">"9908862"</string>
     <string name="git_olm_revision_date" translatable="false">"2022-01-10 11:00:49 +0100"</string>
     <string name="git_olm_revision_unix_date" translatable="false">"1641808849"</string>
-    <string name="git_revision" translatable="false">"a169277f"</string>
-    <string name="git_revision_date" translatable="false">"2022-04-22 14:31:36 +0700"</string>
+    <string name="git_revision" translatable="false">"30d1f487"</string>
+    <string name="git_revision_date" translatable="false">"2022-05-31 17:43:56 +0700"</string>
     <string name="git_sdk_revision" translatable="false">"80fad00d"</string>
     <string name="git_sdk_revision_date" translatable="false">"2022-03-25 11:08:14 +0700"</string>
     <string name="git_sdk_revision_unix_date" translatable="false">"1648181294"</string>

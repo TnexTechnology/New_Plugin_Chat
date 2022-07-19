@@ -49,15 +49,15 @@ enum MyFlutterErrorCode {
   }
     
     private func receiveBatteryLevel(result: FlutterResult) {
-//        let device = UIDevice.current
-//        device.isBatteryMonitoringEnabled = true
-//        guard device.batteryState != .unknown  else {
-//          result(FlutterError(code: MyFlutterErrorCode.unavailable,
-//                              message: "Battery info unavailable",
-//                              details: nil))
-//          return
-//        }
-//        result(Int(device.batteryLevel * 100))
+       let device = UIDevice.current
+       device.isBatteryMonitoringEnabled = true
+       guard device.batteryState != .unknown  else {
+         result(FlutterError(code: MyFlutterErrorCode.unavailable,
+                             message: "Battery info unavailable",
+                             details: nil))
+         return
+       }
+       result(Int(device.batteryLevel * 100))
         print("############")
       }
 
